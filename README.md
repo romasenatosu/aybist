@@ -25,6 +25,7 @@ Pure PHP 8.2 ile Yönetici Paneli
 # Kurulum
 
 - $ composer install
+- $ npm install
 
 # Gereksinimler
 

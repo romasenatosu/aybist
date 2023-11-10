@@ -12,12 +12,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title><?= $title ?></title>
+<!--     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print"> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title><?= $title ?></title> <!-- TODO:veritabanından gelecek -->
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <img src="/assets/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
+    </div>
     <?php
         include_once __DIR__ . '/header.php';
         include_once __DIR__ . '/home.php';
+        // include_once __DIR__ . '/pages/test.php';
         include_once __DIR__ . '/footer.php';
     ?>
 </body>

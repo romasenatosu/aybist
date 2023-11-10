@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1); // use strict variable types
 
 // show all errors as default
-ini_set('display_errors', 1);
+ini_set('display_errors', 1);   // TODO:veritabanından gelecek
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
@@ -23,9 +23,13 @@ $pdo = null;
 try {
     $pdo = new PDO($dsn, $database_username, $database_password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->query("SET CHARSET utf8mb4");
 
 } catch (PDOException $e) {
     echo "<pre>";
     die(print_r($e->getMessage()));
     echo "</pre>";
 }
+
+// TODO: plesk session problem
+
