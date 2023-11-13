@@ -219,4 +219,4 @@ function url_seo($str, $options = array()){
     return $options['lowercase'] ? mb_strtolower($str, 'UTF-8') : $str;
 }
 
-echo url_seo(trim($_POST['baslik']));
+// echo url_seo(trim($_POST['baslik']));

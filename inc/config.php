@@ -14,8 +14,8 @@ ini_set('upload_max_filesize', '8M'); // maximum uploadable file size
 // database configurations
 $hostname = "localhost";
 $database = "aybist";
-$database_username = "root";
-$database_password = "";
+$database_username = "muhammed";
+$database_password = "muhammed.1234";
 $database_port = 3306;
 $dsn = "mysql:host=$hostname;dbname=$database";
 $pdo = null;
@@ -27,8 +27,9 @@ try {
 
 } catch (PDOException $e) {
     echo "<pre>";
-    die(print_r($e->getMessage()));
+    print_r($e->getMessage());
     echo "</pre>";
+    exit(-1);
 }
 
 // TODO: plesk session problem
