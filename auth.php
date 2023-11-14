@@ -1,6 +1,9 @@
 <?php
 
-// TODO: CREATE EXTRA CLASS FOR THIS 
+session_set_cookie_params(365 * 24 * 60 * 60, 'session.cookie_lifetime'); // that makes 1 year
+session_start();
+
+// CREATE EXTRA CLASS FOR THIS 
 
 /* class Auth {
     public $user;
@@ -22,9 +25,9 @@
 $auth = new Auth();
 
 if ($auth->getUser()) {
-    // TODO: redirect to home page
+    // redirect to home page
     header('Location: ?page=home');
 } else {
-    // TODO: redirect to login page
+    // redirect to login page
 }
  */

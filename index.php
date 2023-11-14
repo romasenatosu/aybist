@@ -1,6 +1,5 @@
 <?php
     require_once __DIR__ . '/inc/core.php';
-    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <!--     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="print.css" media="print"> -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Owl Carousel  -->
@@ -40,20 +37,18 @@
     </title>
 </head>
 
-<!-- ASK: error redirection -->
+<!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: error pages -->
-    <!-- TODO: mesajlar, ayarlar -->
+    <!-- TODO: mesajlar -->
     <!-- TODO: create analytics charts -->
     <!-- TODO: authentication -->
     <!-- TODO: create database -->
     <!-- TODO: get page title from database -->
     <!-- TODO: php.ini settings must be derived from database -->
-    <!-- TODO: create eternal session for user -->
 
     <!-- Preloader -->
-    <div class="preloader">
+    <div class="preloader d-none">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
     </div>
 

@@ -25,8 +25,6 @@ switch ($page) {
                 break;
             
             default:
-                ?> <h1><?= $action ?? 'no action' ?></h1>
-                <?php
                 include_once __DIR__ . '/pages/dukkanlar/index.php';
             }
         break;
@@ -295,12 +293,7 @@ switch ($page) {
     case 'home':
         include_once __DIR__ . '/home.php';
         break;
-    
-/*     case 'auth':
-        include_once __DIR__ . '/auth.php';
-        break; */
 
     default:
-        // TODO: return 404 as header here
         include_once __DIR__ . '/pages/errors/404.php'; 
 }
