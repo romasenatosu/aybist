@@ -1,0 +1,9 @@
+bir firmanın bir ya da daha fazla dükkanı olabilir
+dükkan sahibi ve kiracılar var
+kiracılar da dükkan sahibi olabilir.
+
+
+anasayfa
+dükkanlar (işletme) sahibi (sahibi ekle), kiraci (sahibi ekle), blok id (blok yoksa yeni ekle butonu)
+bloklar (CRUD)
+aidatlar

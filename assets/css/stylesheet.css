@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/* fonts */
+/* fonts end */
+
+/* tags */
+
+/* tags end */
+
+/* id start */
+/* id end */
+
+/* classes */
+
+.preloader {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader img {
+    max-width: 300px;
+}
+
+/* classes end */
+
+
+
+/* responsive */

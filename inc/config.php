@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1); // use strict variable types
 
 // show all errors as default
-ini_set('display_errors', 1);   // TODO:veritabanından gelecek
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
@@ -32,5 +32,4 @@ try {
     exit(-1);
 }
 
-// TODO: plesk session problem
 

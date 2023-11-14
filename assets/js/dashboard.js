@@ -109,8 +109,12 @@ $(function () {
     },
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart"), chart);
-  chart.render();
+  const chartElement = document.querySelector("#chart")
+  if (chartElement) {
+    var chart = new ApexCharts(document.querySelector("#chart"), chart);
+    chart.render();
+  }
+
 
   // =====================================
   // Breakup
@@ -163,8 +167,11 @@ $(function () {
     },
   };
 
-  var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
-  chart.render();
+  const breakupElement = document.querySelector("#breakup")
+  if (breakupElement) {
+    var chart = new ApexCharts(breakupElement, breakup);
+    chart.render();
+  }
 
   // =====================================
   // Earning
@@ -219,7 +226,11 @@ $(function () {
       },
     },
   };
-  new ApexCharts(document.querySelector("#earning"), earning).render();
+
+  const earningElement = document.querySelector("#earning")
+  if (earningElement) {
+    new ApexCharts(document.querySelector("#earning"), earning).render();
+  }
 
   // =====================================
   // Salary
@@ -288,8 +299,11 @@ $(function () {
     },
   };
 
-  var chart = new ApexCharts(document.querySelector("#salary"), salary);
-  chart.render();
+  const salaryElement = document.querySelector("#salary")
+  if (salaryElement) {
+    var chart = new ApexCharts(salaryElement, salary);
+    chart.render();
+  }
 
   // =====================================
   // Customers
@@ -343,7 +357,12 @@ $(function () {
       },
     },
   };
-  new ApexCharts(document.querySelector("#customers"), customers).render();
+
+  const customersElement = document.querySelector("#customers")
+  if (customersElement) {
+    new ApexCharts(customersElement, customers).render();
+  }
+
 
   // =====================================
   // Projects
@@ -427,11 +446,12 @@ $(function () {
     },
   };
 
-  var chart_column_basic = new ApexCharts(
-    document.querySelector("#projects"),
-    projects
-  );
-  chart_column_basic.render();
+  const projectsElement = document.querySelector("#projects")
+  if (projectsElement) {
+    var chart_column_basic = new ApexCharts(projectsElement, projects);
+    chart_column_basic.render();
+  }
+
 
   // =====================================
   // Stats
@@ -484,5 +504,9 @@ $(function () {
       },
     },
   };
-  new ApexCharts(document.querySelector("#stats"), stats).render();
+
+  const statsElement = document.querySelector("#stats")
+  if (statsElement) {
+    new ApexCharts(statsElement, stats).render();
+  }
 });

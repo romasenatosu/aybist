@@ -1,9 +1,13 @@
+<?php
+    $page = htmlspecialchars($_GET['page'] ?? '');
+?>
+
 <!-- Sidebar Start -->
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="#" class="text-nowrap logo-img">
+            <a href="?page=home" class="text-nowrap logo-img">
                 <img src="assets/images/logos/logo.png" class="img-fluid">
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -13,145 +17,146 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar>
             <ul id="sidebarnav">
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
-                </li>
-                <!-- =================== -->
-                <!-- Dashboard -->
-                <!-- =================== -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'home') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
                         <span class="hide-menu">Ana Sayfa</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'dukkanlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'dukkanlar') ? 'active' : '' ?>" href="?page=dukkanlar">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-trademark"></i>
+                        </span>
+                        <span class="hide-menu">Dükkanlar</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?= ($page == 'bloklar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'bloklar') ? 'active' : '' ?>" href="?page=bloklar">
+                        <span>
+                            <i class="ti ti-home-cog"></i>
+                        </span>
+                        <span class="hide-menu">Bloklar</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?= ($page == 'gelir-yonetimi') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'gelir-yonetimi') ? 'active' : '' ?>" href="?page=gelir-yonetimi">
+                        <span>
+                            <i class="ti ti-receipt-tax"></i>
                         </span>
                         <span class="hide-menu">Gelir Yönetimi</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'gider-yonetimi') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'gider-yonetimi') ? 'active' : '' ?>" href="?page=gider-yonetimi">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-coin"></i>
                         </span>
                         <span class="hide-menu">Gider Yönetimi</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'uye-yonetimi') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'uye-yonetimi') ? 'active' : '' ?>" href="?page=uye-yonetimi">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">İşletmeler</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-users"></i>
                         </span>
                         <span class="hide-menu">Üye Yönetimi</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'ucretler') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'ucretler') ? 'active' : '' ?>" href="?page=ucretler">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-cash-banknote"></i>
                         </span>
                         <span class="hide-menu">Ücretler</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'raporlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'raporlar') ? 'active' : '' ?>" href="?page=raporlar">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-file-description"></i>
                         </span>
                         <span class="hide-menu">Raporlar</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'ilanlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'ilanlar') ? 'active' : '' ?>" href="?page=ilanlar">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">Mesajlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-speakerphone"></i>
                         </span>
                         <span class="hide-menu">İlanlar</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'mevzuatlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'mevzuatlar') ? 'active' : '' ?>" href="?page=mevzuatlar">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-gavel"></i>
                         </span>
                         <span class="hide-menu">Mevzuatlar</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'duyurular') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'duyurular') ? 'active' : '' ?>" href="?page=duyurular">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">SMS Gönder</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-bell-filled"></i>
                         </span>
                         <span class="hide-menu">Duyurular</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'belge-yonetimi') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'belge-yonetimi') ? 'active' : '' ?>" href="?page=belge-yonetimi">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">Mail Gönder</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-book"></i>
                         </span>
                         <span class="hide-menu">Belge Yönetimi</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'talepler') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'talepler') ? 'active' : '' ?>" href="?page=talepler">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-user-question"></i>
                         </span>
                         <span class="hide-menu">Talepler</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'mesajlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'mesajlar') ? 'active' : '' ?>" href="?page=mesajlar">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-message-2-check"></i>
+                        </span>
+                        <span class="hide-menu">Mesajlar</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?= ($page == 'sms-gonder') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'sms-gonder') ? 'active' : '' ?>" href="?page=sms-gonder">
+                        <span>
+                            <i class="ti ti-message-2-up"></i>
+                        </span>
+                        <span class="hide-menu">SMS Gönder</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?= ($page == 'mail-gonder') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'mail-gonder') ? 'active' : '' ?>" href="?page=mail-gonder">
+                        <span>
+                            <i class="ti ti-mail"></i>
+                        </span>
+                        <span class="hide-menu">Mail Gönder</span>
+                    </a>
+                </li>
+                <li class="sidebar-item <?= ($page == 'ayarlar') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'ayarlar') ? 'active' : '' ?>" href="?page=ayarlar">
+                        <span>
+                            <i class="ti ti-settings-filled"></i>
                         </span>
                         <span class="hide-menu">Ayarlar</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item <?= ($page == 'logout') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'logout') ? 'active' : '' ?>" href="?page=logout">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-logout"></i>
                         </span>
                         <span class="hide-menu">Çıkış</span>
                     </a>

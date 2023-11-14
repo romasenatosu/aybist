@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/inc/core.php';
+    require_once __DIR__ . '/inc/core.php';
+    session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,40 +19,51 @@ require_once __DIR__ . '/inc/core.php';
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+
+    <!-- Datatable -->
+    <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css">
+
+    <!-- flatpickr -->
+    <link rel="stylesheet" href="node_modules/flatpickr/dist/flatpickr.min.css">
 
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="assets/css/style.min.css" />
 
+    <!-- my css -->
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+
     <title>
         <?= $title ?>
-    </title> <!-- TODO:veritabanından gelecek -->
+    </title>
 </head>
 
+<!-- ASK: error redirection -->
+
 <body>
+    <!-- TODO: error pages -->
+    <!-- TODO: mesajlar, ayarlar -->
+    <!-- TODO: create analytics charts -->
+    <!-- TODO: authentication -->
+    <!-- TODO: create database -->
+    <!-- TODO: get page title from database -->
+    <!-- TODO: php.ini settings must be derived from database -->
+    <!-- TODO: create eternal session for user -->
+
     <!-- Preloader -->
     <div class="preloader">
-        <img src="/assets/images/logos/logo.png" alt="loader" class="lds-ripple img-fluid" />
+        <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
     </div>
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <?php
-        include_once __DIR__ . '/header.php';
-
-        $sy = @$_GET['sy'];
-        switch ($sy) {
-            case 'test':
-                include_once __DIR__ . '/pages/test.php';
-                break;
-
-            default:
-                include_once __DIR__ . '/home.php';
-        }
-
-        include_once __DIR__ . '/home.php';
-        include_once __DIR__ . '/footer.php';
+            include_once __DIR__ . '/header.php';
+            require_once __DIR__ . '/router.php';
+            include_once __DIR__ . '/footer.php';
         ?>
     </div> <!-- NOTE: Body Wrapper ends here -->
 
@@ -426,9 +439,9 @@ require_once __DIR__ . '/inc/core.php';
 
     <!--  Customizer -->
     <!--  Import Js Files -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="assets/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/simplebar/dist/simplebar.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!--  core files -->
     <script src="assets/js/app.min.js"></script>
     <script src="assets/js/app.init.js"></script>
@@ -436,9 +449,30 @@ require_once __DIR__ . '/inc/core.php';
     <script src="assets/js/sidebarmenu.js"></script>
     <script src="assets/js/custom.js"></script>
     <!--  current page js files -->
-    <script src="assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="node_modules/apexcharts/dist/apexcharts.min.js"></script>
     <script src="assets/js/dashboard.js"></script>
+
+    <!-- datatable -->
+    <script src="node_modules/jszip/dist/jszip.min.js"></script>
+    <script src="node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="node_modules/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+
+    <!-- flatpickr -->
+    <script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="node_modules/flatpickr/dist/l10n/tr.js"></script>
+
+    <!-- myscript -->
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
