@@ -1,5 +1,4 @@
 <?php
-// create entities
 if (!isset($text_action)) {
     $text_action = 'Ekle';
 }
@@ -20,7 +19,7 @@ if (!isset($text_action)) {
                                     <a href="?page=gider-yonetimi">Gider Yönetimi</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    Yeni Ekle
+                                    <?= ($action=='update') ? 'Düzenle' : 'Yeni Ekle' ?>
                                 </li>
                             </ol>
                         </nav>
@@ -30,32 +29,67 @@ if (!isset($text_action)) {
                             <form action="?page=gider-yonetimi?action=create" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="expense">Gider Türü</label>
-                                        <input type="text" class="form-control" id="expense" placeholder="Gider türü giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->expense_type->name ?>">
+                                        Gider Türü
+                                            <span class="text-danger"><?= ($giderYonetimi->expense_type->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Gider türü giriniz" <?= $giderYonetimi->expense_type->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->expense_type->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->expense_type->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="date">Tarih</label>
-                                        <input type="text" class="form-control" id="date" placeholder="Tarih giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->date->name ?>">
+                                        Tarih
+                                            <span class="text-danger"><?= ($giderYonetimi->date->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Tarih giriniz" <?= $giderYonetimi->date->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->date->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->date->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="paidAmount">Ödenen Tutar</label>
-                                        <input type="text" class="form-control" id="paidAmount" placeholder="Ödenen tutar giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->paid_amount->name ?>">
+                                        Ödenen tutar
+                                            <span class="text-danger"><?= ($giderYonetimi->paid_amount->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ödenen tutar giriniz" <?= $giderYonetimi->paid_amount->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->paid_amount->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->paid_amount->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="voucherNo">Makbuz No</label>
-                                        <input type="text" class="form-control" id="voucherNo" placeholder="Makbuz no giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->voucher_no->name ?>">
+                                        Makbuz No
+                                            <span class="text-danger"><?= ($giderYonetimi->voucher_no->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Makbuz no giriniz" <?= $giderYonetimi->voucher_no->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->voucher_no->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->voucher_no->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="accountName">Hesap Adı</label>
-                                        <input type="text" class="form-control" id="accountName" placeholder="Hesap Adı giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->account_name->name ?>">
+                                        Hesap Adı
+                                            <span class="text-danger"><?= ($giderYonetimi->account_name->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Hesap adı giriniz" <?= $giderYonetimi->account_name->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->account_name->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->account_name->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="city">Şehir</label>
-                                        <input type="text" class="form-control" id="city" placeholder="Şehir giriniz">
+                                        <label class="form-label" for="<?= $giderYonetimi->city->name ?>">
+                                        Şehir
+                                            <span class="text-danger"><?= ($giderYonetimi->city->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Şehir giriniz" <?= $giderYonetimi->city->get_attr() ?>>
+                                        <span class="text-danger"><?= ($giderYonetimi->city->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->city->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-8">
-                                        <label class="form-label" for="description">Açıklama</label>
-                                        <textarea class="form-control" id="description" placeholder="Açıklama giriniz"></textarea>
+                                        <label class="form-label" for="<?= $giderYonetimi->description->name ?>">
+                                        Açıklama
+                                            <span class="text-danger"><?= ($giderYonetimi->description->required) ? '*': '' ?></span>
+                                        </label>
+                                        <textarea  class="form-control" placeholder="Açıklama giriniz" <?= $giderYonetimi->description->get_attr() ?>><?= $giderYonetimi->description->value ?></textarea>
+                                        <span class="text-danger"><?= ($giderYonetimi->description->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($giderYonetimi->description->help_msg) ?></span>
                                     </div>
                                 </div>
                                 <div class="text-end">

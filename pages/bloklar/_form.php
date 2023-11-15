@@ -1,5 +1,4 @@
 <?php
-// create entities
 if (!isset($text_action)) {
     $text_action = 'Ekle';
 }
@@ -20,7 +19,7 @@ if (!isset($text_action)) {
                                     <a href="?page=bloklar">Bloklar</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    Yeni Ekle
+                                    <?= ($action=='update') ? 'Düzenle' : 'Yeni Ekle' ?>
                                 </li>
                             </ol>
                         </nav>
@@ -30,16 +29,31 @@ if (!isset($text_action)) {
                             <form action="?page=bloklar?action=create" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="complexName">Blok Adı</label>
-                                        <input type="text" class="form-control" id="complexName" placeholder="Blok adı giriniz">
+                                        <label class="form-label" for="<?= $bloklar->complex_name->name ?>">
+                                            Blok Adı
+                                            <span class="text-danger"><?= ($bloklar->complex_name->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Blok adı giriniz" <?= $bloklar->complex_name->get_attr() ?>>
+                                        <span class="text-danger"><?= ($bloklar->complex_name->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($bloklar->complex_name->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="levelCount">Kat Sayısı</label>
-                                        <input type="text" class="form-control" id="levelCount" placeholder="Kat sayısı giriniz">
+                                        <label class="form-label" for="<?= $bloklar->level_count->name ?>">
+                                            Kat Sayısı
+                                            <span class="text-danger"><?= ($bloklar->level_count->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Kat sayısı giriniz" <?= $bloklar->level_count->get_attr() ?>>
+                                        <span class="text-danger"><?= ($bloklar->level_count->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($bloklar->level_count->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-8">
-                                        <label class="form-label" for="description">Açıklama</label>
-                                        <textarea class="form-control" id="description" placeholder="Açıklama giriniz"></textarea>
+                                        <label class="form-label" for="<?= $bloklar->description->name ?>">
+                                            Açıklama
+                                            <span class="text-danger"><?= ($bloklar->description->required) ? '*': '' ?></span>
+                                        </label>
+                                        <textarea class="form-control" placeholder="Açıklama giriniz" <?= $bloklar->description->get_attr() ?>><?= $bloklar->description->value ?></textarea>
+                                        <span class="text-danger"><?= ($bloklar->description->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($bloklar->description->help_msg) ?></span>
                                     </div>
                                 </div>
                                 <div class="text-end">

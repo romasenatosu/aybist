@@ -1,5 +1,4 @@
 <?php
-// create entities
 if (!isset($text_action)) {
     $text_action = 'Ekle';
 }
@@ -20,7 +19,7 @@ if (!isset($text_action)) {
                                     <a href="?page=ucretler">Ücret Yönetimi</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    Yeni Ekle
+                                    <?= ($action=='update') ? 'Düzenle' : 'Yeni Ekle' ?>
                                 </li>
                             </ol>
                         </nav>
@@ -30,16 +29,31 @@ if (!isset($text_action)) {
                             <form action="?page=ucretler?action=create" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="priceName">Ücret Adı</label>
-                                        <input type="text" class="form-control" id="priceName" placeholder="Ücret adı giriniz">
+                                        <label class="form-label" for="<?= $ucretler->title->name ?>">
+                                            Ücret Adı
+                                            <span class="text-danger"><?= ($ucretler->title->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ücret adı giriniz" <?= $ucretler->title->get_attr() ?>>
+                                        <span class="text-danger"><?= ($ucretler->title->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($ucretler->title->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="priceAmount">Ücret Miktarı</label>
-                                        <input type="text" class="form-control" id="priceAmount" placeholder="Ücret miktarı giriniz">
+                                        <label class="form-label" for="<?= $ucretler->amount->name ?>">
+                                        Ücret Miktarı
+                                            <span class="text-danger"><?= ($ucretler->amount->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ücret miktarı giriniz" <?= $ucretler->amount->get_attr() ?>>
+                                        <span class="text-danger"><?= ($ucretler->amount->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($ucretler->amount->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="priceType">Ücret Tipi</label>
-                                        <input type="text" class="form-control" id="priceType" placeholder="Ücret tipi giriniz">
+                                        <label class="form-label" for="<?= $ucretler->type->name ?>">
+                                        Ücret Tipi
+                                            <span class="text-danger"><?= ($ucretler->type->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ücret tipi giriniz" <?= $ucretler->type->get_attr() ?>>
+                                        <span class="text-danger"><?= ($ucretler->type->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($ucretler->type->help_msg) ?></span>
                                     </div>
                                 </div>
                                 <div class="text-end">

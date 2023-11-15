@@ -1,4 +1,4 @@
-<form class="d-inline-block" method="post" action="?page=belge-yonetimi&action=delete&id=ID">
+<form class="delete-form" method="post" action="delete.php?id=ID">
     <!-- <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ file.id) }}"> -->
     <a href="javascript:void(0)" type="button"><i class="ti ti-trash" title="Sil" data-bs-toggle="tooltip"></i></a>
 </form>

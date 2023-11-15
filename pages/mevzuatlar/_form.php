@@ -1,5 +1,4 @@
 <?php
-// create entities
 if (!isset($text_action)) {
     $text_action = 'Ekle';
 }
@@ -20,7 +19,7 @@ if (!isset($text_action)) {
                                     <a href="?page=mevzuatlar">Mevzuatlar</a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    Yeni Ekle
+                                    <?= ($action=='update') ? 'Düzenle' : 'Yeni Ekle' ?>
                                 </li>
                             </ol>
                         </nav>
@@ -30,16 +29,31 @@ if (!isset($text_action)) {
                             <form action="?page=mevzuatlar?action=create" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="legistationName">Belge Adı</label>
-                                        <input type="text" class="form-control" id="legistationName" placeholder="Belge Adı giriniz">
+                                        <label class="form-label" for="<?= $mevzuatlar->legistation_name->name ?>">
+                                            Belge Adı
+                                            <span class="text-danger"><?= ($mevzuatlar->legistation_name->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Belge adı giriniz" <?= $mevzuatlar->legistation_name->get_attr() ?>>
+                                        <span class="text-danger"><?= ($mevzuatlar->legistation_name->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($mevzuatlar->legistation_name->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="file">Dosya Seçin</label>
-                                        <input type="file" class="form-control" id="file">
+                                        <label class="form-label" for="<?= $mevzuatlar->file->name ?>">
+                                            Dosya Seçin
+                                            <span class="text-danger"><?= ($mevzuatlar->file->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="file" class="form-control" <?= $mevzuatlar->file->get_attr() ?>>
+                                        <span class="text-danger"><?= ($mevzuatlar->file->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($mevzuatlar->file->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-8">
-                                        <label class="form-label" for="description">Açıklama</label>
-                                        <textarea class="form-control" id="description" placeholder="Açıklama giriniz"></textarea>
+                                        <label class="form-label" for="<?= $mevzuatlar->description->name ?>">
+                                        Açıklama
+                                            <span class="text-danger"><?= ($mevzuatlar->description->required) ? '*': '' ?></span>
+                                        </label>
+                                        <textarea type="text" class="form-control" placeholder="Açıklama giriniz" <?= $mevzuatlar->description->get_attr() ?>><?= $mevzuatlar->description->value ?></textarea>
+                                        <span class="text-danger"><?= ($mevzuatlar->description->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($mevzuatlar->description->help_msg) ?></span>
                                     </div>
                                 </div>
                                 <div class="text-end">

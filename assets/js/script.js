@@ -53,4 +53,20 @@ $(function() {
     let range_flatpickr_config = flatpickr_config
     range_flatpickr_config.mode = 'range' // reference bug
     $('.range_flatpickr').flatpickr(range_flatpickr_config)
+
+    // fire swal when delete button is clicked
+    $('.delete-form').on('click', function () {
+        Swal.fire({
+            "title": "Bu veriyi silmek istediğinize emin misiniz?",
+            "icon": "warning",
+            showConfirmButton: true,
+            showDenyButton: true,
+            confirmButtonText: "Evet",
+            denyButtonText: "Hayır",
+        }).then(r => {
+            if (r.isConfirmed) {
+                $(this).trigger('submit')
+            }
+        })
+    })
 })

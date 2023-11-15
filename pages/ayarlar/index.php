@@ -1,5 +1,10 @@
 <?php
-// create entities
+
+require_once __DIR__ . '/../../database/Company.php';
+require_once __DIR__ . '/../../database/User.php';
+
+$company = new Company();
+$user = new User();
 
 ?>
 
@@ -25,28 +30,58 @@
                             <form action="isletme.php" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="title">Ünvan</label>
-                                        <input type="text" class="form-control" id="title" placeholder="Ünvan giriniz">
+                                        <label class="form-label" for="<?= $company->title->name ?>">
+                                            Ünvan
+                                            <span class="text-danger"><?= ($company->title->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Ünvan giriniz" <?= $company->title->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->title->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->title->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="shortName">Kısa İsim</label>
-                                        <input type="text" class="form-control" id="shortName" placeholder="Kısa isim giriniz">
+                                        <label class="form-label" for="<?= $company->name_surname->name ?>">
+                                            İsim Soyisim
+                                            <span class="text-danger"><?= ($company->name_surname->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="İsim soyisim giriniz" <?= $company->name_surname->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->name_surname->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->name_surname->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="address">Adres</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Adres giriniz">
+                                        <label class="form-label" for="<?= $company->address->name ?>">
+                                            Adres
+                                            <span class="text-danger"><?= ($company->address->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Adres giriniz" <?= $company->address->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->address->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->address->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="taxOffice">Vergi Dairesi</label>
-                                        <input type="text" class="form-control" id="taxOffice" placeholder="Vergi dairesi giriniz">
+                                        <label class="form-label" for="<?= $company->tax_office->name ?>">
+                                            Vergi Dairesi
+                                            <span class="text-danger"><?= ($company->tax_office->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Vergi dairesi giriniz" <?= $company->tax_office->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->tax_office->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->tax_office->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="taxNumber">Vergi Numarası</label>
-                                        <input type="text" class="form-control" id="taxNumber" placeholder="Vergi numarası giriniz">
+                                        <label class="form-label" for="<?= $company->tax_number->name ?>">
+                                            Vergi Numarası
+                                            <span class="text-danger"><?= ($company->tax_number->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Vergi numarası giriniz" <?= $company->tax_number->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->tax_number->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->tax_number->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="registrationNumber">Sicil Numarası</label>
-                                        <input type="text" class="form-control" id="registrationNumber" placeholder="Sicil numarası giriniz">
+                                        <label class="form-label" for="<?= $company->registration_number->name ?>">
+                                            Sicil Numarası
+                                            <span class="text-danger"><?= ($company->registration_number->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Sicil numarası giriniz" <?= $company->registration_number->get_attr() ?>>
+                                        <span class="text-danger"><?= ($company->registration_number->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($company->registration_number->help_msg) ?></span>
                                     </div>
                                 </div>
                                 <div class="text-end">
@@ -77,24 +112,49 @@
                             <form action="hesap.php" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label" for="name">İsim</label>
-                                        <input type="text" class="form-control" id="name" placeholder="İsim giriniz">
+                                        <label class="form-label" for="<?= $user->name_surname->name ?>">
+                                            İsim Soyisim
+                                            <span class="text-danger"><?= ($user->name_surname->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="İsim soyisim giriniz" <?= $user->name_surname->get_attr() ?>>
+                                        <span class="text-danger"><?= ($user->name_surname->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($user->name_surname->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Email giriniz">
+                                        <label class="form-label" for="<?= $user->email->name ?>">
+                                            Email
+                                            <span class="text-danger"><?= ($user->email->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="Email giriniz" <?= $user->email->get_attr() ?>>
+                                        <span class="text-danger"><?= ($user->email->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($user->email->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="currentPassword">Mevcut Parola</label>
-                                        <input type="password" class="form-control" id="currentPassword" placeholder="*******">
+                                        <label class="form-label" for="<?= $user->password->name ?>">
+                                            Mevcut Parola
+                                            <span class="text-danger"><?= ($user->password->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="*******" <?= $user->password->get_attr() ?>>
+                                        <span class="text-danger"><?= ($user->password->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($user->password->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="newPassword">Yeni Parola</label>
-                                        <input type="password" class="form-control" id="newPassword" placeholder="*******">
+                                        <label class="form-label" for="<?= $user->new_password->name ?>">
+                                            Yeni Parola
+                                            <span class="text-danger"><?= ($user->new_password->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="*******" <?= $user->new_password->get_attr() ?>>
+                                        <span class="text-danger"><?= ($user->new_password->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($user->new_password->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label" for="newPasswordConfirm">Yeni Parola Tekrar</label>
-                                        <input type="password" class="form-control" id="newPasswordConfirm" placeholder="*******">
+                                        <label class="form-label" for="<?= $user->new_password_again->name ?>">
+                                            Yeni Parola Tekrar
+                                            <span class="text-danger"><?= ($user->new_password_again->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="text" class="form-control" placeholder="*******" <?= $user->new_password_again->get_attr() ?>>
+                                        <span class="text-danger"><?= ($user->new_password_again->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($user->new_password_again->help_msg) ?></span>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="userEngagement" required>

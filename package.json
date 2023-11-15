@@ -48,6 +48,7 @@
     "select2": "^4.1.0-rc.0",
     "simplebar": "^6.2.5",
     "summernote": "^0.8.20",
+    "swal": "^0.1.0",
     "sweetalert2": "^11.9.0",
     "tablesaw": "^3.1.2",
     "tinymce": "^6.7.2",

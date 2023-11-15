@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-primary"><?= $text_action ?></button>
+                                    <button type="submit" class="btn btn-primary">Gönder</button>
                                 </div>
                             </form>
                         </div>

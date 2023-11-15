@@ -1,5 +1,8 @@
 <?php
     require_once __DIR__ . '/inc/core.php';
+
+    // print_pre($_SERVER);
+    // die();
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +43,18 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: mesajlar -->
-    <!-- TODO: create analytics charts -->
-    <!-- TODO: authentication -->
+    <!-- TODO: make all english if possible to prevent confusion -->
     <!-- TODO: create database -->
+    <!-- TODO: crud operations using PDO -->
+    <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->
     <!-- TODO: php.ini settings must be derived from database -->
+    <!-- TODO: redirect to home when URL is '/' -->
+    <!-- TODO: method listener for GET, POST, etc. -->
+    <!-- TODO: check error redirections -->
+    <!-- TODO: regex etc. -->
+    <!-- TODO: create analytics charts -->
+    <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
     <div class="preloader d-none">
@@ -56,9 +65,18 @@
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <?php
-            include_once __DIR__ . '/header.php';
-            require_once __DIR__ . '/router.php';
-            include_once __DIR__ . '/footer.php';
+            // get URL parameters
+            $page = htmlspecialchars($_GET['page'] ?? 'home');  // if no page was given then redirect to home eventually
+            $action = htmlspecialchars($_GET['action'] ?? '');
+            $id = filter_var(htmlspecialchars($_GET['id'] ?? ''), FILTER_VALIDATE_INT);
+
+            if ($page == 'login') {
+                include_once __DIR__ . '/login.php';
+            } else {
+                include_once __DIR__ . '/header.php';
+                require_once __DIR__ . '/router.php';
+                include_once __DIR__ . '/footer.php';
+            }
         ?>
     </div> <!-- NOTE: Body Wrapper ends here -->
 
@@ -465,6 +483,9 @@
     <!-- flatpickr -->
     <script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
     <script src="node_modules/flatpickr/dist/l10n/tr.js"></script>
+
+    <!-- Sweetalert -->
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- myscript -->
     <script src="assets/js/script.js"></script>

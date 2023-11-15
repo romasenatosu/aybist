@@ -18,7 +18,7 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar>
             <ul id="sidebarnav">
                 <li class="sidebar-item <?= ($page == 'home') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>" href="?page=home">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>

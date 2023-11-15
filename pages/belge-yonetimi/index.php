@@ -39,7 +39,7 @@
                                             <a href="?page=belge-yonetimi&action=read">
                                                 <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
                                             </a>
-                                            <a href="?page=belge-yonetimi&action=update">
+                                            <a href="?page=belge-yonetimi&action=update&id=1">
                                                 <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
                                             </a>
                                             <?php
@@ -57,7 +57,7 @@
                                             <a href="?page=belge-yonetimi&action=read">
                                                 <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
                                             </a>
-                                            <a href="?page=belge-yonetimi&action=update">
+                                            <a href="?page=belge-yonetimi&action=update&id=2">
                                                 <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
                                             </a>
                                             <?php
@@ -75,7 +75,7 @@
                                             <a href="?page=belge-yonetimi&action=read">
                                                 <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
                                             </a>
-                                            <a href="?page=belge-yonetimi&action=update">
+                                            <a href="?page=belge-yonetimi&action=update&id=3">
                                                 <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
                                             </a>
                                             <?php
