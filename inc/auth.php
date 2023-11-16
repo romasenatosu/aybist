@@ -5,7 +5,7 @@ session_start();
 
 // CREATE EXTRA CLASS FOR THIS 
 
-/* class Auth {
+class Auth {
     public $user;
 
     function __construct() {
@@ -25,9 +25,12 @@ session_start();
 $auth = new Auth();
 
 if ($auth->getUser()) {
-    // redirect to home page
-    header('Location: ?page=home');
+    // redirect to home page after login
+    $page = htmlspecialchars($_GET['page']);
+    if (empty($page)) {
+        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?page=home");
+    }
+
 } else {
     // redirect to login page
 }
- */

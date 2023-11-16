@@ -114,7 +114,7 @@ if (!isset($text_action)) {
                                         Açıklama
                                             <span class="text-danger"><?= ($gelirYonetimi->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="Açıklama giriniz" <?= $gelirYonetimi->description->get_attr() ?>><?= $gelirYonetimi->description->value ?></textarea>
+                                        <textarea class="form-control" placeholder="Açıklama giriniz" <?= $gelirYonetimi->description->get_attr() ?>><?= $gelirYonetimi->description->value ?></textarea>
                                         <span class="text-danger"><?= ($gelirYonetimi->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($gelirYonetimi->description->help_msg) ?></span>
                                     </div>

@@ -2,7 +2,7 @@
   "dependencies": {
     "apexcharts": "^3.44.0",
     "block-ui": "^2.70.1",
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.3.0",
     "bootstrap-datepaginator": "^1.1.3",
     "bootstrap-datepicker": "^1.10.0",
     "bootstrap-duallistbox": "^3.0.9",
@@ -49,9 +49,9 @@
     "simplebar": "^6.2.5",
     "summernote": "^0.8.20",
     "swal": "^0.1.0",
-    "sweetalert2": "^11.9.0",
+    "sweetalert2": "^11.10.0",
     "tablesaw": "^3.1.2",
-    "tinymce": "^6.7.2",
+    "tinymce": "^6.7.3",
     "typeahead.js": "^0.11.1",
     "vanilla-datatables-editable": "^0.1.1",
     "wnumb": "^1.2.0"

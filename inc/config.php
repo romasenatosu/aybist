@@ -1,16 +1,5 @@
 <?php declare(strict_types = 1); // use strict variable types
 
-// show all errors as default
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-date_default_timezone_set('Europe/Istanbul'); // Turkey <3
-ini_set('memory_limit', -1); // max amount of bytes php can use (-1 means, there is no limit)
-ini_set('max_execution_time', 300); // 5 mins
-ini_set('session.gc_probability', null); // garbage data probability
-ini_set('upload_max_filesize', '8M'); // maximum uploadable file size
-
 // database configurations
 $hostname = "localhost";
 $database = "aybist";
@@ -32,4 +21,13 @@ try {
     exit(-1);
 }
 
+// show all errors as default
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+date_default_timezone_set('Europe/Istanbul'); // Turkey <3
+ini_set('memory_limit', -1); // max amount of bytes php can use (-1 means, there is no limit)
+ini_set('max_execution_time', 300); // 5 mins
+ini_set('session.gc_probability', null); // garbage data probability
+ini_set('upload_max_filesize', '8M'); // maximum uploadable file size
