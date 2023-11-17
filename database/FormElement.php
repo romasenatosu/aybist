@@ -23,6 +23,8 @@ class FormElement {
         $this->help_msg = $help_msg;
     }
 
+    // think about non string fields
+
     public function get_attr(): string {
         return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' pattern='%s' value='%s'", $this->name,
                         $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,

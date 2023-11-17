@@ -1,13 +1,9 @@
-<?php
-    $page = htmlspecialchars($_GET['page'] ?? '');
-?>
-
 <!-- Sidebar Start -->
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="?page=home" class="text-nowrap logo-img">
+            <a href="<?= "?locale=$locale&page=home" ?>" class="text-nowrap logo-img">
                 <img src="assets/images/logos/logo.png" class="img-fluid">
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -17,166 +13,62 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar>
             <ul id="sidebarnav">
-                <li class="sidebar-item <?= ($page == 'home') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>" href="?page=home">
+                <li class="sidebar-item <?= (str_contains($page, 'home')) ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= (str_contains($page, 'home')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=home" ?>">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
-                        <span class="hide-menu">Ana Sayfa</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'dukkanlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'dukkanlar') ? 'active' : '' ?>" href="?page=dukkanlar">
-                        <span>
-                            <i class="ti ti-trademark"></i>
-                        </span>
-                        <span class="hide-menu">Dükkanlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'bloklar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'bloklar') ? 'active' : '' ?>" href="?page=bloklar">
-                        <span>
-                            <i class="ti ti-home-cog"></i>
-                        </span>
-                        <span class="hide-menu">Bloklar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'gelir-yonetimi') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'gelir-yonetimi') ? 'active' : '' ?>" href="?page=gelir-yonetimi">
-                        <span>
-                            <i class="ti ti-receipt-tax"></i>
-                        </span>
-                        <span class="hide-menu">Gelir Yönetimi</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'gider-yonetimi') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'gider-yonetimi') ? 'active' : '' ?>" href="?page=gider-yonetimi">
-                        <span>
-                            <i class="ti ti-coin"></i>
-                        </span>
-                        <span class="hide-menu">Gider Yönetimi</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'uye-yonetimi') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'uye-yonetimi') ? 'active' : '' ?>" href="?page=uye-yonetimi">
-                        <span>
-                            <i class="ti ti-users"></i>
-                        </span>
-                        <span class="hide-menu">Üye Yönetimi</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'ucretler') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'ucretler') ? 'active' : '' ?>" href="?page=ucretler">
-                        <span>
-                            <i class="ti ti-cash-banknote"></i>
-                        </span>
-                        <span class="hide-menu">Ücretler</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'raporlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'raporlar') ? 'active' : '' ?>" href="?page=raporlar">
-                        <span>
-                            <i class="ti ti-file-description"></i>
-                        </span>
-                        <span class="hide-menu">Raporlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'ilanlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'ilanlar') ? 'active' : '' ?>" href="?page=ilanlar">
-                        <span>
-                            <i class="ti ti-speakerphone"></i>
-                        </span>
-                        <span class="hide-menu">İlanlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'mevzuatlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'mevzuatlar') ? 'active' : '' ?>" href="?page=mevzuatlar">
-                        <span>
-                            <i class="ti ti-gavel"></i>
-                        </span>
-                        <span class="hide-menu">Mevzuatlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'duyurular') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'duyurular') ? 'active' : '' ?>" href="?page=duyurular">
-                        <span>
-                            <i class="ti ti-bell-filled"></i>
-                        </span>
-                        <span class="hide-menu">Duyurular</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'belge-yonetimi') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'belge-yonetimi') ? 'active' : '' ?>" href="?page=belge-yonetimi">
-                        <span>
-                            <i class="ti ti-book"></i>
-                        </span>
-                        <span class="hide-menu">Belge Yönetimi</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'talepler') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'talepler') ? 'active' : '' ?>" href="?page=talepler">
-                        <span>
-                            <i class="ti ti-user-question"></i>
-                        </span>
-                        <span class="hide-menu">Talepler</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'mesajlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'mesajlar') ? 'active' : '' ?>" href="?page=mesajlar">
-                        <span>
-                            <i class="ti ti-message-2-check"></i>
-                        </span>
-                        <span class="hide-menu">Mesajlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'sms-gonder') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'sms-gonder') ? 'active' : '' ?>" href="?page=sms-gonder">
-                        <span>
-                            <i class="ti ti-message-2-up"></i>
-                        </span>
-                        <span class="hide-menu">SMS Gönder</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'mail-gonder') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'mail-gonder') ? 'active' : '' ?>" href="?page=mail-gonder">
-                        <span>
-                            <i class="ti ti-mail"></i>
-                        </span>
-                        <span class="hide-menu">Mail Gönder</span>
+                        <span class="hide-menu"><?= $lang['page_home'] ?></span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= (str_contains($page, 'settings')) ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
-                            <i class="ti ti-box-multiple"></i>
+                            <i class="ti ti-settings-cog"></i>
                         </span>
-                        <span class="hide-menu">Menu Level</span>
+                        <span class="hide-menu"><?= $lang['page_settings'] ?></span>
                     </a>
-                    <ul class="collapse">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                    <ul class="collapse <?= (str_contains($page, 'settings')) ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= (str_contains($page, 'settings')) ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= (str_contains($page, 'settings')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
-                                <i class="ti ti-circle"></i>
+                                    <i class="ti ti-circle"></i>
                                 </div>
-                                <span class="hide-menu">Level 1</span>
+                                <span class="hide-menu"><?= $lang['page_settings_general'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= (str_contains($page, 'settings_contact')) ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= (str_contains($page, 'settings_contact')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_contact" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_settings_contact'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= (str_contains($page, 'settings_currency')) ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= (str_contains($page, 'settings_currency')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_currency" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_settings_currency'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= (str_contains($page, 'settings_vat')) ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= (str_contains($page, 'settings_vat')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_vat" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_settings_vat'] ?></span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item <?= ($page == 'ayarlar') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'ayarlar') ? 'active' : '' ?>" href="?page=ayarlar">
-                        <span>
-                            <i class="ti ti-settings-filled"></i>
-                        </span>
-                        <span class="hide-menu">Ayarlar</span>
-                    </a>
-                </li>
-                <li class="sidebar-item <?= ($page == 'logout') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'logout') ? 'active' : '' ?>" href="?page=logout">
+                <li class="sidebar-item <?= (str_contains($page, 'logout')) ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= (str_contains($page, 'logout')) ? 'active' : '' ?>" href="?page=logout">
                         <span>
                             <i class="ti ti-logout"></i>
                         </span>
-                        <span class="hide-menu">Çıkış</span>
+                        <span class="hide-menu"><?= $lang['text_logout'] ?></span>
                     </a>
                 </li>
             </ul>
@@ -233,17 +125,18 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up">
                                 <div class="message-body" data-simplebar>
-                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                        <div class="position-relative">
-                                            <img src="assets/images/flags/en.png" alt="" class="rounded-circle object-fit-cover round-20">
-                                        </div>
-                                        <p class="mb-0 fs-3">English (UK)</p>
-                                    </a>
-                                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
+                                    <!-- TODO: create for loop here for each language in database -->
+                                    <a href="<?= changeLocale('tr') ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
                                         <div class="position-relative">
                                             <img src="assets/images/flags/tr.png" alt="" class="rounded-circle object-fit-cover round-20">
                                         </div>
                                         <p class="mb-0 fs-3">Türkçe</p>
+                                    </a>
+                                    <a href="<?= changeLocale('en') ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
+                                        <div class="position-relative">
+                                            <img src="assets/images/flags/en.png" alt="" class="rounded-circle object-fit-cover round-20">
+                                        </div>
+                                        <p class="mb-0 fs-3">English (UK)</p>
                                     </a>
                                 </div>
                             </div>

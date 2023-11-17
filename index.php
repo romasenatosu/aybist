@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . '/inc/core.php';
 
-    // print_pre($_SERVER);
+    // dump($_SERVER);
     // die();
 ?>
 
@@ -43,7 +43,6 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: make all english if possible to prevent confusion ++++ -->
     <!-- TODO: crud operations using PDO -->
     <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->
@@ -55,18 +54,13 @@
     <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
-    <div class="preloader">
+<!--     <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div>
+    </div> -->
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <?php
-            // get URL parameters
-            $page = htmlspecialchars($_GET['page']);
-            $action = htmlspecialchars($_GET['action'] ?? '');
-            $id = filter_var(htmlspecialchars($_GET['id'] ?? ''), FILTER_VALIDATE_INT);
-
             if ($page == 'login') {
                 include_once __DIR__ . '/login.php';
             } else {

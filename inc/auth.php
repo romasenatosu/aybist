@@ -24,13 +24,11 @@ class Auth {
 
 $auth = new Auth();
 
-if ($auth->getUser()) {
-    // redirect to home page after login
-    $page = htmlspecialchars($_GET['page']);
-    if (empty($page)) {
-        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?page=home");
+// if no page was provided then redirect automatically
+if (empty($page)) {
+    if ($auth->getUser()) {
+        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?locale=$locale&page=home");
+    } else {
+        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?locale=$locale&page=login");
     }
-
-} else {
-    // redirect to login page
 }

@@ -1,5 +1,8 @@
 <?php declare(strict_types = 1); // use strict variable types
 
+// program configs
+$default_locale = 'tr';
+
 // database configurations
 $hostname = "localhost";
 $database = "aybist";
@@ -15,9 +18,7 @@ try {
     $pdo->query("SET CHARSET utf8mb4");
 
 } catch (PDOException $e) {
-    echo "<pre>";
-    print_r($e->getMessage());
-    echo "</pre>";
+    dump($e->getMessage());
     exit(-1);
 }
 
