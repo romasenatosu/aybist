@@ -13,8 +13,8 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar>
             <ul id="sidebarnav">
-                <li class="sidebar-item <?= (str_contains($page, 'home')) ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= (str_contains($page, 'home')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=home" ?>">
+                <li class="sidebar-item <?= ($page == 'home') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=home" ?>">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -22,49 +22,185 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= (str_contains($page, 'settings')) ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= ($page == 'managements') ? 'active' : '' ?>" href="javascript:void(0)">
+                        <span class="d-flex">
+                            <i class="ti ti-building-skyscraper"></i>
+                        </span>
+                        <span class="hide-menu"><?= $lang['page_managements'] ?></span>
+                    </a>
+                    <ul class="collapse <?= ($page == 'managements') ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= ($page == 'managements') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'managements') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_managements'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'managements_flats') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_flats') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_flats" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_managements_flats'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'managements_blocks') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_blocks') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_blocks" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_managements_blocks'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'managements_floors') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_floors') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_floors" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_managements_floors'] ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow <?= ($page == 'languages') ? 'active' : '' ?>" href="javascript:void(0)">
+                        <span class="d-flex">
+                            <i class="ti ti-language"></i>
+                        </span>
+                        <span class="hide-menu"><?= $lang['page_languages'] ?></span>
+                    </a>
+                    <ul class="collapse <?= ($page == 'languages') ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= ($page == 'languages') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'languages') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=languages" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_languages'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'languages_def') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'languages_def') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=languages_def" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_languages_def'] ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow <?= ($page == 'notifications') ? 'active' : '' ?>" href="javascript:void(0)">
+                        <span class="d-flex">
+                            <i class="ti ti-notification"></i>
+                        </span>
+                        <span class="hide-menu"><?= $lang['page_notifications'] ?></span>
+                    </a>
+                    <ul class="collapse <?= ($page == 'notifications') ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= ($page == 'notifications') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'notifications') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=notifications" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_notifications'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'notifications_ips') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'notifications_ips') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=notifications_ips" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_notifications_ips'] ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow <?= ($page == 'places') ? 'active' : '' ?>" href="javascript:void(0)">
+                        <span class="d-flex">
+                            <i class="ti ti-world"></i>
+                        </span>
+                        <span class="hide-menu"><?= $lang['page_places'] ?></span>
+                    </a>
+                    <ul class="collapse <?= ($page == 'places_districts') ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= ($page == 'places_countries') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'places_countries') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_countries" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_places_countries'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'places_cities') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'places_cities') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_cities" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_places_cities'] ?></span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($page == 'places_districts') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'places_districts') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_districts" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_places_districts'] ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow <?= ($page == 'settings_general') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-settings-cog"></i>
                         </span>
-                        <span class="hide-menu"><?= $lang['page_settings'] ?></span>
+                        <span class="hide-menu"><?= $lang['page_settings_general'] ?></span>
                     </a>
-                    <ul class="collapse <?= (str_contains($page, 'settings')) ? 'in' : '' ?>">
-                        <li class="sidebar-item <?= (str_contains($page, 'settings')) ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= (str_contains($page, 'settings')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings" ?>">
+                    <ul class="collapse <?= ($page == 'settings_general') ? 'in' : '' ?>">
+                        <li class="sidebar-item <?= ($page == 'settings_general') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_general') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_general" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu"><?= $lang['page_settings_general'] ?></span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= (str_contains($page, 'settings_contact')) ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= (str_contains($page, 'settings_contact')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_contact" ?>">
+                        <li class="sidebar-item <?= ($page == 'settings_contact') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_contact') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_contact" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu"><?= $lang['page_settings_contact'] ?></span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= (str_contains($page, 'settings_currency')) ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= (str_contains($page, 'settings_currency')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_currency" ?>">
+                        <li class="sidebar-item <?= ($page == 'settings_currency') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_currency') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_currency" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu"><?= $lang['page_settings_currency'] ?></span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= (str_contains($page, 'settings_vat')) ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= (str_contains($page, 'settings_vat')) ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_vat" ?>">
+                        <li class="sidebar-item <?= ($page == 'settings_vat') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_vat') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_vat" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
                                 <span class="hide-menu"><?= $lang['page_settings_vat'] ?></span>
                             </a>
                         </li>
+                        <li class="sidebar-item <?= ($page == 'settings_users') ? 'selected' : '' ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_users') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_users" ?>">
+                                <div class="round-16 d-flex align-items-center justify-content-center">
+                                    <i class="ti ti-circle"></i>
+                                </div>
+                                <span class="hide-menu"><?= $lang['page_settings_users'] ?></span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="sidebar-item <?= (str_contains($page, 'logout')) ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= (str_contains($page, 'logout')) ? 'active' : '' ?>" href="?page=logout">
+                <li class="sidebar-item <?= ($page == 'logout') ? 'selected' : '' ?>">
+                    <a class="sidebar-link <?= ($page == 'logout') ? 'active' : '' ?>" href="?page=logout">
                         <span>
                             <i class="ti ti-logout"></i>
                         </span>

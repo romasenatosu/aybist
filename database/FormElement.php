@@ -25,10 +25,21 @@ class FormElement {
 
     // think about non string fields
 
-    public function get_attr(): string {
+    public function get_text_attr(): string {
         return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' pattern='%s' value='%s'", $this->name,
                         $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
                         $this->pattern, $this->getValue());
+    }
+
+    public function get_number_attr(): string {
+        return sprintf("id = '%s' name = '%s' %s min='%d' max='%d' value='%s'", $this->name, $this->name,
+                        (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
+                        $this->getValue());
+    }
+
+    public function get_check_attr(): string {
+        return sprintf("id = '%s' name = '%s' %s %s", $this->name, $this->name,
+                        (($this->required) ? 'required=required': ''), (($this->value > 0) ? 'checked=checked': ''));
     }
 
     public function check(): bool {

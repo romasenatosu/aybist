@@ -6,7 +6,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= $locale ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -113,7 +113,80 @@
     <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- myscript -->
-    <script src="assets/js/script.js"></script>
+    <script type="text/javascript">
+        'use strict'
+
+        $(function() {
+            // launch datatables
+
+            $(".datatable").DataTable({
+                responsive: true,
+                dom: 'Bfrtip',
+                buttons: ['colvis', 'pdf', 'excel', 'print'],
+                language: {
+                    decimal: "",
+                    emptyTable: "<?= $lang['datatable_emptyTable'] ?>",
+                    info: "<?= sprintf($lang['datatable_info'], '_TOTAL_', '_START_', '_END_') ?>",
+                    infoEmpty: "<?= $lang['datatable_infoEmpty'] ?>",
+                    infoFiltered: "<?= sprintf($lang['datatable_infoFiltered'], '_MAX_') ?>",
+                    infoPostFix: "",
+                    thousands: ",",
+                    lengthMenu: "<?= sprintf($lang['datatable_lengthMenu'], '_MENU_') ?>",
+                    loadingRecords: "<?= $lang['datatable_loadingRecords'] ?>",
+                    processing: "<?= $lang['datatable_processing'] ?>",
+                    search: "<?= $lang['datatable_search'] ?>",
+                    zeroRecords: "<?= $lang['datatable_zeroRecords'] ?>",
+                    paginate: {
+                        first: "<?= $lang['datatable_paginate_first'] ?>",
+                        last: "<?= $lang['datatable_paginate_last'] ?>",
+                        next: "<?= $lang['datatable_paginate_next'] ?>",
+                        previous: "<?= $lang['datatable_paginate_previous'] ?>"
+                    },
+                    buttons: {
+                        colvis: "<?= $lang['datatable_buttons_colvis'] ?>",
+                        copy: "<?= $lang['datatable_buttons_copy'] ?>",
+                        csv: "<?= $lang['datatable_buttons_csv'] ?>",
+                        excel: "<?= $lang['datatable_buttons_excel'] ?>",
+                        pdf: "<?= $lang['datatable_buttons_pdf'] ?>",
+                        print: "<?= $lang['datatable_buttons_print'] ?>"
+                    },
+                },
+            });
+
+            /* launch flatpickr */
+
+            let flatpickr_config = {
+                enableTime: false,
+                dateFormat: "d.m.y",
+                locale: <?= $locale ?>,
+            }
+
+            $(".flatpickr").flatpickr(flatpickr_config)
+
+            // date range
+
+            let range_flatpickr_config = Object.assign({}, flatpickr_config)
+            range_flatpickr_config.mode = 'range' // reference bug
+            $('.range_flatpickr').flatpickr(range_flatpickr_config)
+
+            // fire swal when delete button is clicked
+            $('.delete-form').on('click', function () {
+                Swal.fire({
+                    "title": "<?= $lang['swal_title_delete_confirm'] ?>",
+                    "icon": "warning",
+                    showConfirmButton: true,
+                    showDenyButton: true,
+                    confirmButtonText: "<?= $lang['text_yes'] ?>",
+                    denyButtonText: "<?= $lang['text_no'] ?>",
+                }).then(r => {
+                    if (r.isConfirmed) {
+                        $(this).trigger('submit')
+                    }
+                })
+            })
+        })
+
+    </script>
 </body>
 
 </html>
