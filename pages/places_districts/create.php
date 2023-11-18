@@ -1,19 +1,19 @@
 <?php
 
-require_once __DIR__ . '/../../database/Test.php';
+require_once __DIR__ . '/../../database/Districts.php';
 
-$test = new Test();
+$districts = new Districts();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        $test->title->value = $_POST[$test->title->name];
-        $test->income_type->value = $_POST[$test->income_type->name];
+        $districts->title->value = $_POST[$districts->title->name];
+        $districts->income_type->value = $_POST[$districts->income_type->name];
 
-        $checks = $test->title->check() || $test->income_type->check();
+        $checks = $districts->title->check() || $districts->income_type->check();
 
         if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO test (title) VALUES (:title)");
-            $stmt->bindParam(':title', $test->title->value, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("INSERT INTO districts (title) VALUES (:title)");
+            $stmt->bindParam(':title', $districts->title->value, PDO::PARAM_STR);
 
             // .
             // .

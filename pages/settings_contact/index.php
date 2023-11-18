@@ -10,7 +10,7 @@
                                     <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $lang['page_test'] ?>
+                                    <?= $lang['page_settings_contact'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -20,15 +20,18 @@
                             <table class="table border table-hover table-striped table-bordered text-nowrap display datatable">
                                 <thead>
                                     <tr>
-                                        <td>#</td>
-                                        <td><?= $lang['table_title'] ?></td>
-                                        <td><?= $lang['table_title'] ?></td>
-                                        <td><?= $lang['table_title'] ?></td>
-                                        <td><?= $lang['table_title'] ?></td>
-                                        <td><?= $lang['table_description'] ?></td>
-                                        <td><?= $lang['table_created_at'] ?></td>
-                                        <td><?= $lang['table_updated_at'] ?></td>
-                                        <td><?= $lang['table_action'] ?></td>
+                                        <th data-priority="1">#</th>
+                                        <th><?= $lang['table_address'] ?></th>
+                                        <th><?= $lang['table_phone'] ?></th>
+                                        <th><?= $lang['table_cell_phone'] ?></th>
+                                        <th><?= $lang['table_fax'] ?></th>
+                                        <th><?= $lang['table_email'] ?></th>
+                                        <th><?= $lang['table_captcha_key'] ?></th>
+                                        <th><?= $lang['table_captcha_secret_key'] ?></th>
+                                        <th><?= $lang['table_google_maps'] ?></th>
+                                        <th><?= $lang['table_created_at'] ?></th>
+                                        <th><?= $lang['table_updated_at'] ?></th>
+                                        <th data-priority="1"><?= $lang['table_action'] ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,68 +42,20 @@
                                         <td>başlık3</td>
                                         <td>başlık4</td>
                                         <td>lorem ipsum dolor sit amet</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
-                                        <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=test&action=read&id=1" ?>">
-                                                <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <a href="<?= "?locale=$locale&page=test&action=update&id=1" ?>">
-                                                <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <?php
-                                                include __DIR__ . '/_delete_form.php';
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>başlık</td>
-                                        <td>başlık2</td>
-                                        <td>başlık3</td>
-                                        <td>başlık4</td>
+                                        <td>lorem ipsum dolor sit amet</td>
+                                        <td>lorem ipsum dolor sit amet</td>
                                         <td>lorem ipsum dolor sit amet</td>
                                         <td>14.11.2023</td>
                                         <td>14.11.2023</td>
                                         <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=test&action=read&id=2" ?>">
-                                                <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <a href="<?= "?locale=$locale&page=test&action=update&id=2" ?>">
+                                            <a href="<?= "?locale=$locale&page=settings_contact&action=update&id=1" ?>">
                                                 <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
                                             </a>
-                                            <?php
-                                                include __DIR__ . '/_delete_form.php';
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>başlık</td>
-                                        <td>başlık2</td>
-                                        <td>başlık3</td>
-                                        <td>başlık4</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
-                                        <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=test&action=read&id=3" ?>">
-                                                <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <a href="<?= "?locale=$locale&page=test&action=update&id=3" ?>">
-                                                <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <?php
-                                                include __DIR__ . '/_delete_form.php';
-                                            ?>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="?page=test&action=create">Yeni Ekle</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                             <table class="table border table-hover table-striped table-bordered text-nowrap display datatable">
                                 <thead>
                                     <tr>
-                                        <td>#</td>
+                                        <th data-priority="1">#</th>
                                         <td><?= $lang['table_title'] ?></td>
                                         <td><?= $lang['table_title'] ?></td>
                                         <td><?= $lang['table_title'] ?></td>
@@ -28,7 +28,7 @@
                                         <td><?= $lang['table_description'] ?></td>
                                         <td><?= $lang['table_created_at'] ?></td>
                                         <td><?= $lang['table_updated_at'] ?></td>
-                                        <td><?= $lang['table_action'] ?></td>
+                                        <th data-priority="1"><?= $lang['table_action'] ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>

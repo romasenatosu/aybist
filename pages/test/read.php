@@ -23,7 +23,7 @@
                             <table class="table border table-hover table-striped table-bordered">
                                 <tbody>
                                     <tr>
-                                        <th>#</th>
+                                        <th data-priority="1">#</th>
                                         <td><?= $id ?></td>
                                     </tr>
                                     <tr>

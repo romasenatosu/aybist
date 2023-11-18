@@ -1,19 +1,19 @@
 <?php
 
-require_once __DIR__ . '/../../database/Test.php';
+require_once __DIR__ . '/../../database/SettingsVat.php';
 
-$test = new Test();
+$settingsVat = new SettingsVat();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        $test->title->value = $_POST[$test->title->name];
-        $test->income_type->value = $_POST[$test->income_type->name];
+        $settingsVat->title->value = $_POST[$settingsVat->title->name];
+        $settingsVat->income_type->value = $_POST[$settingsVat->income_type->name];
 
-        $checks = $test->title->check() || $test->income_type->check();
+        $checks = $settingsVat->title->check() || $settingsVat->income_type->check();
 
         if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO test (title) VALUES (:title)");
-            $stmt->bindParam(':title', $test->title->value, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("INSERT INTO settingsVat (title) VALUES (:title)");
+            $stmt->bindParam(':title', $settingsVat->title->value, PDO::PARAM_STR);
 
             // .
             // .

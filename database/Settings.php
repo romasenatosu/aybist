@@ -25,7 +25,7 @@ class Settings {
     public FormElement $small_photo_height;
     public FormElement $maintenance_mod;
     public FormElement $debug_mode;
-    public FormElement $debug_mode_content;
+    public FormElement $maintenance_mode_content;
     public FormElement $created_at;
     public FormElement $updated_at;
 
@@ -35,8 +35,8 @@ class Settings {
         $this->company = new FormElement('company');
         $this->slogan = new FormElement('slogan');
         $this->description = new FormElement('description');
-        $this->keywords = new FormElement('keywords', new DateTime());
-        $this->site_title = new FormElement('site_title', new DateTime());
+        $this->keywords = new FormElement('keywords');
+        $this->site_title = new FormElement('site_title');
         $this->site_url = new FormElement('site_url');
         $this->smtp_url = new FormElement('smtp_url');
         $this->smtp_password = new FormElement('smtp_password');
@@ -50,9 +50,9 @@ class Settings {
         $this->small_photo = new FormElement('small_photo');
         $this->small_photo_width = new FormElement('small_photo_width');
         $this->small_photo_height = new FormElement('small_photo_height');
-        $this->maintenance_mod = new FormElement('maintenance_mod');
         $this->debug_mode = new FormElement('debug_mode');
-        $this->debug_mode_content = new FormElement('debug_mode_content');
+        $this->maintenance_mod = new FormElement('maintenance_mod');
+        $this->maintenance_mode_content = new FormElement('maintenance_mode_content');
         $this->created_at = new FormElement('created_at', new DateTime());
         $this->updated_at = new FormElement('updated_at', new DateTime());
 
@@ -82,6 +82,6 @@ class Settings {
         $this->small_photo->maxlength = -1;
         $this->small_photo_width->maxlength = 32767;
         $this->small_photo_height->maxlength = 32767;
-        $this->debug_mode_content->maxlength = -1;
+        $this->maintenance_mode_content->maxlength = -1;
     }
 }

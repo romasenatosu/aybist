@@ -1,21 +1,21 @@
 <?php
 
-require_once __DIR__ . '/../../database/Test.php';
+require_once __DIR__ . '/../../database/Cities.php';
 
 // check for request
-$test = new Test();
+$cities = new Cities();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
-        $stmt = $pdo->prepare("SELECT * FROM test WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT * FROM cities WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         // $stmt->execute();
 
         // $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // $test->id->value = $data['id'];
-        // $test->title->value = "test başlık";
-        // $test->description->value = "test açıklama";
+        // $cities->id->value = $data['id'];
+        // $cities->title->value = "cities başlık";
+        // $cities->description->value = "cities açıklama";
 
     } catch (Exception $e) {
         dump($e);
@@ -26,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        $test->title->value = $_POST[$test->title->name];
-        $test->income_type->value = $_POST[$test->income_type->name];
+        $cities->title->value = $_POST[$cities->title->name];
+        $cities->income_type->value = $_POST[$cities->income_type->name];
 
-        $checks = $test->title->check() || $test->income_type->check();
+        $checks = $cities->title->check() || $cities->income_type->check();
 
         if ($checks) {
-            $stmt = $pdo->prepare("UPDATE test SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $test->title->value, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("UPDATE cities SET title = :title WHERE id = :id");
+            $stmt->bindParam(':title', $cities->title->value, PDO::PARAM_STR);
 
             // .
             // .

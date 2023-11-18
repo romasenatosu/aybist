@@ -1,21 +1,21 @@
 <?php
 
-require_once __DIR__ . '/../../database/Test.php';
+require_once __DIR__ . '/../../database/SettingsContact.php';
 
 // check for request
-$test = new Test();
+$settingsContact = new SettingsContact();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
-        $stmt = $pdo->prepare("SELECT * FROM test WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT * FROM settingsContact WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         // $stmt->execute();
 
         // $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // $test->id->value = $data['id'];
-        // $test->title->value = "test başlık";
-        // $test->description->value = "test açıklama";
+        // $settingsContact->id->value = $data['id'];
+        // $settingsContact->title->value = "settingsContact başlık";
+        // $settingsContact->description->value = "settingsContact açıklama";
 
     } catch (Exception $e) {
         dump($e);
@@ -26,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        $test->title->value = $_POST[$test->title->name];
-        $test->income_type->value = $_POST[$test->income_type->name];
+        $settingsContact->title->value = $_POST[$settingsContact->title->name];
+        $settingsContact->income_type->value = $_POST[$settingsContact->income_type->name];
 
-        $checks = $test->title->check() || $test->income_type->check();
+        $checks = $settingsContact->title->check() || $settingsContact->income_type->check();
 
         if ($checks) {
-            $stmt = $pdo->prepare("UPDATE test SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $test->title->value, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("UPDATE settingsContact SET title = :title WHERE id = :id");
+            $stmt->bindParam(':title', $settingsContact->title->value, PDO::PARAM_STR);
 
             // .
             // .

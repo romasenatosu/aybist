@@ -15,6 +15,8 @@ switch ($page) {
                 include_once __DIR__ . '/pages/test/update.php';
                 break;
 
+                // TODO: don't redirect to index here instead show 403 error
+
             default:
                 include_once __DIR__ . '/pages/test/index.php';
             }
@@ -155,16 +157,8 @@ switch ($page) {
 
     case 'notifications':
         switch ($action) {
-            case 'create':
-                include_once __DIR__ . '/pages/notifications/create.php';
-                break;
-
             case 'read':
                 include_once __DIR__ . '/pages/notifications/read.php';
-                break;
-
-            case 'update':
-                include_once __DIR__ . '/pages/notifications/update.php';
                 break;
 
             default:
@@ -174,16 +168,8 @@ switch ($page) {
 
     case 'notifications_ips':
         switch ($action) {
-            case 'create':
-                include_once __DIR__ . '/pages/notifications_ips/create.php';
-                break;
-
             case 'read':
                 include_once __DIR__ . '/pages/notifications_ips/read.php';
-                break;
-
-            case 'update':
-                include_once __DIR__ . '/pages/notifications_ips/update.php';
                 break;
 
             default:
@@ -227,10 +213,6 @@ switch ($page) {
 
     case 'settings_general':
         switch ($action) {
-            case 'read':
-                include_once __DIR__ . '/pages/settings_general/read.php';
-                break;
-
             case 'update':
                 include_once __DIR__ . '/pages/settings_general/update.php';
                 break;
@@ -242,10 +224,6 @@ switch ($page) {
 
     case 'settings_contact':
         switch ($action) {
-            case 'read':
-                include_once __DIR__ . '/pages/settings_contact/read.php';
-                break;
-
             case 'update':
                 include_once __DIR__ . '/pages/settings_contact/update.php';
                 break;

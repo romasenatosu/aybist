@@ -43,6 +43,7 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
+    <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: crud operations using PDO -->
     <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->

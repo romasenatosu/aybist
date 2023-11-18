@@ -1,19 +1,19 @@
 <?php
 
-require_once __DIR__ . '/../../database/Test.php';
+require_once __DIR__ . '/../../database/Languages.php';
 
-$test = new Test();
+$languages = new Languages();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        $test->title->value = $_POST[$test->title->name];
-        $test->income_type->value = $_POST[$test->income_type->name];
+        $languages->title->value = $_POST[$languages->title->name];
+        $languages->income_type->value = $_POST[$languages->income_type->name];
 
-        $checks = $test->title->check() || $test->income_type->check();
+        $checks = $languages->title->check() || $languages->income_type->check();
 
         if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO test (title) VALUES (:title)");
-            $stmt->bindParam(':title', $test->title->value, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("INSERT INTO languages (title) VALUES (:title)");
+            $stmt->bindParam(':title', $languages->title->value, PDO::PARAM_STR);
 
             // .
             // .

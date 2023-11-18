@@ -10,7 +10,7 @@
                                     <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=test" ?>"><?= $lang['page_test'] ?></a>
+                                    <a href="<?= "?locale=$locale&page=notifications" ?>"><?= $lang['page_notifications'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $id ?>
@@ -23,28 +23,24 @@
                             <table class="table border table-hover table-striped table-bordered">
                                 <tbody>
                                     <tr>
-                                        <th>#</th>
+                                        <th data-priority="1">#</th>
                                         <td><?= $id ?></td>
                                     </tr>
                                     <tr>
-                                        <th><?= $lang['table_title'] ?></th>
+                                        <th><?= $lang['table_user'] ?></th>
                                         <td>başlık1</td>
                                     </tr>
                                     <tr>
-                                        <th><?= $lang['table_title'] ?></th>
+                                        <th><?= $lang['table_code'] ?></th>
                                         <td>başlık2</td>
                                     </tr>
                                     <tr>
-                                        <th><?= $lang['table_title'] ?></th>
+                                        <th><?= $lang['table_msg'] ?></th>
                                         <td>başlık3</td>
                                     </tr>
                                     <tr>
-                                        <th><?= $lang['table_title'] ?></th>
+                                        <th><?= $lang['table_trace'] ?></th>
                                         <td>başlık4</td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= $lang['table_description'] ?></th>
-                                        <td>lorem ipsum dolor sit amet</td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>
@@ -59,7 +55,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=test" ?>"><?= $lang['text_go_back'] ?></a>
+                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=notifications" ?>"><?= $lang['text_go_back'] ?></a>
                     </div>
                 </div>
             </div>

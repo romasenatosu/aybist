@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/FormElement.php';
 
-class Test {
+class LanguagesDef {
     public FormElement $id;
     public FormElement $language_id;
     public FormElement $keyword;

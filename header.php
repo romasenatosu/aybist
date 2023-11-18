@@ -22,13 +22,13 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= ($page == 'managements') ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= str_contains($page, 'managements') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-building-skyscraper"></i>
                         </span>
                         <span class="hide-menu"><?= $lang['page_managements'] ?></span>
                     </a>
-                    <ul class="collapse <?= ($page == 'managements') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'managements') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'managements') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'managements') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -64,13 +64,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= ($page == 'languages') ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= str_contains($page, 'languages') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-language"></i>
                         </span>
                         <span class="hide-menu"><?= $lang['page_languages'] ?></span>
                     </a>
-                    <ul class="collapse <?= ($page == 'languages') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'languages') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'languages') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'languages') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=languages" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -90,13 +90,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= ($page == 'notifications') ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= str_contains($page, 'notifications') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-notification"></i>
                         </span>
                         <span class="hide-menu"><?= $lang['page_notifications'] ?></span>
                     </a>
-                    <ul class="collapse <?= ($page == 'notifications') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'notifications') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'notifications') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'notifications') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=notifications" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -116,13 +116,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= ($page == 'places') ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= str_contains($page, 'places') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-world"></i>
                         </span>
                         <span class="hide-menu"><?= $lang['page_places'] ?></span>
                     </a>
-                    <ul class="collapse <?= ($page == 'places_districts') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'places_districts') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'places_countries') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'places_countries') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_countries" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -150,13 +150,13 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow <?= ($page == 'settings_general') ? 'active' : '' ?>" href="javascript:void(0)">
+                    <a class="sidebar-link has-arrow <?= str_contains($page, 'settings') ? 'active' : '' ?>" href="javascript:void(0)">
                         <span class="d-flex">
                             <i class="ti ti-settings-cog"></i>
                         </span>
                         <span class="hide-menu"><?= $lang['page_settings_general'] ?></span>
                     </a>
-                    <ul class="collapse <?= ($page == 'settings_general') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'settings') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'settings_general') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'settings_general') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_general" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">

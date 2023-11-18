@@ -1,7 +1,7 @@
 <div class="container-fluid mw-100">
     <section class="forms">
         <div class="row">
-            <div class="col-12">
+            <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <nav style="--bs-breadcrumb-divider: '>'">
