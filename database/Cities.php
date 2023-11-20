@@ -4,7 +4,6 @@ require_once __DIR__ . '/FormElement.php';
 
 class Cities {
     public FormElement $id;
-    public FormElement $language_id;
     public FormElement $country_id;
     public FormElement $city;
     public FormElement $zip_code;
@@ -15,7 +14,6 @@ class Cities {
         global $regex_alpha_numeric, $regex_numeric, $lang;
 
         $this->id = new FormElement('id');
-        $this->language_id = new FormElement('language_id');
         $this->country_id = new FormElement('country_id');
         $this->city = new FormElement('city');
         $this->zip_code = new FormElement('zip_code');

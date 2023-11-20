@@ -31,17 +31,14 @@ Pure PHP 8.2 ile Yönetici Paneli
 
 .gitignore
 .htaccess
-auth.php
 composer.json
-error.log
-favicon.ico
 footer.php
 header.php
 home.php
 index.php
+login.php
+logout.php
 package.json
-plan.txt
-README.md
 router.php
 
 # Kurulum
@@ -54,3 +51,8 @@ router.php
 - PHP 8.2
 - Composer 2.2
 - Npm 6.14
+
+# Yönetici Kullanıcı Bilgileri
+
+email: inserveofgod@gmail.com
+password: admin

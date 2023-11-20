@@ -2,9 +2,14 @@
 
 // program configs
 $default_locale = 'tr';
+
 $photo_files_extensions = ".jpg, .jpeg, .png";
 $document_files_extensions = ".pdf, .doc, .docx, .rtf, .txt, .csv";
 $upload_dir = __DIR__ . '/uploads';
+
+$hash_cost = 12; // 4 - 32
+$hash_algorithm = PASSWORD_BCRYPT;
+
 
 // initialization settings as default
 ini_set('display_errors', 1); // display errors as printable text

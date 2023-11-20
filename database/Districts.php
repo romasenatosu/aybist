@@ -4,7 +4,6 @@ require_once __DIR__ . '/FormElement.php';
 
 class Districts {
     public FormElement $id;
-    public FormElement $language_id;
     public FormElement $city_id;
     public FormElement $district;
     public FormElement $created_at;
@@ -14,7 +13,6 @@ class Districts {
         global $regex_alpha_numeric, $lang;
 
         $this->id = new FormElement('id');
-        $this->language_id = new FormElement('language_id');
         $this->city_id = new FormElement('city_id');
         $this->district = new FormElement('district');
         $this->created_at = new FormElement('created_at', new DateTime());

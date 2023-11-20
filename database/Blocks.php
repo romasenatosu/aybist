@@ -35,4 +35,24 @@ class Blocks {
         $this->floor_count->pattern = $regex_numeric;
         $this->floor_count->pattern_msg = $lang['regex_numeric'];
     }
+
+    public function index(): array {
+        return array();
+    }
+
+    public function create(): bool {
+        return true;
+    }
+
+    public function read(): array {
+        return array();
+    }
+
+    public function update(): bool {
+        return true;
+    }
+
+    public function delete(): bool {
+        return true;
+    }
 }
