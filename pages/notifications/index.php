@@ -37,10 +37,10 @@
                                         <td>başlık2</td>
                                         <td>başlık3</td>
                                         <td>başlık4</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
+                                        <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
+                                        <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                         <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=notifications&action=read&id=1" ?>">
+                                            <a href="<?= "?locale=$locale&page=notifications&action=read&id=$data_id" ?>">
                                                 <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                         </td>

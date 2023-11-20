@@ -1,3 +1,18 @@
+<?php
+
+$data = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM languages_def WHERE language_id = :language_id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row gy-3">
@@ -29,21 +44,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>başlık</td>
-                                        <td>başlık2</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
-                                        <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=languages_def&action=read&id=1" ?>">
-                                                <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <a href="<?= "?locale=$locale&page=languages_def&action=update&id=1" ?>">
-                                                <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php foreach($data as $datum): ?>
+                                        <?php $data_id = $datum['id'] ?>
+                                        <tr>
+                                            <td><?= $data_id ?></td>
+                                            <td><?= $datum['keyword'] ?></td>
+                                            <td><?= $datum['value'] ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
+                                            <td class="col-1">
+                                                <a href="<?= "?locale=$locale&page=languages_def&action=read&id=$data_id" ?>">
+                                                    <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
+                                                </a>
+                                                <a href="<?= "?locale=$locale&page=languages_def&action=update&id=$data_id" ?>">
+                                                    <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

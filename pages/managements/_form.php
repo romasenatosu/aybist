@@ -133,13 +133,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label" for="<?= $managements->name->name ?>">
-                                            <?= $lang['label_name'] ?>
-                                            <span class="text-danger"><?= ($managements->name->required) ? '*': '' ?></span>
+                                        <label class="form-label" for="<?= $managements->management->name ?>">
+                                            <?= $lang['label_management'] ?>
+                                            <span class="text-danger"><?= ($managements->management->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $managements->name->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->name->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->name->help_msg) ?></span>
+                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_management'] ?>" <?= $managements->management->get_text_attr() ?>>
+                                        <span class="text-danger"><?= ($managements->management->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($managements->management->help_msg) ?></span>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" for="<?= $managements->description->name ?>">

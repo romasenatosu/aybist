@@ -57,10 +57,10 @@
                                         <td>başlık3</td>
                                         <td>başlık4</td>
                                         <td>hayır</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
+                                        <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
+                                        <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                         <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=settings_general&action=update&id=1" ?>">
+                                            <a href="<?= "?locale=$locale&page=settings_general&action=update&id=$data_id" ?>">
                                                 <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                         </td>

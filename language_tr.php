@@ -21,6 +21,8 @@ $lang_defaults_tr = [
     "text_top_photo" => "Üst Fotoğraf",
     "text_small_photo" => "Küçük Fotoğraf",
     "text_google_maps" => "Google Maps Ayarları",
+    "text_exempted" => "Muaf",
+    "text_not_exempted" => "Muaf Değil",
 
     "page_home" => "Ana Sayfa",
     "page_test" => "Test",
@@ -100,6 +102,7 @@ $lang_defaults_tr = [
     "table_fullname" => "İSİM SOYİSİM",
     "table_is_admin" => "YÖNETİCİ KULLANICI",
     "table_rate" => "ORAN",
+    "table_İşletme" => "İŞLETME",
 
     "error_400" => "Geçersiz İstek.",
     "error_401" => "Yetkilendirilmemiş istek.",
@@ -165,6 +168,8 @@ $lang_defaults_tr = [
     "label_is_admin" => "Yönetici",
     "label_rate" => "Oran",
     "label_avatar" => "Avatar",
+    "label_block" => "Block",
+    "label_management" => "İşletme",
 
     "placeholder_username" => "Kullanıcı Adı",
     "placeholder_password" => "*****",
@@ -216,6 +221,8 @@ $lang_defaults_tr = [
     "placeholder_rate" => "Oran girin",
     "placeholder_currency_select" => "Para Birimi",
     "placeholder_phone_code_select" => "Telefon Kodu",
+    "placeholder_block" => "Blok girin",
+    "placeholder_management" => "İşletme girin",
 
     "help_block" => "Örnek: A5, B2, C1",
     "help_zip_code" => "Örnek: 20000",

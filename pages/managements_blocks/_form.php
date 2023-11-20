@@ -23,13 +23,13 @@
                             <form action="<?= "?locale=$locale&page=managements_blocks&action=create" ?>" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                     <div class="col-md-6">
-                                        <label class="form-label" for="<?= $blocks->name->name ?>">
-                                            <?= $lang['label_name'] ?>
-                                            <span class="text-danger"><?= ($blocks->name->required) ? '*': '' ?></span>
+                                        <label class="form-label" for="<?= $blocks->block->name ?>">
+                                            <?= $lang['label_block'] ?>
+                                            <span class="text-danger"><?= ($blocks->block->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $blocks->name->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($blocks->name->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($blocks->name->help_msg) ?></span>
+                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_block'] ?>" <?= $blocks->block->get_text_attr() ?>>
+                                        <span class="text-danger"><?= ($blocks->block->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($blocks->block->help_msg) ?></span>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" for="<?= $blocks->description->name ?>">

@@ -36,11 +36,11 @@
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>
-                                        <td>14.11.2023</td>
+                                        <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_updated_at'] ?></th>
-                                        <td>14.11.2023</td>
+                                        <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                     </tr>
                                 </tbody>
                             </table>

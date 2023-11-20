@@ -1,3 +1,27 @@
+<?php
+
+$data = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT m.id, b.block, f.floor, flat.flat, u.fullname as owner, u2.fullname as rental, m.management, m.description, m.fee_status, m.created_at, m.updated_at
+        FROM managements m
+        INNER JOIN blocks b ON b.id = m.block_id
+        INNER JOIN floors f ON f.id = m.floor_id
+        INNER JOIN flats flat ON flat.id = m.flat_id
+        INNER JOIN users u ON u.id = m.manager_owner_id
+        INNER JOIN users u2 ON u2.id = m.manager_rental_id
+        WHERE m.language_id = :language_id"
+    );
+
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row gy-3">
@@ -26,7 +50,7 @@
                                         <th><?= $lang['table_flat'] ?></th>
                                         <th><?= $lang['table_manager_owner'] ?></th>
                                         <th><?= $lang['table_manager_rental'] ?></th>
-                                        <th><?= $lang['table_name'] ?></th>
+                                        <th><?= $lang['table_management'] ?></th>
                                         <th><?= $lang['table_description'] ?></th>
                                         <th><?= $lang['table_fee_status'] ?></th>
                                         <th><?= $lang['table_created_at'] ?></th>
@@ -35,30 +59,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>başlık</td>
-                                        <td>başlık</td>
-                                        <td>başlık</td>
-                                        <td>başlık</td>
-                                        <td>başlık2</td>
-                                        <td>başlık3</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td>başlık4</td>
-                                        <td>14.11.2023</td>
-                                        <td>14.11.2023</td>
-                                        <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=managements&action=read&id=1" ?>">
-                                                <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <a href="<?= "?locale=$locale&page=managements&action=update&id=1" ?>">
-                                                <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                            <?php
-                                                include __DIR__ . '/_delete_form.php';
-                                            ?>
-                                        </td>
-                                    </tr>
+                                    <?php foreach($data as $datum): ?>
+                                        <?php $data_id = $datum['id'] ?>
+                                        <tr>
+                                            <td><?= $data_id ?></td>
+                                            <td><?= $datum['block'] ?></td>
+                                            <td><?= $datum['floor'] ?></td>
+                                            <td><?= $datum['flat'] ?></td>
+                                            <td><?= $datum['owner'] ?></td>
+                                            <td><?= $datum['rental'] ?></td>
+                                            <td><?= $datum['management'] ?></td>
+                                            <td><?= $datum['description'] ?></td>
+                                            <td><?= ($datum['fee_status']) ? $lang['text_exempted'] : $lang['text_not_exempted'] ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
+                                            <td class="col-1">
+                                                <a href="<?= "?locale=$locale&page=managements&action=read&id=$data_id" ?>">
+                                                    <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
+                                                </a>
+                                                <a href="<?= "?locale=$locale&page=managements&action=update&id=$data_id" ?>">
+                                                    <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
+                                                </a>
+                                                <?php
+                                                    include __DIR__ . '/_delete_form.php';
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

@@ -21,6 +21,8 @@ $lang_defaults_en = [
     "text_top_photo" => "Top Photo",
     "text_small_photo" => "Small Photo",
     "text_google_maps" => "Settigs of Google Maps",
+    "text_exempted" => "Exempted",
+    "text_not_exempted" => "Not Exempted",
 
     "page_home" => "Home Page",
     "page_test" => "Test",
@@ -100,6 +102,7 @@ $lang_defaults_en = [
     "table_fullname" => "FULLNAME",
     "table_is_admin" => "ADMINISTRATOR",
     "table_rate" => "RATE",
+    "table_management" => "MANAGEMENT",
 
     "error_400" => "Invalid request.",
     "error_401" => "Unauthorized request.",
@@ -165,6 +168,8 @@ $lang_defaults_en = [
     "label_is_admin" => "Administrator",
     "label_rate" => "Rate",
     "label_avatar" => "Avatar",
+    "label_block" => "Block",
+    "label_management" => "Management",
 
     "placeholder_username" => "Username",
     "placeholder_password" => "*****",
@@ -216,6 +221,8 @@ $lang_defaults_en = [
     "placeholder_rate" => "Enter rate",
     "placeholder_currency_select" => "Currency",
     "placeholder_phone_code_select" => "Phone Code",
+    "placeholder_block" => "Enter block",
+    "placeholder_management" => "Enter management",
 
     "help_block" => "Example: A5, B2, C1",
     "help_zip_code" => "Example: 20000",

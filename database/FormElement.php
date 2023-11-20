@@ -109,30 +109,6 @@ class FormElement {
         return true;
     }
 
-    public function index(): array {
-        return array();
-    }
-
-    public function create(): bool {
-        return true;
-    }
-
-    public function read(): array {
-        return array();
-    }
-
-    public function update(): bool {
-        return true;
-    }
-
-    public function delete(): bool {
-        return true;
-    }
-
-    public function getName(): string {
-        return $this->name;
-    }
-
     public function setName(string $name): void {
         $this->name = $name;
     }
