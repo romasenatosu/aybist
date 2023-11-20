@@ -4,7 +4,7 @@
             <input class="flatpickr flatpickr-input form-control range_flatpickr" type="text" placeholder="Tarih aralığı seçin">
         </div>
         <div class="col-auto">
-            <a class="btn btn-primary" href="#">Ara</a>
+            <a class="btn btn-primary" href="#"><?= $lang['text_search'] ?></a>
         </div>
     </div>
 </div>

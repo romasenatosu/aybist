@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=managements_floors&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $floors->floor->name ?>">
                                             <?= $lang['label_floor'] ?>
                                             <span class="text-danger"><?= ($floors->floor->required) ? '*': '' ?></span>

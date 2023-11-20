@@ -21,53 +21,118 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=managements&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->block_id->name ?>">
-                                            <?= $lang['label_block_id'] ?>
-                                            <span class="text-danger"><?= ($managements->block_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_block_id'] ?>" <?= $managements->block_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->block_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->block_id->help_msg) ?></span>
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $managements->block_id->name ?>">
+                                                    <?= $lang['label_block_id'] ?>
+                                                    <span class="text-danger"><?= ($managements->block_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $managements->block_id->get_select_attr() ?>>
+                                                    <option <?= ($managements->block_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_block_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($managements->block_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($managements->block_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=managements_blocks&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->floor_id->name ?>">
-                                            <?= $lang['label_floor_id'] ?>
-                                            <span class="text-danger"><?= ($managements->floor_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_floor_id'] ?>" <?= $managements->floor_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->floor_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->floor_id->help_msg) ?></span>
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $managements->floor_id->name ?>">
+                                                    <?= $lang['label_floor_id'] ?>
+                                                    <span class="text-danger"><?= ($managements->floor_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $managements->floor_id->get_select_attr() ?>>
+                                                    <option <?= ($managements->floor_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_floor_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($managements->floor_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($managements->floor_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=managements_floors&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->flat_id->name ?>">
-                                            <?= $lang['label_flat_id'] ?>
-                                            <span class="text-danger"><?= ($managements->flat_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_flat_id'] ?>" <?= $managements->flat_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->flat_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->flat_id->help_msg) ?></span>
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $managements->flat_id->name ?>">
+                                                    <?= $lang['label_flat_id'] ?>
+                                                    <span class="text-danger"><?= ($managements->flat_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $managements->flat_id->get_select_attr() ?>>
+                                                    <option <?= ($managements->flat_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_flat_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($managements->flat_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($managements->flat_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=managements_flats&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->manager_owner_id->name ?>">
-                                            <?= $lang['label_manager_owner_id'] ?>
-                                            <span class="text-danger"><?= ($managements->manager_owner_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_manager_owner_id'] ?>" <?= $managements->manager_owner_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->manager_owner_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->manager_owner_id->help_msg) ?></span>
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $managements->manager_owner_id->name ?>">
+                                                    <?= $lang['label_manager_owner_id'] ?>
+                                                    <span class="text-danger"><?= ($managements->manager_owner_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $managements->manager_owner_id->get_select_attr() ?>>
+                                                    <option <?= ($managements->manager_owner_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_manager_owner_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($managements->manager_owner_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($managements->manager_owner_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=settings_users&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->manager_rental_id->name ?>">
-                                            <?= $lang['label_manager_rental_id'] ?>
-                                            <span class="text-danger"><?= ($managements->manager_rental_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_manager_rental_id'] ?>" <?= $managements->manager_rental_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->manager_rental_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->manager_rental_id->help_msg) ?></span>
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $managements->manager_rental_id->name ?>">
+                                                    <?= $lang['label_manager_rental_id'] ?>
+                                                    <span class="text-danger"><?= ($managements->manager_rental_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $managements->manager_rental_id->get_select_attr() ?>>
+                                                    <option <?= ($managements->manager_rental_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_manager_rental_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($managements->manager_rental_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($managements->manager_rental_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=settings_users&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $managements->name->name ?>">
                                             <?= $lang['label_name'] ?>
                                             <span class="text-danger"><?= ($managements->name->required) ? '*': '' ?></span>
@@ -76,23 +141,25 @@
                                         <span class="text-danger"><?= ($managements->name->error_msg) ?></span>
                                         <span class="text-muted"><?= ($managements->name->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12">
                                         <label class="form-label" for="<?= $managements->description->name ?>">
                                             <?= $lang['label_description'] ?>
                                             <span class="text-danger"><?= ($managements->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $managements->description->get_text_attr() ?>>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $managements->description->get_textarea_attr() ?>><?= $managements->description->value ?></textarea>
                                         <span class="text-danger"><?= ($managements->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($managements->description->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $managements->fee_status->name ?>">
-                                            <?= $lang['label_fee_status'] ?>
-                                            <span class="text-danger"><?= ($managements->fee_status->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $managements->fee_status->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($managements->fee_status->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($managements->fee_status->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="<?= $managements->fee_status->name ?>">
+                                                <?= $lang['label_fee_status'] ?>
+                                                <span class="text-danger"><?= ($managements->fee_status->required) ? '*': '' ?></span>
+                                            </label>
+                                            <input type="checkbox" class="form-check-input" <?= $managements->fee_status->get_check_attr() ?>>
+                                            <span class="text-danger"><?= ($managements->fee_status->error_msg) ?></span>
+                                            <span class="text-muted"><?= ($managements->fee_status->help_msg) ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

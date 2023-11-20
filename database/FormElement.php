@@ -6,19 +6,23 @@ class FormElement {
     public bool $required;
     public int $minlength;
     public int $maxlength;
+    public string $accept;
     public string $pattern;
+    public string $pattern_msg;
     public string $error_msg;
     public string $help_msg;
 
     public function __construct(string $name, mixed $value = null, bool $required = true,
-                                int $minlength = 3, int $maxlength = 255, string $pattern = '',
-                                string $error_msg = '', string $help_msg = '') {
+                                int $minlength = 0, int $maxlength = 255, string $accept='', string $pattern = '',
+                                string $pattern_msg = '', string $error_msg = '', string $help_msg = '') {
         $this->name = $name;
         $this->value = $value;
         $this->required = $required;
         $this->minlength = $minlength;
         $this->maxlength = $maxlength;
+        $this->accept = $accept;
         $this->pattern = $pattern;
+        $this->pattern_msg = $pattern_msg;
         $this->error_msg = $error_msg;
         $this->help_msg = $help_msg;
     }
@@ -31,9 +35,15 @@ class FormElement {
                         $this->pattern, $this->getValue());
     }
 
+    public function get_textarea_attr(): string {
+        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' pattern='%s'", $this->name,
+                        $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
+                        $this->pattern);
+    }
+
     public function get_number_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s min='%d' max='%d' value='%s'", $this->name, $this->name,
-                        (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
+        return sprintf("id = '%s' name = '%s' %s min='%d' max='%d' minlength='%d' maxlength='%d' value='%s'", $this->name, $this->name,
+                        (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength, $this->minlength, $this->maxlength,
                         $this->getValue());
     }
 
@@ -42,35 +52,80 @@ class FormElement {
                         (($this->required) ? 'required=required': ''), (($this->value > 0) ? 'checked=checked': ''));
     }
 
+    public function get_select_attr(): string {
+        return sprintf("id = '%s' name = '%s' %s", $this->name, $this->name, (($this->required) ? 'required=required': ''));
+    }
+
+    public function get_file_attr(): string {
+        return sprintf("id = '%s' name = '%s' accept = '%s' %s", $this->name, $this->name, $this->accept, (($this->required) ? 'required=required': ''));
+    }
+
     public function check(): bool {
+        global $lang;
+
         // make encoded buffer
-        $buff = json_encode($this->value);
+        $buff = htmlspecialchars($this->value);
 
         // check for required field
         if (empty($buff) and $this->required) {
-            $this->error_msg = "Bu alan doldurulmak zorundadır.";
+            $this->error_msg = $lang['regex_required'];
             return false;
         }
 
         // check for length of the value
-        if (strlen($buff) > $this->maxlength or strlen($buff) < $this->minlength) {
-            $this->error_msg = sprintf("Bu alan %d ile %d arasında olmalıdır.", $this->minlength, $this->maxlength);
-            return false;
+        if ($this->patttern == $regex_numeric and filter_var($buff, FILTER_VALIDATE_INT)) {
+            if ($buff > $this->maxlength or $buff < $this->minlength) {
+                $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
+                return false;
+            }
+        }
+
+        else {
+            if (strlen($buff) > $this->maxlength or strlen($buff) < $this->minlength) {
+                $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
+                return false;
+            }
         }
 
         // check for regex
         if (!empty($this->pattern)) {
             try {
                 if (!preg_match($this->pattern, $buff)) {
+                    if (empty($this->pattern_msg)) {
+                        $this->error_msg = $lang['regex_invalid_value'];
+                    } else {
+                        $this->$error_msg = $this->pattern_msg;
+                    }
+
                     return false;
                 }
 
             } catch (Exception $e) {
-                $this->error_msg = "Geçersiz 'Düzenli ifade' satırı!";
+                $this->error_msg = $lang['regex_invalid_re'];
                 return false;
             }
         }
 
+        return true;
+    }
+
+    public function index(): array {
+        return array();
+    }
+
+    public function create(): bool {
+        return true;
+    }
+
+    public function read(): array {
+        return array();
+    }
+
+    public function update(): bool {
+        return true;
+    }
+
+    public function delete(): bool {
         return true;
     }
 

@@ -15,10 +15,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/test/update.php';
                 break;
 
-                // TODO: don't redirect to index here instead show 403 error
+            case '':
+                include_once __DIR__ . '/pages/test/index.php';
+                break;
 
             default:
-                include_once __DIR__ . '/pages/test/index.php';
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -36,8 +38,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/managements/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
         
@@ -55,8 +61,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements_blocks/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/managements_blocks/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -74,8 +84,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements_flats/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/managements_flats/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -93,8 +107,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements_floors/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/managements_floors/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -112,8 +130,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/places_countries/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/places_countries/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -131,8 +153,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/places_cities/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/places_cities/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -150,8 +176,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/places_districts/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/places_districts/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -161,8 +191,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/notifications/read.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/notifications/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -172,8 +206,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/notifications_ips/read.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/notifications_ips/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -191,8 +229,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/languages/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/languages/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -206,8 +248,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/languages_def/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/languages_def/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -217,8 +263,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_general/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/settings_general/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -228,8 +278,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_contact/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/settings_contact/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -247,8 +301,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_currency/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/settings_currency/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -266,8 +324,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_vat/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/settings_vat/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 
@@ -285,8 +347,12 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_users/update.php';
                 break;
 
-            default:
+            case '':
                 include_once __DIR__ . '/pages/settings_users/index.php';
+                break;
+
+            default:
+                include_once __DIR__ . '/pages/errors/404.php';
             }
         break;
 

@@ -16,13 +16,22 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 $lang = $result; // format here if needed
 $stmt->closeCursor();
 die();
- */
+*/
+
+function changeLocale(string $new_locale) {
+    global $locale;
+    $query = $_SERVER['QUERY_STRING'];
+    return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $query));
+}
+
 $lang = [
     "text_new" => "Yeni Ekle",
     "text_create" => "Ekle",
     "text_read" => "Göster",
-    "text_update" => "Düzenle",
+    "text_update" => "Güncelle",
+    "text_edit" => "Düzenle",
     "text_delete" => "Sil",
+    "text_search" => "Ara",
     "text_forgot_password" => "Şifremi unuttum",
     "text_back_to_home" => "Ana Sayfaya Dön",
     "text_go_back" => "Geri Dön",
@@ -30,6 +39,12 @@ $lang = [
     "text_logout" => "Çıkış Yap",
     "text_yes" => "Evet",
     "text_no" => "Hayır",
+    "text_site" => "Site",
+    "text_smtp" => "SMTP Ayarları",
+    "text_normal_photo" => "Normal Fotoğraf",
+    "text_top_photo" => "Üst Fotoğraf",
+    "text_small_photo" => "Küçük Fotoğraf",
+    "text_google_maps" => "Google Maps Ayarları",
 
     "page_home" => "Ana Sayfa",
     "page_test" => "Test",
@@ -119,6 +134,7 @@ $lang = [
 
     "label_username" => "Kullanıcı Adı",
     "label_password" => "Şifre",
+    "label_password_confirm" => "Şifre Onayla",
     "label_remember_me" => "Beni Hatırla",
     "label_title" => "Başlık",
     "label_name" => "İsim",
@@ -133,7 +149,7 @@ $lang = [
     "label_flat_id" => "Daire",
     "label_manager_owner_id" => "İşletme Sahibi",
     "label_manager_rental_id" => "İşletme Kiracısı",
-    "label_fee_status" => "Aidat Durumu",
+    "label_fee_status" => "Aidattan muaf",
     "label_flat" => "Daire",
     "label_square_meter" => "Metre Kare",
     "label_fee" => "Aidat",
@@ -163,31 +179,26 @@ $lang = [
     "label_smtp_url" => "SMTP URL",
     "label_smtp_password" => "SMTP Şifre",
     "label_smtp_port" => "SMTP Port",
-    "label_normal_photo" => "Normal Fotoğraf",
-    "label_normal_photo_width" => "Normal Fotoğraf Genişlik",
-    "label_normal_photo_height" => "Normal Fotoğraf Yükseklik",
-    "label_top_photo" => "Üst Fotoğraf",
-    "label_top_photo_width" => "Üst Fotoğraf Genişlik",
-    "label_top_photo_height" => "Üst Fotoğraf Yükselik",
-    "label_small_photo" => "Küçük Fotoğraf",
-    "label_small_photo_width" => "Küçük Fotoğraf Genişlik",
-    "label_small_photo_height" => "Küçük Fotoğraf Yükseklik",
+    "label_photo" => "Fotoğraf",
+    "label_width" => "Genişlik",
+    "label_height" => "Yükseklik",
     "label_debug_mode" => "Debug Modu",
     "label_maintenance_mod" => "Bakım Modu",
     "label_maintenance_mode_content" => "Bakım Modu İçerik",
     "label_fullname" => "İsim Soyisim",
     "label_is_admin" => "Yönetici",
     "label_rate" => "Oran",
+    "label_avatar" => "Avatar",
 
     "placeholder_username" => "Kullanıcı Adı",
-    "placeholder_password" => "Şifre",
+    "placeholder_password" => "*****",
+    "placeholder_password_confirm" => "*****",
     "placeholder_title" => "Başlık",
-    "placeholder_description" => "Açıklama",
+    "placeholder_description" => "Açıklama girin",
     "placeholder_name" => "İsim girin",
     "placeholder_floor_count" => "Kat sayısı girin",
     "placeholder_code" => "Kod girin",
     "placeholder_lang" => "Dil girin",
-    "placeholder_keyword" => "Anahtar kelime girin",
     "placeholder_value" => "Değer girin",
     "placeholder_block_id" => "Blok Seçin",
     "placeholder_floor_id" => "Kat Seçin",
@@ -198,13 +209,13 @@ $lang = [
     "placeholder_square_meter" => "Metre kare girin",
     "placeholder_fee" => "Aidat girin",
     "placeholder_floor" => "Kat girin",
-    "placeholder_country_id" => "Ülke seçin",
+    "placeholder_country_id" => "Ülke Seçin",
     "placeholder_city" => "Şehir girin",
     "placeholder_zip_code" => "Posta kodu girin",
     "placeholder_country" => "Ülke girin",
     "placeholder_phone_code" => "Telefon kodu girin",
     "placeholder_district" => "İlçe girin",
-    "placeholder_city_id" => "Şehir seçin",
+    "placeholder_city_id" => "Şehir Seçin",
     "placeholder_address" => "Adres girin",
     "placeholder_phone" => "Telefon girin",
     "placeholder_cell_phone" => "Cep telefonu girin",
@@ -220,17 +231,24 @@ $lang = [
     "placeholder_site_title" => "Site başlığı girin",
     "placeholder_site_url" => "Site URL girin",
     "placeholder_smtp_url" => "SMTP URL girin",
-    "placeholder_smtp_password" => "SMTP şifre girin",
+    "placeholder_smtp_password" => "*****",
     "placeholder_smtp_port" => "SMTP port girin",
-    "placeholder_normal_photo_width" => "1920",
-    "placeholder_normal_photo_height" => "1080",
-    "placeholder_top_photo_width" => "1080",
-    "placeholder_top_photo_height" => "780",
-    "placeholder_small_photo_width" => "350",
-    "placeholder_small_photo_height" => "350",
+    "placeholder_width" => "1920",
+    "placeholder_height" => "1080",
     "placeholder_maintenance_mode_content" => "Bakım modu içerik girin",
     "placeholder_fullname" => "İsim soyisim girin",
     "placeholder_rate" => "Oran girin",
+    "placeholder_currency_select" => "Para Birimi",
+    "placeholder_phone_code_select" => "Telefon Kodu",
+
+    "help_block" => "Örnek: A5, B2, C1",
+    "help_zip_code" => "Örnek: 20000",
+    "help_phone_code" => "Örnek: +90",
+    "help_lang_code" => "Örnek: tr",
+    "help_lang" => "Örnek: Türkçe",
+    "help_flat" => "Örnek: 1+1",
+    "help_square_meter" => "Örnek: 70",
+    "help_photo_files" => "Bir fotoğraf seçin ($photo_files_extensions)",
 
     "datatable_emptyTable" => "Tabloda hiçbir veri yok",
     "datatable_info" => "Toplam %s veri arasından %s ila %s arası gösteriliyor",
@@ -253,10 +271,24 @@ $lang = [
     "datatable_buttons_print" => "YAZDIR",
 
     "swal_title_delete_confirm" => "Bu veriyi silmek istediğinize emin misiniz?",
-];
 
-function changeLocale(string $new_locale) {
-    global $locale;
-    $query = $_SERVER['QUERY_STRING'];
-    return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $query));
-}
+    "regex_required" => "Bu alan doldurulmak zorundadır.",
+    "regex_length" => "Bu alan %d ile %d arasında olmalıdır.",
+    "regex_invalid_value" => "Geçersiz değer.",
+    "regex_invalid_re" => "Geçersiz 'Düzenli ifade' satırı!",
+    "regex_alpha_numeric" => "Bu alan sadece büyük küçük harf ve sayılardan oluşmalıdır.",
+    "regex_numeric" => "Bu alan sadece sayılardan oluşmalıdır.",
+    "regex_url" => "Bu alan sadece URL'den oluşmalıdır.",
+    "regex_flat" => "Bu alan 'sayı+sayı' şeklinde olmalıdır.",
+    "regex_lang_code" => "Bu alan sadece büyük küçük harf ve alt çizgi(_)'den oluşmalıdır.",
+    "regex_alpha" => "Bu alan sadece büyük küçük harflerden oluşmalıdır.",
+    "regex_keywords" => "Bu alan sadece büyük küçük harflerden, sayılardan ve virgül(,)'den oluşmalıdır.",
+    "regex_email" => "Bu alan sadece email'den oluşmalıdır.",
+    "regex_phone" => "Bu alan sadece telefon numarasından oluşmalıdır.",
+
+    "file_upload_error" => "Dosya yükleme hatası: %s",
+    "file_invalid_extension" => "Geçersiz dosya uzantısı. Geçerli dosya uzantıları: %s",
+    "file_exists" => "Böyle bir dosya zaten var.",
+    "file_success" => "Dosya başarıyla yüklendi.",
+    "file_fail" => "Dosya yüklenemedi.",
+];

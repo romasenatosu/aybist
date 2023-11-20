@@ -19,11 +19,5 @@ class Notifications {
         $this->trace = new FormElement('trace');
         $this->created_at = new FormElement('created_at', new DateTime());
         $this->updated_at = new FormElement('updated_at', new DateTime());
-
-        // configurations
-        $this->user_id->required = false;
-        $this->code->maxlength = -1;
-        $this->msg->maxlength = -1;
-        $this->trace->maxlength = -1;
     }
 }

@@ -12,6 +12,8 @@ class Cities {
     public FormElement $updated_at;
 
     function __construct() {
+        global $regex_alpha_numeric, $regex_numeric, $lang;
+
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
         $this->country_id = new FormElement('country_id');
@@ -22,6 +24,11 @@ class Cities {
 
         // configurations
         $this->city->maxlength = -1;
+        $this->city->pattern = $regex_alpha_numeric;
+        $this->city->pattern_msg = $lang['regex_alpha_numeric'];
         $this->zip_code->maxlength = 6;
+        $this->zip_code->pattern = $regex_numeric;
+        $this->zip_code->pattern_msg = $lang['regex_numeric'];
+        $this->zip_code->help_msg = $lang['help_zip_code'];
     }
 }

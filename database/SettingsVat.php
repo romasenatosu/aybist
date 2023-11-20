@@ -11,6 +11,8 @@ class SettingsVat {
     public FormElement $updated_at;
 
     function __construct() {
+        global $lang, $regex_alpha_numeric, $regex_numeric;
+
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
         $this->name = new FormElement('name');
@@ -20,6 +22,10 @@ class SettingsVat {
 
         // configurations
         $this->name->maxlength = -1;
+        $this->name->pattern = $regex_alpha_numeric;
+        $this->name->pattern_msg = $lang['regex_alpha_numeric'];
         $this->rate->maxlength = 127;
+        $this->rate->pattern = $regex_numeric;
+        $this->rate->pattern_msg = $lang['regex_numeric'];
     }
 }

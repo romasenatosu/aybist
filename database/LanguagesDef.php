@@ -11,6 +11,8 @@ class LanguagesDef {
     public FormElement $updated_at;
 
     function __construct() {
+        global $lang, $regex_alpha_numeric;
+
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
         $this->keyword = new FormElement('keyword');
@@ -21,5 +23,7 @@ class LanguagesDef {
         // configurations
         $this->keyword->maxlength = 128;
         $this->value->maxlength = -1;
+        $this->value->pattern = $regex_alpha_numeric;
+        $this->value->pattern_msg = $lang['regex_alpha_numeric'];
     }
 }

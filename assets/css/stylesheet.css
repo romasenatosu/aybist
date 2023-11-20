@@ -5,6 +5,13 @@
 
 /* tags */
 
+legend {
+    all: initial;
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
 /* tags end */
 
 /* id start */

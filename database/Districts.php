@@ -11,6 +11,8 @@ class Districts {
     public FormElement $updated_at;
 
     function __construct() {
+        global $regex_alpha_numeric, $lang;
+
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
         $this->city_id = new FormElement('city_id');
@@ -20,5 +22,7 @@ class Districts {
 
         // configurations
         $this->district->maxlength = -1;
+        $this->district->pattern = $regex_alpha_numeric;
+        $this->district->pattern_msg = $lang['regex_alpha_numeric'];
     }
 }

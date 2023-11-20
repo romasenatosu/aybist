@@ -21,17 +21,30 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=places_cities&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $cities->country_id->name ?>">
-                                            <?= $lang['label_country_id'] ?>
-                                            <span class="text-danger"><?= ($cities->country_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_country_id'] ?>" <?= $cities->country_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($cities->country_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($cities->country_id->help_msg) ?></span>
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $cities->country_id->name ?>">
+                                                    <?= $lang['label_country_id'] ?>
+                                                    <span class="text-danger"><?= ($cities->country_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $cities->country_id->get_select_attr() ?>>
+                                                    <option <?= ($cities->country_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_country_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($cities->country_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($cities->country_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=places_countries&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $cities->city->name ?>">
                                             <?= $lang['label_city'] ?>
                                             <span class="text-danger"><?= ($cities->city->required) ? '*': '' ?></span>
@@ -40,12 +53,12 @@
                                         <span class="text-danger"><?= ($cities->city->error_msg) ?></span>
                                         <span class="text-muted"><?= ($cities->city->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $cities->zip_code->name ?>">
                                             <?= $lang['label_zip_code'] ?>
                                             <span class="text-danger"><?= ($cities->zip_code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_text_attr() ?>>
+                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_number_attr() ?>>
                                         <span class="text-danger"><?= ($cities->zip_code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($cities->zip_code->help_msg) ?></span>
                                     </div>

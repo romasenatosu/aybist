@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=places_countries&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $countries->country->name ?>">
                                             <?= $lang['label_country'] ?>
                                             <span class="text-danger"><?= ($countries->country->required) ? '*': '' ?></span>
@@ -31,23 +31,14 @@
                                         <span class="text-danger"><?= ($countries->country->error_msg) ?></span>
                                         <span class="text-muted"><?= ($countries->country->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $countries->phone_code->name ?>">
                                             <?= $lang['label_phone_code'] ?>
                                             <span class="text-danger"><?= ($countries->phone_code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_phone_code'] ?>" <?= $countries->phone_code->get_text_attr() ?>>
+                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_phone_code'] ?>" <?= $countries->phone_code->get_number_attr() ?>>
                                         <span class="text-danger"><?= ($countries->phone_code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($countries->phone_code->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $countries->flag->name ?>">
-                                            <?= $lang['label_flag'] ?>
-                                            <span class="text-danger"><?= ($countries->flag->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $countries->flag->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($countries->flag->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($countries->flag->help_msg) ?></span>
                                     </div>
                                 </div>
                             </form>

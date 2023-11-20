@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=settings_currency&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settingsCurrency->name->name ?>">
                                             <?= $lang['label_name'] ?>
                                             <span class="text-danger"><?= ($settingsCurrency->name->required) ? '*': '' ?></span>
@@ -31,7 +31,7 @@
                                         <span class="text-danger"><?= ($settingsCurrency->name->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsCurrency->name->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settingsCurrency->symbol->name ?>">
                                             <?= $lang['label_symbol'] ?>
                                             <span class="text-danger"><?= ($settingsCurrency->symbol->required) ? '*': '' ?></span>

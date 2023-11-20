@@ -1,0 +1,926 @@
+[
+    {
+        "DövizKodu": "USD",
+        "DövizBirimi(TR)": "Dolar",
+        "DövizBirimi(EN)": "USDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "TRY",
+        "DövizBirimi(TR)": "TürkLirası",
+        "DövizBirimi(EN)": "TurkishLira",
+        "DövizSembolü": "₺"
+    },
+    {
+        "DövizKodu": "EUR",
+        "DövizBirimi(TR)": "Euro",
+        "DövizBirimi(EN)": "Euro",
+        "DövizSembolü": "€"
+    },
+    {
+        "DövizKodu": "GBP",
+        "DövizBirimi(TR)": "Sterlin",
+        "DövizBirimi(EN)": "BritishPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "CHF",
+        "DövizBirimi(TR)": "İsviçreFrangı",
+        "DövizBirimi(EN)": "SwissFranc",
+        "DövizSembolü": "CHF"
+    },
+    {
+        "DövizKodu": "CNY",
+        "DövizBirimi(TR)": "ÇinYuanı",
+        "DövizBirimi(EN)": "ChineseYuanRenminbi",
+        "DövizSembolü": "¥"
+    },
+    {
+        "DövizKodu": "JPY",
+        "DövizBirimi(TR)": "JaponYeni",
+        "DövizBirimi(EN)": "JapaneseYen",
+        "DövizSembolü": "¥"
+    },
+    {
+        "DövizKodu": "SAR",
+        "DövizBirimi(TR)": "SuudiA.Riyali",
+        "DövizBirimi(EN)": "SaudiArabianRiyal",
+        "DövizSembolü": "﷼"
+    },
+    {
+        "DövizKodu": "NOK",
+        "DövizBirimi(TR)": "NorveçKronu",
+        "DövizBirimi(EN)": "NorwegianKrone",
+        "DövizSembolü": "kr"
+    },
+    {
+        "DövizKodu": "DKK",
+        "DövizBirimi(TR)": "DanimarkaKronu",
+        "DövizBirimi(EN)": "DanishKrone",
+        "DövizSembolü": "kr"
+    },
+    {
+        "DövizKodu": "AUD",
+        "DövizBirimi(TR)": "AvustralyaDoları",
+        "DövizBirimi(EN)": "AustralianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "CAD",
+        "DövizBirimi(TR)": "KanadaDoları",
+        "DövizBirimi(EN)": "CanadianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "SEK",
+        "DövizBirimi(TR)": "İsveçKronu",
+        "DövizBirimi(EN)": "SwedishKrona",
+        "DövizSembolü": "kr"
+    },
+    {
+        "DövizKodu": "KWD",
+        "DövizBirimi(TR)": "KuveytDinarı",
+        "DövizBirimi(EN)": "KuwaitiDinar",
+        "DövizSembolü": "د.ك"
+    },
+    {
+        "DövizKodu": "IRR",
+        "DövizBirimi(TR)": "İranRiyali",
+        "DövizBirimi(EN)": "IranianRial",
+        "DövizSembolü": "﷼"
+    },
+    {
+        "DövizKodu": "RUB",
+        "DövizBirimi(TR)": "RusRublesi",
+        "DövizBirimi(EN)": "RussianRuble",
+        "DövizSembolü": "руб"
+    },
+    {
+        "DövizKodu": "AFN",
+        "DövizBirimi(TR)": "AfganistanAfganisi",
+        "DövizBirimi(EN)": "AfghanAfghani",
+        "DövizSembolü": "؋"
+    },
+    {
+        "DövizKodu": "AOA",
+        "DövizBirimi(TR)": "AngolaKvanzası",
+        "DövizBirimi(EN)": "AngolanKwanza",
+        "DövizSembolü": "Kz"
+    },
+    {
+        "DövizKodu": "ARS",
+        "DövizBirimi(TR)": "ArjantinPezosu",
+        "DövizBirimi(EN)": "ArgentinePeso",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "ALL",
+        "DövizBirimi(TR)": "ArnavutLeki",
+        "DövizBirimi(EN)": "AlbanianLek",
+        "DövizSembolü": "Lek"
+    },
+    {
+        "DövizKodu": "AWG",
+        "DövizBirimi(TR)": "ArubaFlorini",
+        "DövizBirimi(EN)": "ArubanorDutchGuilder",
+        "DövizSembolü": "ƒ"
+    },
+    {
+        "DövizKodu": "AZN",
+        "DövizBirimi(TR)": "AzerbaycanManatı",
+        "DövizBirimi(EN)": "AzerbaijaniNewManat",
+        "DövizSembolü": "ман"
+    },
+    {
+        "DövizKodu": "AED",
+        "DövizBirimi(TR)": "B.A.E.Dirhemi",
+        "DövizBirimi(EN)": "EmiratiDirham",
+        "DövizSembolü": "د.إ"
+    },
+    {
+        "DövizKodu": "BSD",
+        "DövizBirimi(TR)": "BahamaDoları",
+        "DövizBirimi(EN)": "BahamianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "BHD",
+        "DövizBirimi(TR)": "BahreynDinarı",
+        "DövizBirimi(EN)": "BahrainiDinar",
+        "DövizSembolü": "د.ب"
+    },
+    {
+        "DövizKodu": "BDT",
+        "DövizBirimi(TR)": "BangladeşTakası",
+        "DövizBirimi(EN)": "BangladeshiTaka",
+        "DövizSembolü": "৳"
+    },
+    {
+        "DövizKodu": "BBD",
+        "DövizBirimi(TR)": "BarbadosDoları",
+        "DövizBirimi(EN)": "BarbadianorBajanDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "BYR",
+        "DövizBirimi(TR)": "BelarusRublesi",
+        "DövizBirimi(EN)": "BelarusianRuble",
+        "DövizSembolü": "p."
+    },
+    {
+        "DövizKodu": "BZD",
+        "DövizBirimi(TR)": "BelizeDoları",
+        "DövizBirimi(EN)": "BelizeanDollar",
+        "DövizSembolü": "BZ$"
+    },
+    {
+        "DövizKodu": "BMD",
+        "DövizBirimi(TR)": "BermudaDoları",
+        "DövizBirimi(EN)": "BermudianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "BTN",
+        "DövizBirimi(TR)": "BhutanNgultrumu",
+        "DövizBirimi(EN)": "BhutaneseNgultrum",
+        "DövizSembolü": "Nu"
+    },
+    {
+        "DövizKodu": "BOB",
+        "DövizBirimi(TR)": "BolivyaBolivyanosu",
+        "DövizBirimi(EN)": "BolivianBoliviano",
+        "DövizSembolü": "$b"
+    },
+    {
+        "DövizKodu": "BAM",
+        "DövizBirimi(TR)": "BosnaKonvertiblMark",
+        "DövizBirimi(EN)": "BosnianConvertibleMarka",
+        "DövizSembolü": "KM"
+    },
+    {
+        "DövizKodu": "BWP",
+        "DövizBirimi(TR)": "BotsvanaPulası",
+        "DövizBirimi(EN)": "BotswanaPula",
+        "DövizSembolü": "P"
+    },
+    {
+        "DövizKodu": "BRL",
+        "DövizBirimi(TR)": "BrazilyaReali",
+        "DövizBirimi(EN)": "BrazilianReal",
+        "DövizSembolü": "R$"
+    },
+    {
+        "DövizKodu": "BND",
+        "DövizBirimi(TR)": "BruneiDoları",
+        "DövizBirimi(EN)": "BruneianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "BGN",
+        "DövizBirimi(TR)": "BulgarLevası",
+        "DövizBirimi(EN)": "BulgarianLev",
+        "DövizSembolü": "лв"
+    },
+    {
+        "DövizKodu": "BIF",
+        "DövizBirimi(TR)": "BurundiFrangı",
+        "DövizBirimi(EN)": "BurundianFranc",
+        "DövizSembolü": "BIF"
+    },
+    {
+        "DövizKodu": "XAF",
+        "DövizBirimi(TR)": "CFAFrangıBEAC",
+        "DövizBirimi(EN)": "CentralAfricanCFAFrancBEAC",
+        "DövizSembolü": "XAF"
+    },
+    {
+        "DövizKodu": "CVE",
+        "DövizBirimi(TR)": "CapeVerdeEskudosu",
+        "DövizBirimi(EN)": "CapeVerdeanEscudo",
+        "DövizSembolü": "CVE"
+    },
+    {
+        "DövizKodu": "GIP",
+        "DövizBirimi(TR)": "CebelitarıkPaundu",
+        "DövizBirimi(EN)": "GibraltarPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "DZD",
+        "DövizBirimi(TR)": "CezayirDinarı",
+        "DövizBirimi(EN)": "AlgerianDinar",
+        "DövizSembolü": "DZD"
+    },
+    {
+        "DövizKodu": "DJF",
+        "DövizBirimi(TR)": "CibutiFrangı",
+        "DövizBirimi(EN)": "DjiboutianFranc",
+        "DövizSembolü": "DJF"
+    },
+    {
+        "DövizKodu": "CZK",
+        "DövizBirimi(TR)": "ÇekKorunası",
+        "DövizBirimi(EN)": "CzechKoruna",
+        "DövizSembolü": "Kč"
+    },
+    {
+        "DövizKodu": "DOP",
+        "DövizBirimi(TR)": "DominikPezosu",
+        "DövizBirimi(EN)": "DominicanPeso",
+        "DövizSembolü": "RD$"
+    },
+    {
+        "DövizKodu": "XCD",
+        "DövizBirimi(TR)": "DoğuKarayipDoları",
+        "DövizBirimi(EN)": "EastCaribbeanDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "SVC",
+        "DövizBirimi(TR)": "ElSalvadorKolonu",
+        "DövizBirimi(EN)": "SalvadoranColon",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "IDR",
+        "DövizBirimi(TR)": "EndonezyaRupisi",
+        "DövizBirimi(EN)": "IndonesianRupiah",
+        "DövizSembolü": "Rp"
+    },
+    {
+        "DövizKodu": "ERN",
+        "DövizBirimi(TR)": "Eritre,Nakfa",
+        "DövizBirimi(EN)": "EritreanNakfa",
+        "DövizSembolü": "ERN"
+    },
+    {
+        "DövizKodu": "AMD",
+        "DövizBirimi(TR)": "ErmenistanDramı",
+        "DövizBirimi(EN)": "ArmenianDram",
+        "DövizSembolü": "AMD"
+    },
+    {
+        "DövizKodu": "ETB",
+        "DövizBirimi(TR)": "EtiyopyaBiri",
+        "DövizBirimi(EN)": "EthiopianBirr",
+        "DövizSembolü": "ETB"
+    },
+    {
+        "DövizKodu": "FKP",
+        "DövizBirimi(TR)": "FalklandAdalarıLirası",
+        "DövizBirimi(EN)": "FalklandIslandPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "MAD",
+        "DövizBirimi(TR)": "FasDirhemi",
+        "DövizBirimi(EN)": "MoroccanDirham",
+        "DövizSembolü": "MAD"
+    },
+    {
+        "DövizKodu": "FJD",
+        "DövizBirimi(TR)": "FijiDoları",
+        "DövizBirimi(EN)": "FijianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "PHP",
+        "DövizBirimi(TR)": "FilipinlerPesosu",
+        "DövizBirimi(EN)": "PhilippinePeso",
+        "DövizSembolü": "₱"
+    },
+    {
+        "DövizKodu": "GMD",
+        "DövizBirimi(TR)": "GambiyaDalasisi",
+        "DövizBirimi(EN)": "GambianDalasi",
+        "DövizSembolü": "GMD"
+    },
+    {
+        "DövizKodu": "GHS",
+        "DövizBirimi(TR)": "GanaCedisi",
+        "DövizBirimi(EN)": "GhanaianCedi",
+        "DövizSembolü": "¢"
+    },
+    {
+        "DövizKodu": "GNF",
+        "DövizBirimi(TR)": "GineFrangı",
+        "DövizBirimi(EN)": "GuineanFranc",
+        "DövizSembolü": "GNF"
+    },
+    {
+        "DövizKodu": "GTQ",
+        "DövizBirimi(TR)": "GuatemalaKuetzalı",
+        "DövizBirimi(EN)": "GuatemalanQuetzal",
+        "DövizSembolü": "Q"
+    },
+    {
+        "DövizKodu": "GYD",
+        "DövizBirimi(TR)": "GuyanaDoları",
+        "DövizBirimi(EN)": "GuyaneseDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "ZAR",
+        "DövizBirimi(TR)": "GüneyAfrikaRandı",
+        "DövizBirimi(EN)": "SouthAfricanRand",
+        "DövizSembolü": "R"
+    },
+    {
+        "DövizKodu": "KRW",
+        "DövizBirimi(TR)": "GüneyKoreWonu",
+        "DövizBirimi(EN)": "SouthKoreanWon",
+        "DövizSembolü": "₩"
+    },
+    {
+        "DövizKodu": "GEL",
+        "DövizBirimi(TR)": "GürcistanLarisi",
+        "DövizBirimi(EN)": "GeorgianLari",
+        "DövizSembolü": "GEL"
+    },
+    {
+        "DövizKodu": "HTG",
+        "DövizBirimi(TR)": "HaitiGurdesi",
+        "DövizBirimi(EN)": "HaitianGourde",
+        "DövizSembolü": "HTG"
+    },
+    {
+        "DövizKodu": "INR",
+        "DövizBirimi(TR)": "HindistanRupisi",
+        "DövizBirimi(EN)": "IndianRupee",
+        "DövizSembolü": "₹"
+    },
+    {
+        "DövizKodu": "ANG",
+        "DövizBirimi(TR)": "HollandaAntilleriFlorini",
+        "DövizBirimi(EN)": "DutchGuilder",
+        "DövizSembolü": "ƒ"
+    },
+    {
+        "DövizKodu": "HNL",
+        "DövizBirimi(TR)": "HondurasLempirası",
+        "DövizBirimi(EN)": "HonduranLempira",
+        "DövizSembolü": "L"
+    },
+    {
+        "DövizKodu": "HKD",
+        "DövizBirimi(TR)": "HongKongDoları",
+        "DövizBirimi(EN)": "HongKongDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "HRK",
+        "DövizBirimi(TR)": "HırvatKunası",
+        "DövizBirimi(EN)": "CroatianKuna",
+        "DövizSembolü": "kn"
+    },
+    {
+        "DövizKodu": "IQD",
+        "DövizBirimi(TR)": "IrakDinarı",
+        "DövizBirimi(EN)": "IraqiDinar",
+        "DövizSembolü": "IQD"
+    },
+    {
+        "DövizKodu": "ILS",
+        "DövizBirimi(TR)": "İsrailYeniŞekeli",
+        "DövizBirimi(EN)": "IsraeliShekel",
+        "DövizSembolü": "₪"
+    },
+    {
+        "DövizKodu": "ISK",
+        "DövizBirimi(TR)": "İzlandaKronu",
+        "DövizBirimi(EN)": "IcelandicKrona",
+        "DövizSembolü": "kr"
+    },
+    {
+        "DövizKodu": "JMD",
+        "DövizBirimi(TR)": "JamaikaDoları",
+        "DövizBirimi(EN)": "JamaicanDollar",
+        "DövizSembolü": "J$"
+    },
+    {
+        "DövizKodu": "KHR",
+        "DövizBirimi(TR)": "KamboçyaRieli",
+        "DövizBirimi(EN)": "CambodianRiel",
+        "DövizSembolü": "៛"
+    },
+    {
+        "DövizKodu": "QAR",
+        "DövizBirimi(TR)": "KatarRiyali",
+        "DövizBirimi(EN)": "QatariRiyal",
+        "DövizSembolü": "﷼"
+    },
+    {
+        "DövizKodu": "KYD",
+        "DövizBirimi(TR)": "KaymanAdalarıDoları",
+        "DövizBirimi(EN)": "CaymanianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "KZT",
+        "DövizBirimi(TR)": "KazakistanTengesi",
+        "DövizBirimi(EN)": "KazakhstaniTenge",
+        "DövizSembolü": "лв"
+    },
+    {
+        "DövizKodu": "KES",
+        "DövizBirimi(TR)": "KenyaŞilini",
+        "DövizBirimi(EN)": "KenyanShilling",
+        "DövizSembolü": "KSh"
+    },
+    {
+        "DövizKodu": "COP",
+        "DövizBirimi(TR)": "KolombiyaPezosu",
+        "DövizBirimi(EN)": "ColombianPeso",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "KMF",
+        "DövizBirimi(TR)": "KomorFrangı",
+        "DövizBirimi(EN)": "ComoranFranc",
+        "DövizSembolü": "KMF"
+    },
+    {
+        "DövizKodu": "CDF",
+        "DövizBirimi(TR)": "KongoFrangı",
+        "DövizBirimi(EN)": "CongoleseFranc",
+        "DövizSembolü": "CDF"
+    },
+    {
+        "DövizKodu": "CRC",
+        "DövizBirimi(TR)": "KostaRikaKolonu",
+        "DövizBirimi(EN)": "CostaRicanColon",
+        "DövizSembolü": "₡"
+    },
+    {
+        "DövizKodu": "KPW",
+        "DövizBirimi(TR)": "KuzeyKoreVonu",
+        "DövizBirimi(EN)": "NorthKoreanWon",
+        "DövizSembolü": "₩"
+    },
+    {
+        "DövizKodu": "CUP",
+        "DövizBirimi(TR)": "KübaPezosu",
+        "DövizBirimi(EN)": "CubanPeso",
+        "DövizSembolü": "₱"
+    },
+    {
+        "DövizKodu": "KGS",
+        "DövizBirimi(TR)": "KırgızistanSomu",
+        "DövizBirimi(EN)": "KyrgyzstaniSom",
+        "DövizSembolü": "лв"
+    },
+    {
+        "DövizKodu": "LAK",
+        "DövizBirimi(TR)": "LaosKipi",
+        "DövizBirimi(EN)": "LaoorLaotianKip",
+        "DövizSembolü": "₭"
+    },
+    {
+        "DövizKodu": "LSL",
+        "DövizBirimi(TR)": "LesothoLotisi",
+        "DövizBirimi(EN)": "BasothoLoti",
+        "DövizSembolü": "LSL"
+    },
+    {
+        "DövizKodu": "LVL",
+        "DövizBirimi(TR)": "LetonyaLatsı",
+        "DövizBirimi(EN)": "LatvianLats",
+        "DövizSembolü": "Ls"
+    },
+    {
+        "DövizKodu": "LRD",
+        "DövizBirimi(TR)": "LiberyaDoları",
+        "DövizBirimi(EN)": "LiberianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "LYD",
+        "DövizBirimi(TR)": "LibyaDinarı",
+        "DövizBirimi(EN)": "LibyanDinar",
+        "DövizSembolü": "LYD"
+    },
+    {
+        "DövizKodu": "LTL",
+        "DövizBirimi(TR)": "LitvanyaLitusu",
+        "DövizBirimi(EN)": "LithuanianLitus",
+        "DövizSembolü": "Lt"
+    },
+    {
+        "DövizKodu": "LBP",
+        "DövizBirimi(TR)": "LübnanPaundu",
+        "DövizBirimi(EN)": "LebanesePound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "HUF",
+        "DövizBirimi(TR)": "MacarForinti",
+        "DövizBirimi(EN)": "HungarianForint",
+        "DövizSembolü": "Ft"
+    },
+    {
+        "DövizKodu": "MGA",
+        "DövizBirimi(TR)": "MadagaskarDoları",
+        "DövizBirimi(EN)": "MalagasyAriary",
+        "DövizSembolü": "Ar"
+    },
+    {
+        "DövizKodu": "MOP",
+        "DövizBirimi(TR)": "MakauPatacası",
+        "DövizBirimi(EN)": "MacauPataca",
+        "DövizSembolü": "MOP"
+    },
+    {
+        "DövizKodu": "MKD",
+        "DövizBirimi(TR)": "MakedonyaDinarı",
+        "DövizBirimi(EN)": "MacedonianDenar",
+        "DövizSembolü": "ден"
+    },
+    {
+        "DövizKodu": "MWK",
+        "DövizBirimi(TR)": "MalaviKvakası",
+        "DövizBirimi(EN)": "MalawianKwacha",
+        "DövizSembolü": "MWK"
+    },
+    {
+        "DövizKodu": "MVR",
+        "DövizBirimi(TR)": "MaldivRufiyası",
+        "DövizBirimi(EN)": "MaldivianRufiyaa",
+        "DövizSembolü": "Rf"
+    },
+    {
+        "DövizKodu": "MYR",
+        "DövizBirimi(TR)": "MalezyaRingiti",
+        "DövizBirimi(EN)": "MalaysianRinggit",
+        "DövizSembolü": "RM"
+    },
+    {
+        "DövizKodu": "MUR",
+        "DövizBirimi(TR)": "MauritusRupisi",
+        "DövizBirimi(EN)": "MauritianRupee",
+        "DövizSembolü": "₨"
+    },
+    {
+        "DövizKodu": "MXN",
+        "DövizBirimi(TR)": "MeksikaPezosu",
+        "DövizBirimi(EN)": "MexicanPeso",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "MDL",
+        "DövizBirimi(TR)": "MoldovaLeyi",
+        "DövizBirimi(EN)": "MoldovanLeu",
+        "DövizSembolü": "MDL"
+    },
+    {
+        "DövizKodu": "MRO",
+        "DövizBirimi(TR)": "MoritanyaOuguiyası",
+        "DövizBirimi(EN)": "MauritanianOuguiya",
+        "DövizSembolü": "MRO"
+    },
+    {
+        "DövizKodu": "MZN",
+        "DövizBirimi(TR)": "MozambikMetikali",
+        "DövizBirimi(EN)": "MozambicanMetical",
+        "DövizSembolü": "MT"
+    },
+    {
+        "DövizKodu": "MNT",
+        "DövizBirimi(TR)": "MoğolistanTugriki",
+        "DövizBirimi(EN)": "MongolianTughrik",
+        "DövizSembolü": "₮"
+    },
+    {
+        "DövizKodu": "MMK",
+        "DövizBirimi(TR)": "MyanmarKyatı",
+        "DövizBirimi(EN)": "BurmeseKyat",
+        "DövizSembolü": "MMK"
+    },
+    {
+        "DövizKodu": "EGP",
+        "DövizBirimi(TR)": "MısırLirası",
+        "DövizBirimi(EN)": "EgyptianPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "NAD",
+        "DövizBirimi(TR)": "NamibyaDoları",
+        "DövizBirimi(EN)": "NamibianDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "NPR",
+        "DövizBirimi(TR)": "NepalRupisi",
+        "DövizBirimi(EN)": "NepaleseRupee",
+        "DövizSembolü": "₨"
+    },
+    {
+        "DövizKodu": "NGN",
+        "DövizBirimi(TR)": "NijeryaNairası",
+        "DövizBirimi(EN)": "NigerianNaira",
+        "DövizSembolü": "₦"
+    },
+    {
+        "DövizKodu": "NIO",
+        "DövizBirimi(TR)": "NikaraguaKordobaOrosu",
+        "DövizBirimi(EN)": "NicaraguanCordoba",
+        "DövizSembolü": "C$"
+    },
+    {
+        "DövizKodu": "UZS",
+        "DövizBirimi(TR)": "ÖzbekistanSumu",
+        "DövizBirimi(EN)": "UzbekistaniSom",
+        "DövizSembolü": "лв"
+    },
+    {
+        "DövizKodu": "PAB",
+        "DövizBirimi(TR)": "PanamaBalboası",
+        "DövizBirimi(EN)": "PanamanianBalboa",
+        "DövizSembolü": "B/."
+    },
+    {
+        "DövizKodu": "PGK",
+        "DövizBirimi(TR)": "PapuaYeniGineKinası",
+        "DövizBirimi(EN)": "PapuaNewGuineanKina",
+        "DövizSembolü": "PGK"
+    },
+    {
+        "DövizKodu": "PYG",
+        "DövizBirimi(TR)": "ParaguayGuaranisi",
+        "DövizBirimi(EN)": "ParaguayanGuarani",
+        "DövizSembolü": "Gs"
+    },
+    {
+        "DövizKodu": "PEN",
+        "DövizBirimi(TR)": "PeruYeniSolu",
+        "DövizBirimi(EN)": "PeruvianNuevoSol",
+        "DövizSembolü": "S/."
+    },
+    {
+        "DövizKodu": "PLN",
+        "DövizBirimi(TR)": "PolonyaZlotisi",
+        "DövizBirimi(EN)": "PolishZloty",
+        "DövizSembolü": "zł"
+    },
+    {
+        "DövizKodu": "RON",
+        "DövizBirimi(TR)": "RomenLeyi",
+        "DövizBirimi(EN)": "RomanianNewLeu",
+        "DövizSembolü": "lei"
+    },
+    {
+        "DövizKodu": "RWF",
+        "DövizBirimi(TR)": "RuandaFrangı",
+        "DövizBirimi(EN)": "RwandanFranc",
+        "DövizSembolü": "RWF"
+    },
+    {
+        "DövizKodu": "SHP",
+        "DövizBirimi(TR)": "SaintHelenaPaundu",
+        "DövizBirimi(EN)": "SaintHelenianPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "WST",
+        "DövizBirimi(TR)": "SamoaTalası",
+        "DövizBirimi(EN)": "SamoanTala",
+        "DövizSembolü": "WST"
+    },
+    {
+        "DövizKodu": "STD",
+        "DövizBirimi(TR)": "SaoTomeveP.Dobrası",
+        "DövizBirimi(EN)": "SaoTomeanDobra",
+        "DövizSembolü": "STD"
+    },
+    {
+        "DövizKodu": "SCR",
+        "DövizBirimi(TR)": "SeyşellerRupisi",
+        "DövizBirimi(EN)": "SeychelloisRupee",
+        "DövizSembolü": "₨"
+    },
+    {
+        "DövizKodu": "SLL",
+        "DövizBirimi(TR)": "SierraLeoneLeonu",
+        "DövizBirimi(EN)": "SierraLeoneanLeone",
+        "DövizSembolü": "SLL"
+    },
+    {
+        "DövizKodu": "SGD",
+        "DövizBirimi(TR)": "SingapurDoları",
+        "DövizBirimi(EN)": "SingaporeDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "SBD",
+        "DövizBirimi(TR)": "SolomonAdalarıDoları",
+        "DövizBirimi(EN)": "SolomonIslanderDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "SOS",
+        "DövizBirimi(TR)": "SomaliŞilini",
+        "DövizBirimi(EN)": "SomaliShilling",
+        "DövizSembolü": "S"
+    },
+    {
+        "DövizKodu": "LKR",
+        "DövizBirimi(TR)": "SriLankaRupisi",
+        "DövizBirimi(EN)": "SriLankanRupee",
+        "DövizSembolü": "₨"
+    },
+    {
+        "DövizKodu": "SDG",
+        "DövizBirimi(TR)": "SudanDinarı",
+        "DövizBirimi(EN)": "SudanesePound",
+        "DövizSembolü": "SDG"
+    },
+    {
+        "DövizKodu": "SRD",
+        "DövizBirimi(TR)": "SurinamDoları",
+        "DövizBirimi(EN)": "SurinameseDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "SYP",
+        "DövizBirimi(TR)": "SuriyeLirası",
+        "DövizBirimi(EN)": "SyrianPound",
+        "DövizSembolü": "£"
+    },
+    {
+        "DövizKodu": "SZL",
+        "DövizBirimi(TR)": "SvazilandLilangenisi",
+        "DövizBirimi(EN)": "SwaziLilangeni",
+        "DövizSembolü": "SZL"
+    },
+    {
+        "DövizKodu": "RSD",
+        "DövizBirimi(TR)": "SırpDinarı",
+        "DövizBirimi(EN)": "SerbianDinar",
+        "DövizSembolü": "Дин."
+    },
+    {
+        "DövizKodu": "CLP",
+        "DövizBirimi(TR)": "ŞiliPezosu",
+        "DövizBirimi(EN)": "ChileanPeso",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "TJS",
+        "DövizBirimi(TR)": "TacikistanSomonisi",
+        "DövizBirimi(EN)": "TajikistaniSomoni",
+        "DövizSembolü": "TJS"
+    },
+    {
+        "DövizKodu": "TZS",
+        "DövizBirimi(TR)": "TanzanyaŞilini",
+        "DövizBirimi(EN)": "TanzanianShilling",
+        "DövizSembolü": "TZS"
+    },
+    {
+        "DövizKodu": "THB",
+        "DövizBirimi(TR)": "TaylandBahtı",
+        "DövizBirimi(EN)": "ThaiBaht",
+        "DövizSembolü": "฿"
+    },
+    {
+        "DövizKodu": "TWD",
+        "DövizBirimi(TR)": "TayvanYeniDoları",
+        "DövizBirimi(EN)": "TaiwanNewDollar",
+        "DövizSembolü": "NT$"
+    },
+    {
+        "DövizKodu": "TOP",
+        "DövizBirimi(TR)": "TongaPaangası",
+        "DövizBirimi(EN)": "TonganPaanga",
+        "DövizSembolü": "TOP"
+    },
+    {
+        "DövizKodu": "TTD",
+        "DövizBirimi(TR)": "TrinidadveTobagoDoları",
+        "DövizBirimi(EN)": "TrinidadianDollar",
+        "DövizSembolü": "TT$"
+    },
+    {
+        "DövizKodu": "TND",
+        "DövizBirimi(TR)": "TunusDinarı",
+        "DövizBirimi(EN)": "TunisianDinar",
+        "DövizSembolü": "DT"
+    },
+    {
+        "DövizKodu": "TMT",
+        "DövizBirimi(TR)": "TürkmenistanY.Manatı",
+        "DövizBirimi(EN)": "TurkmenistaniManat",
+        "DövizSembolü": "TMT"
+    },
+    {
+        "DövizKodu": "UGX",
+        "DövizBirimi(TR)": "UgandaŞilini",
+        "DövizBirimi(EN)": "UgandanShilling",
+        "DövizSembolü": "USh"
+    },
+    {
+        "DövizKodu": "UAH",
+        "DövizBirimi(TR)": "UkraynaHryvniası",
+        "DövizBirimi(EN)": "UkrainianHryvnia",
+        "DövizSembolü": "₴"
+    },
+    {
+        "DövizKodu": "OMR",
+        "DövizBirimi(TR)": "UmmanRiyali",
+        "DövizBirimi(EN)": "OmaniRial",
+        "DövizSembolü": "﷼"
+    },
+    {
+        "DövizKodu": "UYU",
+        "DövizBirimi(TR)": "UruguayPezosu",
+        "DövizBirimi(EN)": "UruguayanPeso",
+        "DövizSembolü": "$U"
+    },
+    {
+        "DövizKodu": "JOD",
+        "DövizBirimi(TR)": "ÜrdünDinarı",
+        "DövizBirimi(EN)": "JordanianDinar",
+        "DövizSembolü": "JD"
+    },
+    {
+        "DövizKodu": "VUV",
+        "DövizBirimi(TR)": "VanuatuVatusu",
+        "DövizBirimi(EN)": "Ni-VanuatuVatu",
+        "DövizSembolü": "VUV"
+    },
+    {
+        "DövizKodu": "VEF",
+        "DövizBirimi(TR)": "VenezuelaBolivarı",
+        "DövizBirimi(EN)": "VenezuelanBolivar",
+        "DövizSembolü": "Bs"
+    },
+    {
+        "DövizKodu": "VND",
+        "DövizBirimi(TR)": "VietnamDongu",
+        "DövizBirimi(EN)": "VietnameseDong",
+        "DövizSembolü": "₫"
+    },
+    {
+        "DövizKodu": "YER",
+        "DövizBirimi(TR)": "YemenRiyali",
+        "DövizBirimi(EN)": "YemeniRial",
+        "DövizSembolü": "﷼"
+    },
+    {
+        "DövizKodu": "NZD",
+        "DövizBirimi(TR)": "YeniZelandaDoları",
+        "DövizBirimi(EN)": "NewZealandDollar",
+        "DövizSembolü": "$"
+    },
+    {
+        "DövizKodu": "ZMW",
+        "DövizBirimi(TR)": "ZambianKwacha",
+        "DövizBirimi(EN)": "ZambianKwacha",
+        "DövizSembolü": "ZMW"
+    },
+    {
+        "DövizKodu": "ZWL",
+        "DövizBirimi(TR)": "ZimbabveDoları",
+        "DövizBirimi(EN)": "ZimbabweanDollar",
+        "DövizSembolü": "Z$"
+    }
+]

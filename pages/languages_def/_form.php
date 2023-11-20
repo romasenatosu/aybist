@@ -21,17 +21,17 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=languages_def&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $languagesDef->keyword->name ?>">
                                             <?= $lang['label_keyword'] ?>
                                             <span class="text-danger"><?= ($languagesDef->keyword->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_keyword'] ?>" <?= $languagesDef->keyword->get_text_attr() ?>>
+                                        <input type="text" class="form-control" <?= $languagesDef->keyword->get_text_attr() ?> readonly>
                                         <span class="text-danger"><?= ($languagesDef->keyword->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languagesDef->keyword->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $languagesDef->value->name ?>">
                                             <?= $lang['label_value'] ?>
                                             <span class="text-danger"><?= ($languagesDef->value->required) ? '*': '' ?></span>

@@ -43,21 +43,19 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: crud operations using PDO -->
+    <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->
     <!-- TODO: php.ini settings must be derived from database -->
     <!-- TODO: method listener for GET, POST, etc. -->
-    <!-- TODO: check error redirections -->
-    <!-- TODO: regex etc. -->
     <!-- TODO: create analytics charts -->
     <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
-<!--     <div class="preloader">
+    <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div> -->
+    </div>
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -108,10 +106,17 @@
 
     <!-- flatpickr -->
     <script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="node_modules/flatpickr/dist/l10n/tr.js"></script>
+    <script src="node_modules/flatpickr/dist/l10n/<?= $locale ?>.js"></script>
 
     <!-- Sweetalert -->
     <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <!-- inputmask -->
+    <script src="node_modules/inputmask/dist/jquery.inputmask.min.js"></script>
+
+    <!-- ckEditor5 -->
+    <script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+    <script src="node_modules/@ckeditor/ckeditor5-build-classic/build/translations/<?= $locale ?>.js"></script>
 
     <!-- myscript -->
     <script type="text/javascript">
@@ -159,7 +164,7 @@
             let flatpickr_config = {
                 enableTime: false,
                 dateFormat: "d.m.y",
-                locale: <?= $locale ?>,
+                locale: "<?= $locale ?>",
             }
 
             $(".flatpickr").flatpickr(flatpickr_config)
@@ -185,8 +190,36 @@
                     }
                 })
             })
-        })
 
+            /* input mask */
+            $("input[type='tel']").inputmask('999 999 99 99')
+
+            /* ckeditor */
+            const ck_field = document.querySelector('.ck_field')
+
+            if (ck_field) {
+                ClassicEditor
+                    .create(ck_field, {
+                        language: "<?= $locale ?>",
+                    })
+                    .then(editor => {
+                        const updateConfigs = () => {
+                            editor.ui.view.editable.element.style.height = '300px';
+                            editor.ui.view.editable.element.style.maxHeight = '500px';
+                            editor.ui.view.editable.element.style.overflowY = 'auto';
+                        }
+
+                        // when user focuses on the editor then update the configs to prevent the reset
+                        editor.editing.view.document.on('focus', updateConfigs)
+
+                        // run configs after the editor was launched
+                        updateConfigs()
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
+            }
+        })
     </script>
 </body>
 

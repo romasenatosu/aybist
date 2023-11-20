@@ -20,9 +20,9 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=settings_general&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                            <form action="<?= "?locale=$locale&page=settings_general&action=create" ?>" method="post" enctype="multipart/form-data">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settings->company->name ?>">
                                             <?= $lang['label_company'] ?>
                                             <span class="text-danger"><?= ($settings->company->required) ? '*': '' ?></span>
@@ -31,7 +31,7 @@
                                         <span class="text-danger"><?= ($settings->company->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->company->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settings->slogan->name ?>">
                                             <?= $lang['label_slogan'] ?>
                                             <span class="text-danger"><?= ($settings->slogan->required) ? '*': '' ?></span>
@@ -40,174 +40,213 @@
                                         <span class="text-danger"><?= ($settings->slogan->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->slogan->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12">
                                         <label class="form-label" for="<?= $settings->description->name ?>">
                                             <?= $lang['label_description'] ?>
                                             <span class="text-danger"><?= ($settings->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $settings->description->get_text_attr() ?>>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $settings->description->get_textarea_attr() ?>><?= $settings->description->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->description->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12">
                                         <label class="form-label" for="<?= $settings->keywords->name ?>">
                                             <?= $lang['label_keywords'] ?>
                                             <span class="text-danger"><?= ($settings->keywords->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_keywords'] ?>" <?= $settings->keywords->get_text_attr() ?>>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_keywords'] ?>" <?= $settings->keywords->get_textarea_attr() ?>><?= $settings->keywords->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->keywords->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->keywords->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->site_title->name ?>">
-                                            <?= $lang['label_site_title'] ?>
-                                            <span class="text-danger"><?= ($settings->site_title->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_site_title'] ?>" <?= $settings->site_title->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->site_title->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->site_title->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <fieldset class="border p-3">
+                                            <legend><?= $lang['text_site'] ?></legend>
+                                            <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="<?= $settings->site_title->name ?>">
+                                                        <?= $lang['label_site_title'] ?>
+                                                        <span class="text-danger"><?= ($settings->site_title->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="text" class="form-control" placeholder="<?= $lang['placeholder_site_title'] ?>" <?= $settings->site_title->get_text_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->site_title->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->site_title->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label" for="<?= $settings->site_url->name ?>">
+                                                        <?= $lang['label_site_url'] ?>
+                                                        <span class="text-danger"><?= ($settings->site_url->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="url" class="form-control" placeholder="<?= $lang['placeholder_site_url'] ?>" <?= $settings->site_url->get_text_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->site_url->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->site_url->help_msg) ?></span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->site_url->name ?>">
-                                            <?= $lang['label_site_url'] ?>
-                                            <span class="text-danger"><?= ($settings->site_url->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_site_url'] ?>" <?= $settings->site_url->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->site_url->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->site_url->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <fieldset class="border p-3">
+                                            <legend><?= $lang['text_smtp'] ?></legend>
+                                            <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->smtp_url->name ?>">
+                                                        <?= $lang['label_smtp_url'] ?>
+                                                        <span class="text-danger"><?= ($settings->smtp_url->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="url" class="form-control" placeholder="<?= $lang['placeholder_smtp_url'] ?>" <?= $settings->smtp_url->get_text_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->smtp_url->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->smtp_url->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->smtp_password->name ?>">
+                                                        <?= $lang['label_smtp_password'] ?>
+                                                        <span class="text-danger"><?= ($settings->smtp_password->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="password" class="form-control" placeholder="<?= $lang['placeholder_smtp_password'] ?>" <?= $settings->smtp_password->get_text_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->smtp_password->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->smtp_password->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->smtp_port->name ?>">
+                                                        <?= $lang['label_smtp_port'] ?>
+                                                        <span class="text-danger"><?= ($settings->smtp_port->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_smtp_port'] ?>" <?= $settings->smtp_port->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->smtp_port->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->smtp_port->help_msg) ?></span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->smtp_url->name ?>">
-                                            <?= $lang['label_smtp_url'] ?>
-                                            <span class="text-danger"><?= ($settings->smtp_url->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_smtp_url'] ?>" <?= $settings->smtp_url->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->smtp_url->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->smtp_url->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <fieldset class="border p-3">
+                                            <legend><?= $lang['text_normal_photo'] ?></legend>
+                                            <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->normal_photo->name ?>">
+                                                        <?= $lang['label_photo'] ?>
+                                                        <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="file" class="form-control" <?= $settings->normal_photo->get_file_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->normal_photo->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->normal_photo->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->normal_photo_width->name ?>">
+                                                        <?= $lang['label_width'] ?>
+                                                        <span class="text-danger"><?= ($settings->normal_photo_width->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->normal_photo_width->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->normal_photo_width->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->normal_photo_width->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->normal_photo_height->name ?>">
+                                                        <?= $lang['label_height'] ?>
+                                                        <span class="text-danger"><?= ($settings->normal_photo_height->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->normal_photo_height->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->normal_photo_height->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->normal_photo_height->help_msg) ?></span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->smtp_password->name ?>">
-                                            <?= $lang['label_smtp_password'] ?>
-                                            <span class="text-danger"><?= ($settings->smtp_password->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_smtp_password'] ?>" <?= $settings->smtp_password->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->smtp_password->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->smtp_password->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <fieldset class="border p-3">
+                                            <legend><?= $lang['text_top_photo'] ?></legend>
+                                            <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->top_photo->name ?>">
+                                                        <?= $lang['label_photo'] ?>
+                                                        <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="file" class="form-control" <?= $settings->top_photo->get_file_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->top_photo->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->top_photo->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->top_photo_width->name ?>">
+                                                        <?= $lang['label_width'] ?>
+                                                        <span class="text-danger"><?= ($settings->top_photo_width->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->top_photo_width->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->top_photo_width->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->top_photo_width->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->top_photo_height->name ?>">
+                                                        <?= $lang['label_height'] ?>
+                                                        <span class="text-danger"><?= ($settings->top_photo_height->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->top_photo_height->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->top_photo_height->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->top_photo_height->help_msg) ?></span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->smtp_port->name ?>">
-                                            <?= $lang['label_smtp_port'] ?>
-                                            <span class="text-danger"><?= ($settings->smtp_port->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_smtp_port'] ?>" <?= $settings->smtp_port->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->smtp_port->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->smtp_port->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <fieldset class="border p-3">
+                                            <legend><?= $lang['text_small_photo'] ?></legend>
+                                            <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->small_photo->name ?>">
+                                                        <?= $lang['label_photo'] ?>
+                                                        <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="file" class="form-control" <?= $settings->small_photo->get_file_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->small_photo->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->small_photo->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->small_photo_width->name ?>">
+                                                        <?= $lang['label_width'] ?>
+                                                        <span class="text-danger"><?= ($settings->small_photo_width->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->small_photo_width->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->small_photo_width->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->small_photo_width->help_msg) ?></span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label" for="<?= $settings->small_photo_height->name ?>">
+                                                        <?= $lang['label_height'] ?>
+                                                        <span class="text-danger"><?= ($settings->small_photo_height->required) ? '*': '' ?></span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->small_photo_height->get_number_attr() ?>>
+                                                    <span class="text-danger"><?= ($settings->small_photo_height->error_msg) ?></span>
+                                                    <span class="text-muted"><?= ($settings->small_photo_height->help_msg) ?></span>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->normal_photo->name ?>">
-                                            <?= $lang['label_normal_photo'] ?>
-                                            <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $settings->normal_photo->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->normal_photo->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->normal_photo->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="<?= $settings->debug_mode->name ?>">
+                                                <?= $lang['label_debug_mode'] ?>
+                                                <span class="text-danger"><?= ($settings->debug_mode->required) ? '*': '' ?></span>
+                                            </label>
+                                            <input type="checkbox" class="form-check-input" <?= $settings->debug_mode->get_check_attr() ?>>
+                                            <span class="text-danger"><?= ($settings->debug_mode->error_msg) ?></span>
+                                            <span class="text-muted"><?= ($settings->debug_mode->help_msg) ?></span>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->normal_photo_width->name ?>">
-                                            <?= $lang['label_normal_photo_width'] ?>
-                                            <span class="text-danger"><?= ($settings->normal_photo_width->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_normal_photo_width'] ?>" <?= $settings->normal_photo_width->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->normal_photo_width->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->normal_photo_width->help_msg) ?></span>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="<?= $settings->maintenance_mode->name ?>">
+                                                <?= $lang['label_maintenance_mod'] ?>
+                                                <span class="text-danger"><?= ($settings->maintenance_mode->required) ? '*': '' ?></span>
+                                            </label>
+                                            <input type="checkbox" class="form-check-input" <?= $settings->maintenance_mode->get_check_attr() ?>>
+                                            <span class="text-danger"><?= ($settings->maintenance_mode->error_msg) ?></span>
+                                            <span class="text-muted"><?= ($settings->maintenance_mode->help_msg) ?></span>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->normal_photo_height->name ?>">
-                                            <?= $lang['label_normal_photo_height'] ?>
-                                            <span class="text-danger"><?= ($settings->normal_photo_height->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_normal_photo_height'] ?>" <?= $settings->normal_photo_height->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->normal_photo_height->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->normal_photo_height->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->top_photo->name ?>">
-                                            <?= $lang['label_top_photo'] ?>
-                                            <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $settings->top_photo->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->top_photo->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->top_photo->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->top_photo_width->name ?>">
-                                            <?= $lang['label_top_photo_width'] ?>
-                                            <span class="text-danger"><?= ($settings->top_photo_width->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_top_photo_width'] ?>" <?= $settings->top_photo_width->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->top_photo_width->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->top_photo_width->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->top_photo_height->name ?>">
-                                            <?= $lang['label_top_photo_height'] ?>
-                                            <span class="text-danger"><?= ($settings->top_photo_height->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_top_photo_height'] ?>" <?= $settings->top_photo_height->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->top_photo_height->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->top_photo_height->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->small_photo->name ?>">
-                                            <?= $lang['label_small_photo'] ?>
-                                            <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $settings->top_photo->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->small_photo->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->small_photo->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->small_photo_width->name ?>">
-                                            <?= $lang['label_small_photo_width'] ?>
-                                            <span class="text-danger"><?= ($settings->small_photo_width->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_small_photo_width'] ?>" <?= $settings->small_photo_width->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->small_photo_width->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->small_photo_width->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->small_photo_height->name ?>">
-                                            <?= $lang['label_small_photo_height'] ?>
-                                            <span class="text-danger"><?= ($settings->small_photo_height->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_small_photo_height'] ?>" <?= $settings->small_photo_height->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->small_photo_height->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->small_photo_height->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->debug_mode->name ?>">
-                                            <?= $lang['label_debug_mode'] ?>
-                                            <span class="text-danger"><?= ($settings->debug_mode->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $settings->debug_mode->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->debug_mode->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->debug_mode->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $settings->maintenance_mod->name ?>">
-                                            <?= $lang['label_maintenance_mod'] ?>
-                                            <span class="text-danger"><?= ($settings->maintenance_mod->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" <?= $settings->maintenance_mod->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($settings->maintenance_mod->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($settings->maintenance_mod->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12">
                                         <label class="form-label" for="<?= $settings->maintenance_mode_content->name ?>">
                                             <?= $lang['label_maintenance_mode_content'] ?>
                                             <span class="text-danger"><?= ($settings->maintenance_mode_content->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_maintenance_mode_content'] ?>" <?= $settings->maintenance_mode_content->get_text_attr() ?>>
+                                        <textarea class="ck_field" <?= $settings->maintenance_mode_content->get_textarea_attr() ?>><?= $settings->maintenance_mode_content->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->maintenance_mode_content->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->maintenance_mode_content->help_msg) ?></span>
                                     </div>

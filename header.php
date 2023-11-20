@@ -122,7 +122,7 @@
                         </span>
                         <span class="hide-menu"><?= $lang['page_places'] ?></span>
                     </a>
-                    <ul class="collapse <?= str_contains($page, 'places_districts') ? 'in' : '' ?>">
+                    <ul class="collapse <?= str_contains($page, 'places') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'places_countries') ? 'selected' : '' ?>">
                             <a class="sidebar-link <?= ($page == 'places_countries') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_countries" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
@@ -154,7 +154,7 @@
                         <span class="d-flex">
                             <i class="ti ti-settings-cog"></i>
                         </span>
-                        <span class="hide-menu"><?= $lang['page_settings_general'] ?></span>
+                        <span class="hide-menu"><?= $lang['page_settings'] ?></span>
                     </a>
                     <ul class="collapse <?= str_contains($page, 'settings') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'settings_general') ? 'selected' : '' ?>">

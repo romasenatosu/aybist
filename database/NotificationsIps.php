@@ -17,10 +17,5 @@ class NotificationsIps {
         $this->ipv6 = new FormElement('ipv6');
         $this->created_at = new FormElement('created_at', new DateTime());
         $this->updated_at = new FormElement('updated_at', new DateTime());
-
-        // configurations
-        $this->user_id->required = false;
-        $this->ipv4->maxlength = 16;
-        $this->ipv6->maxlength = 32;
     }
 }

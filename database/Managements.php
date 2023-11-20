@@ -17,6 +17,8 @@ class Managements {
     public FormElement $updated_at;
 
     function __construct() {
+        global $lang, $regex_alpha_numeric;
+
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
         $this->block_id = new FormElement('block_id');
@@ -32,7 +34,12 @@ class Managements {
 
         // configurations
         $this->name->maxlength = -1;
+        $this->name->pattern = $regex_alpha_numeric;
+        $this->name->pattern_msg = $lang['regex_alpha_numeric'];
         $this->description->maxlength = -1;
+        $this->description->pattern = $regex_alpha_numeric;
+        $this->description->pattern_msg = $lang['regex_alpha_numeric'];
         $this->description->required = false;
+        $this->fee_status->required = false;
     }
 }

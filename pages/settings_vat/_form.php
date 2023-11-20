@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=settings_vat&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settingsVat->name->name ?>">
                                             <?= $lang['label_name'] ?>
                                             <span class="text-danger"><?= ($settingsVat->name->required) ? '*': '' ?></span>
@@ -31,12 +31,12 @@
                                         <span class="text-danger"><?= ($settingsVat->name->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsVat->name->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $settingsVat->rate->name ?>">
                                             <?= $lang['label_rate'] ?>
                                             <span class="text-danger"><?= ($settingsVat->rate->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_rate'] ?>" <?= $settingsVat->rate->get_text_attr() ?>>
+                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_rate'] ?>" <?= $settingsVat->rate->get_number_attr() ?>>
                                         <span class="text-danger"><?= ($settingsVat->rate->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsVat->rate->help_msg) ?></span>
                                     </div>

@@ -39,16 +39,13 @@
                                         <td>14.11.2023</td>
                                         <td class="col-1">
                                             <a href="<?= "?locale=$locale&page=notifications_ips&action=read&id=1" ?>">
-                                                <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
+                                                <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="?page=notifications_ips&action=create">Yeni Ekle</a>
                     </div>
                 </div>
             </div>

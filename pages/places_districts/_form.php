@@ -21,17 +21,30 @@
                     <div class="card-body">
                         <div class="container">
                             <form action="<?= "?locale=$locale&page=places_districts&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="<?= $districts->city_id->name ?>">
-                                            <?= $lang['label_city_id'] ?>
-                                            <span class="text-danger"><?= ($districts->city_id->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_city_id'] ?>" <?= $districts->city_id->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($districts->city_id->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($districts->city_id->help_msg) ?></span>
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-end">
+                                            <div class="col-10">
+                                                <label class="form-label" for="<?= $districts->city_id->name ?>">
+                                                    <?= $lang['label_city_id'] ?>
+                                                    <span class="text-danger"><?= ($districts->city_id->required) ? '*': '' ?></span>
+                                                </label>
+                                                <select class="form-select" <?= $districts->city_id->get_select_attr() ?>>
+                                                    <option <?= ($districts->city_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_city_id'] ?></option>
+                                                    <!-- for loop here -->
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                <span class="text-danger"><?= ($districts->city_id->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($districts->city_id->help_msg) ?></span>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="<?= "?locale=$locale&page=places_cities&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $districts->district->name ?>">
                                             <?= $lang['label_district'] ?>
                                             <span class="text-danger"><?= ($districts->district->required) ? '*': '' ?></span>

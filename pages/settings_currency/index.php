@@ -37,10 +37,10 @@
                                         <td>14.11.2023</td>
                                         <td class="col-1">
                                             <a href="<?= "?locale=$locale&page=settings_currency&action=read&id=1" ?>">
-                                                <i class="ti ti-eye" title="Göster" data-bs-toggle="tooltip"></i>
+                                                <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                             <a href="<?= "?locale=$locale&page=settings_currency&action=update&id=1" ?>">
-                                                <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
+                                                <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                             <?php
                                                 include __DIR__ . '/_delete_form.php';
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="?page=settings_currency&action=create">Yeni Ekle</a>
+                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=settings_currency&action=create" ?>"><?= $lang['text_new'] ?></a>
                     </div>
                 </div>
             </div>

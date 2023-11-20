@@ -61,7 +61,7 @@
                                         <td>14.11.2023</td>
                                         <td class="col-1">
                                             <a href="<?= "?locale=$locale&page=settings_general&action=update&id=1" ?>">
-                                                <i class="ti ti-pencil" title="Düzenle" data-bs-toggle="tooltip"></i>
+                                                <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
                                             </a>
                                         </td>
                                     </tr>

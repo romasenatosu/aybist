@@ -20,9 +20,9 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=languages&action=create" ?>" method="post">
-                                <div class="row gx-md-4 gx-0 gy-4 mb-3">
-                                    <div class="col-md-4">
+                            <form action="<?= "?locale=$locale&page=languages&action=create" ?>" method="post" enctype="multipart/form-data">
+                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $languages->code->name ?>">
                                             <?= $lang['label_code'] ?>
                                             <span class="text-danger"><?= ($languages->code->required) ? '*': '' ?></span>
@@ -31,7 +31,7 @@
                                         <span class="text-danger"><?= ($languages->code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languages->code->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="<?= $languages->lang->name ?>">
                                             <?= $lang['label_lang'] ?>
                                             <span class="text-danger"><?= ($languages->lang->required) ? '*': '' ?></span>
@@ -39,6 +39,15 @@
                                         <input type="text" class="form-control" placeholder="<?= $lang['placeholder_lang'] ?>" <?= $languages->lang->get_text_attr() ?>>
                                         <span class="text-danger"><?= ($languages->lang->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languages->lang->help_msg) ?></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="<?= $languages->flag->name ?>">
+                                            <?= $lang['label_flag'] ?>
+                                            <span class="text-danger"><?= ($languages->flag->required) ? '*': '' ?></span>
+                                        </label>
+                                        <input type="file" class="form-control" <?= $languages->flag->get_file_attr() ?>>
+                                        <span class="text-danger"><?= ($languages->flag->error_msg) ?></span>
+                                        <span class="text-muted"><?= ($languages->flag->help_msg) ?></span>
                                     </div>
                                 </div>
                             </form>
