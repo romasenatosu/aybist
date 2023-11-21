@@ -229,6 +229,20 @@
     <!-- End Sidebar scroll-->
 </aside>
 <!--  Sidebar End -->
+
+<?php
+    $stmt = $pdo->prepare("SELECT * FROM languages");
+    $stmt->execute();
+    $languages_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    $stmt = $pdo->prepare("SELECT * FROM languages WHERE code = :code");
+    $stmt->bindParam(':code', $locale, PDO::PARAM_STR);
+    $stmt->execute();
+    $current_language_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+?>
+
 <!--  Main wrapper -->
 <div class="body-wrapper">
     <!--  Header Start -->
@@ -257,23 +271,20 @@
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown">
-                                <img src="assets/images/flags/tr.png" alt="" class="rounded-circle object-fit-cover round-20">
+                                <img src="<?= $current_language_data['flag'] ?>" alt="<?= $current_language_data['code'] ?>" class="rounded-circle object-fit-cover round-20">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up">
                                 <div class="message-body" data-simplebar>
-                                    <!-- TODO: create for loop here for each language in database -->
-                                    <a href="<?= changeLocale('tr') ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                        <div class="position-relative">
-                                            <img src="assets/images/flags/tr.png" alt="" class="rounded-circle object-fit-cover round-20">
-                                        </div>
-                                        <p class="mb-0 fs-3">Türkçe</p>
-                                    </a>
-                                    <a href="<?= changeLocale('en') ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                        <div class="position-relative">
-                                            <img src="assets/images/flags/en.png" alt="" class="rounded-circle object-fit-cover round-20">
-                                        </div>
-                                        <p class="mb-0 fs-3">English (UK)</p>
-                                    </a>
+                                    <?php foreach ($languages_data as $language_data): ?>
+                                        <a href="<?= changeLocale($language_data['code']) ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
+                                            <div class="position-relative">
+                                                <img src="<?= $language_data['flag'] ?>" alt="<?= $language_data['code'] ?>" class="rounded-circle object-fit-cover round-20">
+                                            </div>
+                                            <p class="mb-0 fs-3"><?= $language_data['lang'] ?></p>
+                                        </a>
+                                    <?php endforeach;
+                                        unset($languages_data, $current_language_data);
+                                    ?>
                                 </div>
                             </div>
                         </li>

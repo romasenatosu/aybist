@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Languages.php';
 
 $languages = new Languages();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $languages->title->value = $_POST[$languages->title->name];
         $languages->income_type->value = $_POST[$languages->income_type->name];

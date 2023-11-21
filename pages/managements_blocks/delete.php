@@ -1,7 +1,7 @@
 <?php
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (get_request_method() === 'POST') {
     echo "deleting...";
     die();
 }

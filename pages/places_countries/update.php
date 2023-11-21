@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../database/Countries.php';
 // check for request
 $countries = new Countries();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM countries WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $countries->title->value = $_POST[$countries->title->name];
         $countries->income_type->value = $_POST[$countries->income_type->name];

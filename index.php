@@ -53,9 +53,9 @@
     <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
-<!--     <div class="preloader">
+    <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div> -->
+    </div>
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">

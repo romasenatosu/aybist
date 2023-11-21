@@ -4,8 +4,9 @@ require_once __DIR__ . '/../../database/Users.php';
 
 // check for request
 $users = new Users();
+// $users->avatar->value = 'assets/images/flags/tr.png';
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $users->title->value = $_POST[$users->title->name];
         $users->income_type->value = $_POST[$users->income_type->name];

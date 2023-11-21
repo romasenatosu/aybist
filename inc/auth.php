@@ -27,8 +27,8 @@ $auth = new Auth();
 // if no page was provided then redirect automatically
 if (empty($page)) {
     if ($auth->getUser()) {
-        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?locale=$locale&page=home");
+        header("Location: " . get_server() . "?locale=$locale&page=home");
     } else {
-        header("Location: " . $_SERVER['HTTP_SERVER'] . "/?locale=$locale&page=login");
+        header("Location: " . get_server() . "?locale=$locale&page=login");
     }
 }

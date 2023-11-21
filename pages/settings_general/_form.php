@@ -122,13 +122,30 @@
                                             <legend><?= $lang['text_normal_photo'] ?></legend>
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
-                                                    <label class="form-label" for="<?= $settings->normal_photo->name ?>">
-                                                        <?= $lang['label_photo'] ?>
-                                                        <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
-                                                    </label>
-                                                    <input type="file" class="form-control" <?= $settings->normal_photo->get_file_attr() ?>>
-                                                    <span class="text-danger"><?= ($settings->normal_photo->error_msg) ?></span>
-                                                    <span class="text-muted"><?= ($settings->normal_photo->help_msg) ?></span>
+                                                    <div class="row gx-md-4 gx-0 gy-4 align-items-center">
+                                                        <div class="<?= ($settings->normal_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                            <label class="form-label" for="<?= $settings->normal_photo->name ?>">
+                                                                <?= $lang['label_photo'] ?>
+                                                                <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
+                                                            </label>
+                                                            <input type="file" class="form-control" <?= $settings->normal_photo->get_file_attr() ?>>
+                                                            
+                                                            <span class="text-danger"><?= ($settings->normal_photo->error_msg) ?></span>
+                                                            <span class="text-muted"><?= ($settings->normal_photo->help_msg) ?></span>
+                                                        </div>
+                                                        <?php
+                                                            if ($settings->normal_photo->value):
+                                                        ?>
+                                                            <div class="col-2">
+                                                                <a href="<?= get_server() . $settings->normal_photo->value ?>">
+                                                                    <img src="<?= $settings->normal_photo->value ?>" 
+                                                                    alt="<?= $settings->normal_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                </a>
+                                                            </div>
+                                                        <?php
+                                                            endif
+                                                        ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="form-label" for="<?= $settings->normal_photo_width->name ?>">
@@ -156,13 +173,30 @@
                                             <legend><?= $lang['text_top_photo'] ?></legend>
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
-                                                    <label class="form-label" for="<?= $settings->top_photo->name ?>">
-                                                        <?= $lang['label_photo'] ?>
-                                                        <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
-                                                    </label>
-                                                    <input type="file" class="form-control" <?= $settings->top_photo->get_file_attr() ?>>
-                                                    <span class="text-danger"><?= ($settings->top_photo->error_msg) ?></span>
-                                                    <span class="text-muted"><?= ($settings->top_photo->help_msg) ?></span>
+                                                    <div class="row gx-md-4 gx-0 gy-4 align-items-center">
+                                                        <div class="<?= ($settings->top_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                            <label class="form-label" for="<?= $settings->top_photo->name ?>">
+                                                                <?= $lang['label_photo'] ?>
+                                                                <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
+                                                            </label>
+                                                            <input type="file" class="form-control" <?= $settings->top_photo->get_file_attr() ?>>
+                                                            
+                                                            <span class="text-danger"><?= ($settings->top_photo->error_msg) ?></span>
+                                                            <span class="text-muted"><?= ($settings->top_photo->help_msg) ?></span>
+                                                        </div>
+                                                        <?php
+                                                            if ($settings->top_photo->value):
+                                                        ?>
+                                                            <div class="col-2">
+                                                                <a href="<?= get_server() . $settings->top_photo->value ?>">
+                                                                    <img src="<?= $settings->top_photo->value ?>" 
+                                                                    alt="<?= $settings->top_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                </a>
+                                                            </div>
+                                                        <?php
+                                                            endif
+                                                        ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="form-label" for="<?= $settings->top_photo_width->name ?>">
@@ -190,13 +224,30 @@
                                             <legend><?= $lang['text_small_photo'] ?></legend>
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
-                                                    <label class="form-label" for="<?= $settings->small_photo->name ?>">
-                                                        <?= $lang['label_photo'] ?>
-                                                        <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
-                                                    </label>
-                                                    <input type="file" class="form-control" <?= $settings->small_photo->get_file_attr() ?>>
-                                                    <span class="text-danger"><?= ($settings->small_photo->error_msg) ?></span>
-                                                    <span class="text-muted"><?= ($settings->small_photo->help_msg) ?></span>
+                                                    <div class="row gx-md-4 gx-0 gy-4 align-items-center">
+                                                        <div class="<?= ($settings->small_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                            <label class="form-label" for="<?= $settings->small_photo->name ?>">
+                                                                <?= $lang['label_photo'] ?>
+                                                                <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
+                                                            </label>
+                                                            <input type="file" class="form-control" <?= $settings->small_photo->get_file_attr() ?>>
+                                                            
+                                                            <span class="text-danger"><?= ($settings->small_photo->error_msg) ?></span>
+                                                            <span class="text-muted"><?= ($settings->small_photo->help_msg) ?></span>
+                                                        </div>
+                                                        <?php
+                                                            if ($settings->small_photo->value):
+                                                        ?>
+                                                            <div class="col-2">
+                                                                <a href="<?= get_server() . $settings->small_photo->value ?>">
+                                                                    <img src="<?= $settings->small_photo->value ?>" 
+                                                                    alt="<?= $settings->small_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                </a>
+                                                            </div>
+                                                        <?php
+                                                            endif
+                                                        ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="form-label" for="<?= $settings->small_photo_width->name ?>">

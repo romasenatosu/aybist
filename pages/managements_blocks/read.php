@@ -1,3 +1,19 @@
+<?php
+
+$datum = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM blocks WHERE language_id = :language_id AND id = :id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $datum = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +29,7 @@
                                     <a href="<?= "?locale=$locale&page=managements_blocks" ?>"><?= $lang['page_managements_blocks'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,19 +40,19 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_block'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['block'] ?>"><?= substr($datum['block'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['block'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_description'] ?></th>
-                                        <td>başlık2</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['description'] ?>"><?= substr($datum['description'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['description'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_floor_count'] ?></th>
-                                        <td>başlık3</td>
+                                        <td><?= $datum['floor_count'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

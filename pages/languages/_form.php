@@ -41,13 +41,30 @@
                                         <span class="text-muted"><?= ($languages->lang->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label" for="<?= $languages->flag->name ?>">
-                                            <?= $lang['label_flag'] ?>
-                                            <span class="text-danger"><?= ($languages->flag->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="file" class="form-control" <?= $languages->flag->get_file_attr() ?>>
-                                        <span class="text-danger"><?= ($languages->flag->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($languages->flag->help_msg) ?></span>
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-center">
+                                            <div class="<?= ($languages->flag->value) ? 'col-10' : 'col-12' ?>">
+                                                <label class="form-label" for="<?= $languages->flag->name ?>">
+                                                    <?= $lang['label_flag'] ?>
+                                                    <span class="text-danger"><?= ($languages->flag->required) ? '*': '' ?></span>
+                                                </label>
+                                                <input type="file" class="form-control" <?= $languages->flag->get_file_attr() ?>>
+                                                
+                                                <span class="text-danger"><?= ($languages->flag->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($languages->flag->help_msg) ?></span>
+                                            </div>
+                                            <?php
+                                                if ($languages->flag->value):
+                                            ?>
+                                                <div class="col-2">
+                                                    <a href="<?= get_server() . $languages->flag->value ?>">
+                                                        <img src="<?= $languages->flag->value ?>" 
+                                                        alt="<?= $languages->flag->value ?>" class="img-fluid" width="32" height="32">
+                                                    </a>
+                                                </div>
+                                            <?php
+                                                endif
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

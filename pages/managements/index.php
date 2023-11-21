@@ -63,13 +63,13 @@ if ($language_id > 0) {
                                         <?php $data_id = $datum['id'] ?>
                                         <tr>
                                             <td><?= $data_id ?></td>
-                                            <td><?= $datum['block'] ?></td>
-                                            <td><?= $datum['floor'] ?></td>
-                                            <td><?= $datum['flat'] ?></td>
-                                            <td><?= $datum['owner'] ?></td>
-                                            <td><?= $datum['rental'] ?></td>
-                                            <td><?= $datum['management'] ?></td>
-                                            <td><?= $datum['description'] ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['block'] ?>"><?= substr($datum['block'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['block'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['floor'] ?>"><?= substr($datum['floor'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['floor'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['flat'] ?>"><?= substr($datum['flat'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['flat'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['owner'] ?>"><?= substr($datum['owner'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['owner'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['rental'] ?>"><?= substr($datum['rental'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['rental'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['management'] ?>"><?= substr($datum['management'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['management'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['description'] ?>"><?= substr($datum['description'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['description'] ?? '') > $max_abbr) ? '...': '' ?></td>
                                             <td><?= ($datum['fee_status']) ? $lang['text_exempted'] : $lang['text_not_exempted'] ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>

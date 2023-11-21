@@ -13,6 +13,7 @@ $upload_dir = __DIR__ . "/uploads";
 $hash_cost = 12; // 4 - 32
 $hash_algorithm = PASSWORD_BCRYPT;
 
+$max_abbr = 25;
 
 // initialization settings as default
 ini_set("display_errors", 1); // display errors as printable text

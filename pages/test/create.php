@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Test.php';
 
 $test = new Test();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $test->title->value = $_POST[$test->title->name];
         $test->income_type->value = $_POST[$test->income_type->name];

@@ -1,7 +1,5 @@
 <?php
 
-$data = [];
-
 $stmt = $pdo->prepare("SELECT * FROM languages");
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +46,13 @@ $stmt->closeCursor();
                                             <td><?= $data_id ?></td>
                                             <td><?= $datum['code'] ?></td>
                                             <td><?= $datum['lang'] ?></td>
-                                            <td><?= $datum['flag'] ?></td>
+                                            <td>
+                                                <?php if ($datum['flag']): ?>
+                                                    <a href="<?= get_server() . $datum['flag'] ?>">
+                                                        <img src="<?= $datum['flag'] ?>" alt="<?= $datum['flag'] ?>" class="img-fluid" width="32" height="32">
+                                                    </a>
+                                                <?php endif ?>
+                                            </td>
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">

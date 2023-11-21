@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Countries.php';
 
 $countries = new Countries();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $countries->title->value = $_POST[$countries->title->name];
         $countries->income_type->value = $_POST[$countries->income_type->name];

@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Districts.php';
 
 $districts = new Districts();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $districts->title->value = $_POST[$districts->title->name];
         $districts->income_type->value = $_POST[$districts->income_type->name];

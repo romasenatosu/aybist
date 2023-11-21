@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../database/SettingsVat.php';
 // check for request
 $settingsVat = new SettingsVat();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM settingsVat WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $settingsVat->title->value = $_POST[$settingsVat->title->name];
         $settingsVat->income_type->value = $_POST[$settingsVat->income_type->name];

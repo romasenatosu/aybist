@@ -13,7 +13,7 @@
                                     <a href="<?= "?locale=$locale&page=test" ?>"><?= $lang['page_test'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,7 +24,7 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_title'] ?></th>

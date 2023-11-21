@@ -1,3 +1,17 @@
+<?php
+
+$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.code, n.msg, n.trace, n.created_at, n.updated_at
+FROM notifications n
+INNER JOIN users u ON u.id = user_id
+WHERE n.id = :id
+");
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$datum = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +27,7 @@
                                     <a href="<?= "?locale=$locale&page=notifications" ?>"><?= $lang['page_notifications'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,23 +38,23 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_user'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_code'] ?></th>
-                                        <td>başlık2</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['code'] ?>"><?= substr($datum['code'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['code'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_msg'] ?></th>
-                                        <td>başlık3</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['msg'] ?>"><?= substr($datum['msg'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['msg'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_trace'] ?></th>
-                                        <td>başlık4</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['trace'] ?>"><?= substr($datum['trace'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['trace'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

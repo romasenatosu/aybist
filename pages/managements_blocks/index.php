@@ -49,8 +49,8 @@ if ($language_id > 0) {
                                         <?php $data_id = $datum['id'] ?>
                                         <tr>
                                             <td><?= $data_id ?></td>
-                                            <td><?= $datum['block'] ?></td>
-                                            <td><?= $datum['description'] ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['block'] ?>"><?= substr($datum['block'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['block'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['description'] ?>"><?= substr($datum['description'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['description'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td><?= $datum['floor_count'] ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>

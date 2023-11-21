@@ -176,4 +176,82 @@ class FormElement {
     public function setHelpMsg(string $help_msg): void {
         $this->help_msg = $help_msg;
     }
+
+    public function get_select_options(string $placeholder):mixed {
+        global $locale, $pdo;
+        $sql = "";
+        $placholder_option = sprintf("<option %s value='0'>%s</option>", ($this->value) ? '' : 'selected', $placeholder);
+        $options = [
+            $placholder_option,
+        ];
+
+        $language_id = getLocaleId($locale);
+
+        switch ($this->name) {
+            case 'block_id':
+                $sql = "SELECT id as option_id, block as option_text FROM blocks WHERE language_id = :language_id";
+                break;
+
+            case 'flat_id':
+                $sql = "SELECT id as option_id, flat as option_text FROM flats WHERE language_id = :language_id";
+                break;
+
+            case 'floor_id':
+                $sql = "SELECT id as option_id, floor as option_text FROM floors WHERE language_id = :language_id";
+                break;
+
+            case 'manager_owner_id':
+                $sql = "SELECT id as option_id, fullname as option_text FROM users";
+                break;
+
+            case 'manager_rental_id':
+                $sql = "SELECT id as option_id, fullname as option_text FROM users";
+                break;
+            
+            case 'currency_id':
+                $sql = "SELECT id as option_id, name as option_text FROM settings_currency WHERE language_id = :language_id";
+                break;
+
+            case 'country_id':
+                $sql = "SELECT id as option_id, country as option_text FROM countries WHERE language_id = :language_id";
+                break;
+
+            case 'city_id':
+                $sql = "SELECT c.id as option_id, c.city as option_text 
+                FROM cities c
+                INNER JOIN countries co ON co.id = c.country_id
+                WHERE co.language_id = :language_id";
+                break;
+
+            case ('phone_code_id' or 'cell_phone_code_id' or 'fax_code_id'):
+                $sql = "SELECT id as option_id, phone_code as option_text FROM countries WHERE language_id = :language_id";
+                break;
+
+            case 'district_id':
+                $sql = "SELECT d.id as option_id, d.district as option_text 
+                FROM districts d
+                INNER JOIN cities c ON c.id = d.city_id
+                INNER JOIN countries co ON co.id = c.country_id
+                WHERE co.language_id = :language_id";
+                break;
+            
+            default:
+                return $options;
+        }
+
+        $stmt = $pdo->prepare($sql);
+        if (str_contains($sql, 'language_id')) {
+            $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+        }
+        $stmt->execute();
+        $options_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+
+        foreach ($options_data as $option_data) {
+            $options[] = sprintf("<option %s value='%d'>%s</option>", 
+                                    ($option_data['option_id'] == $this->value) ? 'selected' : '', $option_data['option_id'], $option_data['option_text']);
+        }
+
+        return $options;
+    }
 }

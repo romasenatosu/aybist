@@ -1,3 +1,23 @@
+<?php
+
+$data = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT sc.id, sc.address, sc.phone, c_phone.phone_code as phone_code, sc.cell_phone, c_cell_phone.phone_code as cell_phone_code, sc.fax, c_fax.phone_code as fax_code, sc.email, sc.captcha_key, sc.captcha_secret_key, sc.google_maps, sc.created_at, sc.updated_at
+    FROM settings_contact sc
+    INNER JOIN countries c_phone ON c_phone.id = sc.phone_code_id
+    INNER JOIN countries c_cell_phone ON c_cell_phone.id = sc.cell_phone_code_id
+    INNER JOIN countries c_fax ON c_fax.id = sc.fax_code_id
+    WHERE sc.language_id = :language_id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row gy-3">
@@ -35,24 +55,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>başlık</td>
-                                        <td>başlık2</td>
-                                        <td>başlık3</td>
-                                        <td>başlık4</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td>lorem ipsum dolor sit amet</td>
-                                        <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
-                                        <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
-                                        <td class="col-1">
-                                            <a href="<?= "?locale=$locale&page=settings_contact&action=update&id=$data_id" ?>">
-                                                <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php foreach($data as $datum): ?>
+                                        <?php $data_id = $datum['id'] ?>
+                                        <tr>
+                                            <td><?= $data_id ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['address'] ?>"><?= substr($datum['address'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['address'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= ($datum['phone_code'] . ' ' . $datum['phone']) ?>"><?= substr(($datum['phone_code'] . ' ' . $datum['phone']) ?? '', 0, $max_abbr) ?><?= (strlen(($datum['phone_code'] . ' ' . $datum['phone']) ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= ($datum['cell_phone_code'] . ' ' . $datum['cell_phone']) ?>"><?= substr(($datum['cell_phone_code'] . ' ' . $datum['cell_phone']) ?? '', 0, $max_abbr) ?><?= (strlen(($datum['cell_phone_code'] . ' ' . $datum['cell_phone']) ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= ($datum['fax_code'] . ' ' . $datum['fax']) ?>"><?= substr(($datum['fax_code'] . ' ' . $datum['fax']) ?? '', 0, $max_abbr) ?><?= (strlen(($datum['fax_code'] . ' ' . $datum['fax']) ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['email'] ?>"><?= substr($datum['email'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['email'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['captcha_key'] ?>"><?= substr($datum['captcha_key'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['captcha_key'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['captcha_secret_key'] ?>"><?= substr($datum['captcha_secret_key'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['captcha_secret_key'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['google_maps'] ?>"><?= substr($datum['google_maps'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['google_maps'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
+                                            <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
+                                            <td class="col-1">
+                                                <a href="<?= "?locale=$locale&page=settings_contact&action=update&id=$data_id" ?>">
+                                                    <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

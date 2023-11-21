@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Floors.php';
 
 $floors = new Floors();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $floors->title->value = $_POST[$floors->title->name];
         $floors->income_type->value = $_POST[$floors->income_type->name];

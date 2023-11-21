@@ -30,11 +30,12 @@
                                                     <span class="text-danger"><?= ($districts->city_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $districts->city_id->get_select_attr() ?>>
-                                                    <option <?= ($districts->city_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_city_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $districts->city_id->get_select_options($lang['placeholder_city_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($districts->city_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($districts->city_id->help_msg) ?></span>

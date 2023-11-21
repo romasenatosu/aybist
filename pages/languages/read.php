@@ -1,3 +1,13 @@
+<?php
+
+$stmt = $pdo->prepare("SELECT * FROM languages WHERE id = :id");
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$datum = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +23,7 @@
                                     <a href="<?= "?locale=$locale&page=languages" ?>"><?= $lang['page_languages'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,15 +34,25 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_code'] ?></th>
-                                        <td>başlık1</td>
+                                        <td><?= $datum['code'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_lang'] ?></th>
-                                        <td>başlık2</td>
+                                        <td><?= $datum['lang'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?= $lang['table_flag'] ?></th>
+                                        <td>
+                                            <?php if ($datum['flag']): ?>
+                                                <a href="<?= get_server() . $datum['flag'] ?>">
+                                                    <img src="<?= $datum['flag'] ?>" alt="<?= $datum['flag'] ?>" class="img-fluid" width="32" height="32">
+                                                </a>
+                                            <?php endif ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

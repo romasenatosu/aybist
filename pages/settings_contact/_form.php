@@ -30,11 +30,12 @@
                                                     <span class="text-danger"><?= ($settingsContact->phone->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $settingsContact->phone_code_id->get_select_attr() ?>>
-                                                    <option <?=  ($settingsContact->phone_code_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_phone_code_select'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">+1</option>
-                                                    <option value="2">+7</option>
-                                                    <option value="3">+90</option>
+                                                    <?php
+                                                        $options = $settingsContact->phone_code_id->get_select_options($lang['placeholder_phone_code_select']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-8">
@@ -52,11 +53,12 @@
                                                     <span class="text-danger"><?= ($settingsContact->cell_phone->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $settingsContact->cell_phone_code_id->get_select_attr() ?>>
-                                                    <option <?=  ($settingsContact->cell_phone_code_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_phone_code_select'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">+1</option>
-                                                    <option value="2">+7</option>
-                                                    <option value="3">+90</option>
+                                                    <?php
+                                                        $options = $settingsContact->cell_phone_code_id->get_select_options($lang['placeholder_phone_code_select']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-8">
@@ -74,11 +76,12 @@
                                                     <span class="text-danger"><?= ($settingsContact->fax->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $settingsContact->fax_code_id->get_select_attr() ?>>
-                                                    <option <?=  ($settingsContact->fax_code_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_phone_code_select'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">+1</option>
-                                                    <option value="2">+7</option>
-                                                    <option value="3">+90</option>
+                                                    <?php
+                                                        $options = $settingsContact->fax_code_id->get_select_options($lang['placeholder_phone_code_select']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-8">

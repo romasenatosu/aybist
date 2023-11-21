@@ -1,3 +1,23 @@
+<?php
+
+$datum = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT d.id, c.city, d.district, d.created_at, d.updated_at
+    FROM districts d
+    INNER JOIN cities c ON c.id = d.city_id
+    INNER JOIN countries co ON co.id = c.country_id
+    WHERE co.language_id = :language_id AND d.id = :id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $datum = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +33,7 @@
                                     <a href="<?= "?locale=$locale&page=places_districts" ?>"><?= $lang['page_places_districts'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,15 +44,15 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_city'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['city'] ?>"><?= substr($datum['city'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['city'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_district'] ?></th>
-                                        <td>başlık2</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['district'] ?>"><?= substr($datum['district'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['district'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

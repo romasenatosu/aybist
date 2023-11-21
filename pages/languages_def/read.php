@@ -1,3 +1,20 @@
+<?php
+
+$datum = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM languages_def WHERE language_id = :language_id AND id = :id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $datum = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +30,7 @@
                                     <a href="<?= "?locale=$locale&page=languages_def" ?>"><?= $lang['page_languages_def'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,15 +41,15 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_keyword'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['keyword'] ?>"><?= substr($datum['keyword'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['keyword'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_value'] ?></th>
-                                        <td>başlık2</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['value'] ?>"><?= substr($datum['value'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['value'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

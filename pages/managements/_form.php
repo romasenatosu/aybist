@@ -30,11 +30,12 @@
                                                     <span class="text-danger"><?= ($managements->block_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $managements->block_id->get_select_attr() ?>>
-                                                    <option <?= ($managements->block_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_block_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $managements->block_id->get_select_options($lang['placeholder_block_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($managements->block_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($managements->block_id->help_msg) ?></span>
@@ -52,11 +53,12 @@
                                                     <span class="text-danger"><?= ($managements->floor_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $managements->floor_id->get_select_attr() ?>>
-                                                    <option <?= ($managements->floor_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_floor_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $managements->floor_id->get_select_options($lang['placeholder_floor_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($managements->floor_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($managements->floor_id->help_msg) ?></span>
@@ -74,11 +76,12 @@
                                                     <span class="text-danger"><?= ($managements->flat_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $managements->flat_id->get_select_attr() ?>>
-                                                    <option <?= ($managements->flat_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_flat_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $managements->flat_id->get_select_options($lang['placeholder_flat_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($managements->flat_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($managements->flat_id->help_msg) ?></span>
@@ -96,11 +99,12 @@
                                                     <span class="text-danger"><?= ($managements->manager_owner_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $managements->manager_owner_id->get_select_attr() ?>>
-                                                    <option <?= ($managements->manager_owner_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_manager_owner_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $managements->manager_owner_id->get_select_options($lang['placeholder_manager_owner_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($managements->manager_owner_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($managements->manager_owner_id->help_msg) ?></span>
@@ -118,11 +122,12 @@
                                                     <span class="text-danger"><?= ($managements->manager_rental_id->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $managements->manager_rental_id->get_select_attr() ?>>
-                                                    <option <?= ($managements->manager_rental_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_manager_rental_id'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                    <?php
+                                                        $options = $managements->manager_rental_id->get_select_options($lang['placeholder_manager_rental_id']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger"><?= ($managements->manager_rental_id->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($managements->manager_rental_id->help_msg) ?></span>

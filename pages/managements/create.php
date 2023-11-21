@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Managements.php';
 
 $managements = new Managements();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $managements->title->value = $_POST[$managements->title->name];
         $managements->income_type->value = $_POST[$managements->income_type->name];

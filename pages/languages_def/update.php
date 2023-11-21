@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../database/LanguagesDef.php';
 // check for request
 $languagesDef = new LanguagesDef();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM languagesDef WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $languagesDef->title->value = $_POST[$languagesDef->title->name];
         $languagesDef->income_type->value = $_POST[$languagesDef->income_type->name];

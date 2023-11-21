@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../database/Flats.php';
 
 $flats = new Flats();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (get_request_method() == 'POST') {
     try {
         $flats->title->value = $_POST[$flats->title->name];
         $flats->income_type->value = $_POST[$flats->income_type->name];

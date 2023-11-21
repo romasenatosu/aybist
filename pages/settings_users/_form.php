@@ -48,11 +48,12 @@
                                                     <span class="text-danger"><?= ($users->phone->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $users->phone_code_id->get_select_attr() ?>>
-                                                    <option <?=  ($users->phone_code_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_phone_code_select'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">+1</option>
-                                                    <option value="2">+7</option>
-                                                    <option value="3">+90</option>
+                                                    <?php
+                                                        $options = $users->phone_code_id->get_select_options($lang['placeholder_phone_code_select']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-8">
@@ -90,13 +91,30 @@
                                         <span class="text-muted"><?= ($users->password_confirm->help_msg) ?></span>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label" for="<?= $users->avatar->name ?>">
-                                            <?= $lang['label_avatar'] ?>
-                                            <span class="text-danger"><?= ($users->avatar->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="file" class="form-control" <?= $users->avatar->get_file_attr() ?>>
-                                        <span class="text-danger"><?= ($users->avatar->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($users->avatar->help_msg) ?></span>
+                                        <div class="row gx-md-4 gx-0 gy-4 align-items-center">
+                                            <div class="<?= ($users->avatar->value) ? 'col-10' : 'col-12' ?>">
+                                                <label class="form-label" for="<?= $users->avatar->name ?>">
+                                                    <?= $lang['label_avatar'] ?>
+                                                    <span class="text-danger"><?= ($users->avatar->required) ? '*': '' ?></span>
+                                                </label>
+                                                <input type="file" class="form-control" <?= $users->avatar->get_file_attr() ?>>
+                                                
+                                                <span class="text-danger"><?= ($users->avatar->error_msg) ?></span>
+                                                <span class="text-muted"><?= ($users->avatar->help_msg) ?></span>
+                                            </div>
+                                            <?php
+                                                if ($users->avatar->value):
+                                            ?>
+                                                <div class="col-2">
+                                                    <a href="<?= get_server() . $users->avatar->value ?>">
+                                                        <img src="<?= $users->avatar->value ?>" 
+                                                        alt="<?= $users->avatar->value ?>" class="img-fluid" width="32" height="32">
+                                                    </a>
+                                                </div>
+                                            <?php
+                                                endif
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">

@@ -2,8 +2,8 @@
 
 function changeLocale(string $new_locale): string {
     global $locale;
-    $query = $_SERVER['QUERY_STRING'];
-    return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $query));
+    $request = get_request_uri();
+    return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $request));
 }
 
 function getLocaleId(string $language_code): int {
@@ -38,7 +38,7 @@ function getLocaleDict(int $language_id): array {
 $language_id = getLocaleId($locale);
 
 if (!$language_id > 0) {
-    header("Location: " . $_SERVER['HTTP_SERVER'] . "/?locale=$default_locale&page=$page&action=$action");
+    header("Location: " . get_server() . "?locale=$default_locale&page=$page&action=$action");
 }
 
 $lang = getLocaleDict($language_id);

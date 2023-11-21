@@ -103,6 +103,7 @@ $lang_defaults_en = [
     "table_is_admin" => "ADMINISTRATOR",
     "table_rate" => "RATE",
     "table_management" => "MANAGEMENT",
+    "table_avatar" => "AVATAR",
 
     "error_400" => "Invalid request.",
     "error_401" => "Unauthorized request.",

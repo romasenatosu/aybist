@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../database/Flats.php';
 // check for request
 $flats = new Flats();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM flats WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $flats->title->value = $_POST[$flats->title->name];
         $flats->income_type->value = $_POST[$flats->income_type->name];

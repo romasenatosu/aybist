@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../database/Test.php';
 // check for request
 $test = new Test();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if (get_request_method() == 'GET') {
     try {
         $stmt = $pdo->prepare("SELECT * FROM test WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+else if (get_request_method() == 'POST') {
     try {
         $test->title->value = $_POST[$test->title->name];
         $test->income_type->value = $_POST[$test->income_type->name];

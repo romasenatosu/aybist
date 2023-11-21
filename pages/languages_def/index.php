@@ -48,8 +48,8 @@ if ($language_id > 0) {
                                         <?php $data_id = $datum['id'] ?>
                                         <tr>
                                             <td><?= $data_id ?></td>
-                                            <td><?= $datum['keyword'] ?></td>
-                                            <td><?= $datum['value'] ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['keyword'] ?>"><?= substr($datum['keyword'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['keyword'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['value'] ?>"><?= substr($datum['value'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['value'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">

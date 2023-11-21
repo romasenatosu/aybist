@@ -1,3 +1,19 @@
+<?php
+
+$datum = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM flats WHERE language_id = :language_id AND id = :id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $datum = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +29,7 @@
                                     <a href="<?= "?locale=$locale&page=managements_flats" ?>"><?= $lang['page_managements_flats'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,19 +40,19 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_flat'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['flat'] ?>"><?= substr($datum['flat'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['flat'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_square_meter'] ?></th>
-                                        <td>başlık2</td>
+                                        <td><?= $datum['square_meter'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_fee'] ?></th>
-                                        <td>başlık3</td>
+                                        <td><?= $datum['fee'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

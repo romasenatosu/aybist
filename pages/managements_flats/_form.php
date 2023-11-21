@@ -48,11 +48,12 @@
                                                     <span class="text-danger"><?= ($flats->fee->required) ? '*': '' ?></span>
                                                 </label>
                                                 <select class="form-select" <?= $flats->currency_id->get_select_attr() ?>>
-                                                    <option <?=  ($flats->currency_id->value) ? '' : 'selected' ?>><?= $lang['placeholder_currency_select'] ?></option>
-                                                    <!-- for loop here -->
-                                                    <option value="1">Türk Lirası</option>
-                                                    <option value="2">Dolar</option>
-                                                    <option value="3">Euro</option>
+                                                    <?php
+                                                        $options = $flats->currency_id->get_select_options($lang['placeholder_currency_select']);
+                                                        foreach ($options as $option) {
+                                                            echo $option . PHP_EOL;
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="col-8">

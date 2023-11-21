@@ -102,7 +102,8 @@ $lang_defaults_tr = [
     "table_fullname" => "İSİM SOYİSİM",
     "table_is_admin" => "YÖNETİCİ KULLANICI",
     "table_rate" => "ORAN",
-    "table_İşletme" => "İŞLETME",
+    "table_management" => "İŞLETME",
+    "table_avatar" => "PROFİL RESMİ",
 
     "error_400" => "Geçersiz İstek.",
     "error_401" => "Yetkilendirilmemiş istek.",

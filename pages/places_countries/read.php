@@ -1,3 +1,19 @@
+<?php
+
+$datum = [];
+
+$language_id = getLocaleId($locale);
+if ($language_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM countries WHERE language_id = :language_id AND id = :id");
+    $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $datum = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+}
+
+?>
+
 <div class="container-fluid mw-100">
     <section class="datatables">
         <div class="row">
@@ -13,7 +29,7 @@
                                     <a href="<?= "?locale=$locale&page=places_countries" ?>"><?= $lang['page_places_countries'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
-                                    <?= $id ?>
+                                    <?= $datum['id'] ?>
                                 </li>
                             </ol>
                         </nav>
@@ -24,19 +40,15 @@
                                 <tbody>
                                     <tr>
                                         <th data-priority="1">#</th>
-                                        <td><?= $id ?></td>
+                                        <td><?= $datum['id'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_country'] ?></th>
-                                        <td>başlık1</td>
+                                        <td data-bs-toggle="tooltip" title="<?= $datum['country'] ?>"><?= substr($datum['country'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['country'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_phone_code'] ?></th>
-                                        <td>başlık2</td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= $lang['table_flag'] ?></th>
-                                        <td>başlık3</td>
+                                        <td><?= $datum['phone_code'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>
