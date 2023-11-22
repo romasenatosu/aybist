@@ -2,35 +2,47 @@
 
 require_once __DIR__ . '/../../database/Districts.php';
 
+// create entity
 $districts = new Districts();
 
+// check for method
 if (get_request_method() == 'POST') {
-    try {
-        $districts->title->value = $_POST[$districts->title->name];
-        $districts->income_type->value = $_POST[$districts->income_type->name];
+    // grab data from form inputs
 
-        $checks = $districts->title->check() || $districts->income_type->check();
+    $districts->language_id->value = getLocaleId($locale);
+    $districts->city_id->value = htmlspecialchars($_POST[$districts->city_id->name] ?? '');
+    $districts->district->value = htmlspecialchars($_POST[$districts->district->name] ?? '');
 
-        if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO districts (title) VALUES (:title)");
-            $stmt->bindParam(':title', $districts->title->value, PDO::PARAM_STR);
+    // check if given data is ok
+    $checks = $districts->city_id->check() || $districts->district->check();
 
-            // .
-            // .
-            // .
-            // .
-            // .
+    if ($checks) {
+        // convert DateTime object to string
 
-            // $stmt->execute();
+        $created_at = date($datetime_format, $districts->created_at->value->getTimestamp());
+        $updated_at = date($datetime_format, $districts->created_at->value->getTimestamp());
 
-            // return to index page
-        }
+        // sql statement
+        $stmt = $pdo->prepare("INSERT INTO districts (city_id, district, created_at, updated_at)
+                                    VALUES (:city_id, :district, :created_at, :updated_at)");
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        //  bind values and parameters
+        $stmt->bindParam(':city_id', $districts->city_id->value, PDO::PARAM_INT);
+        $stmt->bindParam(':district', $districts->district->value, PDO::PARAM_STR);
+        $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+
+        // flush database
+        $stmt->execute();
+
+        // close the statement
+        $stmt->closeCursor();
+
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=places_districts");
     }
+
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

@@ -1,6 +1,6 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT u.id, u.fullname, u.email, u.phone, c.phone_code, u.address, u.avatar, u.is_admin, u.created_at, u.updated_at
+$stmt = $pdo->prepare("SELECT u.id, u.fullname, u.email, u.phone, CONCAT('+', c.phone_code) AS phone_code, u.address, u.avatar, u.is_admin, u.created_at, u.updated_at
 FROM users u
 INNER JOIN countries c ON c.id = phone_code_id
 WHERE u.id = :id
@@ -43,19 +43,19 @@ $stmt->closeCursor();
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_fullname'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['fullname'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_email'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['email'] ?>"><?= substr($datum['email'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['email'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['email'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_phone'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= ($datum['phone_code'] . ' ' . $datum['phone']) ?>"><?= substr(($datum['phone_code'] . ' ' . $datum['phone']) ?? '', 0, $max_abbr) ?><?= (strlen(($datum['phone_code'] . ' ' . $datum['phone']) ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['phone_code'] . ' ' . $datum['phone'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_address'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['address'] ?>"><?= substr($datum['address'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['address'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['address'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_is_admin'] ?></th>

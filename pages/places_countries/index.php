@@ -4,7 +4,9 @@ $data = [];
 
 $language_id = getLocaleId($locale);
 if ($language_id > 0) {
-    $stmt = $pdo->prepare("SELECT * FROM countries WHERE language_id = :language_id");
+    $stmt = $pdo->prepare("SELECT id, country, CONCAT('+', phone_code) as phone_code, created_at, updated_at
+                            FROM countries
+                            WHERE language_id = :language_id");
     $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

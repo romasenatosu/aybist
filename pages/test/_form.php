@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=test&action=create" ?>" method="post">
+                            <form action="<?= "?locale=$locale&page=test&action=" . (($id <= 0) ? "create" : "update&id=$id") ?>" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                 <div class="col-md-6">
                                         <label class="form-label" for="<?= $test->title->name ?>">

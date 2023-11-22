@@ -54,31 +54,31 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_block'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['block'] ?>"><?= substr($datum['block'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['block'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['block'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_floor'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['floor'] ?>"><?= substr($datum['floor'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['floor'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['floor'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_flat'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['flat'] ?>"><?= substr($datum['flat'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['flat'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['flat'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_manager_owner'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['owner'] ?>"><?= substr($datum['owner'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['owner'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['owner'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_manager_rental'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['rental'] ?>"><?= substr($datum['rental'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['rental'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['rental'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_name'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['management'] ?>"><?= substr($datum['management'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['management'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['management'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_description'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['description'] ?>"><?= substr($datum['description'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['description'] ?? '') > $max_abbr) ? '...': '' ?></td>
+                                        <td><?= $datum['description'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_fee_status'] ?></th>

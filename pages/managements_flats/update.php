@@ -2,60 +2,74 @@
 
 require_once __DIR__ . '/../../database/Flats.php';
 
-// check for request
+// create entity
 $flats = new Flats();
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM flats WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+    // get values from database to show them in inputs fields
+    $stmt = $pdo->prepare("SELECT flat, square_meter, fee, currency_id 
+    FROM flats
+    WHERE id = :id");
+
+    // bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close the statement
+    $stmt->closeCursor();
+
+    // show values
+    $flats->flat->value = $result['flat'];
+    $flats->square_meter->value = $result['square_meter'];
+    $flats->fee->value = $result['fee'];
+    $flats->currency_id->value = $result['currency_id'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $flats->flat->value = htmlspecialchars($_POST[$flats->flat->name] ?? '');
+    $flats->square_meter->value = htmlspecialchars($_POST[$flats->square_meter->name] ?? '');
+    $flats->fee->value = htmlspecialchars($_POST[$flats->fee->name] ?? '');
+    $flats->currency_id->value = htmlspecialchars($_POST[$flats->currency_id->name] ?? '');
+
+    // check if given data is ok
+    $checks = $flats->flat->check() || $flats->square_meter->check() || $flats->fee->check() || $flats->currency_id->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+        $updated_at = date($datetime_format, $flats->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE flats SET flat = :flat, square_meter = :square_meter, fee = :fee, currency_id = :currency_id, updated_at = :updated_at 
+                            WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':flat', $flats->flat->value, PDO::PARAM_STR);
+        $stmt->bindParam(':square_meter', $flats->square_meter->value, PDO::PARAM_INT);
+        $stmt->bindParam(':fee', $flats->fee->value, PDO::PARAM_INT);
+        $stmt->bindParam(':currency_id', $flats->currency_id->value, PDO::PARAM_INT);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $flats->id->value = $data['id'];
-        // $flats->title->value = "flats başlık";
-        // $flats->description->value = "flats açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=managements_flats");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $flats->title->value = $_POST[$flats->title->name];
-        $flats->income_type->value = $_POST[$flats->income_type->name];
-
-        $checks = $flats->title->check() || $flats->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE flats SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $flats->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

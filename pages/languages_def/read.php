@@ -45,11 +45,11 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_keyword'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['keyword'] ?>"><?= substr($datum['keyword'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['keyword'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['keyword'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_value'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['value'] ?>"><?= substr($datum['value'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['value'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['value'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

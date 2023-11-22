@@ -44,7 +44,7 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_flat'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['flat'] ?>"><?= substr($datum['flat'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['flat'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['flat'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_square_meter'] ?></th>

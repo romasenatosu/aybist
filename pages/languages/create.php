@@ -2,35 +2,48 @@
 
 require_once __DIR__ . '/../../database/Languages.php';
 
+// create entity
 $languages = new Languages();
 
+// check for method
 if (get_request_method() == 'POST') {
-    try {
-        $languages->title->value = $_POST[$languages->title->name];
-        $languages->income_type->value = $_POST[$languages->income_type->name];
+    // grab data from form inputs
 
-        $checks = $languages->title->check() || $languages->income_type->check();
+    $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
+    $languages->lang->value = htmlspecialchars($_POST[$languages->lang->name] ?? '');
+    $languages->flag->value = htmlspecialchars($_POST[$languages->flag->name] ?? '');
 
-        if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO languages (title) VALUES (:title)");
-            $stmt->bindParam(':title', $languages->title->value, PDO::PARAM_STR);
+    // check if given data is ok
+    $checks = $languages->code->check() || $languages->lang->check() || $languages->flag->check();
 
-            // .
-            // .
-            // .
-            // .
-            // .
+    if ($checks) {
+        // convert DateTime object to string
 
-            // $stmt->execute();
+        $created_at = date($datetime_format, $languages->created_at->value->getTimestamp());
+        $updated_at = date($datetime_format, $languages->updated_at->value->getTimestamp());
 
-            // return to index page
-        }
+        // sql statement
+        $stmt = $pdo->prepare("INSERT INTO languages (code, lang, flag, created_at, updated_at)
+                                    VALUES (:code, :lang, :flag, :created_at, :updated_at)");
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        //  bind values and parameters
+        $stmt->bindParam(':code', $languages->code->value, PDO::PARAM_STR);
+        $stmt->bindParam(':lang', $languages->lang->value, PDO::PARAM_STR);
+        $stmt->bindParam(':flag', $languages->flag->value, PDO::PARAM_STR);
+        $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+
+        // flush database
+        $stmt->execute();
+
+        // close the statement
+        $stmt->closeCursor();
+
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=languages");
     }
+
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

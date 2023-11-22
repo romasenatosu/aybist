@@ -2,60 +2,70 @@
 
 require_once __DIR__ . '/../../database/SettingsCurrency.php';
 
-// check for request
+// create entity
 $settingsCurrency = new SettingsCurrency();
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM settingsCurrency WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+    // get values from database to show them in inputs fields
+
+    $stmt = $pdo->prepare("SELECT name, symbol
+    FROM settings_currency
+    WHERE id = :id");
+
+    //  bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close the statement
+    $stmt->closeCursor();
+
+    // show values
+    $settingsCurrency->name->value = $result['name'];
+    $settingsCurrency->symbol->value = $result['symbol'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $settingsCurrency->name->value = htmlspecialchars($_POST[$settingsCurrency->name->name] ?? '');
+    $settingsCurrency->symbol->value = htmlspecialchars($_POST[$settingsCurrency->symbol->name] ?? '');
+
+    // check if given data is ok
+    $checks = $settingsCurrency->name->check() || $settingsCurrency->symbol->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+
+        $updated_at = date($datetime_format, $settingsCurrency->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE settings_currency SET name = :name, symbol = :symbol, updated_at = :updated_at 
+                            WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':name', $settingsCurrency->name->value, PDO::PARAM_STR);
+        $stmt->bindParam(':symbol', $settingsCurrency->symbol->value, PDO::PARAM_STR);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $settingsCurrency->id->value = $data['id'];
-        // $settingsCurrency->title->value = "settingsCurrency başlık";
-        // $settingsCurrency->description->value = "settingsCurrency açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=settings_currency");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $settingsCurrency->title->value = $_POST[$settingsCurrency->title->name];
-        $settingsCurrency->income_type->value = $_POST[$settingsCurrency->income_type->name];
-
-        $checks = $settingsCurrency->title->check() || $settingsCurrency->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE settingsCurrency SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $settingsCurrency->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

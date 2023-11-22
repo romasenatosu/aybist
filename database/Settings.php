@@ -24,8 +24,8 @@ class Settings {
     public FormElement $small_photo_width;
     public FormElement $small_photo_height;
     public FormElement $maintenance_mode;
-    public FormElement $debug_mode;
     public FormElement $maintenance_mode_content;
+    public FormElement $debug_mode;
     public FormElement $created_at;
     public FormElement $updated_at;
 
@@ -101,7 +101,7 @@ class Settings {
         $this->normal_photo_height->pattern = $regex_numeric;
         $this->normal_photo_height->pattern_msg = $lang['regex_numeric'];
         $this->normal_photo->accept = $photo_files_extensions;
-        $this->normal_photo->help_msg = $lang['help_photo_files'];
+        $this->normal_photo->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
         $this->top_photo->maxlength = -1;
         $this->top_photo->pattern = $regex_url;
         $this->top_photo->pattern_msg = $lang['regex_url'];
@@ -112,7 +112,7 @@ class Settings {
         $this->top_photo_height->pattern = $regex_numeric;
         $this->top_photo_height->pattern_msg = $lang['regex_numeric'];
         $this->top_photo->accept = $photo_files_extensions;
-        $this->top_photo->help_msg = $lang['help_photo_files'];
+        $this->top_photo->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
         $this->small_photo->maxlength = -1;
         $this->small_photo->pattern = $regex_url;
         $this->small_photo->pattern_msg = $lang['regex_url'];
@@ -123,7 +123,7 @@ class Settings {
         $this->small_photo_height->pattern = $regex_numeric;
         $this->small_photo_height->pattern_msg = $lang['regex_numeric'];
         $this->small_photo->accept = $photo_files_extensions;
-        $this->small_photo->help_msg = $lang['help_photo_files'];
+        $this->small_photo->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
         $this->debug_mode->required = false;
         $this->maintenance_mode->required = false;
         $this->maintenance_mode_content->maxlength = -1;

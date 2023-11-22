@@ -46,11 +46,12 @@ class Users {
         $this->address->required = false;
         $this->password->maxlength = -1;
         $this->password_confirm->maxlength = -1;
+        $this->avatar->required = false;
         $this->avatar->maxlength = -1;
         $this->avatar->pattern = $regex_url;
         $this->avatar->pattern_msg = $lang['regex_url'];
         $this->avatar->accept = $photo_files_extensions;
-        $this->avatar->help_msg = $lang['help_photo_files'];
+        $this->avatar->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
         $this->is_admin->required = false;
     }
 }

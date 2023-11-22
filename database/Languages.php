@@ -33,6 +33,6 @@ class Languages {
         $this->flag->pattern = $regex_url;
         $this->flag->pattern_msg = $lang['regex_url'];
         $this->flag->accept = $photo_files_extensions;
-        $this->flag->help_msg = $lang['help_photo_files'];
+        $this->flag->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT u.id, u.fullname, u.email, u.phone, c.phone_code, u.address, u.avatar, u.is_admin, u.created_at, u.updated_at
+$stmt = $pdo->prepare("SELECT u.id, u.fullname, u.email, u.phone, CONCAT('+', c.phone_code) AS phone_code, u.address, u.avatar, u.is_admin, u.created_at, u.updated_at
 FROM users u
 INNER JOIN countries c ON c.id = phone_code_id");
 $stmt->execute();

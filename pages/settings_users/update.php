@@ -2,61 +2,90 @@
 
 require_once __DIR__ . '/../../database/Users.php';
 
-// check for request
+// create entity
 $users = new Users();
-// $users->avatar->value = 'assets/images/flags/tr.png';
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+    // show values
+
+    $stmt = $pdo->prepare("SELECT fullname, email, phone, phone_code_id, address, avatar, is_admin 
+    FROM users
+    WHERE id = :id");
+
+    //  bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close the statement
+    $stmt->closeCursor();
+
+    // show values
+    $users->fullname->value = $result['fullname'];
+    $users->email->value = $result['email'];
+    $users->phone->value = $result['phone'];
+    $users->phone_code_id->value = $result['phone_code_id'];
+    $users->address->value = $result['address'];
+    $users->avatar->value = $result['avatar'];
+    $users->is_admin->value = $result['is_admin'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $users->fullname->value = htmlspecialchars($_POST[$users->fullname->name] ?? '');
+    $users->email->value = htmlspecialchars($_POST[$users->email->name] ?? '');
+    $users->phone->value = htmlspecialchars($_POST[$users->phone->name] ?? '');
+    $users->phone_code_id->value = htmlspecialchars($_POST[$users->phone_code_id->name] ?? '');
+    $users->address->value = htmlspecialchars($_POST[$users->address->name] ?? '');
+    $users->password->value = htmlspecialchars($_POST[$users->password->name] ?? '');
+    $users->avatar->value = htmlspecialchars($_POST[$users->avatar->name] ?? '');
+    $users->is_admin->value = htmlspecialchars($_POST[$users->is_admin->name] ?? '');
+
+    // check if given data is ok
+    $checks = $users->fullname->check() || $users->email->check() || $users->phone->check() || 
+                $users->phone_code_id->check() || $users->address->check() || $users->password->check() ||
+                $users->avatar->check() || $users->is_admin->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+
+        $updated_at = date($datetime_format, $users->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE users SET fullname = :fullname, email = :email, phone = :phone, phone_code_id = :phone_code_id,
+                            address = :address, password = :password, avatar = :avatar, is_admin = :is_admin,
+                            updated_at = :updated_at 
+                            WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':fullname', $users->fullname->value, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $users->email->value, PDO::PARAM_STR);
+        $stmt->bindParam(':phone', $users->phone->value, PDO::PARAM_STR);
+        $stmt->bindParam(':phone_code_id', $users->phone_code_id->value, PDO::PARAM_INT);
+        $stmt->bindParam(':address', $users->address->value, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $users->password->value, PDO::PARAM_STR);
+        $stmt->bindParam(':avatar', $users->avatar->value, PDO::PARAM_STR);
+        $stmt->bindValue(':is_admin', ($users->is_admin->value) ? true : false, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $users->id->value = $data['id'];
-        // $users->title->value = "users başlık";
-        // $users->description->value = "users açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=settings_users");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $users->title->value = $_POST[$users->title->name];
-        $users->income_type->value = $_POST[$users->income_type->name];
-
-        $checks = $users->title->check() || $users->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE users SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $users->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

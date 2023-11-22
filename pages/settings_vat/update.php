@@ -2,60 +2,68 @@
 
 require_once __DIR__ . '/../../database/SettingsVat.php';
 
-// check for request
+// create entity
 $settingsVat = new SettingsVat();
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM settingsVat WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+    // get values from database to show them in inputs fields
+
+    $stmt = $pdo->prepare("SELECT name, rate
+    FROM settings_vat
+    WHERE id = :id");
+
+    //  bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close the statement
+    $stmt->closeCursor();
+
+    // show values
+    $settingsVat->name->value = $result['name'];
+    $settingsVat->rate->value = $result['rate'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $settingsVat->name->value = htmlspecialchars($_POST[$settingsVat->name->name] ?? '');
+    $settingsVat->rate->value = htmlspecialchars($_POST[$settingsVat->rate->name] ?? '');
+
+    // check if given data is ok
+    $checks = $settingsVat->name->check() || $settingsVat->rate->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+        $updated_at = date($datetime_format, $settingsVat->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE settings_vat SET name = :name, rate = :rate, updated_at = :updated_at WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':name', $settingsVat->name->value, PDO::PARAM_STR);
+        $stmt->bindParam(':rate', $settingsVat->rate->value, PDO::PARAM_INT);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $settingsVat->id->value = $data['id'];
-        // $settingsVat->title->value = "settingsVat başlık";
-        // $settingsVat->description->value = "settingsVat açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=settings_vat");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $settingsVat->title->value = $_POST[$settingsVat->title->name];
-        $settingsVat->income_type->value = $_POST[$settingsVat->income_type->name];
-
-        $checks = $settingsVat->title->check() || $settingsVat->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE settingsVat SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $settingsVat->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

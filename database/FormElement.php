@@ -27,18 +27,30 @@ class FormElement {
         $this->help_msg = $help_msg;
     }
 
-    // think about non string fields
+    // NOTE: we removed the pattern attribute
+    private function pattern_to_html(string $regex): string {
+        if (empty($this->pattern)) {
+            return "[\s\S]*";
+        }
+
+        // html5 doesn't accept begining and ending delimeters
+        $html_pattern = str_replace("/^", "", $regex);
+        return str_replace("$/", "", $html_pattern);
+    }
 
     public function get_text_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' pattern='%s' value='%s'", $this->name,
+        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' value='%s'", $this->name,
                         $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
-                        $this->pattern, $this->getValue());
+                        $this->getValue());
     }
 
     public function get_textarea_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' pattern='%s'", $this->name,
+        $html_pattern = str_replace("/^", "", $this->pattern);
+        $html_pattern = str_replace("$/", "", $html_pattern);
+
+        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d'", $this->name,
                         $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
-                        $this->pattern);
+                        );
     }
 
     public function get_number_attr(): string {
@@ -61,10 +73,14 @@ class FormElement {
     }
 
     public function check(): bool {
-        global $lang;
+        global $lang, $regex_numeric;
+
+        // TODO: rewrite this function according to the variable types
+        return true;
 
         // make encoded buffer
-        $buff = htmlspecialchars($this->value);
+        $buff = htmlspecialchars($this->value ?? '');
+        print_r($buff);
 
         // check for required field
         if (empty($buff) and $this->required) {
@@ -73,7 +89,7 @@ class FormElement {
         }
 
         // check for length of the value
-        if ($this->patttern == $regex_numeric and filter_var($buff, FILTER_VALIDATE_INT)) {
+        if ($this->pattern == $regex_numeric and filter_var($buff, FILTER_VALIDATE_INT)) {
             if ($buff > $this->maxlength or $buff < $this->minlength) {
                 $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
                 return false;
@@ -94,7 +110,7 @@ class FormElement {
                     if (empty($this->pattern_msg)) {
                         $this->error_msg = $lang['regex_invalid_value'];
                     } else {
-                        $this->$error_msg = $this->pattern_msg;
+                        $this->error_msg = $this->pattern_msg;
                     }
 
                     return false;
@@ -224,7 +240,7 @@ class FormElement {
                 break;
 
             case ('phone_code_id' or 'cell_phone_code_id' or 'fax_code_id'):
-                $sql = "SELECT id as option_id, phone_code as option_text FROM countries WHERE language_id = :language_id";
+                $sql = "SELECT id as option_id, CONCAT('+', phone_code) as option_text FROM countries WHERE language_id = :language_id";
                 break;
 
             case 'district_id':

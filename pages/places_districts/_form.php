@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=places_districts&action=create" ?>" method="post">
+                            <form action="<?= "?locale=$locale&page=places_districts&action=" . (($id <= 0) ? "create" : "update&id=$id") ?>" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                     <div class="col-md-6">
                                         <div class="row gx-md-4 gx-0 gy-4 align-items-end">
@@ -55,12 +55,8 @@
                                         <span class="text-muted"><?= ($districts->district->help_msg) ?></span>
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-primary"><?= ($id <= 0) ? $lang['text_create'] : $lang['text_update'] ?></button>
                             </form>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary"><?= ($id <= 0) ? $lang['text_create'] : $lang['text_update'] ?></button>
                         </div>
                     </div>
                 </div>

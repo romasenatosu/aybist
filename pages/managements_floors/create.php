@@ -2,35 +2,50 @@
 
 require_once __DIR__ . '/../../database/Floors.php';
 
+// create entity
 $floors = new Floors();
 
+// check for method
 if (get_request_method() == 'POST') {
-    try {
-        $floors->title->value = $_POST[$floors->title->name];
-        $floors->income_type->value = $_POST[$floors->income_type->name];
+    // grab data from form inputs
 
-        $checks = $floors->title->check() || $floors->income_type->check();
+    $floors->language_id->value = getLocaleId($locale);
+    $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
 
-        if ($checks) {
-            $stmt = $pdo->prepare("INSERT INTO floors (title) VALUES (:title)");
-            $stmt->bindParam(':title', $floors->title->value, PDO::PARAM_STR);
+    // check if given data is ok
+    $checks = $floors->floor->check();
 
-            // .
-            // .
-            // .
-            // .
-            // .
+    if ($checks) {
+        // convert DateTime object to string
 
-            // $stmt->execute();
+        $created_at = date($datetime_format, $floors->created_at->value->getTimestamp());
+        $updated_at = date($datetime_format, $floors->updated_at->value->getTimestamp());
 
-            // return to index page
+        // get all locale id to create this entity for each one of them
+        $all_locale_id = getAllLocaleId();
+        foreach ($all_locale_id as $locale_id) {
+            // sql statement
+            $stmt = $pdo->prepare("INSERT INTO floors (language_id, floor, created_at, updated_at)
+                                     VALUES (:language_id, :floor, :created_at, :updated_at)");
+
+            //  bind values and parameters
+            $stmt->bindValue(':language_id', $locale_id['id'], PDO::PARAM_INT);
+            $stmt->bindParam(':floor', $floors->floor->value, PDO::PARAM_STR);
+            $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+            $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+
+            // flush database
+            $stmt->execute();
+
+            // close the statement
+            $stmt->closeCursor();
         }
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=managements_floors");
     }
+
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

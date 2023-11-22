@@ -4,7 +4,9 @@ $datum = [];
 
 $language_id = getLocaleId($locale);
 if ($language_id > 0) {
-    $stmt = $pdo->prepare("SELECT * FROM countries WHERE language_id = :language_id AND id = :id");
+    $stmt = $pdo->prepare("SELECT id, country, CONCAT('+', phone_code) as phone_code, created_at, updated_at
+                            FROM countries
+                            WHERE language_id = :language_id AND id = :id");
     $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -44,7 +46,7 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_country'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['country'] ?>"><?= substr($datum['country'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['country'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['country'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_phone_code'] ?></th>

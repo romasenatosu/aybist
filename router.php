@@ -15,6 +15,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/test/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/test/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/test/index.php';
                 break;
@@ -36,6 +40,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/managements/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/managements/delete.php';
                 break;
 
             case '':
@@ -61,6 +69,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements_blocks/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/managements_blocks/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/managements_blocks/index.php';
                 break;
@@ -82,6 +94,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/managements_flats/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/managements_flats/delete.php';
                 break;
 
             case '':
@@ -107,6 +123,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/managements_floors/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/managements_floors/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/managements_floors/index.php';
                 break;
@@ -128,6 +148,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/places_countries/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/places_countries/delete.php';
                 break;
 
             case '':
@@ -153,6 +177,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/places_cities/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/places_cities/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/places_cities/index.php';
                 break;
@@ -174,6 +202,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/places_districts/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/places_districts/delete.php';
                 break;
 
             case '':
@@ -227,6 +259,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/languages/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/languages/delete.php';
                 break;
 
             case '':
@@ -301,6 +337,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_currency/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/settings_currency/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/settings_currency/index.php';
                 break;
@@ -324,6 +364,10 @@ switch ($page) {
                 include_once __DIR__ . '/pages/settings_vat/update.php';
                 break;
 
+            case 'delete':
+                include_once __DIR__ . '/pages/settings_vat/delete.php';
+                break;
+
             case '':
                 include_once __DIR__ . '/pages/settings_vat/index.php';
                 break;
@@ -345,6 +389,10 @@ switch ($page) {
 
             case 'update':
                 include_once __DIR__ . '/pages/settings_users/update.php';
+                break;
+
+            case 'delete':
+                include_once __DIR__ . '/pages/settings_users/delete.php';
                 break;
 
             case '':

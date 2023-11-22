@@ -43,15 +43,15 @@ $stmt->closeCursor();
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_user'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['fullname'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_ipv4'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['ipv4'] ?>"><?= substr($datum['ipv4'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ipv4'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['ipv4'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_ipv6'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['ipv6'] ?>"><?= substr($datum['ipv6'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ipv6'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['ipv6'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

@@ -2,60 +2,66 @@
 
 require_once __DIR__ . '/../../database/Floors.php';
 
-// check for request
+// create entity
 $floors = new Floors();
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM floors WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+
+    // get values from database to show them in inputs fields
+    $stmt = $pdo->prepare("SELECT floor 
+    FROM floors
+    WHERE id = :id");
+    
+    //  bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close statement
+    $stmt->closeCursor();
+
+    // show values
+    $floors->floor->value = $result['floor'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
+
+    // check if given data is ok
+    $checks = $floors->floor->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+        $updated_at = date($datetime_format, $floors->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE floors SET floor = :floor, updated_at = :updated_at 
+                            WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':floor', $floors->floor->value, PDO::PARAM_STR);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $floors->id->value = $data['id'];
-        // $floors->title->value = "floors başlık";
-        // $floors->description->value = "floors açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=managements_floors");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $floors->title->value = $_POST[$floors->title->name];
-        $floors->income_type->value = $_POST[$floors->income_type->name];
-
-        $checks = $floors->title->check() || $floors->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE floors SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $floors->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

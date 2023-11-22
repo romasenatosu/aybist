@@ -1,5 +1,7 @@
 <?php
 
+// please write all regex in this format "/^[YOUR REGEX]$/"
+
 $regex_url = "/^(?:[a-zA-Z]:\\|[\/\\])?([a-zA-Z0-9]+[\/\\])+([a-zA-Z0-9]+\.[a-zA-Z0-9]+)$/";
 $regex_alpha_numeric = "/^[a-zA-Z0-9 çÇğĞıİöÖşŞüÜ]+$/";
 $regex_alpha = "/^[a-zA-Z çÇğĞıİöÖşŞüÜ]+$/";

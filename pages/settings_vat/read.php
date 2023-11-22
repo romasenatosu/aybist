@@ -44,7 +44,7 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_name'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['name'] ?>"><?= substr($datum['name'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['name'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['name'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_rate'] ?></th>

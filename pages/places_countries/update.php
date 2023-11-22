@@ -2,60 +2,69 @@
 
 require_once __DIR__ . '/../../database/Countries.php';
 
-// check for request
+// create entity
 $countries = new Countries();
 
-if (get_request_method() == 'GET') {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM countries WHERE id = :id");
+// check for method
+if (get_request_method() == "GET") {
+    // get values from database to show them in inputs fields
+
+    $stmt = $pdo->prepare("SELECT country, phone_code 
+    FROM countries
+    WHERE id = :id");
+
+    //  bind values and parameters
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    // flush database
+    $stmt->execute();
+
+    // fetch result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // close the statement
+    $stmt->closeCursor();
+
+    // grab data from form inputs
+    $countries->country->value = $result['country'];
+    $countries->phone_code->value = $result['phone_code'];
+}
+
+// check for method
+if (get_request_method() == 'POST') {
+    // grab data from form inputs
+
+    $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
+    $countries->phone_code->value = htmlspecialchars($_POST[$countries->phone_code->name] ?? '');
+
+    // check if given data is ok
+    $checks = $countries->country->check() || $countries->phone_code->check();
+
+    if ($checks) {
+        // convert DateTime object to string
+        $updated_at = date($datetime_format, $countries->updated_at->value->getTimestamp());
+
+        // sql statement
+        $stmt = $pdo->prepare("UPDATE countries SET country = :country, phone_code = :phone_code, updated_at = :updated_at 
+                            WHERE id = :id");
+
+        //  bind values and parameters
+        $stmt->bindParam(':country', $countries->country->value, PDO::PARAM_STR);
+        $stmt->bindParam(':phone_code', $countries->phone_code->value, PDO::PARAM_STR);
+        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->execute();
 
-        // $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        // flush database
+        $stmt->execute();
 
-        // $countries->id->value = $data['id'];
-        // $countries->title->value = "countries başlık";
-        // $countries->description->value = "countries açıklama";
+        // close the statement
+        $stmt->closeCursor();
 
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
+        // redirect to index page if everything is successfull
+        header("Location: " . get_server() . "?locale=$locale&page=places_countries");
     }
-}
 
-else if (get_request_method() == 'POST') {
-    try {
-        $countries->title->value = $_POST[$countries->title->name];
-        $countries->income_type->value = $_POST[$countries->income_type->name];
-
-        $checks = $countries->title->check() || $countries->income_type->check();
-
-        if ($checks) {
-            $stmt = $pdo->prepare("UPDATE countries SET title = :title WHERE id = :id");
-            $stmt->bindParam(':title', $countries->title->value, PDO::PARAM_STR);
-
-            // .
-            // .
-            // .
-            // .
-            // .
-
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            // $stmt->execute();
-
-            // return to index page
-        }
-
-    } catch (Exception $e) {
-        dump($e);
-        die();
-        // do something when error happens
-    }
-}
-
-else {
-    // throw error: bad request
+    // this will open the current page so no reason to redirect again
 }
 
 // show form field

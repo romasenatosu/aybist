@@ -48,11 +48,11 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_city'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['city'] ?>"><?= substr($datum['city'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['city'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['city'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_district'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['district'] ?>"><?= substr($datum['district'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['district'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['district'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

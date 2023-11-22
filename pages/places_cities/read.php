@@ -47,11 +47,11 @@ if ($language_id > 0) {
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_country'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['country'] ?>"><?= substr($datum['country'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['country'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['country'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_city'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['city'] ?>"><?= substr($datum['city'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['city'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['city'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_zip_code'] ?></th>

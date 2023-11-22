@@ -42,19 +42,19 @@ $stmt->closeCursor();
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_user'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['fullname'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_code'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['code'] ?>"><?= substr($datum['code'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['code'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['code'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_msg'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['msg'] ?>"><?= substr($datum['msg'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['msg'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['msg'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_trace'] ?></th>
-                                        <td data-bs-toggle="tooltip" title="<?= $datum['trace'] ?>"><?= substr($datum['trace'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['trace'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                        <td><?= $datum['trace'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

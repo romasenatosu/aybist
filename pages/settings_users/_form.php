@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=settings_users&action=create" ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= "?locale=$locale&page=settings_users&action=" . (($id <= 0) ? "create" : "update&id=$id") ?>" method="post" enctype="multipart/form-data">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                     <div class="col-md-6">
                                         <label class="form-label" for="<?= $users->fullname->name ?>">
@@ -128,12 +128,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-primary"><?= ($id <= 0) ? $lang['text_create'] : $lang['text_update'] ?></button>
                             </form>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary"><?= ($id <= 0) ? $lang['text_create'] : $lang['text_update'] ?></button>
                         </div>
                     </div>
                 </div>

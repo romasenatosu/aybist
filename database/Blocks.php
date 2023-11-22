@@ -35,6 +35,4 @@ class Blocks {
         $this->floor_count->pattern = $regex_numeric;
         $this->floor_count->pattern_msg = $lang['regex_numeric'];
     }
-
-    // TODO: create a function to return options tag for select boxes
 }
