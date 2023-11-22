@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 20, 2023 at 05:32 PM
+-- Generation Time: Nov 22, 2023 at 03:50 PM
 -- Server version: 10.3.38-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 8.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `blocks` (
   `id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` text NOT NULL,
+  `block` text NOT NULL,
   `description` text DEFAULT NULL,
   `floor_count` smallint(6) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `flats` (
   `fee` int(11) NOT NULL,
   `currency_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `update_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -204,7 +204,7 @@ CREATE TABLE `managements` (
   `flat_id` int(11) NOT NULL,
   `manager_owner_id` int(11) NOT NULL,
   `manager_rental_id` int(11) NOT NULL,
-  `name` text NOT NULL,
+  `management` text NOT NULL,
   `description` text DEFAULT NULL,
   `fee_status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -402,6 +402,7 @@ CREATE TABLE `users` (
   `phone_code_id` int(11) NOT NULL,
   `address` text DEFAULT NULL,
   `password` text NOT NULL,
+  `avatar` text,
   `is_admin` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL

@@ -3,6 +3,12 @@
 define('default_title', 'Aybist');
 $title = default_title;
 
+/**
+ * Changes title of sub pages
+ * 
+ * @param string subtitle
+ * @return string newtitle
+ */
 function changeTitle(string $subtitle=""): string {
     $title = default_title;
 

@@ -1,5 +1,18 @@
 <?php
+    ob_start();
     require_once __DIR__ . '/inc/core.php';
+
+/* 
+    // update language definitions
+    include_once __DIR__ . '/language_en.php';
+    foreach ($lang_defaults_en as $key => $value) {
+        $stmt = $pdo->prepare("INSERT INTO languages_def (language_id, keyword, value) VALUES (:language_id, :keyword, :value)");
+        $stmt->bindValue(':language_id', 2, PDO::PARAM_INT);
+        $stmt->bindParam(':keyword', $key, PDO::PARAM_STR);
+        $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+    } */
 
     // dump($_SERVER);
     // die();
@@ -43,7 +56,9 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: crud operations using PDO -->
+    <!-- TODO: create flash messages after updating/deleting/errors -->
+    <!-- TODO: file uploading -->
+    <!-- TODO: raise 404 error instead of mysql exceptions for lost id (read, update, delete) -->
     <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->
@@ -53,9 +68,9 @@
     <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
-    <div class="preloader">
+<!--     <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div>
+    </div> -->
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -224,3 +239,7 @@
 </body>
 
 </html>
+
+<?php
+
+ob_end_flush();

@@ -1,31 +1,59 @@
 <?php
 
+// start listening status codes
+$status_code = http_response_code();
+
+// 100 = HTTP INFO
+// 200 = HTTP OK
+// 300 = HTTP REDIRECT
+// 400 = HTTP CLIENT ERROR
+// 500 = HTTP SERVER ERROR
+
+/**
+ * checks if the response code really returned by server otherwise redirects to home page
+ * 
+ * @param int code
+ * @return void
+ */
+function checkResponse(int $code): void {
+    global $locale, $status_code;
+
+    // var_dump($status_code, $code);
+    // die();
+
+    if ($status_code == $code) {
+        include_once __DIR__ . "/pages/errors/$code.php";
+    } else {
+        redirectHome($locale);
+    }
+}
+
+// myurl = ?locale(required) &page(required) &action(optional) &id(optional)
+// locale is being handled by language.php
+
 switch ($page) {
-    case 'test':
-        switch ($action) {
-            case 'create':
-                include_once __DIR__ . '/pages/test/create.php';
-                break;
+    case 'error_400':
+        checkResponse(400);
+        break;
 
-            case 'read':
-                include_once __DIR__ . '/pages/test/read.php';
-                break;
+    case 'error_401':
+        checkResponse(401);
+        break;
 
-            case 'update':
-                include_once __DIR__ . '/pages/test/update.php';
-                break;
+    case 'error_402':
+        checkResponse(402);
+        break;
 
-            case 'delete':
-                include_once __DIR__ . '/pages/test/delete.php';
-                break;
+    case 'error_403':
+        checkResponse(403);
+        break;
 
-            case '':
-                include_once __DIR__ . '/pages/test/index.php';
-                break;
+    case 'error_404':
+        checkResponse(404);
+        break;
 
-            default:
-                include_once __DIR__ . '/pages/errors/404.php';
-            }
+    case 'error_500':
+        checkResponse(500);
         break;
 
     case 'managements':
@@ -35,15 +63,30 @@ switch ($page) {
                 break;
 
             case 'read':
-                include_once __DIR__ . '/pages/managements/read.php';
+                if (check_id('managements')) {
+                    include_once __DIR__ . '/pages/managements/read.php';
+                } else {
+                    redirectNotFound($locale);
+                }
+
                 break;
 
             case 'update':
-                include_once __DIR__ . '/pages/managements/update.php';
+                if (check_id('managements')) {
+                    include_once __DIR__ . '/pages/managements/update.php';
+                } else {
+                    redirectNotFound($locale);
+                }
+
                 break;
 
             case 'delete':
-                include_once __DIR__ . '/pages/managements/delete.php';
+                if (check_id('managements')) {
+                    include_once __DIR__ . '/pages/managements/delete.php';
+                } else {
+                    redirectNotFound($locale);
+                }
+
                 break;
 
             case '':
@@ -51,7 +94,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
         
@@ -78,7 +121,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -105,7 +148,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -132,7 +175,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -159,7 +202,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -186,7 +229,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -213,7 +256,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -228,7 +271,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -243,7 +286,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -270,7 +313,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -289,7 +332,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -304,7 +347,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -319,7 +362,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -346,7 +389,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -373,7 +416,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -400,7 +443,7 @@ switch ($page) {
                 break;
 
             default:
-                include_once __DIR__ . '/pages/errors/404.php';
+                redirectNotFound($locale);
             }
         break;
 
@@ -416,6 +459,10 @@ switch ($page) {
         include_once __DIR__ . '/logout.php';
         break;
 
+    case '':
+        redirectHome($locale);
+        break;
+
     default:
-        include_once __DIR__ . '/pages/errors/404.php'; 
+        redirectNotFound($locale);
 }

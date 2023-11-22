@@ -44,14 +44,34 @@ if (get_request_method() == 'POST') {
     $users->phone->value = htmlspecialchars($_POST[$users->phone->name] ?? '');
     $users->phone_code_id->value = htmlspecialchars($_POST[$users->phone_code_id->name] ?? '');
     $users->address->value = htmlspecialchars($_POST[$users->address->name] ?? '');
+    $users->old_password->value = htmlspecialchars($_POST[$users->old_password->name] ?? '');
     $users->password->value = htmlspecialchars($_POST[$users->password->name] ?? '');
+    $users->password_confirm->value = htmlspecialchars($_POST[$users->password_confirm->name] ?? '');
     $users->avatar->value = htmlspecialchars($_POST[$users->avatar->name] ?? '');
     $users->is_admin->value = htmlspecialchars($_POST[$users->is_admin->name] ?? '');
 
     // check if given data is ok
     $checks = $users->fullname->check() || $users->email->check() || $users->phone->check() || 
-                $users->phone_code_id->check() || $users->address->check() || $users->password->check() ||
+                $users->phone_code_id->check() || $users->address->check() || 
+                $users->old_password->check() || $users->password->check() || $users->password_confirm->check() ||
                 $users->avatar->check() || $users->is_admin->check();
+
+    // password confirming/hashing
+    $password = "";
+
+    if ($users->password->value == $users->password_confirm->value) {
+        // if (password_verify())
+
+        // hash the password
+        $password = password_hash($users->password->value, $hash_algorithm, $hash_options);
+    }
+
+    else {
+        // passwords doesn't match
+        $users->password_confirm->error_msg = $lang['errors_passwords_mismatch'];
+        $users->password->error_msg = $lang['errors_passwords_mismatch'];
+        $checks = false;
+    }
 
     if ($checks) {
         // convert DateTime object to string

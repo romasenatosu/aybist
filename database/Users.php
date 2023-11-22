@@ -9,6 +9,7 @@ class Users {
     public FormElement $phone;
     public FormElement $phone_code_id;
     public FormElement $address;
+    public FormElement $old_password;
     public FormElement $password;
     public FormElement $password_confirm;
     public FormElement $avatar;
@@ -25,6 +26,7 @@ class Users {
         $this->phone = new FormElement('phone');
         $this->phone_code_id = new FormElement('phone_code_id');
         $this->address = new FormElement('address');
+        $this->old_password = new FormElement('old_password');
         $this->password = new FormElement('password');
         $this->password_confirm = new FormElement('password_confirm');
         $this->avatar = new FormElement('avatar');
@@ -44,6 +46,7 @@ class Users {
         $this->phone->pattern_msg = $lang['regex_phone'];
         $this->address->maxlength = -1;
         $this->address->required = false;
+        $this->old_password->maxlength = -1;
         $this->password->maxlength = -1;
         $this->password_confirm->maxlength = -1;
         $this->avatar->required = false;

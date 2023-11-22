@@ -23,6 +23,7 @@ $lang_defaults_en = [
     "text_google_maps" => "Settigs of Google Maps",
     "text_exempted" => "Exempted",
     "text_not_exempted" => "Not Exempted",
+    "text_password" => "Password",
 
     "page_home" => "Home Page",
     "page_test" => "Test",
@@ -111,9 +112,12 @@ $lang_defaults_en = [
     "error_403" => "You don't have access to this page.",
     "error_404" => "Can't be reached the page you are looking for.",
     "error_500" => "Server Error.",
+    "errors_passwords_mismatch" => "Passwords are mismatching.",
 
     "label_username" => "Username",
     "label_password" => "Password",
+    "label_old_password" => "Old Password",
+    "label_new_password" => "New Password",
     "label_password_confirm" => "Confirm Password",
     "label_remember_me" => "Remember me",
     "label_title" => "Title",
@@ -174,7 +178,6 @@ $lang_defaults_en = [
 
     "placeholder_username" => "Username",
     "placeholder_password" => "*****",
-    "placeholder_password_confirm" => "*****",
     "placeholder_title" => "Enter title",
     "placeholder_description" => "Enter description",
     "placeholder_name" => "Enter name",
@@ -224,15 +227,16 @@ $lang_defaults_en = [
     "placeholder_phone_code_select" => "Phone Code",
     "placeholder_block" => "Enter block",
     "placeholder_management" => "Enter management",
+    "placeholder_date_range" => "Select range of date",
 
     "help_block" => "Example: A5, B2, C1",
     "help_zip_code" => "Example: 20000",
-    "help_phone_code" => "Example: +90",
+    "help_phone_code" => "Example: 90",
     "help_lang_code" => "Example: tr",
     "help_lang" => "Example: Türkçe",
     "help_flat" => "Example: 1+1",
     "help_square_meter" => "Example: 70",
-    "help_photo_files" => "Select a photo ($photo_files_extensions)",
+    "help_photo_files" => "Select a photo (%s)",
 
     "datatable_emptyTable" => "No data available in table",
     "datatable_info" => "Showing %s to %s of %s entries",

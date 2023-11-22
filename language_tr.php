@@ -23,6 +23,7 @@ $lang_defaults_tr = [
     "text_google_maps" => "Google Maps Ayarları",
     "text_exempted" => "Muaf",
     "text_not_exempted" => "Muaf Değil",
+    "text_password" => "Şifre",
 
     "page_home" => "Ana Sayfa",
     "page_test" => "Test",
@@ -110,10 +111,14 @@ $lang_defaults_tr = [
     "error_402" => "Ödeme Gerekli.",
     "error_403" => "Bu sayfaya erişiminiz kapalı.",
     "error_404" => "İstediğiniz sayfaya ulaşılamıyor.",
-    "error_500" => "Server Hatası.",
+    "error_500" => "Sunucu Hatası.",
+
+    "errors_passwords_mismatch" => "Şifreler birbiriyle eşleşmiyor",
 
     "label_username" => "Kullanıcı Adı",
     "label_password" => "Şifre",
+    "label_old_password" => "Eski Şifre",
+    "label_new_password" => "Yeni Şifre",
     "label_password_confirm" => "Şifre Onayla",
     "label_remember_me" => "Beni Hatırla",
     "label_title" => "Başlık",
@@ -174,7 +179,6 @@ $lang_defaults_tr = [
 
     "placeholder_username" => "Kullanıcı Adı",
     "placeholder_password" => "*****",
-    "placeholder_password_confirm" => "*****",
     "placeholder_title" => "Başlık",
     "placeholder_description" => "Açıklama girin",
     "placeholder_name" => "İsim girin",
@@ -224,15 +228,16 @@ $lang_defaults_tr = [
     "placeholder_phone_code_select" => "Telefon Kodu",
     "placeholder_block" => "Blok girin",
     "placeholder_management" => "İşletme girin",
+    "placeholder_date_range" => "Tarih aralığı seçin",
 
     "help_block" => "Örnek: A5, B2, C1",
     "help_zip_code" => "Örnek: 20000",
-    "help_phone_code" => "Örnek: +90",
+    "help_phone_code" => "Örnek: 90",
     "help_lang_code" => "Örnek: tr",
     "help_lang" => "Örnek: Türkçe",
     "help_flat" => "Örnek: 1+1",
     "help_square_meter" => "Örnek: 70",
-    "help_photo_files" => "Bir fotoğraf seçin ($photo_files_extensions)",
+    "help_photo_files" => "Bir fotoğraf seçin (%s)",
 
     "datatable_emptyTable" => "Tabloda hiçbir veri yok",
     "datatable_info" => "Toplam %s veri arasından %s ila %s arası gösteriliyor",

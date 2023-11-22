@@ -6,29 +6,47 @@ session_start();
 // CREATE EXTRA CLASS FOR THIS 
 
 class Auth {
-    public $user;
+    public mixed $user;
+    private string $token;
 
     function __construct() {
         $this->user = true; // NOTE: make it true for now...
+        $this->token = "";
     }
 
-
-    function setUser($user):void {
+    public function setUser($user):void {
         $this->user = $user;
     }
 
-    function getUser() {
+    public function getUser():mixed {
         return $this->user;
+    }
+
+    public function setToken(string $token):void {
+        $this->token = $token;
+    }
+
+    public function getToken():string {
+        return $this->token;
+    }
+
+    public function login() {
+
+    }
+
+    public function changePassword() {
+        
     }
 }
 
 $auth = new Auth();
 
 // if no page was provided then redirect automatically
-if (empty($page)) {
-    if ($auth->getUser()) {
+/* if (empty($page)) {
+    if ($auth->getToken()) {
         header("Location: " . get_server() . "?locale=$locale&page=home");
     } else {
         header("Location: " . get_server() . "?locale=$locale&page=login");
     }
 }
+ */

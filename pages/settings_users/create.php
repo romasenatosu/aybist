@@ -21,16 +21,15 @@ if (get_request_method() == 'POST') {
 
     // check if given data is ok
     $checks = $users->fullname->check() || $users->email->check() || $users->phone->check() || 
-                $users->phone_code_id->check() || $users->address->check() || $users->password->check() ||
+                $users->phone_code_id->check() || $users->address->check() || 
+                $users->password->check() || $users->old_password->check() ||
                 $users->avatar->check() || $users->is_admin->check();
 
     // password confirming/hashing
     $password = "";
-    // TODO: create function in Auth.php for this to use this action anywhere
 
     if ($users->password->value == $users->password_confirm->value) {
         // hash the password
-
         $password = password_hash($users->password->value, $hash_algorithm, $hash_options);
     } else {
         // passwords doesn't match

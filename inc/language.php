@@ -82,11 +82,15 @@ function getLocaleDict(int $language_id): array {
     return $formatted_data;
 }
 
-// check if that locale exists otherwise redirect user to home page with default locale
+// check if that locale exists otherwise redirect user with default locale
 $language_id = getLocaleId($locale);
-
 if (!$language_id > 0) {
-    header("Location: " . get_server() . "?locale=$default_locale&page=$page&action=$action");
+    if (empty($locale)) {
+        redirectHome($default_locale);
+    } else {
+        redirectHome($default_locale);
+        // redirectNotFound($default_locale);
+    }
 }
 
 $lang = getLocaleDict($language_id);

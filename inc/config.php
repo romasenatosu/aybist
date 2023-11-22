@@ -3,14 +3,17 @@
 // program configs
 $default_locale = "tr";
 
-$date_format = "d.m.Y";
-$datetime_format = "d.m.Y h:i:s";
+$date_format = "Y-m-d";
+$datetime_format = "Y-m-d H:i:s";
 
 $photo_files_extensions = ".jpg, .jpeg, .png";
 $document_files_extensions = ".pdf, .doc, .docx, .rtf, .txt, .csv";
 $upload_dir = __DIR__ . "/uploads";
 
-$hash_cost = 12; // 4 - 32
+$hash_options = [
+    'cost' => 12 // 4 - 32
+];
+
 $hash_algorithm = PASSWORD_BCRYPT;
 
 $max_abbr = 25;
@@ -31,16 +34,10 @@ $database_username = "muhammed";
 $database_password = "muhammed.1234";
 $database_port = 3306;
 $dsn = "mysql:host=$hostname;dbname=$database";
-$pdo = null;
 
-try {
-    $pdo = new PDO($dsn, $database_username, $database_password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->query("SET CHARSET utf8mb4");
-
-} catch (PDOException $e) {
-    die(print_r($e->getMessage()));
-}
+$pdo = new PDO($dsn, $database_username, $database_password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->query("SET CHARSET utf8mb4");
 
 // update initialization settings from database
 // ini_set("display_errors", 1);

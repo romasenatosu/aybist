@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Useful when uploading new file to server
+ * 
+ * @param string name
+ * @return array status of file uploading
+ */
 function upload(string $name): array {
     global $photo_files_extensions, $upload_dir, $lang;
     $extensions = str_replace('.', '', $photo_files_extensions);

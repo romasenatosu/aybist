@@ -72,24 +72,61 @@
                                         <span class="text-danger"><?= ($users->address->error_msg) ?></span>
                                         <span class="text-muted"><?= ($users->address->help_msg) ?></span>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="<?= $users->password->name ?>">
-                                            <?= $lang['label_password'] ?>
-                                            <span class="text-danger"><?= ($users->password->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($users->password->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($users->password->help_msg) ?></span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="<?= $users->password_confirm->name ?>">
-                                            <?= $lang['label_password_confirm'] ?>
-                                            <span class="text-danger"><?= ($users->password_confirm->required) ? '*': '' ?></span>
-                                        </label>
-                                        <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password_confirm'] ?>" <?= $users->password_confirm->get_text_attr() ?>>
-                                        <span class="text-danger"><?= ($users->password_confirm->error_msg) ?></span>
-                                        <span class="text-muted"><?= ($users->password_confirm->help_msg) ?></span>
-                                    </div>
+                                    <?php if ($id > 0): ?>
+                                        <div class="col-12">
+                                            <fieldset class="border p-3">
+                                                <legend><?= $lang['text_password'] ?></legend>
+                                                <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
+                                                    <div class="col-md-4">
+                                                        <label class="form-label" for="<?= $users->old_password->name ?>">
+                                                            <?= $lang['label_old_password'] ?>
+                                                            <span class="text-danger"><?= ($users->old_password->required) ? '*': '' ?></span>
+                                                        </label>
+                                                        <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->old_password->get_text_attr() ?>>
+                                                        <span class="text-danger"><?= ($users->old_password->error_msg) ?></span>
+                                                        <span class="text-muted"><?= ($users->old_password->help_msg) ?></span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="form-label" for="<?= $users->password->name ?>">
+                                                            <?= $lang['label_new_password'] ?>
+                                                            <span class="text-danger"><?= ($users->password->required) ? '*': '' ?></span>
+                                                        </label>
+                                                        <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password->get_text_attr() ?>>
+                                                        <span class="text-danger"><?= ($users->password->error_msg) ?></span>
+                                                        <span class="text-muted"><?= ($users->password->help_msg) ?></span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="form-label" for="<?= $users->password_confirm->name ?>">
+                                                            <?= $lang['label_password_confirm'] ?>
+                                                            <span class="text-danger"><?= ($users->password_confirm->required) ? '*': '' ?></span>
+                                                        </label>
+                                                        <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password_confirm->get_text_attr() ?>>
+                                                        <span class="text-danger"><?= ($users->password_confirm->error_msg) ?></span>
+                                                        <span class="text-muted"><?= ($users->password_confirm->help_msg) ?></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="<?= $users->password->name ?>">
+                                                <?= $lang['label_password'] ?>
+                                                <span class="text-danger"><?= ($users->password->required) ? '*': '' ?></span>
+                                            </label>
+                                            <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password->get_text_attr() ?>>
+                                            <span class="text-danger"><?= ($users->password->error_msg) ?></span>
+                                            <span class="text-muted"><?= ($users->password->help_msg) ?></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="<?= $users->password_confirm->name ?>">
+                                                <?= $lang['label_password_confirm'] ?>
+                                                <span class="text-danger"><?= ($users->password_confirm->required) ? '*': '' ?></span>
+                                            </label>
+                                            <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password_confirm'] ?>" <?= $users->password_confirm->get_text_attr() ?>>
+                                            <span class="text-danger"><?= ($users->password_confirm->error_msg) ?></span>
+                                            <span class="text-muted"><?= ($users->password_confirm->help_msg) ?></span>
+                                        </div>
+                                    <?php endif ?>
                                     <div class="col-md-6">
                                         <div class="row gx-md-4 gx-0 gy-4 align-items-center">
                                             <div class="<?= ($users->avatar->value) ? 'col-10' : 'col-12' ?>">
