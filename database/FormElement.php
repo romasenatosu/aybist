@@ -75,6 +75,7 @@ class FormElement {
     public function check(): bool {
         global $lang, $regex_numeric;
 
+        // give null to not required empty value 
         // TODO: rewrite this function according to the variable types
         return true;
 

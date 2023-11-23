@@ -14,9 +14,8 @@
         $stmt->closeCursor();
     } */
 
-    dump($_SESSION);
-    // dump($_SERVER);
-    die();
+    // dump($_SESSION);
+    // die();
 ?>
 
 <!DOCTYPE html>
@@ -57,15 +56,14 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
+    <!-- TODO: php.ini settings must be derived from database -->
+    <!-- TODO: file uploading -->
+    <!-- TODO: method listener for GET, POST, etc. -->
     <!-- TODO: check for unique fields -->
     <!-- TODO: create flash messages after updating/deleting/errors -->
-    <!-- TODO: file uploading -->
     <!-- TODO: create custom pagination and show rows function -->
-    <!-- TODO: get page title from database -->
-    <!-- TODO: php.ini settings must be derived from database -->
-    <!-- TODO: method listener for GET, POST, etc. -->
     <!-- TODO: create analytics charts -->
-    <!-- TODO: mesajlar -->
+    <!-- TODO: get page title from database -->
 
     <!-- Preloader -->
     <div class="preloader">

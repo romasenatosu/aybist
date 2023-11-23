@@ -24,6 +24,7 @@ $lang_defaults_en = [
     "text_exempted" => "Exempted",
     "text_not_exempted" => "Not Exempted",
     "text_password" => "Password",
+    "text_invalid_login" => "Invalid Username or Password",
 
     "page_home" => "Home Page",
     "page_test" => "Test",

@@ -7,6 +7,11 @@ $users = new Users();
 
 // check for method
 if (getRequestMethod() == "GET") {
+    // set not required fields
+    $users->old_password->required = false;
+    $users->password->required = false;
+    $users->password_confirm->required = false;
+
     // show values
 
     $stmt = $pdo->prepare("SELECT fullname, email, phone, phone_code_id, address, avatar, is_admin 
@@ -55,6 +60,8 @@ if (getRequestMethod() == 'POST') {
                 $users->phone_code_id->check() || $users->address->check() || 
                 $users->old_password->check() || $users->password->check() || $users->password_confirm->check() ||
                 $users->avatar->check() || $users->is_admin->check();
+
+// TODO: password change
 
     // password confirming/hashing
     $password = "";

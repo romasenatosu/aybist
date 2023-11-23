@@ -27,6 +27,23 @@ ini_set("memory_limit", -1); // max amount of bytes php can use (-1 means, there
 ini_set("max_execution_time", 300); // 5 mins
 ini_set("session.gc_probability", null); // garbage data probability
 
+/* An empty value means that no SameSite cookie attribute will be set
+Lax and Strict mean that the cookie will not be sent cross-domain for POST requests;
+Lax will sent the cookie for cross-domain GET requests, while Strict will not. */
+$samesite = '';
+$year_in_seconds = 60 * 60 * 24 * 365;
+
+// ini_set('session.gc_maxlifetime', $year_in_seconds);
+
+// session_set_cookie_params([
+//     "lifetime" => $year_in_seconds,
+//     "path" => "session.cookie_lifetime",
+//     "domain" => $_SERVER["HTTP_HOST"], 
+//     "secure" => true,
+//     "httponly" => true,
+//     "samesite" => $samesite,
+// ]);
+
 // database configurations
 $hostname = "localhost";
 $database = "aybist";

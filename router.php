@@ -1,7 +1,7 @@
 <?php
 
 // start listening status codes
-$status_code = http_response_code();
+// $status_code = http_response_code();
 
 // 100 = HTTP INFO
 // 200 = HTTP OK
@@ -9,51 +9,34 @@ $status_code = http_response_code();
 // 400 = HTTP CLIENT ERROR
 // 500 = HTTP SERVER ERROR
 
-/**
- * checks if the response code really returned by server otherwise redirects to home page
- * 
- * @param int code
- * @return void
- */
-function checkResponse(int $code): void {
-    global $locale, $status_code;
-
-    // var_dump($status_code, $code);
-    // die();
-
-    if ($status_code == $code) {
-        include_once __DIR__ . "/pages/errors/$code.php";
-    } else {
-        redirectHome($locale);
-    }
-}
-
 // myurl = ?locale(required) &page(required) &action(optional) &id(optional)
 // locale is being handled by language.php
 
+$tablename = "";
+
 switch ($page) {
     case 'error_400':
-        checkResponse(400);
+        include_once __DIR__ . "/pages/errors/400.php";
         break;
 
     case 'error_401':
-        checkResponse(401);
+        include_once __DIR__ . "/pages/errors/401.php";
         break;
 
     case 'error_402':
-        checkResponse(402);
+        include_once __DIR__ . "/pages/errors/402.php";
         break;
 
     case 'error_403':
-        checkResponse(403);
+        include_once __DIR__ . "/pages/errors/403.php";
         break;
 
     case 'error_404':
-        checkResponse(404);
+        include_once __DIR__ . "/pages/errors/404.php";
         break;
 
     case 'error_500':
-        checkResponse(500);
+        include_once __DIR__ . "/pages/errors/500.php";
         break;
 
     case 'managements':
@@ -63,30 +46,18 @@ switch ($page) {
                 break;
 
             case 'read':
-                if (check_id('managements')) {
-                    include_once __DIR__ . '/pages/managements/read.php';
-                } else {
-                    redirectNotFound($locale);
-                }
-
+                $tablename = "managements";
+                include_once __DIR__ . '/pages/managements/read.php';
                 break;
 
             case 'update':
-                if (check_id('managements')) {
-                    include_once __DIR__ . '/pages/managements/update.php';
-                } else {
-                    redirectNotFound($locale);
-                }
-
+                $tablename = "managements";
+                include_once __DIR__ . '/pages/managements/update.php';
                 break;
 
             case 'delete':
-                if (check_id('managements')) {
-                    include_once __DIR__ . '/pages/managements/delete.php';
-                } else {
-                    redirectNotFound($locale);
-                }
-
+                $tablename = "managements";
+                include_once __DIR__ . '/pages/managements/delete.php';
                 break;
 
             case '':
@@ -105,14 +76,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "blocks";
                 include_once __DIR__ . '/pages/managements_blocks/read.php';
                 break;
 
             case 'update':
+                $tablename = "blocks";
                 include_once __DIR__ . '/pages/managements_blocks/update.php';
                 break;
 
             case 'delete':
+                $tablename = "blocks";
                 include_once __DIR__ . '/pages/managements_blocks/delete.php';
                 break;
 
@@ -132,14 +106,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "flats";
                 include_once __DIR__ . '/pages/managements_flats/read.php';
                 break;
 
             case 'update':
+                $tablename = "flats";
                 include_once __DIR__ . '/pages/managements_flats/update.php';
                 break;
 
             case 'delete':
+                $tablename = "flats";
                 include_once __DIR__ . '/pages/managements_flats/delete.php';
                 break;
 
@@ -159,14 +136,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "floors";
                 include_once __DIR__ . '/pages/managements_floors/read.php';
                 break;
 
             case 'update':
+                $tablename = "floors";
                 include_once __DIR__ . '/pages/managements_floors/update.php';
                 break;
 
             case 'delete':
+                $tablename = "floors";
                 include_once __DIR__ . '/pages/managements_floors/delete.php';
                 break;
 
@@ -186,14 +166,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "countries";
                 include_once __DIR__ . '/pages/places_countries/read.php';
                 break;
 
             case 'update':
+                $tablename = "countries";
                 include_once __DIR__ . '/pages/places_countries/update.php';
                 break;
 
             case 'delete':
+                $tablename = "countries";
                 include_once __DIR__ . '/pages/places_countries/delete.php';
                 break;
 
@@ -213,14 +196,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "cities";
                 include_once __DIR__ . '/pages/places_cities/read.php';
                 break;
 
             case 'update':
+                $tablename = "cities";
                 include_once __DIR__ . '/pages/places_cities/update.php';
                 break;
 
             case 'delete':
+                $tablename = "cities";
                 include_once __DIR__ . '/pages/places_cities/delete.php';
                 break;
 
@@ -240,14 +226,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "districts";
                 include_once __DIR__ . '/pages/places_districts/read.php';
                 break;
 
             case 'update':
+                $tablename = "districts";
                 include_once __DIR__ . '/pages/places_districts/update.php';
                 break;
 
             case 'delete':
+                $tablename = "districts";
                 include_once __DIR__ . '/pages/places_districts/delete.php';
                 break;
 
@@ -263,6 +252,7 @@ switch ($page) {
     case 'notifications':
         switch ($action) {
             case 'read':
+                $tablename = "notifications";
                 include_once __DIR__ . '/pages/notifications/read.php';
                 break;
 
@@ -278,6 +268,7 @@ switch ($page) {
     case 'notifications_ips':
         switch ($action) {
             case 'read':
+                $tablename = "notifications_ips";
                 include_once __DIR__ . '/pages/notifications_ips/read.php';
                 break;
 
@@ -297,14 +288,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "languages";
                 include_once __DIR__ . '/pages/languages/read.php';
                 break;
 
             case 'update':
+                $tablename = "languages";
                 include_once __DIR__ . '/pages/languages/update.php';
                 break;
 
             case 'delete':
+                $tablename = "languages";
                 include_once __DIR__ . '/pages/languages/delete.php';
                 break;
 
@@ -320,10 +314,12 @@ switch ($page) {
     case 'languages_def':
         switch ($action) {
             case 'read':
+                $tablename = "languages_def";
                 include_once __DIR__ . '/pages/languages_def/read.php';
                 break;
 
             case 'update':
+                $tablename = "languages_def";
                 include_once __DIR__ . '/pages/languages_def/update.php';
                 break;
 
@@ -339,6 +335,7 @@ switch ($page) {
     case 'settings_general':
         switch ($action) {
             case 'update':
+                $tablename = "settings";
                 include_once __DIR__ . '/pages/settings_general/update.php';
                 break;
 
@@ -354,6 +351,7 @@ switch ($page) {
     case 'settings_contact':
         switch ($action) {
             case 'update':
+                $tablename = "settings_contact";
                 include_once __DIR__ . '/pages/settings_contact/update.php';
                 break;
 
@@ -373,14 +371,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "settings_currency";
                 include_once __DIR__ . '/pages/settings_currency/read.php';
                 break;
 
             case 'update':
+                $tablename = "settings_currency";
                 include_once __DIR__ . '/pages/settings_currency/update.php';
                 break;
 
             case 'delete':
+                $tablename = "settings_currency";
                 include_once __DIR__ . '/pages/settings_currency/delete.php';
                 break;
 
@@ -400,14 +401,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "settings_vat";
                 include_once __DIR__ . '/pages/settings_vat/read.php';
                 break;
 
             case 'update':
+                $tablename = "settings_vat";
                 include_once __DIR__ . '/pages/settings_vat/update.php';
                 break;
 
             case 'delete':
+                $tablename = "settings_vat";
                 include_once __DIR__ . '/pages/settings_vat/delete.php';
                 break;
 
@@ -427,14 +431,17 @@ switch ($page) {
                 break;
 
             case 'read':
+                $tablename = "users";
                 include_once __DIR__ . '/pages/settings_users/read.php';
                 break;
 
             case 'update':
+                $tablename = "users";
                 include_once __DIR__ . '/pages/settings_users/update.php';
                 break;
 
             case 'delete':
+                $tablename = "users";
                 include_once __DIR__ . '/pages/settings_users/delete.php';
                 break;
 
@@ -465,4 +472,12 @@ switch ($page) {
 
     default:
         redirectNotFound($locale);
+}
+
+// look for id
+
+if (!empty($tablename)) {
+    if (!checkId($tablename)) {
+        redirectNotFound($locale);
+    }
 }

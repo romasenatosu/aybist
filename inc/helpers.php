@@ -1,17 +1,17 @@
 <?php
 
-// TODO: change function names camelCase
-
 /**
  * returns buffer with html pre tags
  * 
  * @param mixed buff
  * @return void
  */
-function dump(mixed $buff): void {
-    echo '<pre>';
-    print_r($buff);
-    echo '</pre>';
+function dump(mixed ...$buff): void {
+    array_map(function ($value) {
+        echo '<pre>';
+        print_r($value);
+        echo '</pre>';
+    }, $buff);
 }
 
 /**
@@ -58,6 +58,18 @@ function checkId(string $table):bool {
     $stmt->closeCursor();
 
     return $result['id'] ?? false;
+}
+
+/**
+ * Redirects user to desired route
+ * 
+ * @param string route
+ * @return void
+ */
+function redirect(string $route): void {
+    header("Location: " . getServer() .$route);
+    header("HTTP/1.1 302 Redirected");
+    exit(0);
 }
 
 /**
@@ -182,16 +194,4 @@ function redirectAuthenticate(string $language_code): void {
         header("HTTP/1.1 302 Redirected");
         exit(0);
     }
-}
-
-/**
- * Redirects user to desired route
- * 
- * @param string route
- * @return void
- */
-function redirect(string $route): void {
-    redirect($route);
-    header("HTTP/1.1 302 Redirected");
-    exit(0);
 }

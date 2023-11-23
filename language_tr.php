@@ -24,6 +24,7 @@ $lang_defaults_tr = [
     "text_exempted" => "Muaf",
     "text_not_exempted" => "Muaf Değil",
     "text_password" => "Şifre",
+    "text_invalid_login" => "Geçersiz Email ya da Şifre",
 
     "page_home" => "Ana Sayfa",
     "page_test" => "Test",
