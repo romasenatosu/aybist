@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Cities.php';
 $cities = new Cities();
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $cities->language_id->value = getLocaleId($locale);
@@ -41,7 +41,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=places_cities");
+        redirect("?locale=$locale&page=places_cities");
     }
 
     // this will open the current page so no reason to redirect again

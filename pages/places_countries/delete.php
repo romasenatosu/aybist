@@ -1,6 +1,6 @@
 <?php
 
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     
 
     // sql for deletion
@@ -16,5 +16,5 @@ if (get_request_method() == 'POST') {
     $stmt->closeCursor();
     
     // redirect to index page after deletion
-    header('Location: ' . get_server() . "?locale=$locale&page=$page");
+    redirect("?locale=$locale&page=$page");
 }

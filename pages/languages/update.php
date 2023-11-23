@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Languages.php';
 $languages = new Languages();
 
 // check for method
-if (get_request_method() == "GET") {
+if (getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT code, lang, flag 
     FROM languages
@@ -31,7 +31,7 @@ if (get_request_method() == "GET") {
 }
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
@@ -63,7 +63,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=languages");
+        redirect("?locale=$locale&page=languages");
     }
 
     // this will open the current page so no reason to redirect again

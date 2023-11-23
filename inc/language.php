@@ -8,7 +8,7 @@
  */
 function changeLocale(string $new_locale): string {
     global $locale;
-    $request = get_request_uri();
+    $request = getRequestUri();
     return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $request));
 }
 
@@ -83,14 +83,13 @@ function getLocaleDict(int $language_id): array {
 }
 
 // check if that locale exists otherwise redirect user with default locale
+if (empty($locale)) {
+    $locale = $default_locale;
+}
+
 $language_id = getLocaleId($locale);
 if (!$language_id > 0) {
-    if (empty($locale)) {
-        redirectHome($default_locale);
-    } else {
-        redirectHome($default_locale);
-        // redirectNotFound($default_locale);
-    }
+    redirectNotFound($default_locale);
 }
 
 $lang = getLocaleDict($language_id);

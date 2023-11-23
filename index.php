@@ -14,8 +14,9 @@
         $stmt->closeCursor();
     } */
 
+    dump($_SESSION);
     // dump($_SERVER);
-    // die();
+    die();
 ?>
 
 <!DOCTYPE html>
@@ -56,11 +57,10 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
+    <!-- TODO: check for unique fields -->
     <!-- TODO: create flash messages after updating/deleting/errors -->
     <!-- TODO: file uploading -->
-    <!-- TODO: raise 404 error instead of mysql exceptions for lost id (read, update, delete) -->
     <!-- TODO: create custom pagination and show rows function -->
-    <!-- TODO: authentication -->
     <!-- TODO: get page title from database -->
     <!-- TODO: php.ini settings must be derived from database -->
     <!-- TODO: method listener for GET, POST, etc. -->
@@ -68,9 +68,9 @@
     <!-- TODO: mesajlar -->
 
     <!-- Preloader -->
-<!--     <div class="preloader">
+    <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div> -->
+    </div>
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">

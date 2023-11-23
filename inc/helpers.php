@@ -19,7 +19,7 @@ function dump(mixed $buff): void {
  * 
  * @return string request_method
  */
-function get_request_method(): string {
+function getRequestMethod(): string {
     return $_SERVER['REQUEST_METHOD'];
 }
 
@@ -28,7 +28,7 @@ function get_request_method(): string {
  * 
  * @return string request_uri
  */
-function get_request_uri(): string {
+function getRequestUri(): string {
     return $_SERVER['REQUEST_URI'];
 }
 
@@ -38,7 +38,7 @@ function get_request_uri(): string {
  * 
  * @return string url
  */
-function get_server(): string {
+function getServer(): string {
     return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/';
 }
 
@@ -49,7 +49,7 @@ function get_server(): string {
  * @param int column_id
  * @return bool
  */
-function check_id(string $table):bool {
+function checkId(string $table):bool {
     global $pdo, $id;
     $stmt = $pdo->prepare("SELECT id FROM $table WHERE id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -67,8 +67,73 @@ function check_id(string $table):bool {
  * @return void
  */
 function redirectHome(string $language_code): void {
-    header("Location: " . get_server() . "?locale=$language_code&page=home");
+    redirect("?locale=$language_code&page=home");
     header("HTTP/1.1 302");
+    exit(0);
+}
+
+/**
+ * Redirects user to invalid request error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectInvalidRequest(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "error_")) {
+        redirect("?locale=$language_code&page=error_400");
+        // header("HTTP/1.1 400 Invalid Request");
+        exit(0);
+    }
+}
+
+/**
+ * Redirects user to unauthorized access error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectUnauthorized(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "error_")) {
+        redirect("?locale=$language_code&page=error_401");
+        // header("HTTP/1.1 401 Unauthorized");
+        exit(0);
+    }
+}
+
+/**
+ * Redirects user to payment required error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectPaymentRequired(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "error_")) {
+        redirect("?locale=$language_code&page=error_402");
+        // header("HTTP/1.1 402 Payment Required");
+        exit(0);
+    }
+}
+
+/**
+ * Redirects user to not found error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectAccessDenied(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "error_")) {
+        redirect("?locale=$language_code&page=error_403");
+        // header("HTTP/1.1 403 Access Denied");
+        exit(0);
+    }
 }
 
 /**
@@ -81,7 +146,52 @@ function redirectNotFound(string $language_code): void {
     global $page;
 
     if (!str_starts_with($page, "error_")) {
-        header("Location: " . get_server() . "?locale=$language_code&page=error_404");
-        header("HTTP/1.1 404");
+        redirect("?locale=$language_code&page=error_404");
+        // header("HTTP/1.1 404 Not Found");
+        exit(0);
     }
+}
+
+/**
+ * Redirects user to server error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectServerError(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "error_")) {
+        redirect("?locale=$language_code&page=error_500");
+        // header("HTTP/1.1 500 Server Error");
+        exit(0);
+    }
+}
+
+/**
+ * Redirects user to server error page with the current locale
+ * 
+ * @param string language_code
+ * @return void
+ */
+function redirectAuthenticate(string $language_code): void {
+    global $page;
+
+    if (!str_starts_with($page, "login")) {
+        redirect("?locale=$language_code&page=login");
+        header("HTTP/1.1 302 Redirected");
+        exit(0);
+    }
+}
+
+/**
+ * Redirects user to desired route
+ * 
+ * @param string route
+ * @return void
+ */
+function redirect(string $route): void {
+    redirect($route);
+    header("HTTP/1.1 302 Redirected");
+    exit(0);
 }

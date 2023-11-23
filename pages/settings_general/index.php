@@ -71,7 +71,7 @@ if ($language_id > 0) {
                                             <td><?= $datum['smtp_port'] ?></td>
                                             <td>
                                                 <?php if ($datum['normal_photo']): ?>
-                                                    <a href="<?= get_server() . $datum['normal_photo'] ?>">
+                                                    <a href="<?= getServer() . $datum['normal_photo'] ?>">
                                                         <img src="<?= $datum['normal_photo'] ?>" alt="<?= $datum['normal_photo'] ?>" class="img-fluid" width="32" height="32">
                                                     </a>
                                                     <?= "(" . $datum['normal_photo_width'] . "x" . $datum['normal_photo_height'] . ")" ?>
@@ -79,7 +79,7 @@ if ($language_id > 0) {
                                             </td>
                                             <td>
                                                 <?php if ($datum['top_photo']): ?>
-                                                    <a href="<?= get_server() . $datum['top_photo'] ?>">
+                                                    <a href="<?= getServer() . $datum['top_photo'] ?>">
                                                         <img src="<?= $datum['top_photo'] ?>" alt="<?= $datum['top_photo'] ?>" class="img-fluid" width="32" height="32">
                                                     </a>
                                                     <?= "(" . $datum['top_photo_width'] . "x" . $datum['top_photo_height'] . ")" ?>
@@ -87,7 +87,7 @@ if ($language_id > 0) {
                                             </td>
                                             <td>
                                                 <?php if ($datum['small_photo']): ?>
-                                                    <a href="<?= get_server() . $datum['small_photo'] ?>">
+                                                    <a href="<?= getServer() . $datum['small_photo'] ?>">
                                                         <img src="<?= $datum['flag'] ?>" alt="<?= $datum['small_photo'] ?>" class="img-fluid" width="32" height="32">
                                                     </a>
                                                     <?= "(" . $datum['small_photo_width'] . "x" . $datum['small_photo_height'] . ")" ?>

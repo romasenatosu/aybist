@@ -137,7 +137,7 @@
                                                             if ($settings->normal_photo->value):
                                                         ?>
                                                             <div class="col-2">
-                                                                <a href="<?= get_server() . $settings->normal_photo->value ?>">
+                                                                <a href="<?= getServer() . $settings->normal_photo->value ?>">
                                                                     <img src="<?= $settings->normal_photo->value ?>" 
                                                                     alt="<?= $settings->normal_photo->value ?>" class="img-fluid" width="32" height="32">
                                                                 </a>
@@ -188,7 +188,7 @@
                                                             if ($settings->top_photo->value):
                                                         ?>
                                                             <div class="col-2">
-                                                                <a href="<?= get_server() . $settings->top_photo->value ?>">
+                                                                <a href="<?= getServer() . $settings->top_photo->value ?>">
                                                                     <img src="<?= $settings->top_photo->value ?>" 
                                                                     alt="<?= $settings->top_photo->value ?>" class="img-fluid" width="32" height="32">
                                                                 </a>
@@ -239,7 +239,7 @@
                                                             if ($settings->small_photo->value):
                                                         ?>
                                                             <div class="col-2">
-                                                                <a href="<?= get_server() . $settings->small_photo->value ?>">
+                                                                <a href="<?= getServer() . $settings->small_photo->value ?>">
                                                                     <img src="<?= $settings->small_photo->value ?>" 
                                                                     alt="<?= $settings->small_photo->value ?>" class="img-fluid" width="32" height="32">
                                                                 </a>

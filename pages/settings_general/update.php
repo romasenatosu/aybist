@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Settings.php';
 $settings = new Settings();
 
 // check for method
-if (get_request_method() == "GET") {
+if (getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT company, slogan, keywords, site_title, site_url, smtp_url, smtp_port, 
     normal_photo, normal_photo_width, normal_photo_height, top_photo, top_photo_width, top_photo_height, 
@@ -49,7 +49,7 @@ if (get_request_method() == "GET") {
 }
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $settings->company->value = htmlspecialchars($_POST[$settings->company->name] ?? '');
@@ -128,7 +128,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=settings");
+        redirect("?locale=$locale&page=settings");
     }
 
     // this will open the current page so no reason to redirect again

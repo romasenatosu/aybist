@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Users.php';
 $users = new Users();
 
 // check for method
-if (get_request_method() == "GET") {
+if (getRequestMethod() == "GET") {
     // show values
 
     $stmt = $pdo->prepare("SELECT fullname, email, phone, phone_code_id, address, avatar, is_admin 
@@ -36,7 +36,7 @@ if (get_request_method() == "GET") {
 }
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $users->fullname->value = htmlspecialchars($_POST[$users->fullname->name] ?? '');
@@ -102,7 +102,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=settings_users");
+        redirect("?locale=$locale&page=settings_users");
     }
 
     // this will open the current page so no reason to redirect again

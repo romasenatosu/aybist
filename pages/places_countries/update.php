@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Countries.php';
 $countries = new Countries();
 
 // check for method
-if (get_request_method() == "GET") {
+if (getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
 
     $stmt = $pdo->prepare("SELECT country, phone_code 
@@ -31,7 +31,7 @@ if (get_request_method() == "GET") {
 }
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
@@ -61,7 +61,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=places_countries");
+        redirect("?locale=$locale&page=places_countries");
     }
 
     // this will open the current page so no reason to redirect again

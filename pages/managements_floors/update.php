@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../database/Floors.php';
 $floors = new Floors();
 
 // check for method
-if (get_request_method() == "GET") {
+if (getRequestMethod() == "GET") {
 
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT floor 
@@ -30,7 +30,7 @@ if (get_request_method() == "GET") {
 }
 
 // check for method
-if (get_request_method() == 'POST') {
+if (getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
@@ -58,7 +58,7 @@ if (get_request_method() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        header("Location: " . get_server() . "?locale=$locale&page=managements_floors");
+        redirect("?locale=$locale&page=managements_floors");
     }
 
     // this will open the current page so no reason to redirect again

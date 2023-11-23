@@ -65,7 +65,7 @@ $stmt->closeCursor();
                                         <th><?= $lang['table_avatar'] ?></th>
                                         <td>
                                             <?php if ($datum['avatar']): ?>
-                                                <a href="<?= get_server() . $datum['avatar'] ?>">
+                                                <a href="<?= getServer() . $datum['avatar'] ?>">
                                                     <img src="<?= $datum['avatar'] ?>" alt="<?= $datum['avatar'] ?>" class="img-fluid" width="32" height="32">
                                                 </a>
                                             <?php endif ?>
