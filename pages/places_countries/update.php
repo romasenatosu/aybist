@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/Countries.php';
-
 // create entity
 $countries = new Countries();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
 
     $stmt = $pdo->prepare("SELECT country, phone_code 
@@ -31,7 +29,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
@@ -61,7 +59,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=places_countries");
+        Helpers::redirect("places_countries");
     }
 
     // this will open the current page so no reason to redirect again

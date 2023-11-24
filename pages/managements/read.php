@@ -2,7 +2,7 @@
 
 $datum = [];
 
-$language_id = getLocaleId($locale);
+
 if ($language_id > 0) {
     $stmt = $pdo->prepare("SELECT m.id, b.block, f.floor, flat.flat, u.fullname as owner, u2.fullname as rental, m.management, m.description, m.fee_status, m.created_at, m.updated_at
         FROM managements m

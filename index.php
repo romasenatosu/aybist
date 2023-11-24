@@ -1,6 +1,5 @@
 <?php
-    ob_start();
-    require_once __DIR__ . '/inc/core.php';
+    require_once __DIR__ . '/inc/Core.php';
 
 /* 
     // update language definitions
@@ -14,7 +13,8 @@
         $stmt->closeCursor();
     } */
 
-    // dump($_SESSION);
+    // Helpers::dump($_SESSION);
+    // Helpers::dump($_SERVER);
     // die();
 ?>
 
@@ -56,30 +56,28 @@
 <!-- ASK: error redirection and codes for server -->
 
 <body>
-    <!-- TODO: php.ini settings must be derived from database -->
     <!-- TODO: file uploading -->
-    <!-- TODO: method listener for GET, POST, etc. -->
     <!-- TODO: check for unique fields -->
     <!-- TODO: create flash messages after updating/deleting/errors -->
+    <!-- TODO: remember me and user token -->
     <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: create analytics charts -->
     <!-- TODO: get page title from database -->
 
     <!-- Preloader -->
-    <div class="preloader">
+<!--     <div class="preloader">
         <img src="/assets/images/logos/logo.png" alt="loader" class="img-fluid" />
-    </div>
+    </div> -->
 
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <?php
-            if ($page == 'login') {
-                include_once __DIR__ . '/login.php';
-            } else {
+            if ($page != 'login' and !str_starts_with($page, "error_")) {
                 include_once __DIR__ . '/header.php';
-                require_once __DIR__ . '/router.php';
-                include_once __DIR__ . '/footer.php';
             }
+
+            require_once __DIR__ . '/router.php';
+            include_once __DIR__ . '/footer.php';
         ?>
     </div> <!-- NOTE: Body Wrapper ends here -->
 

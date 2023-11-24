@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/FormElement.php';
-
 class SettingsContact {
     public FormElement $id;
     public FormElement $language_id;
@@ -52,7 +50,7 @@ class SettingsContact {
         $this->fax->required = false;
         $this->fax->pattern = $regex_phone;
         $this->fax->pattern_msg = $lang['regex_phone'];
-        $this->email->maxlength = -1;
+        $this->email->maxlength = 255;
         $this->email->pattern = $regex_email;
         $this->email->pattern_msg = $lang['regex_email'];
         $this->captcha_key->maxlength = 64;

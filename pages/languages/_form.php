@@ -56,7 +56,7 @@
                                                 if ($languages->flag->value):
                                             ?>
                                                 <div class="col-2">
-                                                    <a href="<?= getServer() . $languages->flag->value ?>">
+                                                    <a href="<?= Helpers::getServer() . $languages->flag->value ?>">
                                                         <img src="<?= $languages->flag->value ?>" 
                                                         alt="<?= $languages->flag->value ?>" class="img-fluid" width="32" height="32">
                                                     </a>

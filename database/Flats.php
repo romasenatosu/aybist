@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/FormElement.php';
-
 class Flats {
     public FormElement $id;
     public FormElement $language_id;

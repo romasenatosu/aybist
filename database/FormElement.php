@@ -12,7 +12,7 @@ class FormElement {
     public string $error_msg;
     public string $help_msg;
 
-    public function __construct(string $name, mixed $value = null, bool $required = true,
+    function __construct(string $name, mixed $value = null, bool $required = true,
                                 int $minlength = 0, int $maxlength = 255, string $accept='', string $pattern = '',
                                 string $pattern_msg = '', string $error_msg = '', string $help_msg = '') {
         $this->name = $name;
@@ -195,14 +195,12 @@ class FormElement {
     }
 
     public function get_select_options(string $placeholder):mixed {
-        global $locale, $pdo;
+        global $locale, $pdo, $language_id;
         $sql = "";
         $placholder_option = sprintf("<option %s value='0'>%s</option>", ($this->value) ? '' : 'selected', $placeholder);
         $options = [
             $placholder_option,
         ];
-
-        $language_id = getLocaleId($locale);
 
         switch ($this->name) {
             case 'block_id':

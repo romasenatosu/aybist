@@ -16,236 +16,240 @@ $tablename = "";
 
 switch ($page) {
     case 'error_400':
-        include_once __DIR__ . "/pages/errors/400.php";
+        include_once Helpers::checkMethods("pages/errors/400.php");
         break;
 
     case 'error_401':
-        include_once __DIR__ . "/pages/errors/401.php";
+        include_once Helpers::checkMethods("pages/errors/401.php");
         break;
 
     case 'error_402':
-        include_once __DIR__ . "/pages/errors/402.php";
+        include_once Helpers::checkMethods("pages/errors/402.php");
         break;
 
     case 'error_403':
-        include_once __DIR__ . "/pages/errors/403.php";
+        include_once Helpers::checkMethods("pages/errors/403.php");
         break;
 
     case 'error_404':
-        include_once __DIR__ . "/pages/errors/404.php";
+        include_once Helpers::checkMethods("pages/errors/404.php");
+        break;
+
+    case 'error_405':
+        include_once Helpers::checkMethods("pages/errors/405.php");
         break;
 
     case 'error_500':
-        include_once __DIR__ . "/pages/errors/500.php";
+        include_once Helpers::checkMethods("pages/errors/500.php");
         break;
 
     case 'managements':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/managements/create.php';
+                include_once Helpers::checkMethods("pages/managements/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "managements";
-                include_once __DIR__ . '/pages/managements/read.php';
+                include_once Helpers::checkMethods("pages/managements/read.php");
                 break;
 
             case 'update':
                 $tablename = "managements";
-                include_once __DIR__ . '/pages/managements/update.php';
+                include_once Helpers::checkMethods("pages/managements/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "managements";
-                include_once __DIR__ . '/pages/managements/delete.php';
+                include_once Helpers::checkMethods("pages/managements/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/managements/index.php';
+                include_once Helpers::checkMethods("pages/managements/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
         
     case 'managements_blocks':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/managements_blocks/create.php';
+                include_once Helpers::checkMethods("pages/managements_blocks/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "blocks";
-                include_once __DIR__ . '/pages/managements_blocks/read.php';
+                include_once Helpers::checkMethods("pages/managements_blocks/read.php");
                 break;
 
             case 'update':
                 $tablename = "blocks";
-                include_once __DIR__ . '/pages/managements_blocks/update.php';
+                include_once Helpers::checkMethods("pages/managements_blocks/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "blocks";
-                include_once __DIR__ . '/pages/managements_blocks/delete.php';
+                include_once Helpers::checkMethods("pages/managements_blocks/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/managements_blocks/index.php';
+                include_once Helpers::checkMethods("pages/managements_blocks/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'managements_flats':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/managements_flats/create.php';
+                include_once Helpers::checkMethods("pages/managements_flats/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "flats";
-                include_once __DIR__ . '/pages/managements_flats/read.php';
+                include_once Helpers::checkMethods("pages/managements_flats/read.php");
                 break;
 
             case 'update':
                 $tablename = "flats";
-                include_once __DIR__ . '/pages/managements_flats/update.php';
+                include_once Helpers::checkMethods("pages/managements_flats/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "flats";
-                include_once __DIR__ . '/pages/managements_flats/delete.php';
+                include_once Helpers::checkMethods("pages/managements_flats/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/managements_flats/index.php';
+                include_once Helpers::checkMethods("pages/managements_flats/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'managements_floors':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/managements_floors/create.php';
+                include_once Helpers::checkMethods("pages/managements_floors/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "floors";
-                include_once __DIR__ . '/pages/managements_floors/read.php';
+                include_once Helpers::checkMethods("pages/managements_floors/read.php");
                 break;
 
             case 'update':
                 $tablename = "floors";
-                include_once __DIR__ . '/pages/managements_floors/update.php';
+                include_once Helpers::checkMethods("pages/managements_floors/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "floors";
-                include_once __DIR__ . '/pages/managements_floors/delete.php';
+                include_once Helpers::checkMethods("pages/managements_floors/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/managements_floors/index.php';
+                include_once Helpers::checkMethods("pages/managements_floors/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'places_countries':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/places_countries/create.php';
+                include_once Helpers::checkMethods("pages/places_countries/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "countries";
-                include_once __DIR__ . '/pages/places_countries/read.php';
+                include_once Helpers::checkMethods("pages/places_countries/read.php");
                 break;
 
             case 'update':
                 $tablename = "countries";
-                include_once __DIR__ . '/pages/places_countries/update.php';
+                include_once Helpers::checkMethods("pages/places_countries/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "countries";
-                include_once __DIR__ . '/pages/places_countries/delete.php';
+                include_once Helpers::checkMethods("pages/places_countries/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/places_countries/index.php';
+                include_once Helpers::checkMethods("pages/places_countries/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'places_cities':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/places_cities/create.php';
+                include_once Helpers::checkMethods("pages/places_cities/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "cities";
-                include_once __DIR__ . '/pages/places_cities/read.php';
+                include_once Helpers::checkMethods("pages/places_cities/read.php");
                 break;
 
             case 'update':
                 $tablename = "cities";
-                include_once __DIR__ . '/pages/places_cities/update.php';
+                include_once Helpers::checkMethods("pages/places_cities/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "cities";
-                include_once __DIR__ . '/pages/places_cities/delete.php';
+                include_once Helpers::checkMethods("pages/places_cities/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/places_cities/index.php';
+                include_once Helpers::checkMethods("pages/places_cities/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'places_districts':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/places_districts/create.php';
+                include_once Helpers::checkMethods("pages/places_districts/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "districts";
-                include_once __DIR__ . '/pages/places_districts/read.php';
+                include_once Helpers::checkMethods("pages/places_districts/read.php");
                 break;
 
             case 'update':
                 $tablename = "districts";
-                include_once __DIR__ . '/pages/places_districts/update.php';
+                include_once Helpers::checkMethods("pages/places_districts/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "districts";
-                include_once __DIR__ . '/pages/places_districts/delete.php';
+                include_once Helpers::checkMethods("pages/places_districts/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/places_districts/index.php';
+                include_once Helpers::checkMethods("pages/places_districts/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
@@ -253,15 +257,15 @@ switch ($page) {
         switch ($action) {
             case 'read':
                 $tablename = "notifications";
-                include_once __DIR__ . '/pages/notifications/read.php';
+                include_once Helpers::checkMethods("pages/notifications/read.php");
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/notifications/index.php';
+                include_once Helpers::checkMethods("pages/notifications/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
@@ -269,45 +273,45 @@ switch ($page) {
         switch ($action) {
             case 'read':
                 $tablename = "notifications_ips";
-                include_once __DIR__ . '/pages/notifications_ips/read.php';
+                include_once Helpers::checkMethods("pages/notifications_ips/read.php");
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/notifications_ips/index.php';
+                include_once Helpers::checkMethods("pages/notifications_ips/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'languages':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/languages/create.php';
+                include_once Helpers::checkMethods("pages/languages/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "languages";
-                include_once __DIR__ . '/pages/languages/read.php';
+                include_once Helpers::checkMethods("pages/languages/read.php");
                 break;
 
             case 'update':
                 $tablename = "languages";
-                include_once __DIR__ . '/pages/languages/update.php';
+                include_once Helpers::checkMethods("pages/languages/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "languages";
-                include_once __DIR__ . '/pages/languages/delete.php';
+                include_once Helpers::checkMethods("pages/languages/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/languages/index.php';
+                include_once Helpers::checkMethods("pages/languages/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
@@ -315,20 +319,20 @@ switch ($page) {
         switch ($action) {
             case 'read':
                 $tablename = "languages_def";
-                include_once __DIR__ . '/pages/languages_def/read.php';
+                include_once Helpers::checkMethods("pages/languages_def/read.php");
                 break;
 
             case 'update':
                 $tablename = "languages_def";
-                include_once __DIR__ . '/pages/languages_def/update.php';
+                include_once Helpers::checkMethods("pages/languages_def/update.php", ["GET", "POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/languages_def/index.php';
+                include_once Helpers::checkMethods("pages/languages_def/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
@@ -336,15 +340,15 @@ switch ($page) {
         switch ($action) {
             case 'update':
                 $tablename = "settings";
-                include_once __DIR__ . '/pages/settings_general/update.php';
+                include_once Helpers::checkMethods("pages/settings_general/update.php", ["GET", "POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/settings_general/index.php';
+                include_once Helpers::checkMethods("pages/settings_general/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
@@ -352,132 +356,141 @@ switch ($page) {
         switch ($action) {
             case 'update':
                 $tablename = "settings_contact";
-                include_once __DIR__ . '/pages/settings_contact/update.php';
+                include_once Helpers::checkMethods("pages/settings_contact/update.php", ["GET", "POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/settings_contact/index.php';
+                include_once Helpers::checkMethods("pages/settings_contact/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'settings_currency':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/settings_currency/create.php';
+                include_once Helpers::checkMethods("pages/settings_currency/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "settings_currency";
-                include_once __DIR__ . '/pages/settings_currency/read.php';
+                include_once Helpers::checkMethods("pages/settings_currency/read.php");
                 break;
 
             case 'update':
                 $tablename = "settings_currency";
-                include_once __DIR__ . '/pages/settings_currency/update.php';
+                include_once Helpers::checkMethods("pages/settings_currency/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "settings_currency";
-                include_once __DIR__ . '/pages/settings_currency/delete.php';
+                include_once Helpers::checkMethods("pages/settings_currency/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/settings_currency/index.php';
+                include_once Helpers::checkMethods("pages/settings_currency/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'settings_vat':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/settings_vat/create.php';
+                include_once Helpers::checkMethods("pages/settings_vat/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "settings_vat";
-                include_once __DIR__ . '/pages/settings_vat/read.php';
+                include_once Helpers::checkMethods("pages/settings_vat/read.php");
                 break;
 
             case 'update':
                 $tablename = "settings_vat";
-                include_once __DIR__ . '/pages/settings_vat/update.php';
+                include_once Helpers::checkMethods("pages/settings_vat/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "settings_vat";
-                include_once __DIR__ . '/pages/settings_vat/delete.php';
+                include_once Helpers::checkMethods("pages/settings_vat/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/settings_vat/index.php';
+                include_once Helpers::checkMethods("pages/settings_vat/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'settings_users':
         switch ($action) {
             case 'create':
-                include_once __DIR__ . '/pages/settings_users/create.php';
+                include_once Helpers::checkMethods("pages/settings_users/create.php", ["GET", "POST"]);
                 break;
 
             case 'read':
                 $tablename = "users";
-                include_once __DIR__ . '/pages/settings_users/read.php';
+                include_once Helpers::checkMethods("pages/settings_users/read.php");
                 break;
 
             case 'update':
                 $tablename = "users";
-                include_once __DIR__ . '/pages/settings_users/update.php';
+                include_once Helpers::checkMethods("pages/settings_users/update.php", ["GET", "POST"]);
                 break;
 
             case 'delete':
                 $tablename = "users";
-                include_once __DIR__ . '/pages/settings_users/delete.php';
+                include_once Helpers::checkMethods("pages/settings_users/delete.php", ["POST"]);
                 break;
 
             case '':
-                include_once __DIR__ . '/pages/settings_users/index.php';
+                include_once Helpers::checkMethods("pages/settings_users/index.php");
                 break;
 
             default:
-                redirectNotFound($locale);
+                Helpers::redirectNotFound($locale);
             }
         break;
 
     case 'home':
-        include_once __DIR__ . '/home.php';
+        include_once Helpers::checkMethods("home.php");
         break;
 
     case 'login':
-        include_once __DIR__ . '/login.php';
+        if (isset($_SESSION['user'])) {
+            Helpers::redirectHome($locale);
+        }
+
+        include_once Helpers::checkMethods("login.php", ["GET", "POST"]);
         break;
 
     case 'logout':
-        include_once __DIR__ . '/logout.php';
+        include_once Helpers::checkMethods("logout.php");
         break;
 
     case '':
-        redirectHome($locale);
+        Helpers::redirectHome($locale);
         break;
 
     default:
-        redirectNotFound($locale);
+        Helpers::redirectNotFound($locale);
 }
 
 // look for id
 
 if (!empty($tablename)) {
-    if (!checkId($tablename)) {
-        redirectNotFound($locale);
+    if (!Helpers::checkId($tablename)) {
+        Helpers::redirectNotFound($locale);
     }
+}
+
+// if user did not sign in then redirect user to login page
+if (!isset($_SESSION['user']) and !str_starts_with($page, "error_")) {
+    Helpers::redirectAuthenticate();
 }

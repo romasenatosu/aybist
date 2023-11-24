@@ -2,7 +2,7 @@
 
 $datum = [];
 
-$language_id = getLocaleId($locale);
+
 if ($language_id > 0) {
     $stmt = $pdo->prepare("SELECT * FROM settings_currency WHERE language_id = :language_id AND id = :id");
     $stmt->bindParam(':language_id', $language_id, PDO::PARAM_INT);

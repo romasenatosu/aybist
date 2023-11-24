@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/FormElement.php';
-
 class Users {
     public FormElement $id;
     public FormElement $fullname;
@@ -38,7 +36,7 @@ class Users {
         $this->fullname->maxlength = -1;
         $this->fullname->pattern = $regex_alpha_numeric;
         $this->fullname->pattern_msg = $lang['regex_alpha_numeric'];
-        $this->email->maxlength = -1;
+        $this->email->maxlength = 255;
         $this->email->pattern = $regex_email;
         $this->email->pattern_msg = $lang['regex_email'];
         $this->phone->maxlength = 24;

@@ -54,7 +54,7 @@ $stmt->closeCursor();
                                             <td data-bs-toggle="tooltip" title="<?= $datum['address'] ?>"><?= substr($datum['address'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['address'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td>
                                                 <?php if ($datum['avatar']): ?>
-                                                    <a href="<?= getServer() . $datum['avatar'] ?>">
+                                                    <a href="<?= Helpers::getServer() . $datum['avatar'] ?>">
                                                         <img src="<?= $datum['avatar'] ?>" alt="<?= $datum['avatar'] ?>" class="img-fluid" width="32" height="32">
                                                     </a>
                                                 <?php endif ?>

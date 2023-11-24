@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/Floors.php';
-
 // create entity
 $floors = new Floors();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
 
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT floor 
@@ -30,7 +28,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
@@ -58,7 +56,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=managements_floors");
+        Helpers::redirect("managements_floors");
     }
 
     // this will open the current page so no reason to redirect again

@@ -2,16 +2,18 @@
     $users = $auth->getUser();
     $error_msg = "";
 
-    if (getRequestMethod() == 'POST') {
+    if (Helpers::getRequestMethod() == 'POST') {
         $users->email->value = htmlspecialchars($_POST[$users->email->name] ?? '');
         $users->password->value = htmlspecialchars($_POST[$users->password->name] ?? '');
+        $remember_me = htmlspecialchars($_POST["remember_me"] ?? '');
     
         // check if given data is ok
         $checks = $users->email->check() || $users->password->check();
 
         if ($checks) {
-            if ($auth->login()) {
-                redirectHome($locale);
+            if ($auth->login($pdo)) {
+                // $_SESSION['remember_me'] = ($remember_me) ? true : false;
+                Helpers::redirectHome($locale);
             } else {
                 $error_msg = $lang['text_invalid_login'];
             }
@@ -50,15 +52,15 @@
                             <div class="mb-3">
                                 <span class="text-danger"><?= $error_msg ?></span>
                             </div>
-                            <!-- <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input primary" type="checkbox" id="remember_me" name="remember_me">
                                     <label class="form-check-label text-dark" for="remember_me">
                                         <?= $lang['label_remember_me'] ?>
                                     </label>
                                 </div>
-                                <a class="text-primary fw-medium" href="#"><?= $lang['text_forgot_password'] ?><a>
-                            </div> -->
+                                <!-- <a class="text-primary fw-medium" href="#"><?= $lang['text_forgot_password'] ?><a> -->
+                            </div>
                             <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2"><?= $lang['text_login'] ?></button>
                             <!-- <div class="d-flex align-items-center justify-content-center">
                                 <p class="fs-4 mb-0 fw-medium">New to Modernize?</p>

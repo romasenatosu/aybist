@@ -276,7 +276,7 @@
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up">
                                 <div class="message-body" data-simplebar>
                                     <?php foreach ($languages_data as $language_data): ?>
-                                        <a href="<?= changeLocale($language_data['code']) ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
+                                        <a href="<?= $language->changeLocale($language_data['code']) ?>" class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
                                             <div class="position-relative">
                                                 <img src="<?= $language_data['flag'] ?>" alt="<?= $language_data['code'] ?>" class="rounded-circle object-fit-cover round-20">
                                             </div>

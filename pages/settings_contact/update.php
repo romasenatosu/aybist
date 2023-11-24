@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/SettingsContact.php';
-
 // create entity
 $settingsContact = new SettingsContact();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
     
     $stmt = $pdo->prepare("SELECT address, phone, phone_code_id, cell_phone, cell_phone_code_id, fax, fax_code_id, email,
@@ -41,7 +39,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $settingsContact->address->value = htmlspecialchars($_POST[$settingsContact->address->name] ?? '');
@@ -95,7 +93,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=settings_contact");
+        Helpers::redirect("settings_contact");
     }
 
     // this will open the current page so no reason to redirect again

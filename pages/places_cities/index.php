@@ -2,7 +2,7 @@
 
 $data = [];
 
-$language_id = getLocaleId($locale);
+
 if ($language_id > 0) {
     $stmt = $pdo->prepare("SELECT c.id, co.country, c.city, c.zip_code, c.created_at, c.updated_at
     FROM cities c

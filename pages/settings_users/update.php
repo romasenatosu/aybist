@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/Users.php';
-
 // create entity
 $users = new Users();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // set not required fields
     $users->old_password->required = false;
     $users->password->required = false;
@@ -41,7 +39,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $users->fullname->value = htmlspecialchars($_POST[$users->fullname->name] ?? '');
@@ -109,7 +107,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=settings_users");
+        Helpers::redirect("settings_users");
     }
 
     // this will open the current page so no reason to redirect again

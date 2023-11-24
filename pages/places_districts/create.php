@@ -1,15 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../../database/Districts.php';
-
 // create entity
 $districts = new Districts();
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $districts->language_id->value = getLocaleId($locale);
+    $districts->language_id->value = $language->getLocaleId($pdo, $locale);
     $districts->city_id->value = htmlspecialchars($_POST[$districts->city_id->name] ?? '');
     $districts->district->value = htmlspecialchars($_POST[$districts->district->name] ?? '');
 
@@ -39,7 +37,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=places_districts");
+        Helpers::redirect("places_districts");
     }
 
     // this will open the current page so no reason to redirect again

@@ -4,12 +4,8 @@ if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-require_once __DIR__ . '/../database/Users.php';
-
-// CREATE EXTRA CLASS FOR THIS 
-
 class Auth {
-    public Users $user;
+    private Users $user;
     // private string $token;
 
     function __construct() {
@@ -17,30 +13,20 @@ class Auth {
         // $this->token = "";
     }
 
-    public function setUser(Users $user):void {
-        $this->user = $user;
+    public function setUser(Users $users): void {
+        $this->user = $users;
     }
 
-    public function getUser():Users {
+    public function getUser(): Users {
         return $this->user;
     }
-
-/*     public function setToken(string $token):void {
-        $this->token = $token;
-    }
-
-    public function getToken():string {
-        return $this->token;
-    } */
 
     /**
      * Lets the registered user to sign in with email and password
      * 
      * @return bool
      */
-    public function login(): bool {
-        global $pdo;
-
+    public function login(PDO $pdo): bool {
         // user info
         $email = $this->user->email->value;
         $plain_password = $this->user->password->value;
@@ -93,10 +79,8 @@ class Auth {
      * @return bool
      */
     public function logout(): bool {
-        global $locale;
-
         unset($_SESSION['user']);
-        redirectAuthenticate($locale);
+        Helpers::redirectAuthenticate();
     }
 
     public function changePassword() {
@@ -105,8 +89,3 @@ class Auth {
 }
 
 $auth = new Auth();
-
-// if user did not sign in then redirect user to login page
-if (!isset($_SESSION['user'])) {
-    redirectAuthenticate($locale);
-}

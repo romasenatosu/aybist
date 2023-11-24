@@ -1,13 +1,13 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ipv4, n.ipv6, n.created_at, n.updated_at
+$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ip, n.created_at, n.updated_at
 FROM notifications_ips n
-INNER JOIN users u ON u.id = n.user_id
+LEFT JOIN users u ON u.id = n.user_id
 WHERE n.id = :id
 ");
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
-$datum = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$datum = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 
 ?>
@@ -46,12 +46,8 @@ $stmt->closeCursor();
                                         <td><?= $datum['fullname'] ?></td>
                                     </tr>
                                     <tr>
-                                        <th><?= $lang['table_ipv4'] ?></th>
-                                        <td><?= $datum['ipv4'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= $lang['table_ipv6'] ?></th>
-                                        <td><?= $datum['ipv6'] ?></td>
+                                        <th><?= $lang['table_ip'] ?></th>
+                                        <td><?= $datum['ip'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_created_at'] ?></th>

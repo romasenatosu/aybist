@@ -1,15 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../../database/Managements.php';
-
 // create entity
 $managements = new Managements();
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $managements->language_id->value = getLocaleId($locale);
+    $managements->language_id->value = $language->getLocaleId($pdo, $locale);
     $managements->block_id->value = htmlspecialchars($_POST[$managements->block_id->name] ?? '');
     $managements->floor_id->value = htmlspecialchars($_POST[$managements->floor_id->name] ?? '');
     $managements->flat_id->value = htmlspecialchars($_POST[$managements->flat_id->name] ?? '');
@@ -32,7 +30,7 @@ if (getRequestMethod() == 'POST') {
         $updated_at = date($datetime_format, $managements->updated_at->value->getTimestamp());
 
         // get all locale id to create this entity for each one of them
-        $all_locale_id = getAllLocaleId();
+        $all_locale_id = $language->getAllLocaleId($pdo);
         foreach ($all_locale_id as $locale_id) {
             // sql statement
             $stmt = $pdo->prepare("INSERT INTO managements (language_id, block_id, floor_id, flat_id, manager_owner_id, manager_rental_id, management, description, fee_status, created_at, updated_at)
@@ -59,7 +57,7 @@ if (getRequestMethod() == 'POST') {
         }
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=managements");
+        Helpers::redirect("managements");
     }
 
     // this will open the current page so no reason to redirect again

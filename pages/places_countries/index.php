@@ -2,7 +2,7 @@
 
 $data = [];
 
-$language_id = getLocaleId($locale);
+
 if ($language_id > 0) {
     $stmt = $pdo->prepare("SELECT id, country, CONCAT('+', phone_code) as phone_code, created_at, updated_at
                             FROM countries

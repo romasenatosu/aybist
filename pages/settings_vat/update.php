@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/SettingsVat.php';
-
 // create entity
 $settingsVat = new SettingsVat();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
 
     $stmt = $pdo->prepare("SELECT name, rate
@@ -31,7 +29,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $settingsVat->name->value = htmlspecialchars($_POST[$settingsVat->name->name] ?? '');
@@ -60,7 +58,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=settings_vat");
+        Helpers::redirect("settings_vat");
     }
 
     // this will open the current page so no reason to redirect again

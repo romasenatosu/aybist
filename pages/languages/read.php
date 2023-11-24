@@ -48,7 +48,7 @@ $stmt->closeCursor();
                                         <th><?= $lang['table_flag'] ?></th>
                                         <td>
                                             <?php if ($datum['flag']): ?>
-                                                <a href="<?= getServer() . $datum['flag'] ?>">
+                                                <a href="<?= Helpers::getServer() . $datum['flag'] ?>">
                                                     <img src="<?= $datum['flag'] ?>" alt="<?= $datum['flag'] ?>" class="img-fluid" width="32" height="32">
                                                 </a>
                                             <?php endif ?>

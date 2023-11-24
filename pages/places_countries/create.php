@@ -1,15 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../../database/Countries.php';
-
 // create entity
 $countries = new Countries();
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $countries->language_id->value = getLocaleId($locale);
+    $countries->language_id->value = $language->getLocaleId($pdo, $locale);
     $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
     $countries->phone_code->value = htmlspecialchars($_POST[$countries->phone_code->name] ?? '');
 
@@ -23,7 +21,7 @@ if (getRequestMethod() == 'POST') {
         $updated_at = date($datetime_format, $countries->created_at->value->getTimestamp());
 
         // get all locale id to create this entity for each one of them
-        $all_locale_id = getAllLocaleId();
+        $all_locale_id = $language->getAllLocaleId($pdo);
         foreach ($all_locale_id as $locale_id) {
             // sql statement
             $stmt = $pdo->prepare("INSERT INTO countries (language_id, country, phone_code, created_at, updated_at)
@@ -44,7 +42,7 @@ if (getRequestMethod() == 'POST') {
         }
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=places_countries");
+        Helpers::redirect("places_countries");
     }
 
     // this will open the current page so no reason to redirect again

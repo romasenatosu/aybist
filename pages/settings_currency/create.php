@@ -1,15 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../../database/SettingsCurrency.php';
-
 // create entity
 $settingsCurrency = new SettingsCurrency();
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $settingsCurrency->language_id->value = getLocaleId($locale);
+    $settingsCurrency->language_id->value = $language->getLocaleId($pdo, $locale);
     $settingsCurrency->name->value = htmlspecialchars($_POST[$settingsCurrency->name->name] ?? '');
     $settingsCurrency->symbol->value = htmlspecialchars($_POST[$settingsCurrency->symbol->name] ?? '');
 
@@ -23,7 +21,7 @@ if (getRequestMethod() == 'POST') {
         $updated_at = date($datetime_format, $settingsCurrency->updated_at->value->getTimestamp());
 
         // get all locale id to create this entity for each one of them
-        $all_locale_id = getAllLocaleId();
+        $all_locale_id = $language->getAllLocaleId($pdo);
         foreach ($all_locale_id as $locale_id) {
             // sql statement
             $stmt = $pdo->prepare("INSERT INTO settingsCurrency (language_id, name, symbol, created_at, updated_at)
@@ -44,7 +42,7 @@ if (getRequestMethod() == 'POST') {
         }
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=settings_currency");
+        Helpers::redirect("settings_currency");
     }
 
     // this will open the current page so no reason to redirect again

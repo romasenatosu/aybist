@@ -1,8 +1,8 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ipv4, n.ipv6, n.created_at, n.updated_at
+$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ip, n.created_at, n.updated_at
 FROM notifications_ips n
-INNER JOIN users u ON u.id = n.user_id");
+LEFT JOIN users u ON u.id = n.user_id");
 $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
@@ -33,8 +33,7 @@ $stmt->closeCursor();
                                     <tr>
                                         <th data-priority="1">#</th>
                                         <th><?= $lang['table_user'] ?></th>
-                                        <th><?= $lang['table_ipv4'] ?></td>
-                                        <th><?= $lang['table_ipv6'] ?></th>
+                                        <th><?= $lang['table_ip'] ?></td>
                                         <th><?= $lang['table_created_at'] ?></th>
                                         <th><?= $lang['table_updated_at'] ?></th>
                                         <th data-priority="1"><?= $lang['table_action'] ?></th>
@@ -46,8 +45,7 @@ $stmt->closeCursor();
                                         <tr>
                                             <td><?= $data_id ?></td>
                                             <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
-                                            <td data-bs-toggle="tooltip" title="<?= $datum['ipv4'] ?>"><?= substr($datum['ipv4'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ipv4'] ?? '') > $max_abbr) ? '...' : '' ?></td>
-                                            <td data-bs-toggle="tooltip" title="<?= $datum['ipv6'] ?>"><?= substr($datum['ipv6'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ipv6'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['ip'] ?>"><?= substr($datum['ip'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ip'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">

@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/LanguagesDef.php';
-
 // create entity
 $languagesDef = new LanguagesDef();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT keyword, value 
     FROM languages_def
@@ -30,7 +28,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $languagesDef->value->value = htmlspecialchars($_POST[$languagesDef->value->name] ?? '');
@@ -58,7 +56,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=languages_def");
+        Helpers::redirect("languages_def");
     }
 
     // this will open the current page so no reason to redirect again

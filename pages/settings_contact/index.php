@@ -2,7 +2,7 @@
 
 $data = [];
 
-$language_id = getLocaleId($locale);
+
 if ($language_id > 0) {
     $stmt = $pdo->prepare("SELECT sc.id, sc.address, sc.phone, CONCAT('+', c_phone.phone_code) as phone_code, sc.cell_phone, CONCAT('+', c_cell_phone.phone_code) as cell_phone_code, sc.fax, CONCAT('+', c_fax.phone_code) as fax_code, sc.email, sc.captcha_key, sc.captcha_secret_key, sc.google_maps, sc.created_at, sc.updated_at
     FROM settings_contact sc

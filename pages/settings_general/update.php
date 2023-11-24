@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/Settings.php';
-
 // create entity
 $settings = new Settings();
 
 // check for method
-if (getRequestMethod() == "GET") {
+if (Helpers::getRequestMethod() == "GET") {
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT company, slogan, keywords, site_title, site_url, smtp_url, smtp_port, 
     normal_photo, normal_photo_width, normal_photo_height, top_photo, top_photo_width, top_photo_height, 
@@ -49,7 +47,7 @@ if (getRequestMethod() == "GET") {
 }
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $settings->company->value = htmlspecialchars($_POST[$settings->company->name] ?? '');
@@ -128,7 +126,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=settings");
+        Helpers::redirect("settings");
     }
 
     // this will open the current page so no reason to redirect again

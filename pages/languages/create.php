@@ -1,12 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../database/Languages.php';
-
 // create entity
 $languages = new Languages();
 
 // check for method
-if (getRequestMethod() == 'POST') {
+if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
     $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
@@ -40,7 +38,7 @@ if (getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        redirect("?locale=$locale&page=languages");
+        Helpers::redirect("languages");
     }
 
     // this will open the current page so no reason to redirect again

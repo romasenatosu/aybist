@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/FormElement.php';
-
 class Cities {
     public FormElement $id;
     public FormElement $country_id;
