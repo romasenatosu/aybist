@@ -14,7 +14,13 @@
 
 $tablename = "";
 
+// if user did not sign in then redirect user to login page
+if (!isset($_SESSION['user']) and !str_starts_with($page, "error_")) {
+    Helpers::redirectAuthenticate();
+}
+
 switch ($page) {
+    // TODO: do not let users to go error pages with status code 200 OK
     case 'error_400':
         include_once Helpers::checkMethods("pages/errors/400.php");
         break;
@@ -40,6 +46,7 @@ switch ($page) {
         break;
 
     case 'error_500':
+    case 'error_default':
         include_once Helpers::checkMethods("pages/errors/500.php");
         break;
 
@@ -69,7 +76,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
         
@@ -99,7 +106,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -129,7 +136,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -159,7 +166,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -189,7 +196,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -219,7 +226,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -249,7 +256,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -265,7 +272,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -281,7 +288,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -311,7 +318,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -332,7 +339,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -348,7 +355,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -364,7 +371,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -394,7 +401,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -424,7 +431,7 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
         break;
 
@@ -454,8 +461,12 @@ switch ($page) {
                 break;
 
             default:
-                Helpers::redirectNotFound($locale);
+                Helpers::redirectNotFound();
             }
+        break;
+
+    case '':
+        Helpers::redirectHome();
         break;
 
     case 'home':
@@ -464,7 +475,7 @@ switch ($page) {
 
     case 'login':
         if (isset($_SESSION['user'])) {
-            Helpers::redirectHome($locale);
+            Helpers::redirectHome();
         }
 
         include_once Helpers::checkMethods("login.php", ["GET", "POST"]);
@@ -474,23 +485,14 @@ switch ($page) {
         include_once Helpers::checkMethods("logout.php");
         break;
 
-    case '':
-        Helpers::redirectHome($locale);
-        break;
-
     default:
-        Helpers::redirectNotFound($locale);
+        Helpers::redirectNotFound();
 }
 
 // look for id
 
 if (!empty($tablename)) {
     if (!Helpers::checkId($tablename)) {
-        Helpers::redirectNotFound($locale);
+        Helpers::redirectNotFound();
     }
-}
-
-// if user did not sign in then redirect user to login page
-if (!isset($_SESSION['user']) and !str_starts_with($page, "error_")) {
-    Helpers::redirectAuthenticate();
 }

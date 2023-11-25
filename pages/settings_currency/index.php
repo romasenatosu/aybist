@@ -22,7 +22,7 @@ if ($language_id > 0) {
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $lang['page_settings_currency'] ?>
@@ -53,10 +53,10 @@ if ($language_id > 0) {
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">
-                                                <a href="<?= "?locale=$locale&page=settings_currency&action=read&id=$data_id" ?>">
+                                                <a href="<?= "/$locale/settings_currency/read/$data_id" ?>">
                                                     <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
                                                 </a>
-                                                <a href="<?= "?locale=$locale&page=settings_currency&action=update&id=$data_id" ?>">
+                                                <a href="<?= "/$locale/settings_currency/update/$data_id" ?>">
                                                     <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
                                                 </a>
                                                 <?php
@@ -70,7 +70,7 @@ if ($language_id > 0) {
                         </div>
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=settings_currency&action=create" ?>"><?= $lang['text_new'] ?></a>
+                        <a class="btn btn-primary" href="<?= "/$locale/settings_currency/create" ?>"><?= $lang['text_new'] ?></a>
                     </div>
                 </div>
             </div>

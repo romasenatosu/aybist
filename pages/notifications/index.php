@@ -18,7 +18,7 @@ $stmt->closeCursor();
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $lang['page_notifications'] ?>
@@ -53,7 +53,7 @@ $stmt->closeCursor();
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">
-                                                <a href="<?= "?locale=$locale&page=notifications&action=read&id=$data_id" ?>">
+                                                <a href="<?= "/$locale/notifications/read/$data_id" ?>">
                                                     <i class="ti ti-eye" title="<?= $lang['text_read'] ?>" data-bs-toggle="tooltip"></i>
                                                 </a>
                                             </td>

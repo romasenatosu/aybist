@@ -7,10 +7,10 @@
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=managements" ?>"><?= $lang['page_managements'] ?></a>
+                                    <a href="<?= "/$locale/managements" ?>"><?= $lang['page_managements'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= ($id <= 0) ? $lang['text_new'] : $lang['text_update'] ?>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=managements&action=" . (($id <= 0) ? "create" : "update&id=$id") ?>" method="post">
+                            <form action="<?= "/$locale/managements/" . (($id <= 0) ? "create" : "update/$id") ?>" method="post">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                     <div class="col-md-6">
                                         <div class="row gx-md-4 gx-0 gy-4 align-items-end">
@@ -41,7 +41,7 @@
                                                 <span class="text-muted"><?= ($managements->block_id->help_msg) ?></span>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?= "?locale=$locale&page=managements_blocks&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                                <a href="<?= "/$locale/managements_blocks/create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                                 <span class="text-muted"><?= ($managements->floor_id->help_msg) ?></span>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?= "?locale=$locale&page=managements_floors&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                                <a href="<?= "/$locale/managements_floors/create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                                 <span class="text-muted"><?= ($managements->flat_id->help_msg) ?></span>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?= "?locale=$locale&page=managements_flats&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                                <a href="<?= "/$locale/managements_flats/create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +110,7 @@
                                                 <span class="text-muted"><?= ($managements->manager_owner_id->help_msg) ?></span>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?= "?locale=$locale&page=settings_users&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                                <a href="<?= "/$locale/settings_users/create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                                 <span class="text-muted"><?= ($managements->manager_rental_id->help_msg) ?></span>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?= "?locale=$locale&page=settings_users&action=create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
+                                                <a href="<?= "/$locale/settings_users/create" ?>" class="btn btn-primary" title="<?= $lang['text_create'] ?>" data-bs-toggle="tooltip">&plus;</a>
                                             </div>
                                         </div>
                                     </div>

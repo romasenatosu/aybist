@@ -22,7 +22,7 @@ if ($language_id > 0) {
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $lang['page_settings_general'] ?>
@@ -98,7 +98,7 @@ if ($language_id > 0) {
                                             <td><?= date($datetime_format, strtotime($datum['created_at'])); ?></td>
                                             <td><?= date($datetime_format, strtotime($datum['updated_at'])); ?></td>
                                             <td class="col-1">
-                                                <a href="<?= "?locale=$locale&page=settings_general&action=update&id=$data_id" ?>">
+                                                <a href="<?= "/$locale/settings_general/update/$data_id" ?>">
                                                     <i class="ti ti-pencil" title="<?= $lang['text_edit'] ?>" data-bs-toggle="tooltip"></i>
                                                 </a>
                                             </td>

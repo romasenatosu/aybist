@@ -22,10 +22,10 @@ $stmt->closeCursor();
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=notifications_ips" ?>"><?= $lang['page_notifications_ips'] ?></a>
+                                    <a href="<?= "/$locale/notifications_ips" ?>"><?= $lang['page_notifications_ips'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $datum['id'] ?>
@@ -62,7 +62,7 @@ $stmt->closeCursor();
                         </div>
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=notifications_ips" ?>"><?= $lang['text_go_back'] ?></a>
+                        <a class="btn btn-primary" href="<?= "/$locale/notifications_ips" ?>"><?= $lang['text_go_back'] ?></a>
                     </div>
                 </div>
             </div>

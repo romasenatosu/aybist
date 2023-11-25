@@ -135,4 +135,7 @@ function toggleTheme(value) {
   sheets.href = value;
   $(".preloader").fadeOut();
 }
-$(".preloader").fadeOut();
+
+$(function() {
+  $(".preloader").fadeOut();
+})

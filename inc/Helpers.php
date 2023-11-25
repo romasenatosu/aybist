@@ -59,6 +59,18 @@ class Helpers {
     
         return $result['id'] ?? false;
     }
+
+    /**
+     * Refreshes the page with the desired route
+     * 
+     * @param string route
+     * @param int after
+     * @return void
+     */
+    public static function refresh(string $route="/", int $after=0): void {
+        header("Refresh:$after; url=$route");
+        exit(0);
+    }
     
     /**
      * Redirects user to desired route
@@ -69,9 +81,12 @@ class Helpers {
     public static function redirect(string $route, string $redirect_method="HTTP/1.1 302 Redirected"): void {
         global $locale, $page;
 
-        header("Location: " . Helpers::getServer() . "?locale=$locale&page=$route");
-        // header($redirect_method);
-        exit(0);
+        // do not redirect same page
+        // if ($page != $route) {
+            header("Location: " . "/$locale/$route");
+            // header($redirect_method); TODO: open this later
+            exit(0);
+        // }
     }
 
     /**

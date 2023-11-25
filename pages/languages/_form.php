@@ -7,10 +7,10 @@
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=languages" ?>"><?= $lang['page_languages'] ?></a>
+                                    <a href="<?= "/$locale/languages" ?>"><?= $lang['page_languages'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= ($id <= 0) ? $lang['text_new'] : $lang['text_update'] ?>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body">
                         <div class="container">
-                            <form action="<?= "?locale=$locale&page=languages&action=" . (($id <= 0) ? "create" : "update&id=$id") ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= "/$locale/languages/" . (($id <= 0) ? "create" : "update/$id") ?>" method="post" enctype="multipart/form-data">
                                 <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                     <div class="col-md-6">
                                         <label class="form-label" for="<?= $languages->code->name ?>">

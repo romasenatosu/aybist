@@ -29,10 +29,14 @@ $hash_algorithm = PASSWORD_BCRYPT;
 $max_abbr = 25;
 
 // get URL parameters
-$locale = htmlspecialchars($_GET['locale'] ?? '');
-$page = htmlspecialchars($_GET['page'] ?? '');
-$action = htmlspecialchars($_GET['action'] ?? '');
-$id = filter_var(htmlspecialchars($_GET['id'] ?? ''), FILTER_VALIDATE_INT);
+$request_uri = $_SERVER["REQUEST_URI"];
+$queries = explode("/", $request_uri);
+array_shift($queries);
+
+$locale = htmlspecialchars($queries[0] ?? '');
+$page = htmlspecialchars($queries[1] ?? '');
+$action = htmlspecialchars($queries[2] ?? '');
+$id = filter_var(htmlspecialchars($queries[3] ?? ''), FILTER_VALIDATE_INT);
 
 // site title
 define('default_title', 'Aybist');
@@ -162,11 +166,15 @@ function visitListener() {
 }
 
 // run error/exception listeners
-// set_error_handler('errorListener');
-// set_exception_handler('exceptionListener');
+set_error_handler('errorListener');
+set_exception_handler('exceptionListener');
 
 // run request listener and log them
 // requestListener();
 
 // run client ip listener
-visitListener();
+// visitListener();
+
+// remove unnecessary variables
+unset($samesite, $year_in_seconds);
+unset($hostname, $database, $database_username, $database_password, $database_port, $dsn);

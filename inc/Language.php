@@ -74,21 +74,24 @@ class Language {
      * @return string request_uri
      */
     function changeLocale(string $new_locale): string {
-        global $locale;
-        $request = Helpers::getRequestUri();
-        return sprintf("%s", str_replace("locale=$locale", "locale=$new_locale", $request));
+        $request_uri = Helpers::getRequestUri();
+        $queries = explode("/", $request_uri);
+
+        // skip first blank char and locale
+        array_shift($queries);
+        array_shift($queries);
+
+        return "/$new_locale/" . implode("/", $queries);
     }
 }
 
 // initialize language
 $language = new Language();
 
-// check for if requested locale is valid otherwise redirect with default locale
 $language_id = $language->getLocaleId($pdo, $locale);
-if (!($language_id > 0)) {
+if (!$language_id) {
     $locale = $default_locale;
-    Helpers::redirect($page);
+    Helpers::refresh("/$locale/$page");
 }
 
-// get language definitions
 $lang = $language->getLocaleDict($pdo, $language_id);

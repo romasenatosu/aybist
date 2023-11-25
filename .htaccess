@@ -1,15 +1,41 @@
-RewriteEngine On
-RewriteBase /
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+    # HTTPS redirection
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,QSA]
 
-# Options +FollowSymLinks
+    # SEO url
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?\/$1 [L]
 
-# RewriteRule ^login$ login.php$1
-# RewriteRule ^save_event$ pages/takvim/save_event.php$1
-# RewriteRule ^reset$ reset.php$1
+    # error redirecting
+    
+    # ErrorDocument 400 /error_400
+    # ErrorDocument 401 /error_401
+    # ErrorDocument 402 /error_402
+    # ErrorDocument 403 /error_403
+    # ErrorDocument 404 /error_404
+    # ErrorDocument 405 /error_405
+    # ErrorDocument 500 /error_500
+    # ErrorDocument default /error_500
 
+    # site caching
 
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+    # allow access only to specific file types
+    <FilesMatch "\.(css|scss|sass|js|map|ttf|woff|woff2|eot|svg|png|jpg|jpeg|html)$">
+        Require all granted
+    </FilesMatch>
+
+    # do not allow php files to be accessed
+    <FilesMatch "\.php$">
+        Require all granted
+    </FilesMatch>
+    
+    # except main index.php
+    <Files "index.php">
+        Require all granted
+    </Files>
+</IfModule>

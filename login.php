@@ -13,7 +13,7 @@
         if ($checks) {
             if ($auth->login($pdo)) {
                 // $_SESSION['remember_me'] = ($remember_me) ? true : false;
-                Helpers::redirectHome($locale);
+                Helpers::redirectHome();
             } else {
                 $error_msg = $lang['text_invalid_login'];
             }
@@ -27,10 +27,10 @@
             <div class="col-md-8 col-lg-6 col-xxl-3">
                 <div class="card mb-0">
                     <div class="card-body">
-                        <a href="<?= "?locale=$locale&page=home" ?>" class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                            <img src="assets/images/logos/logo.png" width="180" alt="">
+                        <a href="<?= "/$locale/home" ?>" class="text-nowrap logo-img text-center d-block mb-5 w-100">
+                            <img src="/assets/images/logos/logo.png" width="180" alt="">
                         </a>
-                        <form action="<?= "?locale=$locale&page=login" ?>" method="post">
+                        <form action="<?= "/$locale/login" ?>" method="post">
                             <div class="mb-3">
                                 <label class="form-label" for="<?= $users->email->name ?>">
                                     <?= $lang['label_email'] ?>

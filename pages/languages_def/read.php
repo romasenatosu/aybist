@@ -24,10 +24,10 @@ if ($language_id > 0) {
                         <nav style="--bs-breadcrumb-divider: '>'">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=home" ?>"><?= $lang['page_home'] ?></a>
+                                    <a href="<?= "/$locale/home" ?>"><?= $lang['page_home'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a href="<?= "?locale=$locale&page=languages_def" ?>"><?= $lang['page_languages_def'] ?></a>
+                                    <a href="<?= "/$locale/languages_def" ?>"><?= $lang['page_languages_def'] ?></a>
                                 </li>
                                 <li class="breadcrumb-item active">
                                     <?= $datum['id'] ?>
@@ -64,7 +64,7 @@ if ($language_id > 0) {
                         </div>
                     </div>
                     <div class="card-footer text-end">
-                        <a class="btn btn-primary" href="<?= "?locale=$locale&page=languages_def" ?>"><?= $lang['text_go_back'] ?></a>
+                        <a class="btn btn-primary" href="<?= "/$locale/languages_def" ?>"><?= $lang['text_go_back'] ?></a>
                     </div>
                 </div>
             </div>

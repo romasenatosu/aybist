@@ -3,8 +3,8 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="<?= "?locale=$locale&page=home" ?>" class="text-nowrap logo-img">
-                <img src="assets/images/logos/logo.png" class="img-fluid">
+            <a href="<?= "/$locale/home" ?>" class="text-nowrap logo-img">
+                <img src="/assets/images/logos/logo.png" class="img-fluid">
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8 text-muted"></i>
@@ -14,7 +14,7 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar>
             <ul id="sidebarnav">
                 <li class="sidebar-item <?= ($page == 'home') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=home" ?>">
+                    <a class="sidebar-link <?= ($page == 'home') ? 'active' : '' ?>" href="<?= "/$locale/home" ?>">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -30,7 +30,7 @@
                     </a>
                     <ul class="collapse <?= str_contains($page, 'managements') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'managements') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'managements') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements" ?>">
+                            <a class="sidebar-link <?= ($page == 'managements') ? 'active' : '' ?>" href="<?= "/$locale/managements" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'managements_flats') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'managements_flats') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_flats" ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_flats') ? 'active' : '' ?>" href="<?= "/$locale/managements_flats" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -46,7 +46,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'managements_blocks') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'managements_blocks') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_blocks" ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_blocks') ? 'active' : '' ?>" href="<?= "/$locale/managements_blocks" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'managements_floors') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'managements_floors') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=managements_floors" ?>">
+                            <a class="sidebar-link <?= ($page == 'managements_floors') ? 'active' : '' ?>" href="<?= "/$locale/managements_floors" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -72,7 +72,7 @@
                     </a>
                     <ul class="collapse <?= str_contains($page, 'languages') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'languages') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'languages') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=languages" ?>">
+                            <a class="sidebar-link <?= ($page == 'languages') ? 'active' : '' ?>" href="<?= "/$locale/languages" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'languages_def') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'languages_def') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=languages_def" ?>">
+                            <a class="sidebar-link <?= ($page == 'languages_def') ? 'active' : '' ?>" href="<?= "/$locale/languages_def" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -98,7 +98,7 @@
                     </a>
                     <ul class="collapse <?= str_contains($page, 'notifications') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'notifications') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'notifications') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=notifications" ?>">
+                            <a class="sidebar-link <?= ($page == 'notifications') ? 'active' : '' ?>" href="<?= "/$locale/notifications" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -106,7 +106,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'notifications_ips') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'notifications_ips') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=notifications_ips" ?>">
+                            <a class="sidebar-link <?= ($page == 'notifications_ips') ? 'active' : '' ?>" href="<?= "/$locale/notifications_ips" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -124,7 +124,7 @@
                     </a>
                     <ul class="collapse <?= str_contains($page, 'places') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'places_countries') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'places_countries') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_countries" ?>">
+                            <a class="sidebar-link <?= ($page == 'places_countries') ? 'active' : '' ?>" href="<?= "/$locale/places_countries" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -132,7 +132,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'places_cities') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'places_cities') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_cities" ?>">
+                            <a class="sidebar-link <?= ($page == 'places_cities') ? 'active' : '' ?>" href="<?= "/$locale/places_cities" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -140,7 +140,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'places_districts') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'places_districts') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=places_districts" ?>">
+                            <a class="sidebar-link <?= ($page == 'places_districts') ? 'active' : '' ?>" href="<?= "/$locale/places_districts" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -158,7 +158,7 @@
                     </a>
                     <ul class="collapse <?= str_contains($page, 'settings') ? 'in' : '' ?>">
                         <li class="sidebar-item <?= ($page == 'settings_general') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'settings_general') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_general" ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_general') ? 'active' : '' ?>" href="<?= "/$locale/settings_general" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -166,7 +166,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'settings_contact') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'settings_contact') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_contact" ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_contact') ? 'active' : '' ?>" href="<?= "/$locale/settings_contact" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -174,7 +174,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'settings_currency') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'settings_currency') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_currency" ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_currency') ? 'active' : '' ?>" href="<?= "/$locale/settings_currency" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -182,7 +182,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'settings_vat') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'settings_vat') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_vat" ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_vat') ? 'active' : '' ?>" href="<?= "/$locale/settings_vat" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -190,7 +190,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item <?= ($page == 'settings_users') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'settings_users') ? 'active' : '' ?>" href="<?= "?locale=$locale&page=settings_users" ?>">
+                            <a class="sidebar-link <?= ($page == 'settings_users') ? 'active' : '' ?>" href="<?= "/$locale/settings_users" ?>">
                                 <div class="round-16 d-flex align-items-center justify-content-center">
                                     <i class="ti ti-circle"></i>
                                 </div>
@@ -200,7 +200,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item <?= ($page == 'logout') ? 'selected' : '' ?>">
-                    <a class="sidebar-link <?= ($page == 'logout') ? 'active' : '' ?>" href="?page=logout">
+                    <a class="sidebar-link <?= ($page == 'logout') ? 'active' : '' ?>" href="<?= "/$locale/logout" ?>">
                         <span>
                             <i class="ti ti-logout"></i>
                         </span>
@@ -212,7 +212,7 @@
         <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">
                 <div class="john-img">
-                    <img src="assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="">
+                    <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="">
                 </div>
                 <div class="john-title">
                     <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
@@ -256,7 +256,7 @@
                 </li>
             </ul>
             <div class="d-block d-lg-none">
-                <img src="assets/images/logos/logo.png" width="180" alt="" />
+                <img src="/assets/images/logos/logo.png" width="180" alt="" />
             </div>
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="p-2">
@@ -301,7 +301,7 @@
                                 <div class="message-body" data-simplebar>
                                     <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
                                         <span class="me-3">
-                                            <img src="assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48" height="48" />
+                                            <img src="/assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48" height="48" />
                                         </span>
                                         <div class="w-75 d-inline-block v-middle">
                                             <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
@@ -318,7 +318,7 @@
                             <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown">
                                 <div class="d-flex align-items-center">
                                 <div class="user-profile-img">
-                                    <img src="assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
+                                    <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
                                 </div>
                                 </div>
                             </a>
@@ -328,7 +328,7 @@
                                         <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                     </div>
                                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                        <img src="assets/images/profile/user-1.jpg" class="rounded-circle" width="80" height="80" alt="" />
+                                        <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="80" height="80" alt="" />
                                         <div class="ms-3">
                                             <h5 class="mb-1 fs-3">Mathew Anderson</h5>
                                             <span class="mb-1 d-block text-dark">Designer</span>
@@ -340,7 +340,7 @@
                                     <div class="message-body">
                                         <a href="#" class="py-8 px-7 mt-8 d-flex align-items-center">
                                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                                                <img src="assets/images/svgs/icon-account.svg" alt="" width="24" height="24">
+                                                <img src="/assets/images/svgs/icon-account.svg" alt="" width="24" height="24">
                                             </span>
                                             <div class="w-75 d-inline-block v-middle ps-3">
                                                 <h6 class="mb-1 bg-hover-primary fw-semibold"> My Profile </h6>
@@ -349,7 +349,7 @@
                                         </a>
                                         <a href="#" class="py-8 px-7 d-flex align-items-center">
                                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                                                <img src="assets/images/svgs/icon-inbox.svg" alt="" width="24" height="24">
+                                                <img src="/assets/images/svgs/icon-inbox.svg" alt="" width="24" height="24">
                                             </span>
                                             <div class="w-75 d-inline-block v-middle ps-3">
                                                 <h6 class="mb-1 bg-hover-primary fw-semibold">My Inbox</h6>
