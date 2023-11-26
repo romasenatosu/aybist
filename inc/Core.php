@@ -2,6 +2,8 @@
 
 ob_start();
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/Helpers.php';
 require_once __DIR__ . '/Language.php';
@@ -25,7 +27,6 @@ require_once __DIR__ . '/../database/SettingsVat.php';
 require_once __DIR__ . '/../database/Users.php';
 
 require_once __DIR__ . '/Auth.php';
-require_once __DIR__ . '/../vendor/autoload.php';
 
 class Core {
     private bool $debug_mode;
@@ -60,6 +61,51 @@ class Core {
         }
 
         throw new Exception("Please load the settings from the database before running " . __FUNCTION__);
+    }
+
+    public function requestListener():void {
+        // TODO: insert into notifications
+    
+        // echo $_SERVER['REQUEST_METHOD'] . PHP_EOL;
+    }
+
+    public function visitListener(): void {
+        global $pdo, $datetime_format;
+    
+        // WARN: can't find user id
+        // INFO: what about saving per 24 hours?
+    
+        // get user id from session if it is available
+        $user_id = null;
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            $user_id = intval($_SESSION['user']['id']);
+        }
+    
+        // get ip address of the client (ipv4 or ipv6)
+        $ip = $_SERVER['REMOTE_ADDR'];
+    
+        // create datetime
+        $nowDateTime = new DateTime();
+        $created_at = date($datetime_format, $nowDateTime->getTimestamp());
+        $updated_at = date($datetime_format, $nowDateTime->getTimestamp());
+    
+        // notifications ips table
+        $stmt = $pdo->prepare("INSERT INTO notifications_ips (user_id, ip, created_at, updated_at) 
+                            VALUES (:user_id, :ip, :created_at, :updated_at)");
+        $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(":ip", $ip, PDO::PARAM_STR);
+        $stmt->bindParam(":created_at", $created_at, PDO::PARAM_STR);
+        $stmt->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
+    
+        // be careful about unique ip addresses
+        try {
+            $stmt->execute();
+    
+        } catch (Exception $e) {
+    
+        } finally {
+            $stmt->closeCursor();
+        }
     }
 
     public function setDebugMode(bool $debug_mode): void {

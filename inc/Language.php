@@ -91,7 +91,8 @@ $language = new Language();
 $language_id = $language->getLocaleId($pdo, $locale);
 if (!$language_id) {
     $locale = $default_locale;
-    Helpers::refresh("/$locale/$page");
+    $target = $language->changeLocale($locale);
+    Helpers::refresh($target);
 }
 
 $lang = $language->getLocaleDict($pdo, $language_id);

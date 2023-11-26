@@ -12,14 +12,16 @@
     RewriteRule ^(.*)$ index.php?\/$1 [L]
 
     # error redirecting
+    # RewriteRule ^([a-z]+)/error_([0-9]+)$ index.php?$1/$2 [L,E=LANG:$1]
+
+    # ErrorDocument 400 /index.php/%{ENV:LANG}/error_400
+    # ErrorDocument 401 /index.php/%{ENV:LANG}/error_401
+    # ErrorDocument 402 /index.php/%{ENV:LANG}/error_402
+    # ErrorDocument 403 /index.php/%{ENV:LANG}/error_403
+    # ErrorDocument 404 /index.php/%{ENV:LANG}/error_404
+    # ErrorDocument 405 /index.php/%{ENV:LANG}/error_405
+    # ErrorDocument 500 /index.php/%{ENV:LANG}/error_500    
     
-    # ErrorDocument 400 /error_400
-    # ErrorDocument 401 /error_401
-    # ErrorDocument 402 /error_402
-    # ErrorDocument 403 /error_403
-    # ErrorDocument 404 /error_404
-    # ErrorDocument 405 /error_405
-    # ErrorDocument 500 /error_500
     # ErrorDocument default /error_500
 
     # site caching
@@ -30,9 +32,9 @@
     </FilesMatch>
 
     # do not allow php files to be accessed
-    <FilesMatch "\.php$">
-        Require all granted
-    </FilesMatch>
+    # <FilesMatch "\.php$">
+    #     Require all denied
+    # </FilesMatch>
     
     # except main index.php
     <Files "index.php">

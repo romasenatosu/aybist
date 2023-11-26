@@ -13,9 +13,15 @@
         $stmt->closeCursor();
     } */
 
-    // Helpers::dump($_SERVER);
     // Helpers::dump($_SESSION);
+    // Helpers::dump($_SERVER);
     // die();
+
+    // run request listener and log them
+    // $core->requestListener();
+
+    // run client ip listener
+    // $core->visitListener();
 ?>
 
 <!DOCTYPE html>
@@ -49,14 +55,15 @@
     <link rel="stylesheet" href="/assets/css/stylesheet.css">
 
     <title>
-        <?= $title ?>
+        <?= $_ENV['APP_TITLE'] . " | " . $lang["page_" . $page] ?>
     </title>
 </head>
 
+<!-- TODO: fix error redirection in htaccess -->
+<!-- TODO: delete also relational row with different language id -->
+
 <body>
-    <!-- TODO: create .env file -->
-    <!-- TODO: fix error redirection in htaccess -->
-    <!-- TODO: file uploading -->
+    <!-- TODO: file uploading (delete file after deleting a row) -->
     <!-- TODO: check for unique fields -->
     <!-- TODO: create flash messages after updating/deleting/errors -->
     <!-- TODO: remember me and user token -->

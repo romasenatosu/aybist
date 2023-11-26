@@ -15,12 +15,16 @@
 $tablename = "";
 
 // if user did not sign in then redirect user to login page
-if (!isset($_SESSION['user']) and !str_starts_with($page, "error_")) {
+if (!isset($_SESSION['user']) and !str_starts_with($page, "error_") and !str_starts_with($page, "login")) {
     Helpers::redirectAuthenticate();
 }
 
+// do not let users to go error pages without error
+// if (str_starts_with($page, "error_") and http_response_code() < 400) {
+//     Helpers::redirectInvalidRequest();
+// }
+
 switch ($page) {
-    // TODO: do not let users to go error pages with status code 200 OK
     case 'error_400':
         include_once Helpers::checkMethods("pages/errors/400.php");
         break;
@@ -470,10 +474,18 @@ switch ($page) {
         break;
 
     case 'home':
+        if ($action) {
+            Helpers::redirectNotFound();
+        }
+
         include_once Helpers::checkMethods("home.php");
         break;
 
     case 'login':
+        if ($action) {
+            Helpers::redirectNotFound();
+        }
+
         if (isset($_SESSION['user'])) {
             Helpers::redirectHome();
         }

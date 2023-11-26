@@ -79,14 +79,11 @@ class Helpers {
      * @return void
      */
     public static function redirect(string $route, string $redirect_method="HTTP/1.1 302 Redirected"): void {
-        global $locale, $page;
-
-        // do not redirect same page
-        // if ($page != $route) {
-            header("Location: " . "/$locale/$route");
-            // header($redirect_method); TODO: open this later
-            exit(0);
-        // }
+        global $locale;
+        ob_clean();
+        header("Location: " . "/$locale/$route");
+        // header($redirect_method);
+        exit(0);
     }
 
     /**
@@ -214,7 +211,7 @@ class Helpers {
             if (in_array($file_extension, $allowed_extensions)) {
                 // create unique file name
                 $unique_file_name = sprintf("%s_%s.%s", $file_name, uniqid(), $file_extension);
-                $target = $upload_dir . '/' . $unique_file_name;
+                $target = $upload_dir . $unique_file_name;
     
                 // check if target file exists
                 if (file_exists($target)) {
