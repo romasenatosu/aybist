@@ -22,6 +22,24 @@ class Auth {
     }
 
     /**
+     * returns the id of currently logged-in user
+     * 
+     * @return int|null
+     */
+    public function getCurrentUserId(): int|null {
+        $user_id = null;
+
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            if (isset($_SESSION['user'])) {
+                $user_session = json_decode($_SESSION['user'], true);
+                $user_id = intval($user_session['id']);
+            }
+        }
+
+        return $user_id;
+    }
+
+    /**
      * Lets the registered user to sign in with email and password
      * 
      * @return bool

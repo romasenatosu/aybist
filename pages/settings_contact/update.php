@@ -67,7 +67,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         // sql statement
         $stmt = $pdo->prepare("UPDATE settings_contact SET address = :address, phone = :phone, phone_code_id = :phone_code_id,
                             cell_phone = :cell_phone, cell_phone_code_id = :cell_phone_code_id, fax = :fax, fax_code_id = :fax_code_id,
-                            email = :email, captcha_key = :captcha_key, captcha_secret_key = :captcha_secret_key, google_maps = :google_maps
+                            email = :email, captcha_key = :captcha_key, captcha_secret_key = :captcha_secret_key, google_maps = :google_maps,
                             updated_at = :updated_at
                             WHERE id = :id");
 
@@ -79,7 +79,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $stmt->bindParam(':cell_phone_code_id', $settingsContact->cell_phone_code_id->value, PDO::PARAM_INT);
         $stmt->bindParam(':fax', $settingsContact->fax->value, PDO::PARAM_STR);
         $stmt->bindParam(':fax_code_id', $settingsContact->fax_code_id->value, PDO::PARAM_INT);
-        $stmt->bindParam(':email', $settingsContact->phone_code_id->email, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $settingsContact->email->value, PDO::PARAM_STR);
         $stmt->bindParam(':captcha_key', $settingsContact->captcha_key->value, PDO::PARAM_STR);
         $stmt->bindParam(':captcha_secret_key', $settingsContact->captcha_secret_key->value, PDO::PARAM_STR);
         $stmt->bindParam(':google_maps', $settingsContact->google_maps->value, PDO::PARAM_STR);

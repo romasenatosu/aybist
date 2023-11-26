@@ -197,7 +197,7 @@ class FormElement {
     public function get_select_options(string $placeholder):mixed {
         global $locale, $pdo, $language_id;
         $sql = "";
-        $placholder_option = sprintf("<option %s value='0'>%s</option>", ($this->value) ? '' : 'selected', $placeholder);
+        $placholder_option = sprintf("<option %s value=''>%s</option>", ($this->value) ? '' : 'selected', $placeholder);
         $options = [
             $placholder_option,
         ];

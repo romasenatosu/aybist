@@ -58,7 +58,7 @@ class SettingsContact {
         $this->captcha_key->pattern = $regex_alpha_numeric;
         $this->captcha_key->pattern_msg = $lang['regex_alpha_numeric'];
         $this->captcha_secret_key->maxlength = 64;
-        $this->captcha_secret_key->maxlength = false;
+        $this->captcha_secret_key->required = false;
         $this->captcha_secret_key->pattern = $regex_alpha_numeric;
         $this->captcha_secret_key->pattern_msg = $lang['regex_alpha_numeric'];
         $this->google_maps->maxlength = -1;

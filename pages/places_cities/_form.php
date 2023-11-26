@@ -59,7 +59,7 @@
                                             <?= $lang['label_zip_code'] ?>
                                             <span class="text-danger"><?= ($cities->zip_code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_number_attr() ?>>
+                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_text_attr() ?>>
                                         <span class="text-danger"><?= ($cities->zip_code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($cities->zip_code->help_msg) ?></span>
                                     </div>

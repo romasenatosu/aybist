@@ -22,7 +22,7 @@ class Countries {
         $this->country->maxlength = -1;
         $this->country->pattern = $regex_alpha_numeric;
         $this->country->pattern_msg = $lang['regex_alpha_numeric'];
-        $this->phone_code->maxlength = 6;
+        $this->phone_code->maxlength = 32767;
         $this->phone_code->pattern = $regex_numeric;
         $this->phone_code->pattern_msg = $lang['regex_numeric'];
         $this->phone_code->help_msg = $lang['help_phone_code'];

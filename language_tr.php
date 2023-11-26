@@ -27,7 +27,6 @@ $lang_defaults_tr = [
     "text_invalid_login" => "Geçersiz Email ya da Şifre",
 
     "page_home" => "Ana Sayfa",
-    "page_test" => "Test",
     "page_settings" => "Ayarlar",
     "page_settings_general" => "Genel Ayarlar",
     "page_settings_contact" => "İletişim Ayarları",
@@ -46,6 +45,7 @@ $lang_defaults_tr = [
     "page_managements_blocks" => "Bloklar",
     "page_managements_flats" => "Daireler",
     "page_managements_floors" => "Katlar",
+    "page_login" => "Giriş Yap",
 
     "table_title" => "BAŞLIK",
     "table_description" => "AÇIKLAMA",

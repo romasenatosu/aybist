@@ -22,7 +22,7 @@ class Cities {
         $this->city->maxlength = -1;
         $this->city->pattern = $regex_alpha_numeric;
         $this->city->pattern_msg = $lang['regex_alpha_numeric'];
-        $this->zip_code->maxlength = 6;
+        $this->zip_code->maxlength = 11;
         $this->zip_code->pattern = $regex_numeric;
         $this->zip_code->pattern_msg = $lang['regex_numeric'];
         $this->zip_code->help_msg = $lang['help_zip_code'];

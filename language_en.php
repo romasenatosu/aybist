@@ -26,8 +26,7 @@ $lang_defaults_en = [
     "text_password" => "Password",
     "text_invalid_login" => "Invalid Username or Password",
 
-    "page_home" => "Home Page",
-    "page_test" => "Test",
+    "page_home" => "Home",
     "page_settings" => "Settings",
     "page_settings_general" => "General Settings",
     "page_settings_contact" => "Contact Settings",
@@ -46,6 +45,7 @@ $lang_defaults_en = [
     "page_managements_blocks" => "Blocks",
     "page_managements_flats" => "Flats",
     "page_managements_floors" => "Floors",
+    "page_login" => "Login",
 
     "table_title" => "TITLE",
     "table_description" => "DESCRIPTPION",

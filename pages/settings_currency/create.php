@@ -24,7 +24,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $all_locale_id = $language->getAllLocaleId($pdo);
         foreach ($all_locale_id as $locale_id) {
             // sql statement
-            $stmt = $pdo->prepare("INSERT INTO settingsCurrency (language_id, name, symbol, created_at, updated_at)
+            $stmt = $pdo->prepare("INSERT INTO settings_currency (language_id, name, symbol, created_at, updated_at)
                                      VALUES (:language_id, :name, :symbol, :created_at, :updated_at)");
 
             //  bind values and parameters

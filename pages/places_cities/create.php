@@ -7,7 +7,6 @@ $cities = new Cities();
 if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $cities->language_id->value = $language->getLocaleId($pdo, $locale);
     $cities->country_id->value = htmlspecialchars($_POST[$cities->country_id->name] ?? '');
     $cities->city->value = htmlspecialchars($_POST[$cities->city->name] ?? '');
     $cities->zip_code->value = htmlspecialchars($_POST[$cities->zip_code->name] ?? '');

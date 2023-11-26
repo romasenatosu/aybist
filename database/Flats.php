@@ -31,6 +31,7 @@ class Flats {
         $this->square_meter->pattern = $regex_numeric;
         $this->square_meter->pattern_msg = $lang['regex_numeric'];
         $this->square_meter->help_msg = $lang['help_square_meter'];
+        $this->fee->maxlength = 2147483647;
         $this->fee->pattern = $regex_numeric;
         $this->fee->pattern_msg = $lang['regex_numeric'];
     }

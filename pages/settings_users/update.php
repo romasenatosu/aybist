@@ -98,6 +98,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $stmt->bindParam(':password', $users->password->value, PDO::PARAM_STR);
         $stmt->bindParam(':avatar', $users->avatar->value, PDO::PARAM_STR);
         $stmt->bindValue(':is_admin', ($users->is_admin->value) ? true : false, PDO::PARAM_INT);
+        $stmt->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         // flush database

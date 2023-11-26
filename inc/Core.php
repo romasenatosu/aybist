@@ -63,27 +63,60 @@ class Core {
         throw new Exception("Please load the settings from the database before running " . __FUNCTION__);
     }
 
-    public function requestListener():void {
-        // TODO: insert into notifications
-    
-        // echo $_SERVER['REQUEST_METHOD'] . PHP_EOL;
+    /**
+     * Listens for all requests and saves it to database
+     * 
+     * @param int user_id
+     * @return void
+     */
+    public function requestListener(int $user_id=null):void {
+        global $pdo, $datetime_format;
+
+        // get required fields to notify
+        $code = http_response_code();
+        $request_uri = Helpers::getRequestUri();
+        $request_method = Helpers::getRequestMethod();
+
+        // create datetime
+        $nowDateTime = new DateTime();
+        $created_at = date($datetime_format, $nowDateTime->getTimestamp());
+        $updated_at = date($datetime_format, $nowDateTime->getTimestamp());
+
+        // insert into notifications
+        $stmt = $pdo->prepare("INSERT INTO notifications (user_id, code, request_uri, request_method, created_at, updated_at) 
+        VALUES (:user_id, :code, :request_uri, :request_method, :created_at, :updated_at)");
+        $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(":code", $code, PDO::PARAM_INT);
+        $stmt->bindParam(":request_uri", $request_uri, PDO::PARAM_STR);
+        $stmt->bindParam(":request_method", $request_method, PDO::PARAM_STR);
+        $stmt->bindParam(":created_at", $created_at, PDO::PARAM_STR);
+        $stmt->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
+
+        // be careful about unique ip addresses
+        try {
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+
+        } finally {
+            $stmt->closeCursor();
+        }
     }
 
-    public function visitListener(): void {
+    /**
+     * Listens for all ip addresses and saves it to database
+     * 
+     * @param int user_id
+     * @return void
+     */
+    public function visitListener(int $user_id=null): void {
         global $pdo, $datetime_format;
     
-        // WARN: can't find user id
         // INFO: what about saving per 24 hours?
-    
-        // get user id from session if it is available
-        $user_id = null;
-        if (session_status() == PHP_SESSION_ACTIVE) {
-            $user_id = intval($_SESSION['user']['id']);
-        }
-    
+
         // get ip address of the client (ipv4 or ipv6)
         $ip = $_SERVER['REMOTE_ADDR'];
-    
+
         // create datetime
         $nowDateTime = new DateTime();
         $created_at = date($datetime_format, $nowDateTime->getTimestamp());
@@ -101,7 +134,9 @@ class Core {
         try {
             $stmt->execute();
     
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
+            // TODO: check for unique error code
+            // if it is not about above code then show error
     
         } finally {
             $stmt->closeCursor();
@@ -129,6 +164,9 @@ class Core {
     }
 }
 
+// get current user id
+$user_id = $auth->getCurrentUserId();
+
 // initialize core
 $core = new Core();
 
@@ -137,3 +175,9 @@ $core->grabSettings($pdo, $language_id);
 
 // get debug mode from database
 $core->checkDebugMode();
+
+// run request listener and log them
+$core->requestListener($user_id);
+
+// run client ip listener
+$core->visitListener($user_id);

@@ -16,12 +16,6 @@
     // Helpers::dump($_SESSION);
     // Helpers::dump($_SERVER);
     // die();
-
-    // run request listener and log them
-    // $core->requestListener();
-
-    // run client ip listener
-    // $core->visitListener();
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +49,14 @@
     <link rel="stylesheet" href="/assets/css/stylesheet.css">
 
     <title>
-        <?= $_ENV['APP_TITLE'] . " | " . $lang["page_" . $page] ?>
+        <?= $_ENV['APP_TITLE'] . " | " . ($lang["page_" . $page] ?? "") ?>
     </title>
 </head>
 
 <!-- TODO: fix error redirection in htaccess -->
 <!-- TODO: delete also relational row with different language id -->
+<!-- TODO: think about zip codes which can start with zero -->
+<!-- TODO: create try catch for pdo statements -> flash messages -->
 
 <body>
     <!-- TODO: file uploading (delete file after deleting a row) -->
@@ -69,7 +65,6 @@
     <!-- TODO: remember me and user token -->
     <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: create analytics charts -->
-    <!-- TODO: get page title from database (you may change some table names) -->
 
     <!-- Preloader -->
     <div class="preloader">
@@ -249,5 +244,3 @@
 </body>
 
 </html>
-
-

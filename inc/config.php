@@ -29,7 +29,7 @@ $error_log_path = __DIR__ . '/../' . $_ENV['PATH_ERROR_LOGS'];
 $hash_options = [
     'cost' => $_ENV['PASSWORD_COST']
 ];
-$hash_algorithm = $$_ENV['PASSWORD_BCRYPT'];
+$hash_algorithm = PASSWORD_BCRYPT;
 
 // * table rendering
 $max_abbr = $_ENV['TABLE_MAX_SHOW_CHARS'];
@@ -90,13 +90,37 @@ try {
     $pdo = new PDO($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->query("SET CHARSET utf8mb4");
-} catch (Exception $e) {
+} catch (PDOException $e) {
     echo "PDO Initialization Exception!" . PHP_EOL;
     die();
 }
 
 // * attach listeners
-function exceptionListener($exception) {}
-function errorListener($severity, $message, $file, $line) {}
-// set_error_handler('errorListener');
-// set_exception_handler('exceptionListener');
+function exceptionListener($exception) {
+    ob_clean();
+
+    echo "<code>";
+    echo "<pre>";
+    echo "<h1>EXCEPTION!</h1>";
+    print_r($exception);
+    echo "</code>";
+    echo "</pre>";
+    die();
+}
+
+function errorListener($severity, $message, $file, $line) {
+    ob_clean();
+
+    echo "<code>";
+    echo "<pre>";
+    echo "<h1>ERROR!</h1>";
+    echo "<h3>Message: $message</h3>";
+    echo "<h3>File: $file</h3>";
+    echo "<h3>On line: $line</h3>";
+    echo "</code>";
+    echo "</pre>";
+    die();
+}
+
+set_error_handler('errorListener');
+set_exception_handler('exceptionListener');

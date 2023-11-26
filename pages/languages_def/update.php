@@ -41,7 +41,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $updated_at = date($datetime_format, $languagesDef->updated_at->value->getTimestamp());
 
         // sql statement
-        $stmt = $pdo->prepare("UPDATE languagesDef SET value = :value, updated_at = :updated_at 
+        $stmt = $pdo->prepare("UPDATE languages_def SET value = :value, updated_at = :updated_at 
                             WHERE id = :id");
 
         //  bind values and parameters

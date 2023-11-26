@@ -22,7 +22,7 @@ class SettingsVat {
         $this->name->maxlength = -1;
         $this->name->pattern = $regex_alpha_numeric;
         $this->name->pattern_msg = $lang['regex_alpha_numeric'];
-        $this->rate->maxlength = 127;
+        $this->rate->maxlength = 100; // max 100%
         $this->rate->pattern = $regex_numeric;
         $this->rate->pattern_msg = $lang['regex_numeric'];
     }

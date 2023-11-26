@@ -7,7 +7,6 @@ $districts = new Districts();
 if (Helpers::getRequestMethod() == 'POST') {
     // grab data from form inputs
 
-    $districts->language_id->value = $language->getLocaleId($pdo, $locale);
     $districts->city_id->value = htmlspecialchars($_POST[$districts->city_id->name] ?? '');
     $districts->district->value = htmlspecialchars($_POST[$districts->district->name] ?? '');
 
