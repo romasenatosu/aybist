@@ -29,7 +29,7 @@
                                                     <?= $lang['label_block_id'] ?>
                                                     <span class="text-danger"><?= ($managements->block_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $managements->block_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $managements->block_id->get_attr() ?>>
                                                     <?php
                                                         $options = $managements->block_id->get_select_options($lang['placeholder_block_id']);
                                                         foreach ($options as $option) {
@@ -52,7 +52,7 @@
                                                     <?= $lang['label_floor_id'] ?>
                                                     <span class="text-danger"><?= ($managements->floor_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $managements->floor_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $managements->floor_id->get_attr() ?>>
                                                     <?php
                                                         $options = $managements->floor_id->get_select_options($lang['placeholder_floor_id']);
                                                         foreach ($options as $option) {
@@ -75,7 +75,7 @@
                                                     <?= $lang['label_flat_id'] ?>
                                                     <span class="text-danger"><?= ($managements->flat_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $managements->flat_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $managements->flat_id->get_attr() ?>>
                                                     <?php
                                                         $options = $managements->flat_id->get_select_options($lang['placeholder_flat_id']);
                                                         foreach ($options as $option) {
@@ -98,7 +98,7 @@
                                                     <?= $lang['label_manager_owner_id'] ?>
                                                     <span class="text-danger"><?= ($managements->manager_owner_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $managements->manager_owner_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $managements->manager_owner_id->get_attr() ?>>
                                                     <?php
                                                         $options = $managements->manager_owner_id->get_select_options($lang['placeholder_manager_owner_id']);
                                                         foreach ($options as $option) {
@@ -121,7 +121,7 @@
                                                     <?= $lang['label_manager_rental_id'] ?>
                                                     <span class="text-danger"><?= ($managements->manager_rental_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $managements->manager_rental_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $managements->manager_rental_id->get_attr() ?>>
                                                     <?php
                                                         $options = $managements->manager_rental_id->get_select_options($lang['placeholder_manager_rental_id']);
                                                         foreach ($options as $option) {
@@ -142,7 +142,7 @@
                                             <?= $lang['label_management'] ?>
                                             <span class="text-danger"><?= ($managements->management->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_management'] ?>" <?= $managements->management->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_management'] ?>" <?= $managements->management->get_attr() ?>>
                                         <span class="text-danger"><?= ($managements->management->error_msg) ?></span>
                                         <span class="text-muted"><?= ($managements->management->help_msg) ?></span>
                                     </div>
@@ -151,7 +151,7 @@
                                             <?= $lang['label_description'] ?>
                                             <span class="text-danger"><?= ($managements->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $managements->description->get_textarea_attr() ?>><?= $managements->description->value ?></textarea>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $managements->description->get_attr() ?>><?= $managements->description->value ?></textarea>
                                         <span class="text-danger"><?= ($managements->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($managements->description->help_msg) ?></span>
                                     </div>
@@ -161,7 +161,7 @@
                                                 <?= $lang['label_fee_status'] ?>
                                                 <span class="text-danger"><?= ($managements->fee_status->required) ? '*': '' ?></span>
                                             </label>
-                                            <input type="checkbox" class="form-check-input" <?= $managements->fee_status->get_check_attr() ?>>
+                                            <input class="form-check-input" <?= $managements->fee_status->get_attr() ?>>
                                             <span class="text-danger"><?= ($managements->fee_status->error_msg) ?></span>
                                             <span class="text-muted"><?= ($managements->fee_status->help_msg) ?></span>
                                         </div>

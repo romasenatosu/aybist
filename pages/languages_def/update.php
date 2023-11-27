@@ -34,7 +34,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $languagesDef->value->value = htmlspecialchars($_POST[$languagesDef->value->name] ?? '');
 
     // check if given data is ok
-    $checks = $languagesDef->keyword->check() || $languagesDef->value->check();
+    $checks = $languagesDef->keyword->check() && $languagesDef->value->check();
 
     if ($checks) {
         // convert DateTime object to string

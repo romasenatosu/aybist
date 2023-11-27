@@ -55,10 +55,10 @@ if (Helpers::getRequestMethod() == 'POST') {
     $settingsContact->google_maps->value = htmlspecialchars($_POST[$settingsContact->google_maps->name] ?? '');
 
     // check if given data is ok
-    $checks = $settingsContact->address->check() || $settingsContact->phone->check() || $settingsContact->phone_code_id->check() || 
-            $settingsContact->cell_phone->check() || $settingsContact->cell_phone_code_id->check() || $settingsContact->fax->check() || 
-            $settingsContact->fax_code_id->check() || $settingsContact->email->check() || $settingsContact->captcha_key->check() || 
-            $settingsContact->captcha_secret_key->check() || $settingsContact->google_maps->check();
+    $checks = $settingsContact->address->check() && $settingsContact->phone->check() && $settingsContact->phone_code_id->check() && 
+            $settingsContact->cell_phone->check() && $settingsContact->cell_phone_code_id->check() && $settingsContact->fax->check() && 
+            $settingsContact->fax_code_id->check() && $settingsContact->email->check() && $settingsContact->captcha_key->check() && 
+            $settingsContact->captcha_secret_key->check() && $settingsContact->google_maps->check();
 
     if ($checks) {
         // convert DateTime object to string

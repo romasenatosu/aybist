@@ -27,7 +27,7 @@
                                             <?= $lang['label_name'] ?>
                                             <span class="text-danger"><?= ($settingsCurrency->name->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $settingsCurrency->name->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $settingsCurrency->name->get_attr() ?>>
                                         <span class="text-danger"><?= ($settingsCurrency->name->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsCurrency->name->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_symbol'] ?>
                                             <span class="text-danger"><?= ($settingsCurrency->symbol->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_symbol'] ?>" <?= $settingsCurrency->symbol->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_symbol'] ?>" <?= $settingsCurrency->symbol->get_attr() ?>>
                                         <span class="text-danger"><?= ($settingsCurrency->symbol->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsCurrency->symbol->help_msg) ?></span>
                                     </div>

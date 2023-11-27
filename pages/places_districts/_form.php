@@ -29,7 +29,7 @@
                                                     <?= $lang['label_city_id'] ?>
                                                     <span class="text-danger"><?= ($districts->city_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $districts->city_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $districts->city_id->get_attr() ?>>
                                                     <?php
                                                         $options = $districts->city_id->get_select_options($lang['placeholder_city_id']);
                                                         foreach ($options as $option) {
@@ -50,7 +50,7 @@
                                             <?= $lang['label_district'] ?>
                                             <span class="text-danger"><?= ($districts->district->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_district'] ?>" <?= $districts->district->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_district'] ?>" <?= $districts->district->get_attr() ?>>
                                         <span class="text-danger"><?= ($districts->district->error_msg) ?></span>
                                         <span class="text-muted"><?= ($districts->district->help_msg) ?></span>
                                     </div>

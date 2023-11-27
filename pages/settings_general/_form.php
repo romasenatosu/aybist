@@ -27,7 +27,7 @@
                                             <?= $lang['label_company'] ?>
                                             <span class="text-danger"><?= ($settings->company->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_company'] ?>" <?= $settings->company->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_company'] ?>" <?= $settings->company->get_attr() ?>>
                                         <span class="text-danger"><?= ($settings->company->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->company->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_slogan'] ?>
                                             <span class="text-danger"><?= ($settings->slogan->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_slogan'] ?>" <?= $settings->slogan->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_slogan'] ?>" <?= $settings->slogan->get_attr() ?>>
                                         <span class="text-danger"><?= ($settings->slogan->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->slogan->help_msg) ?></span>
                                     </div>
@@ -45,7 +45,7 @@
                                             <?= $lang['label_description'] ?>
                                             <span class="text-danger"><?= ($settings->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $settings->description->get_textarea_attr() ?>><?= $settings->description->value ?></textarea>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $settings->description->get_attr() ?>><?= $settings->description->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->description->help_msg) ?></span>
                                     </div>
@@ -54,7 +54,7 @@
                                             <?= $lang['label_keywords'] ?>
                                             <span class="text-danger"><?= ($settings->keywords->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_keywords'] ?>" <?= $settings->keywords->get_textarea_attr() ?>><?= $settings->keywords->value ?></textarea>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_keywords'] ?>" <?= $settings->keywords->get_attr() ?>><?= $settings->keywords->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->keywords->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->keywords->help_msg) ?></span>
                                     </div>
@@ -67,7 +67,7 @@
                                                         <?= $lang['label_site_title'] ?>
                                                         <span class="text-danger"><?= ($settings->site_title->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="<?= $lang['placeholder_site_title'] ?>" <?= $settings->site_title->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_site_title'] ?>" <?= $settings->site_title->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->site_title->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->site_title->help_msg) ?></span>
                                                 </div>
@@ -76,7 +76,7 @@
                                                         <?= $lang['label_site_url'] ?>
                                                         <span class="text-danger"><?= ($settings->site_url->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="url" class="form-control" placeholder="<?= $lang['placeholder_site_url'] ?>" <?= $settings->site_url->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_site_url'] ?>" <?= $settings->site_url->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->site_url->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->site_url->help_msg) ?></span>
                                                 </div>
@@ -92,7 +92,7 @@
                                                         <?= $lang['label_smtp_url'] ?>
                                                         <span class="text-danger"><?= ($settings->smtp_url->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="url" class="form-control" placeholder="<?= $lang['placeholder_smtp_url'] ?>" <?= $settings->smtp_url->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_smtp_url'] ?>" <?= $settings->smtp_url->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->smtp_url->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->smtp_url->help_msg) ?></span>
                                                 </div>
@@ -101,7 +101,7 @@
                                                         <?= $lang['label_smtp_password'] ?>
                                                         <span class="text-danger"><?= ($settings->smtp_password->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="password" class="form-control" placeholder="<?= $lang['placeholder_smtp_password'] ?>" <?= $settings->smtp_password->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_smtp_password'] ?>" <?= $settings->smtp_password->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->smtp_password->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->smtp_password->help_msg) ?></span>
                                                 </div>
@@ -110,7 +110,7 @@
                                                         <?= $lang['label_smtp_port'] ?>
                                                         <span class="text-danger"><?= ($settings->smtp_port->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_smtp_port'] ?>" <?= $settings->smtp_port->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_smtp_port'] ?>" <?= $settings->smtp_port->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->smtp_port->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->smtp_port->help_msg) ?></span>
                                                 </div>
@@ -128,7 +128,7 @@
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
                                                             </label>
-                                                            <input type="file" class="form-control" <?= $settings->normal_photo->get_file_attr() ?>>
+                                                            <input class="form-control" <?= $settings->normal_photo->get_attr() ?>>
                                                             
                                                             <span class="text-danger"><?= ($settings->normal_photo->error_msg) ?></span>
                                                             <span class="text-muted"><?= ($settings->normal_photo->help_msg) ?></span>
@@ -152,7 +152,7 @@
                                                         <?= $lang['label_width'] ?>
                                                         <span class="text-danger"><?= ($settings->normal_photo_width->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->normal_photo_width->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->normal_photo_width->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->normal_photo_width->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->normal_photo_width->help_msg) ?></span>
                                                 </div>
@@ -161,7 +161,7 @@
                                                         <?= $lang['label_height'] ?>
                                                         <span class="text-danger"><?= ($settings->normal_photo_height->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->normal_photo_height->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->normal_photo_height->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->normal_photo_height->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->normal_photo_height->help_msg) ?></span>
                                                 </div>
@@ -179,7 +179,7 @@
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
                                                             </label>
-                                                            <input type="file" class="form-control" <?= $settings->top_photo->get_file_attr() ?>>
+                                                            <input class="form-control" <?= $settings->top_photo->get_attr() ?>>
                                                             
                                                             <span class="text-danger"><?= ($settings->top_photo->error_msg) ?></span>
                                                             <span class="text-muted"><?= ($settings->top_photo->help_msg) ?></span>
@@ -203,7 +203,7 @@
                                                         <?= $lang['label_width'] ?>
                                                         <span class="text-danger"><?= ($settings->top_photo_width->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->top_photo_width->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->top_photo_width->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->top_photo_width->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->top_photo_width->help_msg) ?></span>
                                                 </div>
@@ -212,7 +212,7 @@
                                                         <?= $lang['label_height'] ?>
                                                         <span class="text-danger"><?= ($settings->top_photo_height->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->top_photo_height->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->top_photo_height->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->top_photo_height->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->top_photo_height->help_msg) ?></span>
                                                 </div>
@@ -230,7 +230,7 @@
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
                                                             </label>
-                                                            <input type="file" class="form-control" <?= $settings->small_photo->get_file_attr() ?>>
+                                                            <input class="form-control" <?= $settings->small_photo->get_attr() ?>>
                                                             
                                                             <span class="text-danger"><?= ($settings->small_photo->error_msg) ?></span>
                                                             <span class="text-muted"><?= ($settings->small_photo->help_msg) ?></span>
@@ -254,7 +254,7 @@
                                                         <?= $lang['label_width'] ?>
                                                         <span class="text-danger"><?= ($settings->small_photo_width->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->small_photo_width->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_width'] ?>" <?= $settings->small_photo_width->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->small_photo_width->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->small_photo_width->help_msg) ?></span>
                                                 </div>
@@ -263,7 +263,7 @@
                                                         <?= $lang['label_height'] ?>
                                                         <span class="text-danger"><?= ($settings->small_photo_height->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->small_photo_height->get_number_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_height'] ?>" <?= $settings->small_photo_height->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settings->small_photo_height->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settings->small_photo_height->help_msg) ?></span>
                                                 </div>
@@ -276,7 +276,7 @@
                                                 <?= $lang['label_debug_mode'] ?>
                                                 <span class="text-danger"><?= ($settings->debug_mode->required) ? '*': '' ?></span>
                                             </label>
-                                            <input type="checkbox" class="form-check-input" <?= $settings->debug_mode->get_check_attr() ?>>
+                                            <input class="form-check-input" <?= $settings->debug_mode->get_attr() ?>>
                                             <span class="text-danger"><?= ($settings->debug_mode->error_msg) ?></span>
                                             <span class="text-muted"><?= ($settings->debug_mode->help_msg) ?></span>
                                         </div>
@@ -287,7 +287,7 @@
                                                 <?= $lang['label_maintenance_mod'] ?>
                                                 <span class="text-danger"><?= ($settings->maintenance_mode->required) ? '*': '' ?></span>
                                             </label>
-                                            <input type="checkbox" class="form-check-input" <?= $settings->maintenance_mode->get_check_attr() ?>>
+                                            <input class="form-check-input" <?= $settings->maintenance_mode->get_attr() ?>>
                                             <span class="text-danger"><?= ($settings->maintenance_mode->error_msg) ?></span>
                                             <span class="text-muted"><?= ($settings->maintenance_mode->help_msg) ?></span>
                                         </div>
@@ -297,7 +297,7 @@
                                             <?= $lang['label_maintenance_mode_content'] ?>
                                             <span class="text-danger"><?= ($settings->maintenance_mode_content->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="ck_field" <?= $settings->maintenance_mode_content->get_textarea_attr() ?>><?= $settings->maintenance_mode_content->value ?></textarea>
+                                        <textarea class="ck_field" <?= $settings->maintenance_mode_content->get_attr() ?>><?= $settings->maintenance_mode_content->value ?></textarea>
                                         <span class="text-danger"><?= ($settings->maintenance_mode_content->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settings->maintenance_mode_content->help_msg) ?></span>
                                     </div>

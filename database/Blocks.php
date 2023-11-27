@@ -25,10 +25,12 @@ class Blocks {
         $this->block->pattern = $regex_alpha_numeric;
         $this->block->pattern_msg = $lang['regex_alpha_numeric'];
         $this->block->help_msg = $lang['help_block'];
+        $this->description->type = "textarea";
         $this->description->maxlength = -1;
         $this->description->required = false;
         $this->description->pattern = $regex_alpha_numeric;
         $this->description->pattern_msg = $lang['regex_alpha_numeric'];
+        $this->floor_count->type = "number";
         $this->floor_count->maxlength = 32767;
         $this->floor_count->pattern = $regex_numeric;
         $this->floor_count->pattern_msg = $lang['regex_numeric'];

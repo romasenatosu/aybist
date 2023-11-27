@@ -27,10 +27,13 @@ class Flats {
         $this->flat->pattern = $regex_flat;
         $this->flat->pattern_msg = $lang['regex_flat'];
         $this->flat->help_msg = $lang['help_flat'];
+        $this->square_meter->type = "number";
         $this->square_meter->maxlength = 32767;
         $this->square_meter->pattern = $regex_numeric;
         $this->square_meter->pattern_msg = $lang['regex_numeric'];
         $this->square_meter->help_msg = $lang['help_square_meter'];
+        $this->currency_id->type = "select";
+        $this->fee->type = "number";
         $this->fee->maxlength = 2147483647;
         $this->fee->pattern = $regex_numeric;
         $this->fee->pattern_msg = $lang['regex_numeric'];

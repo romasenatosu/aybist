@@ -27,7 +27,7 @@
                                             <?= $lang['label_country'] ?>
                                             <span class="text-danger"><?= ($countries->country->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_country'] ?>" <?= $countries->country->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_country'] ?>" <?= $countries->country->get_attr() ?>>
                                         <span class="text-danger"><?= ($countries->country->error_msg) ?></span>
                                         <span class="text-muted"><?= ($countries->country->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_phone_code'] ?>
                                             <span class="text-danger"><?= ($countries->phone_code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_phone_code'] ?>" <?= $countries->phone_code->get_number_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_phone_code'] ?>" <?= $countries->phone_code->get_attr() ?>>
                                         <span class="text-danger"><?= ($countries->phone_code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($countries->phone_code->help_msg) ?></span>
                                     </div>

@@ -27,7 +27,7 @@
                                             <?= $lang['label_name'] ?>
                                             <span class="text-danger"><?= ($settingsVat->name->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $settingsVat->name->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_name'] ?>" <?= $settingsVat->name->get_attr() ?>>
                                         <span class="text-danger"><?= ($settingsVat->name->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsVat->name->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_rate'] ?>
                                             <span class="text-danger"><?= ($settingsVat->rate->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_rate'] ?>" <?= $settingsVat->rate->get_number_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_rate'] ?>" <?= $settingsVat->rate->get_attr() ?>>
                                         <span class="text-danger"><?= ($settingsVat->rate->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsVat->rate->help_msg) ?></span>
                                     </div>

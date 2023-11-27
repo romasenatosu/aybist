@@ -48,10 +48,10 @@ if (Helpers::getRequestMethod() == 'POST') {
     $managements->fee_status->value = htmlspecialchars($_POST[$managements->fee_status->name] ?? '');
 
     // check if given data is ok
-    $checks = $managements->block_id->check() || $managements->floor_id->check() ||
-              $managements->flat_id->check() || $managements->manager_owner_id->check() || 
-              $managements->manager_rental_id->check() || $managements->management->check() || 
-              $managements->description->check() || $managements->fee_status->check();
+    $checks = $managements->block_id->check() && $managements->floor_id->check() &&
+              $managements->flat_id->check() && $managements->manager_owner_id->check() && 
+              $managements->manager_rental_id->check() && $managements->management->check() && 
+              $managements->description->check() && $managements->fee_status->check();
 
     if ($checks) {
         // convert DateTime object to string

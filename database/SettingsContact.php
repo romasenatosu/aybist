@@ -37,19 +37,27 @@ class SettingsContact {
         $this->updated_at = new FormElement('updated_at', new DateTime());
 
         // configurations
+        $this->address->type = "textarea";
         $this->address->maxlength = -1;
         $this->address->required = false;
+        $this->phone->type = "tel";
         $this->phone->maxlength = 24;
         $this->phone->required = false;
         $this->phone->pattern = $regex_phone;
         $this->phone->pattern_msg = $lang['regex_phone'];
+        $this->phone_code_id->type = "select";
+        $this->cell_phone->type = "tel";
         $this->cell_phone->maxlength = 24;
         $this->cell_phone->pattern = $regex_phone;
         $this->cell_phone->pattern_msg = $lang['regex_phone'];
+        $this->cell_phone_code_id->type = "select";
+        $this->fax->type = "tel";
         $this->fax->maxlength = 24;
         $this->fax->required = false;
         $this->fax->pattern = $regex_phone;
         $this->fax->pattern_msg = $lang['regex_phone'];
+        $this->fax_code_id->type = "select";
+        $this->email->type = "email";
         $this->email->maxlength = 255;
         $this->email->pattern = $regex_email;
         $this->email->pattern_msg = $lang['regex_email'];

@@ -31,13 +31,20 @@ class Managements {
         $this->updated_at = new FormElement('updated_at', new DateTime());
 
         // configurations
+        $this->block_id->type = "select";
+        $this->floor_id->type = "select";
+        $this->flat_id->type = "select";
+        $this->manager_owner_id->type = "select";
+        $this->manager_rental_id->type = "select";
         $this->management->maxlength = -1;
         $this->management->pattern = $regex_alpha_numeric;
         $this->management->pattern_msg = $lang['regex_alpha_numeric'];
+        $this->description->type = "textarea";
         $this->description->maxlength = -1;
         $this->description->pattern = $regex_alpha_numeric;
         $this->description->pattern_msg = $lang['regex_alpha_numeric'];
         $this->description->required = false;
+        $this->fee_status->type = "checkbox";
         $this->fee_status->required = false;
     }
 }

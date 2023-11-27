@@ -12,7 +12,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $languages->flag->value = htmlspecialchars($_POST[$languages->flag->name] ?? '');
 
     // check if given data is ok
-    $checks = $languages->code->check() || $languages->lang->check() || $languages->flag->check();
+    $checks = $languages->code->check() && $languages->lang->check() && $languages->flag->check();
 
     if ($checks) {
         // convert DateTime object to string

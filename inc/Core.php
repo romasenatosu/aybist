@@ -137,7 +137,7 @@ class Core {
         } catch (PDOException $e) {
             // TODO: check for unique error code
             // if it is not about above code then show error
-    
+
         } finally {
             $stmt->closeCursor();
         }

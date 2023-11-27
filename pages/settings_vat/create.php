@@ -12,7 +12,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $settingsVat->rate->value = htmlspecialchars($_POST[$settingsVat->rate->name] ?? '');
 
     // check if given data is ok
-    $checks = $settingsVat->name->check() || $settingsVat->rate->check();
+    $checks = $settingsVat->name->check() && $settingsVat->rate->check();
 
     if ($checks) {
         // convert DateTime object to string

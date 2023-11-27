@@ -12,7 +12,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $cities->zip_code->value = htmlspecialchars($_POST[$cities->zip_code->name] ?? '');
 
     // check if given data is ok
-    $checks = $cities->country_id->check() || $cities->city->check() || $cities->zip_code->check();
+    $checks = $cities->country_id->check() && $cities->city->check() && $cities->zip_code->check();
 
     if ($checks) {
         // convert DateTime object to string

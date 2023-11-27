@@ -54,10 +54,10 @@ if (Helpers::getRequestMethod() == 'POST') {
     $users->is_admin->value = htmlspecialchars($_POST[$users->is_admin->name] ?? '');
 
     // check if given data is ok
-    $checks = $users->fullname->check() || $users->email->check() || $users->phone->check() || 
-                $users->phone_code_id->check() || $users->address->check() || 
-                $users->old_password->check() || $users->password->check() || $users->password_confirm->check() ||
-                $users->avatar->check() || $users->is_admin->check();
+    $checks = $users->fullname->check() && $users->email->check() && $users->phone->check() && 
+                $users->phone_code_id->check() && $users->address->check() && 
+                $users->old_password->check() && $users->password->check() && $users->password_confirm->check() &&
+                $users->avatar->check() && $users->is_admin->check();
 
 // TODO: password change
 

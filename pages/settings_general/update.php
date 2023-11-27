@@ -72,13 +72,13 @@ if (Helpers::getRequestMethod() == 'POST') {
     $settings->maintenance_mode_content->value = htmlspecialchars($_POST[$settings->maintenance_mode_content->name] ?? '');
 
     // check if given data is ok
-    $checks = $settings->company->check() || $settings->slogan->check() || $settings->keywords->check() || 
-                $settings->site_title->check() || $settings->site_url->check() || $settings->smtp_url->check() || 
-                $settings->smtp_password->check() || $settings->smtp_port->check() || $settings->normal_photo->check() || 
-                $settings->normal_photo_width->check() || $settings->normal_photo_height->check() || $settings->top_photo->check() || 
-                $settings->top_photo_width->check() || $settings->top_photo_height->check() || $settings->small_photo->check()  || 
-                $settings->small_photo_width->check() || $settings->small_photo_height->check() || $settings->debug_mode->check() || 
-                $settings->maintenance_mode->check() || $settings->maintenance_mode_content->check();
+    $checks = $settings->company->check() && $settings->slogan->check() && $settings->keywords->check() && 
+                $settings->site_title->check() && $settings->site_url->check() && $settings->smtp_url->check() && 
+                $settings->smtp_password->check() && $settings->smtp_port->check() && $settings->normal_photo->check() && 
+                $settings->normal_photo_width->check() && $settings->normal_photo_height->check() && $settings->top_photo->check() && 
+                $settings->top_photo_width->check() && $settings->top_photo_height->check() && $settings->small_photo->check()  || 
+                $settings->small_photo_width->check() && $settings->small_photo_height->check() && $settings->debug_mode->check() && 
+                $settings->maintenance_mode->check() && $settings->maintenance_mode_content->check();
 
     if ($checks) {
         // convert DateTime object to string

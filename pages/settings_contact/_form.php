@@ -29,7 +29,7 @@
                                                     <?= $lang['label_phone'] ?>
                                                     <span class="text-danger"><?= ($settingsContact->phone->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $settingsContact->phone_code_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $settingsContact->phone_code_id->get_attr() ?>>
                                                     <?php
                                                         $options = $settingsContact->phone_code_id->get_select_options($lang['placeholder_phone_code_select']);
                                                         foreach ($options as $option) {
@@ -39,7 +39,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-8">
-                                                <input type="tel" class="form-control" placeholder="<?= $lang['placeholder_phone'] ?>" <?= $settingsContact->phone->get_text_attr() ?>>
+                                                <input class="form-control" placeholder="<?= $lang['placeholder_phone'] ?>" <?= $settingsContact->phone->get_attr() ?>>
                                                 <span class="text-danger"><?= ($settingsContact->phone->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($settingsContact->phone->help_msg) ?></span>
                                             </div>
@@ -52,7 +52,7 @@
                                                     <?= $lang['label_cell_phone'] ?>
                                                     <span class="text-danger"><?= ($settingsContact->cell_phone->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $settingsContact->cell_phone_code_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $settingsContact->cell_phone_code_id->get_attr() ?>>
                                                     <?php
                                                         $options = $settingsContact->cell_phone_code_id->get_select_options($lang['placeholder_phone_code_select']);
                                                         foreach ($options as $option) {
@@ -62,7 +62,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-8">
-                                                <input type="tel" class="form-control" placeholder="<?= $lang['placeholder_cell_phone'] ?>" <?= $settingsContact->cell_phone->get_text_attr() ?>>
+                                                <input class="form-control" placeholder="<?= $lang['placeholder_cell_phone'] ?>" <?= $settingsContact->cell_phone->get_attr() ?>>
                                                 <span class="text-danger"><?= ($settingsContact->cell_phone->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($settingsContact->cell_phone->help_msg) ?></span>
                                             </div>
@@ -75,7 +75,7 @@
                                                     <?= $lang['label_fax'] ?>
                                                     <span class="text-danger"><?= ($settingsContact->fax->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $settingsContact->fax_code_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $settingsContact->fax_code_id->get_attr() ?>>
                                                     <?php
                                                         $options = $settingsContact->fax_code_id->get_select_options($lang['placeholder_phone_code_select']);
                                                         foreach ($options as $option) {
@@ -85,7 +85,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-8">
-                                                <input type="tel" class="form-control" placeholder="<?= $lang['placeholder_fax'] ?>" <?= $settingsContact->fax->get_text_attr() ?>>
+                                                <input class="form-control" placeholder="<?= $lang['placeholder_fax'] ?>" <?= $settingsContact->fax->get_attr() ?>>
                                                 <span class="text-danger"><?= ($settingsContact->fax->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($settingsContact->fax->help_msg) ?></span>
                                             </div>
@@ -96,7 +96,7 @@
                                             <?= $lang['label_email'] ?>
                                             <span class="text-danger"><?= ($settingsContact->email->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="email" class="form-control" placeholder="<?= $lang['placeholder_email'] ?>" <?= $settingsContact->email->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_email'] ?>" <?= $settingsContact->email->get_attr() ?>>
                                         <span class="text-danger"><?= ($settingsContact->email->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsContact->email->help_msg) ?></span>
                                     </div>
@@ -105,7 +105,7 @@
                                             <?= $lang['label_address'] ?>
                                             <span class="text-danger"><?= ($settingsContact->address->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_address'] ?>" <?= $settingsContact->address->get_textarea_attr() ?>><?= $settingsContact->address->value ?></textarea>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_address'] ?>" <?= $settingsContact->address->get_attr() ?>><?= $settingsContact->address->value ?></textarea>
                                         <span class="text-danger"><?= ($settingsContact->address->error_msg) ?></span>
                                         <span class="text-muted"><?= ($settingsContact->address->help_msg) ?></span>
                                     </div>
@@ -118,7 +118,7 @@
                                                         <?= $lang['label_captcha_key'] ?>
                                                         <span class="text-danger"><?= ($settingsContact->captcha_key->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="<?= $lang['placeholder_captcha_key'] ?>" <?= $settingsContact->captcha_key->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_captcha_key'] ?>" <?= $settingsContact->captcha_key->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settingsContact->captcha_key->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settingsContact->captcha_key->help_msg) ?></span>
                                                 </div>
@@ -127,7 +127,7 @@
                                                         <?= $lang['label_captcha_secret_key'] ?>
                                                         <span class="text-danger"><?= ($settingsContact->captcha_secret_key->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="<?= $lang['placeholder_captcha_secret_key'] ?>" <?= $settingsContact->captcha_secret_key->get_text_attr() ?>>
+                                                    <input class="form-control" placeholder="<?= $lang['placeholder_captcha_secret_key'] ?>" <?= $settingsContact->captcha_secret_key->get_attr() ?>>
                                                     <span class="text-danger"><?= ($settingsContact->captcha_secret_key->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settingsContact->captcha_secret_key->help_msg) ?></span>
                                                 </div>
@@ -136,7 +136,7 @@
                                                         <?= $lang['label_google_maps'] ?>
                                                         <span class="text-danger"><?= ($settingsContact->google_maps->required) ? '*': '' ?></span>
                                                     </label>
-                                                    <textarea class="form-control" placeholder="<?= $lang['placeholder_google_maps'] ?>" <?= $settingsContact->google_maps->get_text_attr() ?>><?= $settingsContact->google_maps->value ?></textarea>
+                                                    <textarea class="form-control" placeholder="<?= $lang['placeholder_google_maps'] ?>" <?= $settingsContact->google_maps->get_attr() ?>><?= $settingsContact->google_maps->value ?></textarea>
                                                     <span class="text-danger"><?= ($settingsContact->google_maps->error_msg) ?></span>
                                                     <span class="text-muted"><?= ($settingsContact->google_maps->help_msg) ?></span>
                                                 </div>

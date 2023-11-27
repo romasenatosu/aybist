@@ -3,6 +3,7 @@
 class FormElement {
     public string $name;
     public mixed $value;
+    public string $type;
     public bool $required;
     public int $minlength;
     public int $maxlength;
@@ -11,12 +12,14 @@ class FormElement {
     public string $pattern_msg;
     public string $error_msg;
     public string $help_msg;
+    private array $text_attributes = ["text", "email", "url", "search", "tel", "hidden", "password"];
 
-    function __construct(string $name, mixed $value = null, bool $required = true,
+    function __construct(string $name, mixed $value = null, string $type = "text", bool $required = true,
                                 int $minlength = 0, int $maxlength = 255, string $accept='', string $pattern = '',
                                 string $pattern_msg = '', string $error_msg = '', string $help_msg = '') {
         $this->name = $name;
         $this->value = $value;
+        $this->type = $type;
         $this->required = $required;
         $this->minlength = $minlength;
         $this->maxlength = $maxlength;
@@ -27,96 +30,74 @@ class FormElement {
         $this->help_msg = $help_msg;
     }
 
-    // NOTE: we removed the pattern attribute
-    private function pattern_to_html(string $regex): string {
-        if (empty($this->pattern)) {
-            return "[\s\S]*";
+
+    /**
+     * returns needed html attributes for desired input type
+     * 
+     * @return string
+     */
+    public function get_attr(): string {
+        if (in_array($this->type, $this->text_attributes)) {
+            return sprintf("type = '%s' id = '%s' name = '%s' %s minlength='%d' maxlength='%d' value='%s'", $this->type, $this->name,
+            $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
+            $this->getValue());
         }
-
-        // html5 doesn't accept begining and ending delimeters
-        $html_pattern = str_replace("/^", "", $regex);
-        return str_replace("$/", "", $html_pattern);
-    }
-
-    public function get_text_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d' value='%s'", $this->name,
-                        $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
-                        $this->getValue());
-    }
-
-    public function get_textarea_attr(): string {
-        $html_pattern = str_replace("/^", "", $this->pattern);
-        $html_pattern = str_replace("$/", "", $html_pattern);
-
-        return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d'", $this->name,
-                        $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
-                        );
-    }
-
-    public function get_number_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s min='%d' max='%d' minlength='%d' maxlength='%d' value='%s'", $this->name, $this->name,
-                        (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength, $this->minlength, $this->maxlength,
-                        $this->getValue());
-    }
-
-    public function get_check_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s %s", $this->name, $this->name,
-                        (($this->required) ? 'required=required': ''), (($this->value > 0) ? 'checked=checked': ''));
-    }
-
-    public function get_select_attr(): string {
-        return sprintf("id = '%s' name = '%s' %s", $this->name, $this->name, (($this->required) ? 'required=required': ''));
-    }
-
-    public function get_file_attr(): string {
-        return sprintf("id = '%s' name = '%s' accept = '%s' %s", $this->name, $this->name, $this->accept, (($this->required) ? 'required=required': ''));
-    }
-
-    public function check(): bool {
-        global $lang, $regex_numeric;
-
-        // give null to not required empty value 
-        // TODO: rewrite this function according to the variable types
-        return true;
-
-        // make encoded buffer
-        $buff = htmlspecialchars($this->value ?? '');
-        print_r($buff);
-
-        // check for required field
-        if (empty($buff) and $this->required) {
-            $this->error_msg = $lang['regex_required'];
-            return false;
+        
+        else if ($this->type == 'select') {
+            return sprintf("id = '%s' name = '%s' %s", $this->name, $this->name, false/* (($this->required) ? 'required=required': '') */);
         }
-
-        // check for length of the value
-        if ($this->pattern == $regex_numeric and filter_var($buff, FILTER_VALIDATE_INT)) {
-            if ($buff > $this->maxlength or $buff < $this->minlength) {
-                $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
-                return false;
-            }
+        
+        else if ($this->type == "textarea") {
+            return sprintf("id = '%s' name = '%s' %s minlength='%d' maxlength='%d'", $this->name,
+            $this->name, (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength);
         }
-
+        
+        else if ($this->type == "number") {
+            return sprintf("type = '%s' id = '%s' name = '%s' %s min='%d' max='%d' value='%s'",
+                    $this->type, $this->name, $this->name,
+                    (($this->required) ? 'required=required': ''), $this->minlength, $this->maxlength,
+                    $this->getValue());
+        }
+        
+        else if ($this->type == "checkbox") {
+            return sprintf("type = '%s' id = '%s' name = '%s' %s %s", $this->type, $this->name, $this->name,
+                    (($this->required) ? 'required=required': ''), (($this->value > 0) ? 'checked=checked': ''));
+        }
+        
+        else if ($this->type == "file") {
+            return sprintf("type = '%s' id = '%s' name = '%s' accept = '%s' %s", $this->type, $this->name, $this->name,
+                    $this->accept, (($this->required) ? 'required=required': ''));
+        }
+        
         else {
-            if (strlen($buff) > $this->maxlength or strlen($buff) < $this->minlength) {
-                $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
-                return false;
-            }
+            return "";
+        }
+    }
+
+    /**
+     * Checks if pattern matches with value
+     * 
+     * @return bool
+     */
+    public function checkRegex(): bool {
+        global $lang;
+
+        if (!$this->required and empty($this->value)) {
+            return true;
         }
 
-        // check for regex
         if (!empty($this->pattern)) {
             try {
-                if (!preg_match($this->pattern, $buff)) {
+                if (!preg_match($this->pattern, $this->value)) {
                     if (empty($this->pattern_msg)) {
                         $this->error_msg = $lang['regex_invalid_value'];
                     } else {
                         $this->error_msg = $this->pattern_msg;
                     }
-
+                    
                     return false;
                 }
-
+                
             } catch (Exception $e) {
                 $this->error_msg = $lang['regex_invalid_re'];
                 return false;
@@ -124,6 +105,118 @@ class FormElement {
         }
 
         return true;
+    }
+
+    /**
+     * checks if value is required
+     * 
+     * @return bool
+     */
+    public function checkRequired(): bool {
+        global $lang;
+
+        if (is_null($this->value) and $this->required) {
+            $this->error_msg = $lang['regex_required'];
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * checks the length of the number
+     * 
+     * @return bool
+     */
+    public function checkCount(): bool {
+        global $lang;
+
+        $number = filter_var($this->value, FILTER_VALIDATE_INT);
+        if (!$this->required and $number == 0) {
+            return true;
+        }
+
+        if ($number > $this->maxlength or $number < $this->minlength) {
+            $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * checks the length of the value
+     * 
+     * @return bool
+     */
+    public function checkLength(): bool {
+        global $lang;
+
+        $number = filter_var($this->value, FILTER_VALIDATE_INT);
+        if (!$this->required and $number == 0) {
+            return true;
+        }
+
+        if ($this->maxlength == -1) {
+            return true;
+        }
+
+        if (strlen($number) > $this->maxlength or strlen($number) < $this->minlength) {
+            $this->error_msg = sprintf($lang['regex_length'], $this->minlength, $this->maxlength);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * checks the value of select box
+     * 
+     * @return bool
+     */
+    public function checkSelect(): bool {
+        global $lang;
+
+        $number = filter_var($this->value, FILTER_VALIDATE_INT);
+
+        if ($this->required and $number == 0) {
+            $this->error_msg = $lang['regex_required'];
+            return false;
+        }
+
+        return true;
+    }
+
+    public function check(): bool {
+        // check for required field
+        // check for length of the value
+        // check for regex
+
+        if (empty($this->value)) {
+            $this->value = null;
+        }
+
+        if ($this->checkRequired()) {
+            if (in_array($this->type, $this->text_attributes) or $this->type == "file" or $this->type == "textarea") {
+                if($this->checkLength()) {
+                    return $this->checkRegex();
+                }
+            }
+
+            else if ($this->type == 'select') {
+                return $this->checkSelect();
+            }
+
+            else if ($this->type == "number") {
+                return $this->checkCount();
+            } 
+
+            else {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function setName(string $name): void {

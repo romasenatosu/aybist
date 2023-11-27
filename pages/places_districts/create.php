@@ -11,7 +11,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $districts->district->value = htmlspecialchars($_POST[$districts->district->name] ?? '');
 
     // check if given data is ok
-    $checks = $districts->city_id->check() || $districts->district->check();
+    $checks = $districts->city_id->check() && $districts->district->check();
 
     if ($checks) {
         // convert DateTime object to string

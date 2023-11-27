@@ -27,6 +27,7 @@ class Languages {
         $this->lang->pattern = $regex_alpha;
         $this->lang->pattern_msg = $lang['regex_alpha'];
         $this->lang->help_msg = $lang['help_lang'];
+        $this->flag->type = "file";
         $this->flag->maxlength = -1;
         $this->flag->pattern = $regex_url;
         $this->flag->pattern_msg = $lang['regex_url'];

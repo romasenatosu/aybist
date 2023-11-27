@@ -29,7 +29,7 @@
                                                     <?= $lang['label_country_id'] ?>
                                                     <span class="text-danger"><?= ($cities->country_id->required) ? '*': '' ?></span>
                                                 </label>
-                                                <select class="form-select" <?= $cities->country_id->get_select_attr() ?>>
+                                                <select class="form-select" <?= $cities->country_id->get_attr() ?>>
                                                     <?php
                                                         $options = $cities->country_id->get_select_options($lang['placeholder_country_id']);
                                                         foreach ($options as $option) {
@@ -50,7 +50,7 @@
                                             <?= $lang['label_city'] ?>
                                             <span class="text-danger"><?= ($cities->city->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_city'] ?>" <?= $cities->city->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_city'] ?>" <?= $cities->city->get_attr() ?>>
                                         <span class="text-danger"><?= ($cities->city->error_msg) ?></span>
                                         <span class="text-muted"><?= ($cities->city->help_msg) ?></span>
                                     </div>
@@ -59,7 +59,7 @@
                                             <?= $lang['label_zip_code'] ?>
                                             <span class="text-danger"><?= ($cities->zip_code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_zip_code'] ?>" <?= $cities->zip_code->get_attr() ?>>
                                         <span class="text-danger"><?= ($cities->zip_code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($cities->zip_code->help_msg) ?></span>
                                     </div>

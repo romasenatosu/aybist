@@ -27,7 +27,7 @@
                                             <?= $lang['label_block'] ?>
                                             <span class="text-danger"><?= ($blocks->block->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_block'] ?>" <?= $blocks->block->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_block'] ?>" <?= $blocks->block->get_attr() ?>>
                                         <span class="text-danger"><?= ($blocks->block->error_msg) ?></span>
                                         <span class="text-muted"><?= ($blocks->block->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_description'] ?>
                                             <span class="text-danger"><?= ($blocks->description->required) ? '*': '' ?></span>
                                         </label>
-                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $blocks->description->get_textarea_attr() ?>><?= $blocks->description->value ?></textarea>
+                                        <textarea class="form-control" placeholder="<?= $lang['placeholder_description'] ?>" <?= $blocks->description->get_attr() ?>><?= $blocks->description->value ?></textarea>
                                         <span class="text-danger"><?= ($blocks->description->error_msg) ?></span>
                                         <span class="text-muted"><?= ($blocks->description->help_msg) ?></span>
                                     </div>
@@ -45,7 +45,7 @@
                                             <?= $lang['label_floor_count'] ?>
                                             <span class="text-danger"><?= ($blocks->floor_count->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="number" class="form-control" placeholder="<?= $lang['placeholder_floor_count'] ?>" <?= $blocks->floor_count->get_number_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_floor_count'] ?>" <?= $blocks->floor_count->get_attr() ?>>
                                         <span class="text-danger"><?= ($blocks->floor_count->error_msg) ?></span>
                                         <span class="text-muted"><?= ($blocks->floor_count->help_msg) ?></span>
                                     </div>

@@ -27,7 +27,7 @@
                                             <?= $lang['label_floor'] ?>
                                             <span class="text-danger"><?= ($floors->floor->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_floor'] ?>" <?= $floors->floor->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_floor'] ?>" <?= $floors->floor->get_attr() ?>>
                                         <span class="text-danger"><?= ($floors->floor->error_msg) ?></span>
                                         <span class="text-muted"><?= ($floors->floor->help_msg) ?></span>
                                     </div>

@@ -19,6 +19,7 @@ class Cities {
         $this->updated_at = new FormElement('updated_at', new DateTime());
 
         // configurations
+        $this->country_id->type = "select";
         $this->city->maxlength = -1;
         $this->city->pattern = $regex_alpha_numeric;
         $this->city->pattern_msg = $lang['regex_alpha_numeric'];

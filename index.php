@@ -53,8 +53,9 @@
     </title>
 </head>
 
+<!-- INFO: what about encoding and decoding all data with htmlspecialchars? -->
+
 <!-- TODO: fix error redirection in htaccess -->
-<!-- TODO: delete also relational row with different language id -->
 <!-- TODO: think about zip codes which can start with zero -->
 <!-- TODO: create try catch for pdo statements -> flash messages -->
 

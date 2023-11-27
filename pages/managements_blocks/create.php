@@ -13,7 +13,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $blocks->floor_count->value = htmlspecialchars($_POST[$blocks->floor_count->name] ?? '');
 
     // check if given data is ok
-    $checks = $blocks->block->check() || $blocks->description->check() || $blocks->floor_count->check();
+    $checks = $blocks->block->check() && $blocks->description->check() && $blocks->floor_count->check();
 
     if ($checks) {
         // convert DateTime object to string

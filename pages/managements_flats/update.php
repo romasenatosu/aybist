@@ -39,7 +39,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $flats->currency_id->value = htmlspecialchars($_POST[$flats->currency_id->name] ?? '');
 
     // check if given data is ok
-    $checks = $flats->flat->check() || $flats->square_meter->check() || $flats->fee->check() || $flats->currency_id->check();
+    $checks = $flats->flat->check() && $flats->square_meter->check() && $flats->fee->check() && $flats->currency_id->check();
 
     if ($checks) {
         // convert DateTime object to string

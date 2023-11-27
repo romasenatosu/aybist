@@ -36,7 +36,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $settingsCurrency->symbol->value = htmlspecialchars($_POST[$settingsCurrency->symbol->name] ?? '');
 
     // check if given data is ok
-    $checks = $settingsCurrency->name->check() || $settingsCurrency->symbol->check();
+    $checks = $settingsCurrency->name->check() && $settingsCurrency->symbol->check();
 
     if ($checks) {
         // convert DateTime object to string

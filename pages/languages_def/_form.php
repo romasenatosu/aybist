@@ -27,7 +27,7 @@
                                             <?= $lang['label_keyword'] ?>
                                             <span class="text-danger"><?= ($languagesDef->keyword->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" <?= $languagesDef->keyword->get_text_attr() ?> readonly>
+                                        <input class="form-control" <?= $languagesDef->keyword->get_attr() ?> readonly>
                                         <span class="text-danger"><?= ($languagesDef->keyword->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languagesDef->keyword->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_value'] ?>
                                             <span class="text-danger"><?= ($languagesDef->value->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_value'] ?>" <?= $languagesDef->value->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_value'] ?>" <?= $languagesDef->value->get_attr() ?>>
                                         <span class="text-danger"><?= ($languagesDef->value->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languagesDef->value->help_msg) ?></span>
                                     </div>

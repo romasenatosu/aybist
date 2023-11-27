@@ -17,6 +17,7 @@ class Districts {
         $this->updated_at = new FormElement('updated_at', new DateTime());
 
         // configurations
+        $this->city_id->type = "select";
         $this->district->maxlength = -1;
         $this->district->pattern = $regex_alpha_numeric;
         $this->district->pattern_msg = $lang['regex_alpha_numeric'];

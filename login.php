@@ -8,7 +8,7 @@
         $remember_me = htmlspecialchars($_POST["remember_me"] ?? '');
     
         // check if given data is ok
-        $checks = $users->email->check() || $users->password->check();
+        $checks = $users->email->check() && $users->password->check();
 
         if ($checks) {
             if ($auth->login($pdo)) {
@@ -36,7 +36,7 @@
                                     <?= $lang['label_email'] ?>
                                     <span class="text-danger"><?= ($users->email->required) ? '*': '' ?></span>
                                 </label>
-                                <input type="email" class="form-control" placeholder="<?= $lang['placeholder_email'] ?>" <?= $users->email->get_text_attr() ?>>
+                                <input type="email" class="form-control" placeholder="<?= $lang['placeholder_email'] ?>" <?= $users->email->get_attr() ?>>
                                 <span class="text-danger"><?= ($users->email->error_msg) ?></span>
                                 <span class="text-muted"><?= ($users->email->help_msg) ?></span>
                             </div>
@@ -45,7 +45,7 @@
                                     <?= $lang['label_password'] ?>
                                     <span class="text-danger"><?= ($users->password->required) ? '*': '' ?></span>
                                 </label>
-                                <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password->get_text_attr() ?>>
+                                <input type="password" class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password->get_attr() ?>>
                                 <span class="text-danger"><?= ($users->password->error_msg) ?></span>
                                 <span class="text-muted"><?= ($users->password->help_msg) ?></span>
                             </div>

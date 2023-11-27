@@ -27,7 +27,7 @@
                                             <?= $lang['label_code'] ?>
                                             <span class="text-danger"><?= ($languages->code->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_code'] ?>" <?= $languages->code->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_code'] ?>" <?= $languages->code->get_attr() ?>>
                                         <span class="text-danger"><?= ($languages->code->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languages->code->help_msg) ?></span>
                                     </div>
@@ -36,7 +36,7 @@
                                             <?= $lang['label_lang'] ?>
                                             <span class="text-danger"><?= ($languages->lang->required) ? '*': '' ?></span>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="<?= $lang['placeholder_lang'] ?>" <?= $languages->lang->get_text_attr() ?>>
+                                        <input class="form-control" placeholder="<?= $lang['placeholder_lang'] ?>" <?= $languages->lang->get_attr() ?>>
                                         <span class="text-danger"><?= ($languages->lang->error_msg) ?></span>
                                         <span class="text-muted"><?= ($languages->lang->help_msg) ?></span>
                                     </div>
@@ -47,7 +47,7 @@
                                                     <?= $lang['label_flag'] ?>
                                                     <span class="text-danger"><?= ($languages->flag->required) ? '*': '' ?></span>
                                                 </label>
-                                                <input type="file" class="form-control" <?= $languages->flag->get_file_attr() ?>>
+                                                <input class="form-control" <?= $languages->flag->get_attr() ?>>
                                                 
                                                 <span class="text-danger"><?= ($languages->flag->error_msg) ?></span>
                                                 <span class="text-muted"><?= ($languages->flag->help_msg) ?></span>

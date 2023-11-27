@@ -36,7 +36,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     $countries->phone_code->value = htmlspecialchars($_POST[$countries->phone_code->name] ?? '');
 
     // check if given data is ok
-    $checks = $countries->country->check() || $countries->phone_code->check();
+    $checks = $countries->country->check() && $countries->phone_code->check();
 
     if ($checks) {
         // convert DateTime object to string
