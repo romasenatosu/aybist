@@ -1,7 +1,7 @@
 <div class="container-fluid mw-100">
     <section class="forms">
         <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="col-sm-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <nav style="--bs-breadcrumb-divider: '>'">
@@ -123,7 +123,7 @@
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
                                                     <div class="row gx-md-4 gx-0 gy-4 align-items-center">
-                                                        <div class="<?= ($settings->normal_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                        <div class="col-12">
                                                             <label class="form-label" for="<?= $settings->normal_photo->name ?>">
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->normal_photo->required) ? '*': '' ?></span>
@@ -136,10 +136,10 @@
                                                         <?php
                                                             if ($settings->normal_photo->value):
                                                         ?>
-                                                            <div class="col-2">
-                                                                <a href="<?= Helpers::getServer() . $settings->normal_photo->value ?>">
+                                                            <div class="col-12">
+                                                                <a href="<?= Helpers::getHost() . $settings->normal_photo->value ?>">
                                                                     <img src="<?= $settings->normal_photo->value ?>" 
-                                                                    alt="<?= $settings->normal_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                    alt="<?= $settings->normal_photo->value ?>" class="img-fluid">
                                                                 </a>
                                                             </div>
                                                         <?php
@@ -174,7 +174,7 @@
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
                                                     <div class="row gx-md-4 gx-0 gy-4 align-items-center">
-                                                        <div class="<?= ($settings->top_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                        <div class="col-12">
                                                             <label class="form-label" for="<?= $settings->top_photo->name ?>">
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->top_photo->required) ? '*': '' ?></span>
@@ -187,10 +187,10 @@
                                                         <?php
                                                             if ($settings->top_photo->value):
                                                         ?>
-                                                            <div class="col-2">
-                                                                <a href="<?= Helpers::getServer() . $settings->top_photo->value ?>">
+                                                            <div class="col-12">
+                                                                <a href="<?= Helpers::getHost() . $settings->top_photo->value ?>">
                                                                     <img src="<?= $settings->top_photo->value ?>" 
-                                                                    alt="<?= $settings->top_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                    alt="<?= $settings->top_photo->value ?>" class="img-fluid">
                                                                 </a>
                                                             </div>
                                                         <?php
@@ -225,7 +225,7 @@
                                             <div class="row gx-md-4 gx-0 gy-4 mb-3 align-items-baseline">
                                                 <div class="col-md-4">
                                                     <div class="row gx-md-4 gx-0 gy-4 align-items-center">
-                                                        <div class="<?= ($settings->small_photo->value) ? 'col-10' : 'col-12' ?>">
+                                                        <div class="col-12">
                                                             <label class="form-label" for="<?= $settings->small_photo->name ?>">
                                                                 <?= $lang['label_photo'] ?>
                                                                 <span class="text-danger"><?= ($settings->small_photo->required) ? '*': '' ?></span>
@@ -238,10 +238,10 @@
                                                         <?php
                                                             if ($settings->small_photo->value):
                                                         ?>
-                                                            <div class="col-2">
-                                                                <a href="<?= Helpers::getServer() . $settings->small_photo->value ?>">
+                                                            <div class="col-12">
+                                                                <a href="<?= Helpers::getHost() . $settings->small_photo->value ?>">
                                                                     <img src="<?= $settings->small_photo->value ?>" 
-                                                                    alt="<?= $settings->small_photo->value ?>" class="img-fluid" width="32" height="32">
+                                                                    alt="<?= $settings->small_photo->value ?>" class="img-fluid">
                                                                 </a>
                                                             </div>
                                                         <?php

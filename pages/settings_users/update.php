@@ -40,6 +40,18 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
+    // get previously uploaded files
+    $stmt = $pdo->prepare("SELECT avatar
+    FROM users
+    WHERE id = :id");
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    $avatar_exists = $result['avatar'];
+
     // grab data from form inputs
 
     $users->fullname->value = htmlspecialchars($_POST[$users->fullname->name] ?? '');
@@ -50,14 +62,45 @@ if (Helpers::getRequestMethod() == 'POST') {
     $users->old_password->value = htmlspecialchars($_POST[$users->old_password->name] ?? '');
     $users->password->value = htmlspecialchars($_POST[$users->password->name] ?? '');
     $users->password_confirm->value = htmlspecialchars($_POST[$users->password_confirm->name] ?? '');
-    $users->avatar->value = htmlspecialchars($_POST[$users->avatar->name] ?? '');
+    $users->avatar->value = $_FILES[$users->avatar->name];
     $users->is_admin->value = htmlspecialchars($_POST[$users->is_admin->name] ?? '');
+
+    // compare new photos with previously uploaded ones
+    // check if photo is required
+    $avatar_check = $users->avatar->check();
+
+    if (!empty($users->avatar->value['tmp_name'])) {
+        // upload
+        if ($avatar_check) {
+            $avatar_status = Helpers::upload($users->avatar->value);
+
+            // delete old file
+            if ($avatar_status['code']) {
+                unlink(ltrim($avatar_exists, "/"));
+            }
+
+            // assign values from upload function
+            $avatar_check = $avatar_status['code'];
+            $users->avatar->value = $avatar_status['file'];
+            $users->avatar->error_msg = $avatar_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        if ($avatar_exists) {
+            $users->avatar->value = $avatar_exists;
+            $avatar_check = true;
+        } else {
+            $users->avatar->value = null;
+        }
+    }
+
+    $photo_checks = [$avatar_check];
 
     // check if given data is ok
     $checks = $users->fullname->check() && $users->email->check() && $users->phone->check() && 
                 $users->phone_code_id->check() && $users->address->check() && 
                 $users->old_password->check() && $users->password->check() && $users->password_confirm->check() &&
-                $users->avatar->check() && $users->is_admin->check();
+                $users->is_admin->check();
 
 // TODO: password change
 
@@ -78,7 +121,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $checks = false;
     }
 
-    if ($checks) {
+    if ($checks and Helpers::all($photo_checks)) {
         // convert DateTime object to string
 
         $updated_at = date($datetime_format, $users->updated_at->value->getTimestamp());
@@ -106,6 +149,10 @@ if (Helpers::getRequestMethod() == 'POST') {
 
         // close the statement
         $stmt->closeCursor();
+
+        // update session info
+        $user_session = $auth->decodeUserSession();
+        $auth->encodeUserSession($pdo, $user_session['id']);
 
         // redirect to index page if everything is successfull
         Helpers::redirect("settings_users");

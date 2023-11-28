@@ -143,7 +143,7 @@
                                                 if ($users->avatar->value):
                                             ?>
                                                 <div class="col-2">
-                                                    <a href="<?= Helpers::getServer() . $users->avatar->value ?>">
+                                                    <a href="<?= Helpers::getHost() . $users->avatar->value ?>">
                                                         <img src="<?= $users->avatar->value ?>" 
                                                         alt="<?= $users->avatar->value ?>" class="img-fluid" width="32" height="32">
                                                     </a>

@@ -65,10 +65,9 @@ class FormElement {
         }
         
         else if ($this->type == "file") {
-            return sprintf("type = '%s' id = '%s' name = '%s' accept = '%s' %s", $this->type, $this->name, $this->name,
-                    $this->accept, (($this->required) ? 'required=required': ''));
+            return sprintf("type = '%s' id = '%s' name = '%s' accept = '%s'", $this->type, $this->name, $this->name, $this->accept);
         }
-        
+
         else {
             return "";
         }
@@ -191,6 +190,12 @@ class FormElement {
         // check for required field
         // check for length of the value
         // check for regex
+
+        if ($this->type == 'file') {
+            if (empty($this->value['tmp_name'])) {
+                $this->value = null;
+            }
+        }
 
         if (empty($this->value)) {
             $this->value = null;

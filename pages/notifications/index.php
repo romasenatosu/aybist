@@ -1,6 +1,6 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.code, n.request_uri, n.request_method, n.created_at, n.updated_at
+$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ip, n.code, n.request_uri, n.request_method, n.created_at, n.updated_at
 FROM notifications n
 INNER JOIN users u ON u.id = user_id");
 $stmt->execute();
@@ -33,6 +33,7 @@ $stmt->closeCursor();
                                     <tr>
                                         <th data-priority="1">#</th>
                                         <th><?= $lang['table_user'] ?></th>
+                                        <th><?= $lang['table_ip'] ?></th>
                                         <th><?= $lang['table_code'] ?></th>
                                         <th><?= $lang['table_request_uri'] ?></th>
                                         <th><?= $lang['table_request_method'] ?></th>
@@ -47,6 +48,7 @@ $stmt->closeCursor();
                                         <tr>
                                             <td><?= $data_id ?></td>
                                             <td data-bs-toggle="tooltip" title="<?= $datum['fullname'] ?>"><?= substr($datum['fullname'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['fullname'] ?? '') > $max_abbr) ? '...' : '' ?></td>
+                                            <td data-bs-toggle="tooltip" title="<?= $datum['ip'] ?>"><?= substr($datum['ip'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['ip'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td data-bs-toggle="tooltip" title="<?= $datum['code'] ?>"><?= substr($datum['code'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['code'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td data-bs-toggle="tooltip" title="<?= $datum['request_uri'] ?>"><?= substr($datum['request_uri'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['request_uri'] ?? '') > $max_abbr) ? '...' : '' ?></td>
                                             <td data-bs-toggle="tooltip" title="<?= $datum['request_method'] ?>"><?= substr($datum['request_method'] ?? '', 0, $max_abbr) ?><?= (strlen($datum['request_method'] ?? '') > $max_abbr) ? '...' : '' ?></td>

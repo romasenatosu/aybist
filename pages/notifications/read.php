@@ -1,6 +1,6 @@
 <?php
 
-$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.code, n.request_uri, n.request_method, n.created_at, n.updated_at
+$stmt = $pdo->prepare("SELECT n.id, u.fullname, n.ip, n.code, n.request_uri, n.request_method, n.created_at, n.updated_at
 FROM notifications n
 INNER JOIN users u ON u.id = user_id
 WHERE n.id = :id
@@ -43,6 +43,10 @@ $stmt->closeCursor();
                                     <tr>
                                         <th><?= $lang['table_user'] ?></th>
                                         <td><?= $datum['fullname'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th><?= $lang['table_ip'] ?></th>
+                                        <td><?= $datum['ip'] ?></td>
                                     </tr>
                                     <tr>
                                         <th><?= $lang['table_code'] ?></th>

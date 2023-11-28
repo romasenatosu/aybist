@@ -19,7 +19,6 @@ require_once __DIR__ . '/../database/Languages.php';
 require_once __DIR__ . '/../database/LanguagesDef.php';
 require_once __DIR__ . '/../database/Managements.php';
 require_once __DIR__ . '/../database/Notifications.php';
-require_once __DIR__ . '/../database/NotificationsIps.php';
 require_once __DIR__ . '/../database/Settings.php';
 require_once __DIR__ . '/../database/SettingsContact.php';
 require_once __DIR__ . '/../database/SettingsCurrency.php';
@@ -66,16 +65,17 @@ class Core {
     /**
      * Listens for all requests and saves it to database
      * 
-     * @param int user_id
+     * @param ?int user_id
      * @return void
      */
-    public function requestListener(int $user_id=null):void {
+    public function requestListener(?int $user_id):void {
         global $pdo, $datetime_format;
 
         // get required fields to notify
         $code = http_response_code();
         $request_uri = Helpers::getRequestUri();
         $request_method = Helpers::getRequestMethod();
+        $ip = $_SERVER['REMOTE_ADDR'];
 
         // create datetime
         $nowDateTime = new DateTime();
@@ -83,9 +83,10 @@ class Core {
         $updated_at = date($datetime_format, $nowDateTime->getTimestamp());
 
         // insert into notifications
-        $stmt = $pdo->prepare("INSERT INTO notifications (user_id, code, request_uri, request_method, created_at, updated_at) 
-        VALUES (:user_id, :code, :request_uri, :request_method, :created_at, :updated_at)");
+        $stmt = $pdo->prepare("INSERT INTO notifications (user_id, ip, code, request_uri, request_method, created_at, updated_at) 
+        VALUES (:user_id, :ip, :code, :request_uri, :request_method, :created_at, :updated_at)");
         $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(":ip", $ip, PDO::PARAM_STR);
         $stmt->bindParam(":code", $code, PDO::PARAM_INT);
         $stmt->bindParam(":request_uri", $request_uri, PDO::PARAM_STR);
         $stmt->bindParam(":request_method", $request_method, PDO::PARAM_STR);
@@ -97,46 +98,6 @@ class Core {
             $stmt->execute();
 
         } catch (PDOException $e) {
-
-        } finally {
-            $stmt->closeCursor();
-        }
-    }
-
-    /**
-     * Listens for all ip addresses and saves it to database
-     * 
-     * @param int user_id
-     * @return void
-     */
-    public function visitListener(int $user_id=null): void {
-        global $pdo, $datetime_format;
-    
-        // INFO: what about saving per 24 hours?
-
-        // get ip address of the client (ipv4 or ipv6)
-        $ip = $_SERVER['REMOTE_ADDR'];
-
-        // create datetime
-        $nowDateTime = new DateTime();
-        $created_at = date($datetime_format, $nowDateTime->getTimestamp());
-        $updated_at = date($datetime_format, $nowDateTime->getTimestamp());
-    
-        // notifications ips table
-        $stmt = $pdo->prepare("INSERT INTO notifications_ips (user_id, ip, created_at, updated_at) 
-                            VALUES (:user_id, :ip, :created_at, :updated_at)");
-        $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(":ip", $ip, PDO::PARAM_STR);
-        $stmt->bindParam(":created_at", $created_at, PDO::PARAM_STR);
-        $stmt->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
-    
-        // be careful about unique ip addresses
-        try {
-            $stmt->execute();
-    
-        } catch (PDOException $e) {
-            // TODO: check for unique error code
-            // if it is not about above code then show error
 
         } finally {
             $stmt->closeCursor();
@@ -179,5 +140,7 @@ $core->checkDebugMode();
 // run request listener and log them
 $core->requestListener($user_id);
 
-// run client ip listener
-$core->visitListener($user_id);
+// if user did not sign in then redirect user to login page
+if (!isset($_SESSION['user']) and !str_starts_with($page, "error_") and !str_starts_with($page, "login")) {
+    Helpers::redirectAuthenticate();
+}

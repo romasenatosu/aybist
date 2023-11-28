@@ -25,6 +25,9 @@ $lang_defaults_en = [
     "text_not_exempted" => "Not Exempted",
     "text_password" => "Password",
     "text_invalid_login" => "Invalid Username or Password",
+    "text_user_profile" => "User Profile",
+    "text_my_profile" => "My Profile",
+    "text_my_inbox" => "My Inbox",
 
     "page_home" => "Home",
     "page_settings" => "Settings",
@@ -36,7 +39,6 @@ $lang_defaults_en = [
     "page_languages" => "Languages",
     "page_languages_def" => "Language Definitions",
     "page_notifications" => "Notifications",
-    "page_notifications_ips" => "Visited IPs",
     "page_places_districts" => "Districts",
     "page_places_cities" => "Cities",
     "page_places_countries" => "Countries",
@@ -46,6 +48,7 @@ $lang_defaults_en = [
     "page_managements_flats" => "Flats",
     "page_managements_floors" => "Floors",
     "page_login" => "Login",
+    "page_mails" => "E-Mails",
 
     "table_title" => "TITLE",
     "table_description" => "DESCRIPTPION",
@@ -261,6 +264,7 @@ $lang_defaults_en = [
     "datatable_buttons_print" => "PRINT",
 
     "swal_title_delete_confirm" => "Are you sure you want to remove this row?",
+    "swal_title_delete_confirm_strong" => "Are you sure you want to remove this row? The all other data binded to this will also be deleted!",
 
     "regex_required" => "This field must be filled.",
     "regex_length" => "This field must be between %d and %d.",

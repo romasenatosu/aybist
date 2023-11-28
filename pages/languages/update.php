@@ -30,16 +30,58 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
-    // grab data from form inputs
+    // get previously uploaded files
+    $stmt = $pdo->prepare("SELECT flag
+    FROM languages
+    WHERE id = :id");
 
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    $flag_exists = $result['flag'];
+
+    // grab data from form inputs
     $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
     $languages->lang->value = htmlspecialchars($_POST[$languages->lang->name] ?? '');
-    $languages->flag->value = htmlspecialchars($_POST[$languages->flag->name] ?? '');
+    $languages->flag->value = $_FILES[$languages->flag->name];
+
+    // compare new photos with previously uploaded ones
+    // check if photo is required
+    $flag_check = $languages->flag->check();
+
+    if (!empty($languages->flag->value['tmp_name'])) {
+        // upload
+        if ($flag_check) {
+            $flag_status = Helpers::upload($languages->flag->value);
+
+            // delete old file
+            if ($flag_status['code']) {
+                unlink(ltrim($flag_exists, "/"));
+            }
+
+            // assign values from upload function
+            $flag_check = $flag_status['code'];
+            $languages->flag->value = $flag_status['file'];
+            $languages->flag->error_msg = $flag_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        if ($flag_exists) {
+            $languages->flag->value = $flag_exists;
+            $flag_check = true;
+        } else {
+            $languages->flag->value = null;
+        }
+    }
+
+    $photo_checks = [$flag_check];
 
     // check if given data is ok
-    $checks = $languages->code->check() && $languages->lang->check() && $languages->flag->check();
+    $checks = $languages->code->check() && $languages->lang->check();
 
-    if ($checks) {
+    if ($checks and Helpers::all($photo_checks)) {
         // convert DateTime object to string
         $updated_at = date($datetime_format, $languages->updated_at->value->getTimestamp());
 

@@ -10,7 +10,7 @@ class Blocks {
     public FormElement $updated_at;
 
     function __construct() {
-        global $regex_alpha_numeric, $regex_numeric, $lang;
+        global $regex_alpha_numeric, $lang;
 
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
@@ -32,7 +32,5 @@ class Blocks {
         $this->description->pattern_msg = $lang['regex_alpha_numeric'];
         $this->floor_count->type = "number";
         $this->floor_count->maxlength = 32767;
-        $this->floor_count->pattern = $regex_numeric;
-        $this->floor_count->pattern_msg = $lang['regex_numeric'];
     }
 }

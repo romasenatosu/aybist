@@ -53,14 +53,10 @@
     </title>
 </head>
 
-<!-- INFO: what about encoding and decoding all data with htmlspecialchars? -->
-
 <!-- TODO: fix error redirection in htaccess -->
-<!-- TODO: think about zip codes which can start with zero -->
 <!-- TODO: create try catch for pdo statements -> flash messages -->
 
 <body>
-    <!-- TODO: file uploading (delete file after deleting a row) -->
     <!-- TODO: check for unique fields -->
     <!-- TODO: create flash messages after updating/deleting/errors -->
     <!-- TODO: remember me and user token -->
@@ -199,7 +195,7 @@
             $('.delete-form').on('click', function () {
                 console.log("clicked")
                 Swal.fire({
-                    "title": "<?= $lang['swal_title_delete_confirm'] ?>",
+                    "title": "<?= $lang['swal_title_delete_confirm_strong'] ?>",
                     "icon": "warning",
                     showConfirmButton: true,
                     showDenyButton: true,
@@ -224,17 +220,8 @@
                         language: "<?= $locale ?>",
                     })
                     .then(editor => {
-                        const updateConfigs = () => {
-                            editor.ui.view.editable.element.style.height = '300px';
-                            editor.ui.view.editable.element.style.maxHeight = '500px';
-                            editor.ui.view.editable.element.style.overflowY = 'auto';
-                        }
-
-                        // when user focuses on the editor then update the configs to prevent the reset
-                        editor.editing.view.document.on('focus', updateConfigs)
-
-                        // run configs after the editor was launched
-                        updateConfigs()
+                        editor.setData(ck_field.value);
+                        editor.updateSourceElement();
                     })
                     .catch(error => {
                         console.error(error)

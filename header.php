@@ -105,14 +105,6 @@
                                 <span class="hide-menu"><?= $lang['page_notifications'] ?></span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= ($page == 'notifications_ips') ? 'selected' : '' ?>">
-                            <a class="sidebar-link <?= ($page == 'notifications_ips') ? 'active' : '' ?>" href="<?= "/$locale/notifications_ips" ?>">
-                                <div class="round-16 d-flex align-items-center justify-content-center">
-                                    <i class="ti ti-circle"></i>
-                                </div>
-                                <span class="hide-menu"><?= $lang['page_notifications_ips'] ?></span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -289,76 +281,55 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
-                            </a>
-                            <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up">
-                                <div class="d-flex align-items-center justify-content-between py-3 px-7">
-                                    <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
-                                    <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">1 new</span>
-                                </div>
-                                <div class="message-body" data-simplebar>
-                                    <a href="javascript:void(0)" class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                        <span class="me-3">
-                                            <img src="/assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="48" height="48" />
-                                        </span>
-                                        <div class="w-75 d-inline-block v-middle">
-                                            <h6 class="mb-1 fw-semibold">Roman Joined the Team!</h6>
-                                            <span class="d-block">Congratulate him</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="py-6 px-7 mb-1">
-                                    <button class="btn btn-outline-primary w-100"> See All Notifications </button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                            <?php
+                                $user_info = $auth->decodeUserSession();
+                            ?>
                             <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown">
                                 <div class="d-flex align-items-center">
-                                <div class="user-profile-img">
-                                    <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
-                                </div>
+                                    <div class="user-profile-img">
+                                        <img src="<?= $user_info['avatar'] ?? '/assets/images/profile/user.jpg' ?>" class="rounded-circle" width="35" height="35" alt="" />
+                                    </div>
                                 </div>
                             </a>
                             <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up">
                                 <div class="profile-dropdown position-relative" data-simplebar>
                                     <div class="py-3 px-7 pb-0">
-                                        <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
+                                        <h5 class="mb-0 fs-5 fw-semibold"><?= $lang['text_user_profile'] ?></h5>
                                     </div>
                                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                        <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="80" height="80" alt="" />
+                                        <img src="<?= $user_info['avatar'] ?? '/assets/images/profile/user.jpg' ?>" class="rounded-circle" width="80" height="80" alt="" />
                                         <div class="ms-3">
-                                            <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                                            <span class="mb-1 d-block text-dark">Designer</span>
+                                            <h5 class="mb-1 fs-3"><?= $user_info['fullname'] ?></h5>
                                             <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                                                <i class="ti ti-mail fs-4"></i> info@modernize.com
+                                                <i class="ti ti-mail fs-4"></i> <?= $user_info['email'] ?>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="message-body">
-                                        <a href="#" class="py-8 px-7 mt-8 d-flex align-items-center">
+                                        <a href="<?= sprintf("/%s/settings_users/read/%d", $locale, $user_info['id']) ?>" class="py-8 px-7 mt-8 d-flex align-items-center">
                                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                                                 <img src="/assets/images/svgs/icon-account.svg" alt="" width="24" height="24">
                                             </span>
                                             <div class="w-75 d-inline-block v-middle ps-3">
-                                                <h6 class="mb-1 bg-hover-primary fw-semibold"> My Profile </h6>
-                                                <span class="d-block text-dark">Account Settings</span>
+                                                <h6 class="mb-1 bg-hover-primary fw-semibold"><?= $lang['text_my_profile'] ?></h6>
+                                                <span class="d-block text-dark"><?= $lang['page_settings_users'] ?></span>
                                             </div>
                                         </a>
-                                        <a href="#" class="py-8 px-7 d-flex align-items-center">
+                                        <!-- <a href="#" class="py-8 px-7 d-flex align-items-center">
                                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                                                 <img src="/assets/images/svgs/icon-inbox.svg" alt="" width="24" height="24">
                                             </span>
                                             <div class="w-75 d-inline-block v-middle ps-3">
-                                                <h6 class="mb-1 bg-hover-primary fw-semibold">My Inbox</h6>
-                                                <span class="d-block text-dark">Messages & Emails</span>
+                                                <h6 class="mb-1 bg-hover-primary fw-semibold"><?= $lang['text_my_inbox'] ?></h6>
+                                                <span class="d-block text-dark"><?= $lang['page_mails'] ?></span>
                                             </div>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                unset($user_info);
+                            ?>
                         </li>
                     </ul>
                 </div>

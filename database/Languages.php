@@ -29,8 +29,6 @@ class Languages {
         $this->lang->help_msg = $lang['help_lang'];
         $this->flag->type = "file";
         $this->flag->maxlength = -1;
-        $this->flag->pattern = $regex_url;
-        $this->flag->pattern_msg = $lang['regex_url'];
         $this->flag->accept = $photo_files_extensions;
         $this->flag->help_msg = sprintf($lang['help_photo_files'], $photo_files_extensions);
     }

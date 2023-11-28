@@ -20,10 +20,10 @@ $datetime_format = $_ENV['DATETIME_FORMAT'];
 
 // * uploading
 $photo_files_extensions = $_ENV['ALLOWED_PHOTO_FILES'];
-$upload_dir = __DIR__ . '/../' . $_ENV['PATH_UPLOAD_DIR'];
+$upload_dir = __DIR__ . '/..' . $_ENV['PATH_UPLOAD_DIR'];
 
 // * the path of the error.log file
-$error_log_path = __DIR__ . '/../' . $_ENV['PATH_ERROR_LOGS'];
+$error_log_path = __DIR__ . '/..' . $_ENV['PATH_ERROR_LOGS'];
 
 // * passwords
 $hash_options = [

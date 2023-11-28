@@ -14,11 +14,6 @@
 
 $tablename = "";
 
-// if user did not sign in then redirect user to login page
-if (!isset($_SESSION['user']) and !str_starts_with($page, "error_") and !str_starts_with($page, "login")) {
-    Helpers::redirectAuthenticate();
-}
-
 // do not let users to go error pages without error
 // if (str_starts_with($page, "error_") and http_response_code() < 400) {
 //     Helpers::redirectInvalidRequest();
@@ -273,22 +268,6 @@ switch ($page) {
 
             case '':
                 include_once Helpers::checkMethods("pages/notifications/index.php");
-                break;
-
-            default:
-                Helpers::redirectNotFound();
-            }
-        break;
-
-    case 'notifications_ips':
-        switch ($action) {
-            case 'read':
-                $tablename = "notifications_ips";
-                include_once Helpers::checkMethods("pages/notifications_ips/read.php");
-                break;
-
-            case '':
-                include_once Helpers::checkMethods("pages/notifications_ips/index.php");
                 break;
 
             default:

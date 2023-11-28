@@ -11,7 +11,7 @@ class Flats {
     public FormElement $updated_at;
 
     function __construct() {
-        global $lang, $regex_flat, $regex_numeric;
+        global $lang, $regex_flat;
 
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
@@ -29,13 +29,9 @@ class Flats {
         $this->flat->help_msg = $lang['help_flat'];
         $this->square_meter->type = "number";
         $this->square_meter->maxlength = 32767;
-        $this->square_meter->pattern = $regex_numeric;
-        $this->square_meter->pattern_msg = $lang['regex_numeric'];
         $this->square_meter->help_msg = $lang['help_square_meter'];
         $this->currency_id->type = "select";
         $this->fee->type = "number";
         $this->fee->maxlength = 2147483647;
-        $this->fee->pattern = $regex_numeric;
-        $this->fee->pattern_msg = $lang['regex_numeric'];
     }
 }

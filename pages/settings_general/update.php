@@ -48,6 +48,20 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
+    // get previously uploaded files
+    $stmt = $pdo->prepare("SELECT normal_photo, top_photo, small_photo
+    FROM settings
+    WHERE id = :id");
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+
+    $normal_photo_exists = $result['normal_photo'];
+    $top_photo_exists = $result['top_photo'];
+    $small_photo_exists = $result['small_photo'];
+
     // grab data from form inputs
 
     $settings->company->value = htmlspecialchars($_POST[$settings->company->name] ?? '');
@@ -58,29 +72,116 @@ if (Helpers::getRequestMethod() == 'POST') {
     $settings->smtp_url->value = htmlspecialchars($_POST[$settings->smtp_url->name] ?? '');
     $settings->smtp_password->value = htmlspecialchars($_POST[$settings->smtp_password->name] ?? '');
     $settings->smtp_port->value = htmlspecialchars($_POST[$settings->smtp_port->name] ?? '');
-    $settings->normal_photo->value = htmlspecialchars($_POST[$settings->normal_photo->name] ?? '');
+    $settings->normal_photo->value = $_FILES[$settings->normal_photo->name];
     $settings->normal_photo_width->value = htmlspecialchars($_POST[$settings->normal_photo_width->name] ?? '');
     $settings->normal_photo_height->value = htmlspecialchars($_POST[$settings->normal_photo_height->name] ?? '');
-    $settings->top_photo->value = htmlspecialchars($_POST[$settings->top_photo->name] ?? '');
+    $settings->top_photo->value = $_FILES[$settings->top_photo->name];
     $settings->top_photo_width->value = htmlspecialchars($_POST[$settings->top_photo_width->name] ?? '');
     $settings->top_photo_height->value = htmlspecialchars($_POST[$settings->top_photo_height->name] ?? '');
-    $settings->small_photo->value = htmlspecialchars($_POST[$settings->small_photo->name] ?? '');
+    $settings->small_photo->value = $_FILES[$settings->small_photo->name];
     $settings->small_photo_width->value = htmlspecialchars($_POST[$settings->small_photo_width->name] ?? '');
     $settings->small_photo_height->value = htmlspecialchars($_POST[$settings->small_photo_height->name] ?? '');
     $settings->debug_mode->value = htmlspecialchars($_POST[$settings->debug_mode->name] ?? '');
     $settings->maintenance_mode->value = htmlspecialchars($_POST[$settings->maintenance_mode->name] ?? '');
     $settings->maintenance_mode_content->value = htmlspecialchars($_POST[$settings->maintenance_mode_content->name] ?? '');
 
+    // compare new photos with previously uploaded ones
+    // check if photo is required
+    $normal_photo_check = $settings->normal_photo->check();
+
+    if (!empty($settings->normal_photo->value['tmp_name'])) {
+        // upload
+        if ($normal_photo_check) {
+            $normal_photo_status = Helpers::upload($settings->normal_photo->value);
+
+            // delete old file
+            if ($normal_photo_status['code']) {
+                unlink(ltrim($normal_photo_exists, "/"));
+            }
+
+            // assign values from upload function
+            $normal_photo_check = $normal_photo_status['code'];
+            $users->normal_photo->value = $normal_photo_status['file'];
+            $users->normal_photo->error_msg = $normal_photo_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        if ($normal_photo_exists) {
+            $settings->normal_photo->value = $normal_photo_exists;
+            $normal_photo_check = true;
+        } else {
+            $settings->normal_photo->value = null;
+        }
+    }
+
+
+    $top_photo_check = $settings->top_photo->check();
+
+    if (!empty($settings->top_photo->value['tmp_name'])) {
+        // upload
+        if ($top_photo_check) {
+            $top_photo_status = Helpers::upload($settings->top_photo->value);
+
+            // delete old file
+            if ($top_photo_status['code']) {
+                unlink(ltrim($top_photo_exists, "/"));
+            }
+
+            // assign values from upload function
+            $top_photo_check = $top_photo_status['code'];
+            $users->top_photo->value = $top_photo_status['file'];
+            $users->top_photo->error_msg = $top_photo_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        if ($top_photo_exists) {
+            $settings->top_photo->value = $top_photo_exists;
+            $top_photo_check = true;
+        } else {
+            $settings->top_photo->value = null;
+        }
+    }
+
+
+    $small_photo_check = $settings->small_photo->check();
+
+    if (!empty($settings->small_photo->value['tmp_name'])) {
+        // upload
+        if ($small_photo_check) {
+            $small_photo_status = Helpers::upload($settings->small_photo->value);
+
+            // delete old file
+            if ($small_photo_status['code']) {
+                unlink(ltrim($small_photo_exists, "/"));
+            }
+
+            // assign values from upload function
+            $small_photo_check = $small_photo_status['code'];
+            $users->small_photo->value = $small_photo_status['file'];
+            $users->small_photo->error_msg = $small_photo_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        if ($small_photo_exists) {
+            $settings->small_photo->value = $small_photo_exists;
+            $small_photo_check = true;
+        } else {
+            $settings->small_photo->value = null;
+        }
+    }
+
+    $photo_checks = [$normal_photo_check, $top_photo_check, $small_photo_check];
+
     // check if given data is ok
     $checks = $settings->company->check() && $settings->slogan->check() && $settings->keywords->check() && 
                 $settings->site_title->check() && $settings->site_url->check() && $settings->smtp_url->check() && 
-                $settings->smtp_password->check() && $settings->smtp_port->check() && $settings->normal_photo->check() && 
-                $settings->normal_photo_width->check() && $settings->normal_photo_height->check() && $settings->top_photo->check() && 
-                $settings->top_photo_width->check() && $settings->top_photo_height->check() && $settings->small_photo->check()  || 
+                $settings->smtp_password->check() && $settings->smtp_port->check() && 
+                $settings->normal_photo_width->check() && $settings->normal_photo_height->check() && 
+                $settings->top_photo_width->check() && $settings->top_photo_height->check() && 
                 $settings->small_photo_width->check() && $settings->small_photo_height->check() && $settings->debug_mode->check() && 
                 $settings->maintenance_mode->check() && $settings->maintenance_mode_content->check();
 
-    if ($checks) {
+    if ($checks and Helpers::all($photo_checks)) {
         // convert DateTime object to string
         $updated_at = date($datetime_format, $settings->updated_at->value->getTimestamp());
 
@@ -91,7 +192,7 @@ if (Helpers::getRequestMethod() == 'POST') {
                                 normal_photo_width = :normal_photo_width, normal_photo_height = :normal_photo_height,
                                 top_photo = :top_photo, top_photo_width = :top_photo_width, top_photo_height = :top_photo_height,
                                 small_photo = :small_photo, small_photo_width = :small_photo_width, small_photo_height = :small_photo_height,
-                                debug_mode = :debug_mode, maintenance_mode = :maintenance_mode, maintenance_mode_content = :maintenance_mode_content
+                                debug_mode = :debug_mode, maintenance_mode = :maintenance_mode, maintenance_mode_content = :maintenance_mode_content,
                                 updated_at = :updated_at
                                 WHERE id = :id");
 
@@ -107,14 +208,14 @@ if (Helpers::getRequestMethod() == 'POST') {
         $stmt->bindParam(':normal_photo', $settings->normal_photo->value, PDO::PARAM_STR);
         $stmt->bindParam(':normal_photo_width', $settings->normal_photo_width->value, PDO::PARAM_INT);
         $stmt->bindParam(':normal_photo_height', $settings->normal_photo_height->value, PDO::PARAM_INT);
-        $stmt->bindParam(':small_photo', $settings->normal_photo->value, PDO::PARAM_STR);
-        $stmt->bindParam(':small_photo_width', $settings->normal_photo_width->value, PDO::PARAM_INT);
-        $stmt->bindParam(':small_photo_height', $settings->normal_photo_height->value, PDO::PARAM_INT);
-        $stmt->bindParam(':top_photo', $settings->normal_photo->value, PDO::PARAM_STR);
-        $stmt->bindParam(':top_photo_width', $settings->normal_photo_width->value, PDO::PARAM_INT);
-        $stmt->bindParam(':top_photo_height', $settings->normal_photo_height->value, PDO::PARAM_INT);
-        $stmt->bindParam(':debug_mode', $settings->debug_mode->value, PDO::PARAM_INT);
-        $stmt->bindParam(':maintenance_mode', $settings->maintenance_mode->value, PDO::PARAM_INT);
+        $stmt->bindParam(':small_photo', $settings->small_photo->value, PDO::PARAM_STR);
+        $stmt->bindParam(':small_photo_width', $settings->small_photo_width->value, PDO::PARAM_INT);
+        $stmt->bindParam(':small_photo_height', $settings->small_photo_height->value, PDO::PARAM_INT);
+        $stmt->bindParam(':top_photo', $settings->top_photo->value, PDO::PARAM_STR);
+        $stmt->bindParam(':top_photo_width', $settings->top_photo_width->value, PDO::PARAM_INT);
+        $stmt->bindParam(':top_photo_height', $settings->top_photo_height->value, PDO::PARAM_INT);
+        $stmt->bindValue(':debug_mode', ($settings->debug_mode->value) ? true : false, PDO::PARAM_INT);
+        $stmt->bindValue(':maintenance_mode', ($settings->maintenance_mode->value) ? true : false, PDO::PARAM_INT);
         $stmt->bindParam(':maintenance_mode_content', $settings->maintenance_mode_content->value, PDO::PARAM_STR);
         $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -126,8 +227,10 @@ if (Helpers::getRequestMethod() == 'POST') {
         $stmt->closeCursor();
 
         // redirect to index page if everything is successfull
-        Helpers::redirect("settings");
+        Helpers::redirect("settings_general");
     }
+
+    // delete newly uploaded files here and show flash
 
     // this will open the current page so no reason to redirect again
 }

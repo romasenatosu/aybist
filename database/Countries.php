@@ -9,7 +9,7 @@ class Countries {
     public FormElement $updated_at;
 
     function __construct() {
-        global $regex_alpha_numeric, $regex_numeric, $regex_phone_code, $lang;
+        global $regex_alpha_numeric, $lang;
 
         $this->id = new FormElement('id');
         $this->language_id = new FormElement('language_id');
@@ -24,8 +24,6 @@ class Countries {
         $this->country->pattern_msg = $lang['regex_alpha_numeric'];
         $this->phone_code->type = "number";
         $this->phone_code->maxlength = 32767;
-        $this->phone_code->pattern = $regex_numeric;
-        $this->phone_code->pattern_msg = $lang['regex_numeric'];
         $this->phone_code->help_msg = $lang['help_phone_code'];
     }
 }

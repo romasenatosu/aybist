@@ -25,6 +25,9 @@ $lang_defaults_tr = [
     "text_not_exempted" => "Muaf Değil",
     "text_password" => "Şifre",
     "text_invalid_login" => "Geçersiz Email ya da Şifre",
+    "text_user_profile" => "Kullanıcı Profili",
+    "text_my_profile" => "Profilim",
+    "text_my_inbox" => "Gelen Kutum",
 
     "page_home" => "Ana Sayfa",
     "page_settings" => "Ayarlar",
@@ -36,7 +39,6 @@ $lang_defaults_tr = [
     "page_languages" => "Diller",
     "page_languages_def" => "Dil Tanımlamaları",
     "page_notifications" => "Bildirimler",
-    "page_notifications_ips" => "Ziyaret Eden IP'ler",
     "page_places_districts" => "İlçeler",
     "page_places_cities" => "Şehirler",
     "page_places_countries" => "Ülkeler",
@@ -46,6 +48,7 @@ $lang_defaults_tr = [
     "page_managements_flats" => "Daireler",
     "page_managements_floors" => "Katlar",
     "page_login" => "Giriş Yap",
+    "page_mails" => "E-Postalar",
 
     "table_title" => "BAŞLIK",
     "table_description" => "AÇIKLAMA",
@@ -261,6 +264,7 @@ $lang_defaults_tr = [
     "datatable_buttons_print" => "YAZDIR",
 
     "swal_title_delete_confirm" => "Bu veriyi silmek istediğinize emin misiniz?",
+    "swal_title_delete_confirm_strong" => "Bu veriyi silmek istediğinize emin misiniz? Buna bağlı olan diğer tüm veriler de silinecektir!",
 
     "regex_required" => "Bu alan doldurulmak zorundadır.",
     "regex_length" => "Bu alan %d ile %d arasında olmalıdır.",

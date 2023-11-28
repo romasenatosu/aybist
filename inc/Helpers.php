@@ -38,8 +38,17 @@ class Helpers {
      * 
      * @return string url
      */
-    public static function getServer(): string {
+    public static function getHost(): string {
         return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . '/';
+    }
+
+    /**
+     * get server name
+     * 
+     * @return string url
+     */
+    public static function getServer(): string {
+        return $_SERVER['SERVER_NAME'];
     }
 
     /**
@@ -189,28 +198,35 @@ class Helpers {
     /**
      * Useful when uploading new file to server
      * 
-     * @param string name
+     * @param ?array file_element
      * @return array status of file uploading
      */
-    public static function upload(string $name): array {
+    public static function upload(?array $file_element): array {
         global $photo_files_extensions, $upload_dir, $lang;
+
+        $result = ["code" => false, "msg" => "", "file" => null];
+
+        if (is_null($file_element)) {
+            return $result;
+        }
+
         $extensions = str_replace('.', '', $photo_files_extensions);
         $allowed_extensions = explode(', ', $extensions);
     
-        $file_name = $_FILES[$name]['name'];
-        $file_error = $_FILES[$name]['error'];
-        $file_tmp = $_FILES[$name]['tmp_name'];
-        $result = ["code" => false, "msg" => ""];
-    
+        $file_name = $file_element['name'];
+        $file_error = $file_element['error'];
+        $file_tmp = $file_element['tmp_name'];
+
         // check for uploading errors
         if ($file_error === UPLOAD_ERR_OK) {
             // get extension of file by more secure way
-            $file_extension = pathinfo($file_name, PATHINFO_EXTESION);
+            $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+            $file_name_only = pathinfo($file_name, PATHINFO_FILENAME);
     
             // check for allowed extensions
             if (in_array($file_extension, $allowed_extensions)) {
                 // create unique file name
-                $unique_file_name = sprintf("%s_%s.%s", $file_name, uniqid(), $file_extension);
+                $unique_file_name = sprintf("%s_%s.%s", $file_name_only, uniqid(), $file_extension);
                 $target = $upload_dir . $unique_file_name;
     
                 // check if target file exists
@@ -221,6 +237,7 @@ class Helpers {
                     if (move_uploaded_file($file_tmp, $target)) {
                         $result['code'] = true;
                         $result['msg'] = $lang['file_success'];
+                        $result['file'] = $_ENV['PATH_UPLOAD_DIR'] . $unique_file_name;
                     } else {
                         $result['msg'] = $lang['file_fail'];
                     }
@@ -233,6 +250,18 @@ class Helpers {
         }
     
         return $result;
+    }
+
+    /**
+     * Checks if all values are true
+     * 
+     * @param array values
+     * @return bool
+     */
+    public static function all(array $values): bool {
+        return array_reduce($values, function ($carry, $item) {
+            return $carry && $item;
+        }, true);
     }
 }
 

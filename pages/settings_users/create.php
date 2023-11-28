@@ -14,14 +14,34 @@ if (Helpers::getRequestMethod() == 'POST') {
     $users->address->value = htmlspecialchars($_POST[$users->address->name] ?? '');
     $users->password->value = htmlspecialchars($_POST[$users->password->name] ?? '');
     $users->password_confirm->value = htmlspecialchars($_POST[$users->password_confirm->name] ?? '');
-    $users->avatar->value = htmlspecialchars($_POST[$users->avatar->name] ?? '');
+    $users->avatar->value = $_FILES[$users->avatar->name];
     $users->is_admin->value = htmlspecialchars($_POST[$users->is_admin->name] ?? '');
+
+    // check if photo is required
+    $avatar_check = $users->avatar->check();
+
+    if (!empty($users->avatar->value['tmp_name'])) {
+        // upload
+        if ($avatar_check) {
+            $avatar_status = Helpers::upload($users->avatar->value);
+
+            // assign values from upload function
+            $avatar_check = $avatar_status['code'];
+            $users->avatar->value = $avatar_status['file'];
+            $users->avatar->error_msg = $avatar_status['msg'];
+        }
+    } else {
+        // if no photo was attempted to be uploaded then assign its value
+        $users->avatar->value = null;
+    }
+
+    $photo_checks = [$avatar_check];
 
     // check if given data is ok
     $checks = $users->fullname->check() && $users->email->check() && $users->phone->check() && 
                 $users->phone_code_id->check() && $users->address->check() && 
                 $users->password->check() && $users->old_password->check() &&
-                $users->avatar->check() && $users->is_admin->check();
+                $users->is_admin->check();
 
     // password confirming/hashing
     $password = "";
@@ -36,7 +56,7 @@ if (Helpers::getRequestMethod() == 'POST') {
         $checks = false;
     }
 
-    if ($checks) {
+    if ($checks and Helpers::all($photo_checks)) {
         // convert DateTime object to string
 
         $created_at = date($datetime_format, $users->created_at->value->getTimestamp());
