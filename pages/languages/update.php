@@ -30,80 +30,96 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
-    // get previously uploaded files
-    $stmt = $pdo->prepare("SELECT flag
-    FROM languages
-    WHERE id = :id");
+    try {
+        $pdo->beginTransaction();
+        
+        // get previously uploaded files
+        $stmt = $pdo->prepare("SELECT flag
+        FROM languages
+        WHERE id = :id");
 
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
 
-    $flag_exists = $result['flag'];
+        $flag_exists = $result['flag'];
 
-    // grab data from form inputs
-    $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
-    $languages->lang->value = htmlspecialchars($_POST[$languages->lang->name] ?? '');
-    $languages->flag->value = $_FILES[$languages->flag->name];
+        // grab data from form inputs
+        $languages->code->value = htmlspecialchars($_POST[$languages->code->name] ?? '');
+        $languages->lang->value = htmlspecialchars($_POST[$languages->lang->name] ?? '');
+        $languages->flag->value = $_FILES[$languages->flag->name];
 
-    // compare new photos with previously uploaded ones
-    // check if photo is required
-    $flag_check = $languages->flag->check();
+        // compare new photos with previously uploaded ones
+        // check if photo is required
+        $flag_check = $languages->flag->check();
 
-    if (!empty($languages->flag->value['tmp_name'])) {
-        // upload
-        if ($flag_check) {
-            $flag_status = Helpers::upload($languages->flag->value);
+        if (!empty($languages->flag->value['tmp_name'])) {
+            // upload
+            if ($flag_check) {
+                $flag_status = Helpers::upload($languages->flag->value);
 
-            // delete old file
-            if ($flag_status['code']) {
-                unlink(ltrim($flag_exists, "/"));
+                // delete old file
+                if ($flag_status['code'] and file_exists(ltrim($flag_exists, "/"))) {
+                    unlink(ltrim($flag_exists, "/"));
+                }
+
+                // assign values from upload function
+                $flag_check = $flag_status['code'];
+                $languages->flag->value = $flag_status['file'];
+                $languages->flag->error_msg = ($flag_status['code']) ? '' : $flag_status['msg'];
             }
-
-            // assign values from upload function
-            $flag_check = $flag_status['code'];
-            $languages->flag->value = $flag_status['file'];
-            $languages->flag->error_msg = $flag_status['msg'];
-        }
-    } else {
-        // if no photo was attempted to be uploaded then assign its value
-        if ($flag_exists) {
-            $languages->flag->value = $flag_exists;
-            $flag_check = true;
         } else {
-            $languages->flag->value = null;
+            // if no photo was attempted to be uploaded then assign its value
+            if ($flag_exists) {
+                $languages->flag->value = $flag_exists;
+                $flag_check = true;
+            } else {
+                $languages->flag->value = null;
+            }
+        }
+
+        $photo_checks = [$flag_check];
+
+        // check if given data is ok
+        $checks = $languages->code->check() && $languages->lang->check();
+
+        if ($checks and Helpers::all($photo_checks)) {
+            // convert DateTime object to string
+            $updated_at = date($datetime_format, $languages->updated_at->value->getTimestamp());
+
+            // sql statement
+            $stmt_language = $pdo->prepare("UPDATE languages SET code = :code, lang = :lang, flag = :flag, updated_at = :updated_at 
+                                WHERE id = :id");
+
+            //  bind values and parameters
+            $stmt_language->bindParam(':code', $languages->code->value, PDO::PARAM_STR);
+            $stmt_language->bindParam(':lang', $languages->lang->value, PDO::PARAM_STR);
+            $stmt_language->bindParam(':flag', $languages->flag->value, PDO::PARAM_STR);
+            $stmt_language->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $stmt_language->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // flush database
+            $stmt_language->execute();
+
+            // close the statement
+            $stmt_language->closeCursor();
+
+            $pdo->commit();
+
+            // redirect to index page if everything is successfull
+            Flash::addFlash($lang['flash_success_updated'], 'success');
+            Helpers::redirect($page);
         }
     }
 
-    $photo_checks = [$flag_check];
+    catch (PDOException $e) {
+        // rollback changes
+        $pdo->rollback();
 
-    // check if given data is ok
-    $checks = $languages->code->check() && $languages->lang->check();
-
-    if ($checks and Helpers::all($photo_checks)) {
-        // convert DateTime object to string
-        $updated_at = date($datetime_format, $languages->updated_at->value->getTimestamp());
-
-        // sql statement
-        $stmt = $pdo->prepare("UPDATE languages SET code = :code, lang = :lang, flag = :flag, updated_at = :updated_at 
-                            WHERE id = :id");
-
-        //  bind values and parameters
-        $stmt->bindParam(':code', $languages->code->value, PDO::PARAM_STR);
-        $stmt->bindParam(':lang', $languages->lang->value, PDO::PARAM_STR);
-        $stmt->bindParam(':flag', $languages->flag->value, PDO::PARAM_STR);
-        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // flush database
-        $stmt->execute();
-
-        // close the statement
-        $stmt->closeCursor();
-
-        // redirect to index page if everything is successfull
-        Helpers::redirect("languages");
+        // show error message
+        Flash::addFlash($lang['flash_fail_updated'], 'danger');
+        Helpers::redirect("$page/update");
     }
 
     // this will open the current page so no reason to redirect again

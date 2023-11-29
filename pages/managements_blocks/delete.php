@@ -1,20 +1,27 @@
 <?php
 
 if (Helpers::getRequestMethod() == 'POST') {
+    try {
+        // sql for deletion
+        $stmt = $pdo->prepare("DELETE FROM blocks WHERE id = :id");
     
-
-    // sql for deletion
-    $stmt = $pdo->prepare("DELETE FROM blocks WHERE id = :id");
-
-    // bind parameters
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-    // flush database
-    $stmt->execute();
-
-    // close statement
-    $stmt->closeCursor();
+        // bind parameters
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
-    // redirect to index page after deletion
-    Helpers::redirect("$page");
+        // flush database
+        $stmt->execute();
+    
+        // close statement
+        $stmt->closeCursor();
+
+        // redirect to index page after deletion
+        Flash::addFlash($lang['flash_success_deleted'], 'success');
+        Helpers::redirect($page);
+    }
+
+    catch (PDOException $e) {
+        // show error message
+        Flash::addFlash($lang['flash_fail_deleted'], 'danger');
+        Helpers::redirect("$page/delete");
+    }   
 }

@@ -5,7 +5,6 @@ $floors = new Floors();
 
 // check for method
 if (Helpers::getRequestMethod() == "GET") {
-
     // get values from database to show them in inputs fields
     $stmt = $pdo->prepare("SELECT floor 
     FROM floors
@@ -29,34 +28,43 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
-    // grab data from form inputs
+    try {
+        // grab data from form inputs
 
-    $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
+        $floors->floor->value = htmlspecialchars($_POST[$floors->floor->name] ?? '');
 
-    // check if given data is ok
-    $checks = $floors->floor->check();
+        // check if given data is ok
+        $checks = $floors->floor->check();
 
-    if ($checks) {
-        // convert DateTime object to string
-        $updated_at = date($datetime_format, $floors->updated_at->value->getTimestamp());
+        if ($checks) {
+            // convert DateTime object to string
+            $updated_at = date($datetime_format, $floors->updated_at->value->getTimestamp());
 
-        // sql statement
-        $stmt = $pdo->prepare("UPDATE floors SET floor = :floor, updated_at = :updated_at 
-                            WHERE id = :id");
+            // sql statement
+            $stmt = $pdo->prepare("UPDATE floors SET floor = :floor, updated_at = :updated_at 
+                                WHERE id = :id");
 
-        //  bind values and parameters
-        $stmt->bindParam(':floor', $floors->floor->value, PDO::PARAM_STR);
-        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            //  bind values and parameters
+            $stmt->bindParam(':floor', $floors->floor->value, PDO::PARAM_STR);
+            $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-        // flush database
-        $stmt->execute();
+            // flush database
+            $stmt->execute();
 
-        // close the statement
-        $stmt->closeCursor();
+            // close the statement
+            $stmt->closeCursor();
 
-        // redirect to index page if everything is successfull
-        Helpers::redirect("managements_floors");
+            // redirect to index page if everything is successfull
+            Flash::addFlash($lang['flash_success_updated'], 'success');
+            Helpers::redirect($page);
+        }
+    }
+
+    catch (PDOException $e) {
+        // show error message
+        Flash::addFlash($lang['flash_fail_updated'], 'danger');
+        Helpers::redirect("$page/update");
     }
 
     // this will open the current page so no reason to redirect again

@@ -118,6 +118,8 @@ $lang_defaults_en = [
     "error_500" => "Internal Server Error.",
 
     "errors_passwords_mismatch" => "Passwords are mismatching.",
+    "errors_passwords_mismatch" => "Passwords are mismatching.",
+    "errors_password_incorrect" => "Eski şifreniz yanlış.",
 
     "label_username" => "Username",
     "label_password" => "Password",
@@ -285,4 +287,13 @@ $lang_defaults_en = [
     "file_exists" => "File already exists.",
     "file_success" => "File uploaded successfully.",
     "file_fail" => "File could not uploaded.",
+
+    "flash_success_created" => "Data has been recorded successfully.",
+    "flash_success_updated" => "Data has been updated successfully.",
+    "flash_success_deleted" => "Data has been deleted successfully.",
+    "flash_fail_created" => "Data could not been recorded.",
+    "flash_fail_read" => "Data could not been read.",
+    "flash_fail_updated" => "Data could not been updated.",
+    "flash_fail_deleted" => "Data could not been deleted.",
+    "flash_fail_unique" => "Data %s should be unique.",
 ];

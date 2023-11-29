@@ -26,6 +26,7 @@ require_once __DIR__ . '/../database/SettingsVat.php';
 require_once __DIR__ . '/../database/Users.php';
 
 require_once __DIR__ . '/Auth.php';
+require_once __DIR__ . '/Flash.php';
 
 class Core {
     private bool $debug_mode;

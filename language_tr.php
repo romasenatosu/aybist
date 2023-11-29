@@ -117,7 +117,8 @@ $lang_defaults_tr = [
     "error_405" => "Geçersiz Metod.",
     "error_500" => "İç Sunucu Hatası.",
 
-    "errors_passwords_mismatch" => "Şifreler birbiriyle eşleşmiyor",
+    "errors_passwords_mismatch" => "Şifreler birbiriyle eşleşmiyor.",
+    "errors_password_incorrect" => "Eski şifreniz yanlış.",
 
     "label_username" => "Kullanıcı Adı",
     "label_password" => "Şifre",
@@ -285,4 +286,13 @@ $lang_defaults_tr = [
     "file_exists" => "Böyle bir dosya zaten var.",
     "file_success" => "Dosya başarıyla yüklendi.",
     "file_fail" => "Dosya yüklenemedi.",
+
+    "flash_success_created" => "Veri başarıyla kaydedildi.",
+    "flash_success_updated" => "Veri başarıyla güncellendi.",
+    "flash_success_deleted" => "Veri başarıyla silindi.",
+    "flash_fail_created" => "Veri kaydedilemedi.",
+    "flash_fail_read" => "Veri okunamadı.",
+    "flash_fail_updated" => "Veri güncellenemedi.",
+    "flash_fail_deleted" => "Veri silinemedi.",
+    "flash_fail_unique" => "%s adlı veri benzersiz olmalı.",
 ];

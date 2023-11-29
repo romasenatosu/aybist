@@ -30,36 +30,45 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
-    // grab data from form inputs
+    try {
+        // grab data from form inputs
 
-    $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
-    $countries->phone_code->value = htmlspecialchars($_POST[$countries->phone_code->name] ?? '');
+        $countries->country->value = htmlspecialchars($_POST[$countries->country->name] ?? '');
+        $countries->phone_code->value = htmlspecialchars($_POST[$countries->phone_code->name] ?? '');
 
-    // check if given data is ok
-    $checks = $countries->country->check() && $countries->phone_code->check();
+        // check if given data is ok
+        $checks = $countries->country->check() && $countries->phone_code->check();
 
-    if ($checks) {
-        // convert DateTime object to string
-        $updated_at = date($datetime_format, $countries->updated_at->value->getTimestamp());
+        if ($checks) {
+            // convert DateTime object to string
+            $updated_at = date($datetime_format, $countries->updated_at->value->getTimestamp());
 
-        // sql statement
-        $stmt = $pdo->prepare("UPDATE countries SET country = :country, phone_code = :phone_code, updated_at = :updated_at 
-                            WHERE id = :id");
+            // sql statement
+            $stmt = $pdo->prepare("UPDATE countries SET country = :country, phone_code = :phone_code, updated_at = :updated_at 
+                                WHERE id = :id");
 
-        //  bind values and parameters
-        $stmt->bindParam(':country', $countries->country->value, PDO::PARAM_STR);
-        $stmt->bindParam(':phone_code', $countries->phone_code->value, PDO::PARAM_STR);
-        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            //  bind values and parameters
+            $stmt->bindParam(':country', $countries->country->value, PDO::PARAM_STR);
+            $stmt->bindParam(':phone_code', $countries->phone_code->value, PDO::PARAM_STR);
+            $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-        // flush database
-        $stmt->execute();
+            // flush database
+            $stmt->execute();
 
-        // close the statement
-        $stmt->closeCursor();
+            // close the statement
+            $stmt->closeCursor();
 
-        // redirect to index page if everything is successfull
-        Helpers::redirect("places_countries");
+            // redirect to index page if everything is successfull
+            Flash::addFlash($lang['flash_success_updated'], 'success');
+            Helpers::redirect($page);
+        }
+    }
+
+    catch (PDOException $e) {
+        // show error message
+        Flash::addFlash($lang['flash_fail_updated'], 'danger');
+        Helpers::redirect("$page/update");
     }
 
     // this will open the current page so no reason to redirect again

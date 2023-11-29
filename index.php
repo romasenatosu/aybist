@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__ . '/inc/Core.php';
 
+    // ob_clean();
+    // echo "<pre>";
     // Helpers::dump($_SESSION);
     // Helpers::dump($_SERVER);
     // die();
@@ -42,11 +44,9 @@
 </head>
 
 <!-- TODO: fix error redirection in htaccess -->
-<!-- TODO: create try catch for pdo statements -> flash messages -->
 
 <body>
-    <!-- TODO: check for unique fields -->
-    <!-- TODO: create flash messages after updating/deleting/errors -->
+    <!-- TODO: check for unique fields -> flash messages -->
     <!-- TODO: remember me and user token -->
     <!-- TODO: create custom pagination and show rows function -->
     <!-- TODO: create analytics charts -->
@@ -62,8 +62,30 @@
             if ($page != 'login' and !str_starts_with($page, "error_")) {
                 include_once __DIR__ . '/header.php';
             }
+        ?>
 
-            require_once __DIR__ . '/router.php';
+        <div class="container-fluid mw-100">
+            <section id="alerts">
+                <?php
+                    $flashes = Flash::getFlashes();
+
+                    foreach ($flashes as $flash):
+                ?>
+                    <div class="alert alert-<?= $flash['type'] ?> alert-dismissible fade show" role="alert">
+                        <h6><?= $flash['msg'] ?></h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                <?php
+                    endforeach;
+                ?>
+            </section>
+
+            <?php
+                require_once __DIR__ . '/router.php';
+            ?>
+        </div>
+
+        <?php
             include_once __DIR__ . '/footer.php';
         ?>
     </div> <!-- NOTE: Body Wrapper ends here -->

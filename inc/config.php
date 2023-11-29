@@ -125,6 +125,9 @@ function errorListener($severity, $message, $file, $line) {
 set_error_handler('errorListener');
 set_exception_handler('exceptionListener');
 
+// mysql variables
+$UNIQUE_KEY_ERROR = '23000';
+
 // update language definitions
 /* include_once __DIR__ . '/../language_en.php';
 foreach ($lang_defaults_en as $key => $value) {

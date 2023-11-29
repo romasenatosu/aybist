@@ -31,38 +31,47 @@ if (Helpers::getRequestMethod() == "GET") {
 
 // check for method
 if (Helpers::getRequestMethod() == 'POST') {
-    // grab data from form inputs
+    try {
+        // grab data from form inputs
 
-    $cities->country_id->value = htmlspecialchars($_POST[$cities->country_id->name] ?? '');
-    $cities->city->value = htmlspecialchars($_POST[$cities->city->name] ?? '');
-    $cities->zip_code->value = htmlspecialchars($_POST[$cities->zip_code->name] ?? '');
+        $cities->country_id->value = htmlspecialchars($_POST[$cities->country_id->name] ?? '');
+        $cities->city->value = htmlspecialchars($_POST[$cities->city->name] ?? '');
+        $cities->zip_code->value = htmlspecialchars($_POST[$cities->zip_code->name] ?? '');
 
-    // convert DateTime object to string
-    $checks = $cities->country_id->check() && $cities->city->check() && $cities->zip_code->check();
-
-    if ($checks) {
         // convert DateTime object to string
-        $updated_at = date($datetime_format, $cities->created_at->value->getTimestamp());
+        $checks = $cities->country_id->check() && $cities->city->check() && $cities->zip_code->check();
 
-        // sql statement
-        $stmt = $pdo->prepare("UPDATE cities SET country_id = :country_id, city = :city, zip_code = :zip_code, updated_at = :updated_at 
-                            WHERE id = :id");
+        if ($checks) {
+            // convert DateTime object to string
+            $updated_at = date($datetime_format, $cities->created_at->value->getTimestamp());
 
-        //  bind values and parameters
-        $stmt->bindParam(':country_id', $cities->country_id->value, PDO::PARAM_INT);
-        $stmt->bindParam(':city', $cities->city->value, PDO::PARAM_STR);
-        $stmt->bindParam(':zip_code', $cities->zip_code->value, PDO::PARAM_STR);
-        $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            // sql statement
+            $stmt = $pdo->prepare("UPDATE cities SET country_id = :country_id, city = :city, zip_code = :zip_code, updated_at = :updated_at 
+                                WHERE id = :id");
 
-        // flush database
-        $stmt->execute();
+            //  bind values and parameters
+            $stmt->bindParam(':country_id', $cities->country_id->value, PDO::PARAM_INT);
+            $stmt->bindParam(':city', $cities->city->value, PDO::PARAM_STR);
+            $stmt->bindParam(':zip_code', $cities->zip_code->value, PDO::PARAM_STR);
+            $stmt->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-        // close the statement
-        $stmt->closeCursor();
+            // flush database
+            $stmt->execute();
 
-        // redirect to index page if everything is successfull
-        Helpers::redirect("places_cities");
+            // close the statement
+            $stmt->closeCursor();
+
+            // redirect to index page if everything is successfull
+            Flash::addFlash($lang['flash_success_updated'], 'success');
+            Helpers::redirect($page);
+        }
+    }
+
+    catch (PDOException $e) {
+        // show error message
+        Flash::addFlash($lang['flash_fail_updated'], 'danger');
+        Helpers::redirect("$page/update");
     }
 
     // this will open the current page so no reason to redirect again

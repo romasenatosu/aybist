@@ -384,6 +384,7 @@ CREATE TABLE `users` (
   `password` text NOT NULL,
   `avatar` text DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL,
+  `is_root` tinyint(1) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -510,7 +511,7 @@ ALTER TABLE `settings_vat`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`,`phone`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `phone_code_id` (`phone_code_id`);
 
 --
