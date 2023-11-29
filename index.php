@@ -1,18 +1,6 @@
 <?php
     require_once __DIR__ . '/inc/Core.php';
 
-/* 
-    // update language definitions
-    include_once __DIR__ . '/language_en.php';
-    foreach ($lang_defaults_en as $key => $value) {
-        $stmt = $pdo->prepare("INSERT INTO languages_def (language_id, keyword, value) VALUES (:language_id, :keyword, :value)");
-        $stmt->bindValue(':language_id', 2, PDO::PARAM_INT);
-        $stmt->bindParam(':keyword', $key, PDO::PARAM_STR);
-        $stmt->bindParam(':value', $value, PDO::PARAM_STR);
-        $stmt->execute();
-        $stmt->closeCursor();
-    } */
-
     // Helpers::dump($_SESSION);
     // Helpers::dump($_SERVER);
     // die();
@@ -137,9 +125,62 @@
         'use strict'
 
         $(function() {
-            // launch datatables
+            // WARN: launch everything before datatable
 
-            // TODO: fix bugs about datatable
+            // fire swal when delete button is clicked
+            $('.delete-form').on('click', function () {
+                console.log("clicked")
+                Swal.fire({
+                    "title": "<?= $lang['swal_title_delete_confirm_strong'] ?>",
+                    "icon": "warning",
+                    showConfirmButton: true,
+                    showDenyButton: true,
+                    confirmButtonText: "<?= $lang['text_yes'] ?>",
+                    denyButtonText: "<?= $lang['text_no'] ?>",
+                }).then(r => {
+                    if (r.isConfirmed) {
+                        $(this).trigger('submit')
+                    }
+                })
+            })
+
+            /* launch flatpickr */
+
+            let flatpickr_config = {
+                enableTime: false,
+                dateFormat: "<?= $date_format ?>",
+                locale: "<?= $locale ?>",
+            }
+
+            $(".flatpickr").flatpickr(flatpickr_config)
+
+            // date range
+
+            let range_flatpickr_config = Object.assign({}, flatpickr_config)
+            range_flatpickr_config.mode = 'range' // reference bug
+            $('.range_flatpickr').flatpickr(range_flatpickr_config)
+
+            /* input mask */
+            $("input[type='tel']").inputmask('999 999 99 99')
+
+            /* ckeditor */
+            const ck_field = document.querySelector('.ck_field')
+
+            if (ck_field) {
+                ClassicEditor
+                    .create(ck_field, {
+                        language: "<?= $locale ?>",
+                    })
+                    .then(editor => {
+                        editor.setData(ck_field.value);
+                        editor.updateSourceElement();
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
+            }
+
+            // launch datatables
 
             $(".datatable").DataTable({
                 responsive: true,
@@ -174,59 +215,6 @@
                     },
                 },
             });
-
-            /* launch flatpickr */
-
-            let flatpickr_config = {
-                enableTime: false,
-                dateFormat: "<?= $date_format ?>",
-                locale: "<?= $locale ?>",
-            }
-
-            $(".flatpickr").flatpickr(flatpickr_config)
-
-            // date range
-
-            let range_flatpickr_config = Object.assign({}, flatpickr_config)
-            range_flatpickr_config.mode = 'range' // reference bug
-            $('.range_flatpickr').flatpickr(range_flatpickr_config)
-
-            // fire swal when delete button is clicked
-            $('.delete-form').on('click', function () {
-                console.log("clicked")
-                Swal.fire({
-                    "title": "<?= $lang['swal_title_delete_confirm_strong'] ?>",
-                    "icon": "warning",
-                    showConfirmButton: true,
-                    showDenyButton: true,
-                    confirmButtonText: "<?= $lang['text_yes'] ?>",
-                    denyButtonText: "<?= $lang['text_no'] ?>",
-                }).then(r => {
-                    if (r.isConfirmed) {
-                        $(this).trigger('submit')
-                    }
-                })
-            })
-
-            /* input mask */
-            $("input[type='tel']").inputmask('999 999 99 99')
-
-            /* ckeditor */
-            const ck_field = document.querySelector('.ck_field')
-
-            if (ck_field) {
-                ClassicEditor
-                    .create(ck_field, {
-                        language: "<?= $locale ?>",
-                    })
-                    .then(editor => {
-                        editor.setData(ck_field.value);
-                        editor.updateSourceElement();
-                    })
-                    .catch(error => {
-                        console.error(error)
-                    })
-            }
         })
     </script>
 </body>

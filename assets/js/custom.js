@@ -136,6 +136,6 @@ function toggleTheme(value) {
   $(".preloader").fadeOut();
 }
 
-$(function() {
-  $(".preloader").fadeOut();
+$(window).on('load', function() {
+  $(".preloader").fadeOut()
 })

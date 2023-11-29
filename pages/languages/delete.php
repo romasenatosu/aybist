@@ -20,14 +20,9 @@ if (Helpers::getRequestMethod() == 'POST') {
     $stmt->execute();
     $stmt->closeCursor();
 
-    // delete countries definitions
-    $stmt = $pdo->prepare("DELETE FROM countries WHERE language_id = :language_id");
-    $stmt->bindParam(':language_id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $stmt->closeCursor();
-
-    // delete language definitions, managements, blocks, floors, flats, settings, settings_contact, settings_vat
-    $stmt = $pdo->prepare("DELETE FROM languages_def WHERE language_id = :language_id;
+    // delete language definitions, countries, managements, blocks, floors, flats, settings, settings_contact, settings_vat
+    $stmt = $pdo->prepare("DELETE FROM countries WHERE language_id = :language_id;
+                            DELETE FROM languages_def WHERE language_id = :language_id;
                             DELETE FROM managements WHERE language_id = :language_id;
                             DELETE FROM blocks WHERE language_id = :language_id;
                             DELETE FROM flats WHERE language_id = :language_id;

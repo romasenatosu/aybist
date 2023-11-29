@@ -124,3 +124,16 @@ function errorListener($severity, $message, $file, $line) {
 
 set_error_handler('errorListener');
 set_exception_handler('exceptionListener');
+
+// update language definitions
+/* include_once __DIR__ . '/../language_en.php';
+foreach ($lang_defaults_en as $key => $value) {
+    $stmt = $pdo->prepare("INSERT INTO languages_def (language_id, keyword, value) VALUES (:language_id, :keyword, :value)");
+    $stmt->bindValue(':language_id', 2, PDO::PARAM_INT);
+    $stmt->bindParam(':keyword', $key, PDO::PARAM_STR);
+    $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+    $stmt->execute();
+    $stmt->closeCursor();
+}
+
+die(); */

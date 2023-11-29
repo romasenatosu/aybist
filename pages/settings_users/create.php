@@ -40,7 +40,7 @@ if (Helpers::getRequestMethod() == 'POST') {
     // check if given data is ok
     $checks = $users->fullname->check() && $users->email->check() && $users->phone->check() && 
                 $users->phone_code_id->check() && $users->address->check() && 
-                $users->password->check() && $users->old_password->check() &&
+                $users->password->check() && $users->password_confirm->check() &&
                 $users->is_admin->check();
 
     // password confirming/hashing

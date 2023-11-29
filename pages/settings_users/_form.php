@@ -122,7 +122,7 @@
                                                 <?= $lang['label_password_confirm'] ?>
                                                 <span class="text-danger"><?= ($users->password_confirm->required) ? '*': '' ?></span>
                                             </label>
-                                            <input class="form-control" placeholder="<?= $lang['placeholder_password_confirm'] ?>" <?= $users->password_confirm->get_attr() ?>>
+                                            <input class="form-control" placeholder="<?= $lang['placeholder_password'] ?>" <?= $users->password_confirm->get_attr() ?>>
                                             <span class="text-danger"><?= ($users->password_confirm->error_msg) ?></span>
                                             <span class="text-muted"><?= ($users->password_confirm->help_msg) ?></span>
                                         </div>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 22, 2023 at 03:50 PM
+-- Generation Time: Nov 29, 2023 at 10:00 AM
 -- Server version: 10.3.38-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 8.2.11
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,7 @@ CREATE TABLE `cities` (
   `id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `city` text NOT NULL,
-  `zip_code` varchar(6) NOT NULL,
+  `zip_code` varchar(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -74,7 +74,7 @@ CREATE TABLE `countries` (
   `id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `country` text NOT NULL,
-  `phone_code` varchar(6) NOT NULL,
+  `phone_code` smallint(6) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -236,36 +236,16 @@ CREATE TABLE `managements` (
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `code` text NOT NULL,
-  `msg` text NOT NULL,
-  `trace` text NOT NULL,
+  `ip` varchar(32) NOT NULL,
+  `code` smallint(6) NOT NULL,
+  `request_uri` text NOT NULL,
+  `request_method` varchar(8) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- RELATIONSHIPS FOR TABLE `notifications`:
---   `user_id`
---       `users` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notifications_ips`
---
-
-CREATE TABLE `notifications_ips` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `ipv4` varchar(16) NOT NULL,
-  `ipv6` varchar(32) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- RELATIONSHIPS FOR TABLE `notifications_ips`:
 --   `user_id`
 --       `users` -> `id`
 --
@@ -288,15 +268,15 @@ CREATE TABLE `settings` (
   `smtp_url` text DEFAULT NULL,
   `smtp_password` text DEFAULT NULL,
   `smtp_port` smallint(6) DEFAULT NULL,
-  `normal_photo` text NOT NULL,
-  `normal_photo_width` smallint(6) NOT NULL,
-  `normal_photo_height` smallint(6) NOT NULL,
-  `top_photo` text NOT NULL,
-  `top_photo_width` smallint(6) NOT NULL,
-  `top_photo_height` smallint(6) NOT NULL,
-  `small_photo` text NOT NULL,
-  `small_photo_width` smallint(6) NOT NULL,
-  `small_photo_height` smallint(6) NOT NULL,
+  `normal_photo` text DEFAULT NULL,
+  `normal_photo_width` smallint(6) DEFAULT NULL,
+  `normal_photo_height` smallint(6) DEFAULT NULL,
+  `top_photo` text DEFAULT NULL,
+  `top_photo_width` smallint(6) DEFAULT NULL,
+  `top_photo_height` smallint(6) DEFAULT NULL,
+  `small_photo` text DEFAULT NULL,
+  `small_photo_width` smallint(6) DEFAULT NULL,
+  `small_photo_height` smallint(6) DEFAULT NULL,
   `debug_mode` tinyint(1) NOT NULL,
   `maintenance_mode` tinyint(1) NOT NULL,
   `maintenance_mode_content` longtext NOT NULL,
@@ -326,7 +306,7 @@ CREATE TABLE `settings_contact` (
   `cell_phone_code_id` int(11) NOT NULL,
   `fax` varchar(16) DEFAULT NULL,
   `fax_code_id` int(11) NOT NULL,
-  `email` text NOT NULL,
+  `email` varchar(255) NOT NULL,
   `captcha_key` varchar(64) DEFAULT NULL,
   `captcha_secret_key` varchar(64) DEFAULT NULL,
   `google_maps` text DEFAULT NULL,
@@ -397,12 +377,12 @@ CREATE TABLE `settings_vat` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `fullname` text NOT NULL,
-  `email` text NOT NULL,
+  `email` varchar(255) NOT NULL,
   `phone` varchar(16) NOT NULL,
   `phone_code_id` int(11) NOT NULL,
   `address` text DEFAULT NULL,
   `password` text NOT NULL,
-  `avatar` text,
+  `avatar` text DEFAULT NULL,
   `is_admin` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
@@ -465,7 +445,8 @@ ALTER TABLE `floors`
 -- Indexes for table `languages`
 --
 ALTER TABLE `languages`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `code` (`code`);
 
 --
 -- Indexes for table `languages_def`
@@ -491,15 +472,6 @@ ALTER TABLE `managements`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `notifications_ips`
---
-ALTER TABLE `notifications_ips`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ipv4` (`ipv4`),
-  ADD UNIQUE KEY `ipv6` (`ipv6`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -538,6 +510,7 @@ ALTER TABLE `settings_vat`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`,`phone`),
   ADD KEY `phone_code_id` (`phone_code_id`);
 
 --
@@ -602,12 +575,6 @@ ALTER TABLE `managements`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `notifications_ips`
---
-ALTER TABLE `notifications_ips`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -703,12 +670,6 @@ ALTER TABLE `managements`
 --
 ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `notifications_ips`
---
-ALTER TABLE `notifications_ips`
-  ADD CONSTRAINT `notifications_ips_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `settings`
