@@ -44,12 +44,11 @@
 </head>
 
 <!-- TODO: fix error redirection in htaccess -->
+<!-- TODO: remember me and user token -->
 
 <body>
     <!-- TODO: check for unique fields -> flash messages -->
-    <!-- TODO: remember me and user token -->
-    <!-- TODO: create custom pagination and show rows function -->
-    <!-- TODO: create analytics charts -->
+    <!-- TODO: forgot password? -->
 
     <!-- Preloader -->
     <div class="preloader">
@@ -206,7 +205,7 @@
 
             $(".datatable").DataTable({
                 responsive: true,
-                dom: 'Bfrtip',
+                dom: 'Bflrtip',
                 buttons: ['colvis', 'pdf', 'excel', 'print'],
                 language: {
                     decimal: "",

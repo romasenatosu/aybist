@@ -118,8 +118,7 @@ $lang_defaults_en = [
     "error_500" => "Internal Server Error.",
 
     "errors_passwords_mismatch" => "Passwords are mismatching.",
-    "errors_passwords_mismatch" => "Passwords are mismatching.",
-    "errors_password_incorrect" => "Eski şifreniz yanlış.",
+    "errors_password_incorrect" => "Password is incorrect.",
 
     "label_username" => "Username",
     "label_password" => "Password",

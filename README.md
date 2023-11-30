@@ -46,6 +46,10 @@ router.php
 - $ composer install
 - $ npm install
 
+- sql sorgularını çalıştırın:
+  /migrations/migrate.sql
+  /migrations/factory.sql
+
 # Gereksinimler
 
 - PHP 8.2

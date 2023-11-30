@@ -118,7 +118,7 @@ $lang_defaults_tr = [
     "error_500" => "İç Sunucu Hatası.",
 
     "errors_passwords_mismatch" => "Şifreler birbiriyle eşleşmiyor.",
-    "errors_password_incorrect" => "Eski şifreniz yanlış.",
+    "errors_password_incorrect" => "Şifreniz yanlış.",
 
     "label_username" => "Kullanıcı Adı",
     "label_password" => "Şifre",

@@ -56,7 +56,6 @@ if (Helpers::getRequestMethod() == 'POST') {
         $old_password = $result['password'];
 
         // grab data from form inputs
-
         $users->fullname->value = htmlspecialchars($_POST[$users->fullname->name] ?? '');
         $users->email->value = htmlspecialchars($_POST[$users->email->name] ?? '');
         $users->phone->value = htmlspecialchars($_POST[$users->phone->name] ?? '');
@@ -104,36 +103,34 @@ if (Helpers::getRequestMethod() == 'POST') {
                     $users->phone_code_id->check() && $users->address->check() && 
                     $users->old_password->check() && $users->password->check() && $users->password_confirm->check() &&
                     $users->is_admin->check();
+ 
+        $new_password = "";
 
         // check if old password is correct
         if (password_verify($users->old_password->value, $old_password)) {
+            // password confirming/hashing
 
-        } else {
-            // old password is wrong show error message
-            $pdo->rollback();
-            $$users->old_password->error_msg = $lang['errors_passwords_'];
-        }
+            if ($users->password->value == $users->password_confirm->value) {
+                // hash the password
+                $new_password = password_hash($users->password->value, $hash_algorithm, $hash_options);
+            }
 
-        // password confirming/hashing
-        $password = "";
-
-        if ($users->password->value == $users->password_confirm->value) {
-            // if (password_verify())
-
-            // hash the password
-            $password = password_hash($users->password->value, $hash_algorithm, $hash_options);
+            else {
+                // passwords doesn't match
+                $users->password_confirm->error_msg = $lang['errors_passwords_mismatch'];
+                $users->password->error_msg = $lang['errors_passwords_mismatch'];
+                $checks = false;
+            }
         }
 
         else {
-            // passwords doesn't match
-            $users->password_confirm->error_msg = $lang['errors_passwords_mismatch'];
-            $users->password->error_msg = $lang['errors_passwords_mismatch'];
+            // old password is wrong show error message
+            $users->old_password->error_msg = $lang['errors_password_incorrect'];
             $checks = false;
         }
 
         if ($checks and Helpers::all($photo_checks)) {
             // convert DateTime object to string
-
             $updated_at = date($datetime_format, $users->updated_at->value->getTimestamp());
 
             // sql statement
@@ -148,7 +145,7 @@ if (Helpers::getRequestMethod() == 'POST') {
             $stmt_users->bindParam(':phone', $users->phone->value, PDO::PARAM_STR);
             $stmt_users->bindParam(':phone_code_id', $users->phone_code_id->value, PDO::PARAM_INT);
             $stmt_users->bindParam(':address', $users->address->value, PDO::PARAM_STR);
-            $stmt_users->bindParam(':password', $users->password->value, PDO::PARAM_STR);
+            $stmt_users->bindParam(':password', $new_password, PDO::PARAM_STR);
             $stmt_users->bindParam(':avatar', $users->avatar->value, PDO::PARAM_STR);
             $stmt_users->bindValue(':is_admin', ($users->is_admin->value) ? true : false, PDO::PARAM_INT);
             $stmt_users->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
@@ -170,6 +167,8 @@ if (Helpers::getRequestMethod() == 'POST') {
             Flash::addFlash($lang['flash_success_updated'], 'success');
             Helpers::redirect($page);
         }
+
+        // this will open the current page so no reason to redirect again
     }
 
     catch (PDOException $e) {
@@ -180,8 +179,6 @@ if (Helpers::getRequestMethod() == 'POST') {
         Flash::addFlash($lang['flash_fail_updated'], 'danger');
         Helpers::redirect("$page/update");
     }
-
-    // this will open the current page so no reason to redirect again
 }
 
 // show form field
