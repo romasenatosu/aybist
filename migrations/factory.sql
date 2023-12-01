@@ -556,7 +556,7 @@ INSERT INTO `settings_vat` (`id`, `language_id`, `name`, `rate`, `created_at`, `
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `phone_code_id`, `address`, `password`, `avatar`, `is_admin`, 'is_root', `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `fullname`, `email`, `phone`, `phone_code_id`, `address`, `password`, `avatar`, `is_admin`, `is_root`, `created_at`, `updated_at`) VALUES
 (1, 'Muhammet Ali erkan', 'inserveofgod@gmail.com', '554 442 85 81', 1, NULL, '$2y$12$JTtkZxeXIaLGcO8xqpYOaOR83cLfT8EMQX9GBXHlgYBwOkx5ohJRS', '/assets/images/profile/admin.jpg', 1, 1, '2023-11-20 16:08:58', '2023-11-26 18:18:23');
 COMMIT;
 
